@@ -1,0 +1,83 @@
+nav.main-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: normal;
+  background-color: #002f34;
+  color: white;
+  padding: 0 50px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+nav.main-header ul.main-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  height: 90px;
+  padding: 0;
+  width: 1200px;
+}
+nav.main-header ul.main-navigation .logo-holder img.logo {
+  width: 250px;
+  cursor: pointer;
+}
+nav.main-header ul.main-navigation ul.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  font-size: large;
+}
+nav.main-header ul.main-navigation ul.navigation li.icon {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: normal;
+  cursor: pointer;
+  transition: 0.2s;
+}
+nav.main-header ul.main-navigation ul.navigation li.icon:hover {
+  opacity: 0.5;
+}
+nav.main-header ul.main-navigation ul.navigation li.icon span {
+  margin-left: 7px;
+}
+nav.main-header ul.main-navigation button {
+  height: 50px;
+  font-family: "Nunito", sans-serif;
+  background-color: #fff;
+  color: #002f34;
+  font-weight: 800;
+  font-size: 17px;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+nav.main-header ul.main-navigation button:hover {
+  background-color: #006b77;
+  color: #fff;
+}
+
+.searchbar-container {
+  background-color: #f2f4f5;
+  height: 150px;
+  border: 1px solid black;
+}
+.searchbar-container .searchbar {
+  width: 600px;
+  height: 50px;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: border-box;
+}/*# sourceMappingURL=App.css.map */

@@ -1,0 +1,56 @@
+nav.main-header {
+  @include flexbox(row, center);
+  background-color: #002f34;
+  color: white;
+  padding: 0 50px;
+  box-shadow: $box-shadow;
+
+  ul.main-navigation {
+    @include flexbox(row, space-between, center);
+    margin: 0;
+    height: 90px;
+    padding: 0;
+    width: 1200px;
+    .logo-holder {
+      img.logo {
+        width: 250px;
+        cursor: pointer;
+      }
+    }
+
+    ul.navigation {
+      @include flexbox(row, flex-start, center);
+      list-style: none;
+      font-size: large;
+
+      li.icon {
+        font-size: 18px;
+        font-weight: 500;
+        padding: 0 20px;
+        @include flexbox;
+        cursor: pointer;
+        transition: .2s;
+        &:hover {
+            opacity: 0.5;
+        }
+        span {
+          margin-left: 7px;
+        }
+      }
+    }
+    button {
+      height: 50px;
+      font-family: $primary-font;
+      background-color: #fff;
+      color: #002f34;
+      font-weight: 800;
+      font-size: 17px;
+      transition: .3s;
+      box-shadow: $box-shadow;
+      &:hover {
+        background-color: #006b77;
+        color: #fff;
+      }
+    }
+  }
+}
