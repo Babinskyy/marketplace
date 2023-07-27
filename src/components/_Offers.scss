@@ -55,7 +55,14 @@
                     align-self: flex-end;
                 }
             }
-        }   
+        }  
+
+        @media screen and (max-width: 1000px) {
+            .offers-container {
+                max-height: 1760px;
+                overflow: hidden;
+            }
+  } 
     }
     
 }

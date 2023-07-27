@@ -52,16 +52,20 @@
   @media screen and (max-width: 1000px) {
     .icon-holder {
         margin-left: 0;
-        
+        display: none;
       }
     .searchbar-input {
       width: 100%;
+      padding-left: 20px;
     }
     #search-icon {
         display: none;
     }
+    .x-cancel-input{
+        display: none;
+    }
     .search-button {
-        padding: 0;
+        padding-right: 10px;
         margin-right: 0;
         span {
             margin: 0 10px;

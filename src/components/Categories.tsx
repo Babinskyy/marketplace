@@ -6,10 +6,10 @@ const Categories = (): JSX.Element => {
       url: "https://categories.olxcdn.com/assets/categories/olxpl/motoryzacja-5-2x.png",
       name: "Cars",
     },
-    {
-      url: "	https://categories.olxcdn.com/assets/categories/olxpl/zdrowie-i-uroda-3647-2x.png",
-      name: "Cosmetics",
-    },
+    // {
+    //   url: "	https://categories.olxcdn.com/assets/categories/olxpl/zdrowie-i-uroda-3647-2x.png",
+    //   name: "Cosmetics",
+    // },
     {
       url: "https://categories.olxcdn.com/assets/categories/olxpl/nieruchomosci-3-2x.png",
       name: "Houses",

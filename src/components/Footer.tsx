@@ -46,11 +46,11 @@ const Footer = (): JSX.Element => {
             About
           </a>
         </li>
-        <li className="menu__item">
+        {/* <li className="menu__item">
           <a className="menu__link" href="#">
             Services
           </a>
-        </li>
+        </li> */}
         <li className="menu__item">
           <a className="menu__link" href="#">
             Team
