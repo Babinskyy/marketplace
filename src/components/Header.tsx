@@ -1,29 +1,27 @@
 import { Button } from "@mui/material";
 import "../App.scss";
-import mpBigLogo from "../images/marketplacelogo4.png";
-import mpSmallLogo from "../images/marketplacesmalllogo.png";
+import mpBigLogo from "../images/logo/marketplacelogo4.png";
+import mpSmallLogo from "../images/logo/marketplacesmalllogo.png";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Fade from '@mui/material/Fade';
-import MenuIcon from '@mui/icons-material/Menu';
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
+import MenuIcon from "@mui/icons-material/Menu";
 
-
-const Header = (): JSX.Element => {
-
+const Header = (
+  props: any
+): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -49,16 +47,16 @@ const Header = (): JSX.Element => {
           </li>
         </ul>
         <div>
-      <Button
-        id="fade-button"
-        aria-controls={open ? 'fade-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-      >
-        <MenuIcon/>
-      </Button>
-      {/* <Menu
+          <Button
+            id="fade-button"
+            aria-controls={open ? "fade-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <MenuIcon />
+          </Button>
+          {/* <Menu
         id="fade-menu"
         MenuListProps={{
           'aria-labelledby': 'fade-button',
@@ -82,9 +80,14 @@ const Header = (): JSX.Element => {
         <MenuItem onClick={handleClose}>Favorite</MenuItem>
         <MenuItem onClick={handleClose}>Search</MenuItem>
       </Menu> */}
-    </div>
-        
-        <Button variant="contained">Add an offer</Button>
+        </div>
+
+        <Button
+          variant="contained"
+          onClick={() => props.setOpenOfferModal(true)}
+        >
+          Add an offer
+        </Button>
       </ul>
     </nav>
   );

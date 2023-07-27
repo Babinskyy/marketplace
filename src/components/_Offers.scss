@@ -4,7 +4,7 @@
     .offers-wrapper-2{
         max-width: 1360px;
         h1{
-            padding: 30px;
+            padding-top: 30px;
         }
         .offers-container {
             @include flexbox(row, center, center);

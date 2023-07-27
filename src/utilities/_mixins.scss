@@ -8,7 +8,7 @@
     #{$selector}: unquote("rgba(#{random(255)}, #{random(255)}, #{random(255)})");
   }
 
-  @for $i from 1 to 100 {
+  @for $i from 1 to 20 {
     .bgc-#{$i} {
       @include random-color('background-color');
     }

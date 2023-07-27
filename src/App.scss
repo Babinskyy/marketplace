@@ -1,5 +1,5 @@
-@import './utilities/variables';
-@import './utilities/mixins';
+@import './utilities/_variables';
+@import './utilities/_mixins';
 
 @import './pages/_Home';
 @import './components/_Header';
@@ -7,6 +7,7 @@
 @import './components/_Categories';
 @import './components/_Offers';
 @import './components/_Footer';
+@import './components/_AddOffer';
 
 * {
     font-family: 'Nunito', sans-serif;

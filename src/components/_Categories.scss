@@ -1,6 +1,11 @@
 .main-categories-container{
     background-color: #fff;
+    padding-bottom: 20px; 
+    
     @include flexbox(column, center, center);
+    h1{
+        padding-top: 25px
+    }
   
     .sub-categories-container{
     @include flexbox(row, center, center);
@@ -8,9 +13,11 @@
         .category-wrapper{
             @include flexbox(column, center, center);
             margin:  20px;
+            transition: .3s;
             &:hover {
                 cursor: pointer;
-                opacity: 0.6;
+                // opacity: 0.6;
+                transform: scale(1.1);
                 // span{
                 //     background-color: black;
                 //     color: white;

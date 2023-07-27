@@ -49,7 +49,6 @@ const Categories = (): JSX.Element => {
   for (let i = 1; i <= categoriesArr.length; i++) {
     bgcArray.push(`bgc-${i}`);
   }
-  console.log(bgcArray);
 
   return (
     <div className="main-categories-container">
