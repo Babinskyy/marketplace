@@ -4,6 +4,9 @@
 @import './pages/_Home';
 @import './components/_Header';
 @import './components/_Searchbar';
+@import './components/_Categories';
+@import './components/_Offers';
+@import './components/_Footer';
 
 * {
     font-family: 'Nunito', sans-serif;
@@ -14,5 +17,12 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+h1{
+  font-weight: 700;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
+  color: $secondary-color;
+  text-align: center;
 }
 

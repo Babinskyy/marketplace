@@ -1,6 +1,6 @@
 nav.main-header {
   @include flexbox(row, center);
-  background-color: #002f34;
+  background-color: $primary-color;
   color: white;
   padding: 0 50px;
   box-shadow: $box-shadow;
@@ -12,12 +12,17 @@ nav.main-header {
     padding: 0;
     width: 1200px;
     .logo-holder {
-      img.logo {
+      img.big-logo {
         width: 250px;
         cursor: pointer;
       }
+      img.small-logo {
+       display: none
+      }
+      
     }
 
+    
     ul.navigation {
       @include flexbox(row, flex-start, center);
       list-style: none;
@@ -38,19 +43,54 @@ nav.main-header {
         }
       }
     }
+    #fade-button {
+      display: none;
+      
+    }
+    
     button {
       height: 50px;
       font-family: $primary-font;
       background-color: #fff;
-      color: #002f34;
+      color: $primary-color;
       font-weight: 800;
       font-size: 17px;
       transition: .3s;
       box-shadow: $box-shadow;
       &:hover {
-        background-color: #006b77;
+        background-color: #0045ad;;
         color: #fff;
       }
     }
+    @media screen and (max-width: 1000px) {
+      .logo-holder {
+        img.big-logo {
+          display: none;
+        }
+        img.small-logo {
+          display: initial;
+          width: 65px;
+          cursor: pointer;
+          transform: translate(0, 4px);
+        }
+      }
+      ul.navigation{
+        display: none;
+      }
+      #fade-button {
+        display:inline-flex;
+      }
+      button {
+        // height: 40px;
+        
+        font-size: 12px;
+        font-weight: 1000;
+        
+      }
+    }
   }
+
+  
 }
+
+

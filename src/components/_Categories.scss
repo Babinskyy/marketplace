@@ -1,0 +1,37 @@
+.main-categories-container{
+    background-color: #fff;
+    @include flexbox(column, center, center);
+  
+    .sub-categories-container{
+    @include flexbox(row, center, center);
+    flex-wrap: wrap;
+        .category-wrapper{
+            @include flexbox(column, center, center);
+            margin:  20px;
+            &:hover {
+                cursor: pointer;
+                opacity: 0.6;
+                // span{
+                //     background-color: black;
+                //     color: white;
+                // }
+            }
+            .category{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                
+            img{
+                width: 100%;
+            }
+               
+            }
+            span{
+                font-size: 15px;
+                font-weight: 700;
+                margin-top: 10px;
+               }
+        }
+        
+    }
+}
