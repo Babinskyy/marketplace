@@ -13,9 +13,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const Header = (
-  props: any
-): JSX.Element => {
+type HeaderProps = {
+  setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Header = (props: HeaderProps): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -56,7 +58,7 @@ const Header = (
           >
             <MenuIcon />
           </Button>
-          {/* <Menu
+          <Menu
         id="fade-menu"
         MenuListProps={{
           'aria-labelledby': 'fade-button',
@@ -64,7 +66,7 @@ const Header = (
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         TransitionComponent={Fade}
         anchorOrigin={{
           vertical: 'top',
@@ -76,10 +78,10 @@ const Header = (
         }}
         
       >
-        <MenuItem onClick={handleClose}>Account</MenuItem>
-        <MenuItem onClick={handleClose}>Favorite</MenuItem>
-        <MenuItem onClick={handleClose}>Search</MenuItem>
-      </Menu> */}
+        <MenuItem >Account</MenuItem>
+        <MenuItem >Favorite</MenuItem>
+        <MenuItem >Search</MenuItem>
+      </Menu>
         </div>
 
         <Button
