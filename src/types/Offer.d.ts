@@ -5,8 +5,13 @@ export  type Offer = {
   price: number;
   date: string;
   author: string;
-  place: string;
+  country: string;
   phone: string;
   category: string;
 };
+
+export type Category = {
+  url: string;
+  name: string;
+}
 

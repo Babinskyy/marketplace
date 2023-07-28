@@ -1,14 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import "../App.scss";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import { offersList } from "../mockData/offers";
-
+import { offersList } from "../mockData/offersList";
 
 const Offers = (): JSX.Element => {
-  
 
-  for (let i = 0; i < 12; i++) {
-    let element = `../images/offerImages/offerImages${i + 1}`;
+
+  for (let i = 0; i < 9; i++) {
+    let element:string = `../images/offerImages/offerImages${i + 1}`;
     for (let o = 1; o <= 3; o++) {
       offersList[i].images.push(element + `/image${o}.jpg`);
     }
@@ -20,19 +19,20 @@ const Offers = (): JSX.Element => {
         <h1>Offers</h1>
         <div className="offers-container">
           {offersList.map((e, i) => {
-            {
-              console.log(offersList[i].images[0]);
-              console.log(e.images[0]);
-            }
             return (
               <div className="offer-item">
                 {e.images.length > 0 && (
+                  // <img
+                  //   src={require(`../images/offerImages/offerImages${
+                  //     i + 1
+                  //   }/image1.jpg`)}
+                  //   alt=""
+                  // />
                   <img
-                    src={require(`../images/offerImages/offerImages${
-                      i + 1
-                    }/image1.jpg`)}
+                    src={e.images[0]}
                     alt=""
                   />
+                  
                 )}
 
                 <h2 className="offer-title">{e.title}</h2>

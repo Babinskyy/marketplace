@@ -19,10 +19,10 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps): JSX.Element => {
 
-  const btnMenuRef = useRef<null | HTMLButtonElement>(null) 
-  const [open, setOpen] = useState(false);
+  const btnMenuRef = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = () => {
     setOpen(true);
   };
   const handleClose = () => {

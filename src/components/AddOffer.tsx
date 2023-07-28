@@ -8,9 +8,13 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
+import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
 import "../App.scss";
 import { useState, useEffect } from "react";
+import { categoriesList } from "../mockData/categoryList";
+import { Offer } from "../types/Offer";
+import { offersList } from "../mockData/offersList";
 
 const boxStyle = {
   position: "absolute" as "absolute",
@@ -31,7 +35,56 @@ type AddOfferProps = {
 
 const AddOffer = (props: AddOfferProps): JSX.Element => {
   const handleClose = () => props.setOpenOfferModal(false);
+
+  const [category, setCategory] = useState<string>("");
+  const [country, setCountry] = useState<string>("");
+  const [currentOfferList, setCurrentOfferList] = useState<Offer[]>();
+  const [formData, setFormData] = useState<Offer>({
+    images: [""],
+    title: "",
+    description: "",
+    price: 1000,
+    date: "",
+    author: "",
+    country: "",
+    phone: "",
+    category: "",
+  });
+
+  useEffect(() => {
+    setCurrentOfferList(offersList)
+  }, [])
   
+  const handleCategoryChange = (event: SelectChangeEvent) => {
+    setCategory(event.target.value as string);
+    setFormData({
+      ...formData,
+      category: event.target.value as string,
+    });
+  };
+  const handleCountryChange = (event: SelectChangeEvent) => {
+    setCountry(event.target.value as string);
+    setFormData({
+      ...formData,
+      country: event.target.value as string,
+    });
+  };
+
+  const createOffer = () => {
+    currentOfferList?.push(formData);
+    console.log('submit');
+    console.log(currentOfferList);
+  }
+
+  console.log(offersList);
+ 
+  console.log(currentOfferList);
+
+
+  // let bgcArray: string[] = [];
+  // for (let i = 1; i <= categoriesList.length; i++) {
+  //   bgcArray.push(`bgc-${i}`);
+  // }
 
 
   return (
@@ -44,29 +97,43 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       >
         <Box sx={boxStyle}>
           <h1>Add your offer</h1>
-          <form action="" className="offer-modal-form">
+          <form action="" className="offer-modal-form" >
             <TextField
               name="title"
               label="Title"
               defaultValue=""
               required
-              sx={{ width: "510px" }}
+              sx={{ width: "510px", fontSize: "25px" }}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
             />
             <FormControl sx={{ width: "510px" }} required>
               <InputLabel id="category-label" sx={{ marginTop: "10px" }}>
                 Category
               </InputLabel>
               <Select
+                name="category"
                 sx={{ marginTop: "10px" }}
                 labelId="category-label"
                 id="category-select"
-                value={""}
+                value={category}
                 label="Category"
-                // onChange={handleChange}
+                onChange={handleCategoryChange}
               >
-                <MenuItem value={10}>Cars</MenuItem>
-                <MenuItem value={20}>Clothes</MenuItem>
-                <MenuItem value={30}>Electronics</MenuItem>
+                {categoriesList.map((e, i) => {
+                  return (
+                    <MenuItem value={(i + 1) * 10}>
+                      {/* <div className={`category bgc-${i + 1}`} key={i}>
+                        <img src={categoriesList[i].url} alt="category-image" />
+                      </div> */}
+                      <span className="category-name">{e.name}</span>
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </FormControl>
 
@@ -77,14 +144,33 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               <div className="add sub-image">+</div>
             </div>
             <label htmlFor="description"></label>
+            <TextField
+                  name="price"
+                  label="Price"
+                  defaultValue=""
+                  required
+                  sx={{ width: "510px"}}
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      [e.currentTarget.name]: e.currentTarget.value,
+                    });
+                  }}
+                />
             <div className="details-holder">
               <Textarea
+                name="description"
                 color="neutral"
                 minRows={6}
                 placeholder="Write as many details as possible..."
                 size="lg"
                 variant="outlined"
-                
+                onChange={(e) => {
+                  setFormData({
+                    ...formData,
+                    [e.currentTarget.name]: e.currentTarget.value,
+                  });
+                }}
               />
               <div className="author-data-holder">
                 <FormControl sx={{ width: "310px" }} required>
@@ -95,9 +181,9 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     sx={{ marginTop: "10px" }}
                     labelId="country-label"
                     id="country-select"
-                    value={""}
+                    value={country}
                     label="Country"
-                    // onChange={handleChange}
+                    onChange={handleCountryChange}
                   >
                     <MenuItem value={10}>France</MenuItem>
                     <MenuItem value={20}>Germany</MenuItem>
@@ -112,31 +198,44 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                   </Select>
                 </FormControl>
 
-                
-                  <TextField
-                    name="name"
-                    label="Name"
-                    defaultValue=""
-                    required
-                    sx={{ width: "310px" }}
-                  />
-                  <TextField
-                    name="phone"
-                    label="Phone number"
-                    defaultValue=""
-                    required
-                    sx={{ width: "310px" }}
-                    id="data-textfield"
-                  />
-                
+                <TextField
+                  name="author"
+                  label="Name"
+                  defaultValue=""
+                  required
+                  sx={{ width: "310px" }}
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      [e.currentTarget.name]: e.currentTarget.value,
+                    });
+                  }}
+                />
+                <TextField
+                  name="phone"
+                  label="Phone number"
+                  defaultValue=""
+                  required
+                  sx={{ width: "310px" }}
+                  id="data-textfield"
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      [e.currentTarget.name]: e.currentTarget.value,
+                    });
+                  }}
+                />
               </div>
             </div>
             <Button
-          variant="contained"
-          onClick={() => props.setOpenOfferModal(true)}
-        >
-          Add to Market Place
-        </Button>
+              variant="contained"
+              onClick={() => {
+                createOffer()
+                props.setOpenOfferModal(false)
+              }}
+            >
+              Add to Market Place
+            </Button>
           </form>
         </Box>
       </Modal>
