@@ -232,6 +232,11 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               onClick={() => {
                 createOffer();
                 props.setOpenOfferModal(false);
+                window.scroll({
+                  top: document.body.scrollHeight,
+                  left: 0,
+                  behavior: 'smooth'
+                })
               }}
             >
               Add to Market Place
