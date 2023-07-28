@@ -6,7 +6,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -18,10 +18,15 @@ type HeaderProps = {
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+
+  const btnMenuRef = useRef<null | HTMLButtonElement>(null) 
+  const [open, setOpen] = useState(false);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -55,33 +60,32 @@ const Header = (props: HeaderProps): JSX.Element => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
+            ref={btnMenuRef}
           >
             <MenuIcon />
           </Button>
           <Menu
-        id="fade-menu"
-        MenuListProps={{
-          'aria-labelledby': 'fade-button',
-          
-        }}
-        anchorEl={anchorEl}
-        open={open}
-        // onClose={handleClose}
-        TransitionComponent={Fade}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        
-      >
-        <MenuItem >Account</MenuItem>
-        <MenuItem >Favorite</MenuItem>
-        <MenuItem >Search</MenuItem>
-      </Menu>
+            id="fade-menu"
+            MenuListProps={{
+              "aria-labelledby": "fade-button",
+            }}
+            anchorEl={btnMenuRef.current}
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <MenuItem onClick={handleClose}>Account</MenuItem>
+            <MenuItem onClick={handleClose}>Favorite</MenuItem>
+            <MenuItem onClick={handleClose}>Search</MenuItem>
+          </Menu>
         </div>
 
         <Button
