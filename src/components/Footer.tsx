@@ -35,7 +35,7 @@ const Footer = (): JSX.Element => {
           </a>
         </li>
       </ul>
-      <ul className="menu">
+      {/* <ul className="menu">
         <li className="menu__item">
           <a className="menu__link" href="#">
             Home
@@ -46,11 +46,7 @@ const Footer = (): JSX.Element => {
             About
           </a>
         </li>
-        {/* <li className="menu__item">
-          <a className="menu__link" href="#">
-            Services
-          </a>
-        </li> */}
+
         <li className="menu__item">
           <a className="menu__link" href="#">
             Team
@@ -61,7 +57,7 @@ const Footer = (): JSX.Element => {
             Contact
           </a>
         </li>
-      </ul>
+      </ul> */}
       <p>&copy;2023 John Babinsky | All Rights Reserved</p>
     </footer>
   );
