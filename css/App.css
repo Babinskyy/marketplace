@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(230, 38, 232);
+  background-color: rgba(116, 119, 179);
 }
 
 .bgc-2 {
-  background-color: rgba(111, 152, 170);
+  background-color: rgba(188, 64, 75);
 }
 
 .bgc-3 {
-  background-color: rgba(219, 125, 219);
+  background-color: rgba(145, 239, 70);
 }
 
 .bgc-4 {
-  background-color: rgba(244, 16, 76);
+  background-color: rgba(251, 229, 10);
 }
 
 .bgc-5 {
-  background-color: rgba(65, 250, 23);
+  background-color: rgba(49, 162, 4);
 }
 
 .bgc-6 {
-  background-color: rgba(254, 18, 8);
+  background-color: rgba(253, 178, 37);
 }
 
 .bgc-7 {
-  background-color: rgba(77, 63, 10);
+  background-color: rgba(72, 190, 200);
 }
 
 .bgc-8 {
-  background-color: rgba(253, 39, 147);
+  background-color: rgba(141, 230, 189);
 }
 
 .bgc-9 {
-  background-color: rgba(7, 37, 157);
+  background-color: rgba(241, 137, 16);
 }
 
 .bgc-10 {
-  background-color: rgba(178, 242, 255);
+  background-color: rgba(75, 89, 209);
 }
 
 .bgc-11 {
-  background-color: rgba(73, 211, 230);
+  background-color: rgba(32, 40, 217);
 }
 
 .bgc-12 {
-  background-color: rgba(53, 60, 80);
+  background-color: rgba(158, 95, 250);
 }
 
 .bgc-13 {
-  background-color: rgba(195, 99, 236);
+  background-color: rgba(228, 94, 106);
 }
 
 .bgc-14 {
-  background-color: rgba(232, 131, 125);
+  background-color: rgba(112, 49, 225);
 }
 
 .bgc-15 {
-  background-color: rgba(212, 133, 179);
+  background-color: rgba(146, 31, 166);
 }
 
 .bgc-16 {
-  background-color: rgba(157, 243, 21);
+  background-color: rgba(146, 59, 242);
 }
 
 .bgc-17 {
-  background-color: rgba(92, 194, 163);
+  background-color: rgba(11, 66, 177);
 }
 
 .bgc-18 {
-  background-color: rgba(81, 109, 55);
+  background-color: rgba(237, 44, 92);
 }
 
 .bgc-19 {
-  background-color: rgba(161, 60, 215);
+  background-color: rgba(213, 166, 211);
 }
 
 nav.main-header {
@@ -592,7 +592,6 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
 }
 .main-offer-view-container .sub-offer-view-container .image-slider .arrow {
   position: relative;
@@ -616,6 +615,8 @@ h1 {
 }
 .main-offer-view-container .sub-offer-view-container .image-slider .img-container-showed .img-contaier-slide img {
   width: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .main-offer-view-container .sub-offer-view-container .price-container {
   text-align: center;
@@ -624,7 +625,8 @@ h1 {
   letter-spacing: 3px;
 }
 .main-offer-view-container .sub-offer-view-container .price-container p {
-  margin: 5px 0;
+  margin-top: 25px;
+  margin-bottom: 0;
 }
 .main-offer-view-container .sub-offer-view-container .details-wrapper {
   display: flex;
@@ -633,26 +635,48 @@ h1 {
   align-items: normal;
 }
 .main-offer-view-container .sub-offer-view-container .details-wrapper .details-container {
-  border: 1px solid black;
-  height: 500px;
   width: 60%;
   padding: 20px;
+}
+.main-offer-view-container .sub-offer-view-container .details-wrapper .details-container h1 {
+  text-align: left;
 }
 .main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container {
   display: flex;
   flex-direction: column;
-  justify-content: initial;
+  justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
-  height: 500px;
   width: 40%;
   padding: 20px;
 }
-.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container img {
-  width: 70px;
+.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container .avatar-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: initial;
+  align-items: center;
+}
+.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container .avatar-name-container img {
+  width: 75px;
 }
 .main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container p {
   margin: 0;
+}
+.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container p.name {
+  font-weight: 600;
+}
+.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container p.number {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: normal;
+}
+.main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container p.show {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: normal;
+  font-size: 23px;
+  cursor: pointer;
 }
 @media screen and (max-width: 920px) {
   .main-offer-view-container .sub-offer-view-container {

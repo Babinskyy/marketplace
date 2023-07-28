@@ -17,7 +17,6 @@ type HomeProps = {
 const Home = (props:HomeProps): JSX.Element => {
 
    
-
     return (
         <div className="home">
             <Header setOpenOfferModal={props.setOpenOfferModal}/>
@@ -26,6 +25,7 @@ const Home = (props:HomeProps): JSX.Element => {
             <Offers/>
             <Footer/>
             <AddOffer openOfferModal={props.openOfferModal} setOpenOfferModal={props.setOpenOfferModal}/>
+           
         </div>
     )
 }

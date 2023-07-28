@@ -21,7 +21,10 @@ const Offers = (): JSX.Element => {
         <div className="offers-container">
           {offersList.map((e, i) => {
             return (
-              <div className="offer-item" key={i} onClick={() => {navigate("/offerview")}}>
+              <div className="offer-item" key={i} onClick={() => {
+                navigate(`/offerview/${e.id}`);
+                window.scrollTo(0, 0);
+                }}>
                 {e.images.length > 0 && <img src={e.images[0]} alt="" />}
 
                 <h2 className="offer-title">{e.title}</h2>

@@ -19,7 +19,7 @@
     .image-slider {
       @include flexbox(row, space-around, center);
 
-      border: 1px solid black;
+
 
       .arrow {
         position: relative;
@@ -40,6 +40,7 @@
             transition: .2s;
             img {
                 width: 600px;
+                object-fit: cover;
               }
         }   
         
@@ -51,29 +52,50 @@
       font-size: 35px;
       letter-spacing: 3px;
       p {
-        margin: 5px 0;
+        margin-top: 25px;
+        margin-bottom: 0;
       }
     }
     .details-wrapper {
       @include flexbox(row);
       .details-container {
-        border: 1px solid black;
-        height: 500px;
+    
+        // height: 500px;
         width: 60%;
         padding: 20px;
+
+        h1{
+            text-align: left;
+        }
       }
       .author-data-container {
-        @include flexbox(column, initial, center);
-        border: 1px solid black;
-        height: 500px;
+        @include flexbox(column, space-around, center);
+     
+        // height: 500px;
         width: 40%;
         padding: 20px;
-        img {
-          width: 70px;
+        .avatar-name-container{
+            @include flexbox(column, initial, center);
+            img {
+                width: 75px;
+              }
         }
-        p {
-          margin: 0;
+      
+        p{
+            margin: 0;
         }
+        p.name{
+            font-weight: 600;
+        }
+        p.number{
+         @include flexbox;
+        }
+        p.show {
+            @include flexbox;
+          font-size: 23px;
+          cursor: pointer;
+        }
+
       }
     }
   }

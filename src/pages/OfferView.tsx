@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import OfferDetails from "../components/OfferDetails";
 import Searchbar from "../components/Searchbar";
+import { useParams } from "react-router-dom";
 
 type OfferViewProps = {
     openOfferModal: boolean;

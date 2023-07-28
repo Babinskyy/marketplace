@@ -14,7 +14,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home openOfferModal={openOfferModal} setOpenOfferModal={setOpenOfferModal}/>}></Route>
       <Route
-        path="/offerview"
+        path="/offerview/:id"
         element={<OfferView openOfferModal={openOfferModal} setOpenOfferModal={setOpenOfferModal}/>}
       ></Route>
       
