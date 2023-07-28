@@ -28,7 +28,7 @@ export const offersList: Offer[] = [
 
     title: "Luxury House",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at.",
-    price: 70000000,
+    price: 7000000,
     date: "16-07-2023",
     author: "John",
     country: "USA",
@@ -42,7 +42,7 @@ export const offersList: Offer[] = [
       "https://i.postimg.cc/Dzd0p94p/image2.jpg",
       "https://i.postimg.cc/R0zqRShn/image3.png",
     ],
-    title: "Used 2018 Lexus LS",
+    title: "2018 Lexus LS",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at.",
     price: 85000,
     date: "16-07-2023",
