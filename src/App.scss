@@ -2,12 +2,15 @@
 @import './utilities/_mixins';
 
 @import './pages/_Home';
+@import './pages/_OfferView';
+
 @import './components/_Header';
 @import './components/_Searchbar';
 @import './components/_Categories';
 @import './components/_Offers';
 @import './components/_Footer';
 @import './components/_AddOffer';
+@import './components/_OfferDetails';
 
 * {
     font-family: 'Nunito', sans-serif;

@@ -2,10 +2,12 @@ import { Offer } from "../types/Offer";
 
 export const offersList: Offer[] = [
   {
+    id: 1,
     images: [
-      "https://drive.google.com/uc?export=view&id=1u6lgyn-QDEiXd58xA1PoCJDrAHHmxrKT",
-      "https://drive.google.com/uc?export=view&id=16X6IDhyIGIwGgD_4zprenx9eU1tcjuVl",
-      "https://drive.google.com/uc?export=view&id=1pbZP8SJ7VWmHqE8sENYn4FXdM4Svsl_Z",
+      "https://i.postimg.cc/G3sw-ckqd/image3.jpg",
+      "https://i.postimg.cc/Qdzrq0M9/image4.jpg",
+      "https://i.postimg.cc/T1bZC6pp/image1.jpg",
+      "https://i.postimg.cc/yY4qWkb9/image2.jpg",
     ],
     title: "Red Giant Bike",
     description: "Red Giant Bike",
@@ -17,10 +19,11 @@ export const offersList: Offer[] = [
     category: "Sport",
   },
   {
+    id: 2,
     images: [
-      "https://drive.google.com/uc?export=view&id=1RPiCdr92VzI9Iy00bF7wPkS9eAJxVnVB",
-      "https://drive.google.com/uc?export=view&id=1RBVa-gA-TCXDBNV428Z8RWwC8ZiNMpa3",
-      "https://drive.google.com/uc?export=view&id=1bPst08Uqh8-_YR4PN4pLgSRNZZG92u24",
+      "https://i.postimg.cc/Tw6mpjgF/image1.jpg",
+      "https://i.postimg.cc/nrdQR6gf/image2.jpg",
+      "https://i.postimg.cc/D0fXc2Cc/image3.jpg",
     ],
 
     title: "Luxury House",
@@ -33,10 +36,11 @@ export const offersList: Offer[] = [
     category: "Houses",
   },
   {
+    id: 3,
     images: [
-      "https://drive.google.com/uc?export=view&id=1bMJFS58gKd6n5qYB3w0EePxApZ3JXySI",
-      "https://drive.google.com/uc?export=view&id=19DbvDp9Fti0moHgg-ZHxy2ELyULbspYk",
-      "https://drive.google.com/uc?export=view&id=1ZIDQNPjsTO-2-iDs_cGDSWcD-woN70X_",
+      "https://i.postimg.cc/pLjpzhWH/image1.jpg",
+      "https://i.postimg.cc/Dzd0p94p/image2.jpg",
+      "https://i.postimg.cc/R0zqRShn/image3.png",
     ],
     title: "Used 2018 Lexus LS",
     description: "Used 2018 Lexus LS",
@@ -48,10 +52,11 @@ export const offersList: Offer[] = [
     category: "Cars",
   },
   {
+    id: 4,
     images: [
-      "https://drive.google.com/uc?export=view&id=1rCxMxEbfzfIAuITx0lVFTpvpbwC9oOqx",
-      "https://drive.google.com/uc?export=view&id=1r0voii_9J7INHooYEyJ3iyvcMElFlMru",
-      "https://drive.google.com/uc?export=view&id=1ZjUnvcPYIuG-nN1VLBcCVE0qJxod_CZr",
+      "https://i.postimg.cc/dVGVDb6Q/image2.jpg",
+      "https://i.postimg.cc/4ND3ffzF/image1.jpg",
+      "https://i.postimg.cc/nLZcm3S4/image3.jpg",
     ],
     title: "Mercedes S class",
     description: "Mercedes S class",
@@ -63,10 +68,11 @@ export const offersList: Offer[] = [
     category: "Cars",
   },
   {
+    id: 5,
     images: [
-      "https://drive.google.com/uc?export=view&id=1j0XbOlT6VjNdjpO0sQvnBUl2YbiUpFbc",
-      "https://drive.google.com/uc?export=view&id=1xQE_1NX9c_jjB5HyoELPsBlDHGjO_p7T",
-      "https://drive.google.com/uc?export=view&id=1g740EEoiTJX52eFq_wbL8gyZwFKnz_X1",
+      "https://i.postimg.cc/pL5qjZ5L/image2.jpg",
+      "https://i.postimg.cc/2jTcN3fr/image1.jpg",
+      "https://i.postimg.cc/3RYBPQSk/image3.jpg",
     ],
     title: "iPhone 14 Pro mini",
     description: "iPhone 14 Pro mini",
@@ -78,10 +84,11 @@ export const offersList: Offer[] = [
     category: "Electronics",
   },
   {
+    id: 6,
     images: [
-      "https://drive.google.com/uc?export=view&id=1t42gywAfYYDpJuOmlnNulSBjX7yCZ_o9",
-      "https://drive.google.com/uc?export=view&id=1b2q7KeA_icGeuiMsVd_b65PRoBwTc-OS",
-      "https://drive.google.com/uc?export=view&id=1zDuuezusgaqD9O-8rvofBgJewPSTXthv",
+      "https://i.postimg.cc/k4S2F2F8/image1.jpg",
+      "https://i.postimg.cc/HsdrXsJc/image2.jpg",
+      "https://i.postimg.cc/T3hYJyTw/image3.jpg",
     ],
     title: "Macbook air 2 pro",
     description: "Macbook air 2 pro",
@@ -93,10 +100,11 @@ export const offersList: Offer[] = [
     category: "Electronics",
   },
   {
+    id: 7,
     images: [
-      "https://drive.google.com/uc?export=view&id=1UMRRpeBiLDzlXpWMDkp9gZnPSuZV_X0q",
-      "https://drive.google.com/uc?export=view&id=1eHugTBOkY9luhRGD0a_GY8NW5BPohxAF",
-      "https://drive.google.com/uc?export=view&id=1rQDgYS5s-XDwiNazVEJJma2fBi1kNTdQ",
+      "https://i.postimg.cc/J7992G30/image1.jpg",
+      "https://i.postimg.cc/gk8fFm4D/image2.jpg",
+      "https://i.postimg.cc/3wJ6vphS/image3.jpg",
     ],
     title: "Handmade chess set",
     description: "Handmade chess set",
@@ -108,10 +116,11 @@ export const offersList: Offer[] = [
     category: "Hobby",
   },
   {
+    id: 8,
     images: [
-      "https://drive.google.com/uc?export=view&id=1wKn9RBjYXSdKSGPwQCoGXI6VBNaOzU36",
-      "https://drive.google.com/uc?export=view&id=1HH_kPWkXYnY7fYrrulgu_8r8HWL4hNe_",
-      "https://drive.google.com/uc?export=view&id=1HgZ6tDvr-KDy9bnIeJnEaDQ2uW7rCsMo",
+      "https://i.postimg.cc/5NdRmD1F/image1.jpg",
+      "https://i.postimg.cc/x19pwHXf/image2.jpg",
+      "https://i.postimg.cc/hPL3ZMPZ/image3.jpg",
     ],
     title: "Gibson Les Paul",
     description: "Gibson Les Paul",
@@ -123,10 +132,11 @@ export const offersList: Offer[] = [
     category: "Hobby",
   },
   {
+    id: 9,
     images: [
-      "https://drive.google.com/uc?export=view&id=1BR5dq1GwuHe__wbC0ioq51vIbsZFnGmt",
-      "https://drive.google.com/uc?export=view&id=19H0ikrnb8R7adMWmLbEOf3rm1Ojbhv3u",
-      "https://drive.google.com/uc?export=view&id=1gW3Y555eTltUKfXtE5Zk1CeOzoHUQMh_",
+      "https://i.postimg.cc/t4rk8c0k/image1.jpg",
+      "https://i.postimg.cc/bvWTw2w2/image2.jpg",
+      "https://i.postimg.cc/B6FCLQj7/image3.jpg",
     ],
     title: "Running shoes",
     description: "Running shoes",
@@ -138,6 +148,7 @@ export const offersList: Offer[] = [
     category: "Sport",
   },
   // {
+    // id: 10,
   //   images: [],
   //   title: "Luxury apartment",
   //   description: "Luxury apartment",
@@ -149,6 +160,7 @@ export const offersList: Offer[] = [
   //   category: "Hotels",
   // },
   // {
+    // id: 11,
   //   images: [],
   //   title: "Used Skates",
   //   description: "Used Skates",
@@ -160,6 +172,7 @@ export const offersList: Offer[] = [
   //   category: "Hobby",
   // },
   // {
+    // id: 12,
   //   images: [],
   //   title: "Antic chair",
   //   description: "Antic chair",

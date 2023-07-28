@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { categoriesList } from "../mockData/categoryList";
 import { Offer } from "../types/Offer";
 import { offersList } from "../mockData/offersList";
+import { Navigate } from "react-router-dom";
 
 const boxStyle = {
   position: "absolute" as "absolute",
@@ -40,10 +41,11 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   const [country, setCountry] = useState<string>("");
   const [currentOfferList, setCurrentOfferList] = useState<Offer[]>();
   const [formData, setFormData] = useState<Offer>({
+    id: null,
     images: [""],
     title: "",
     description: "",
-    price: 1000,
+    price: null,
     date: "",
     author: "",
     country: "",
@@ -52,9 +54,9 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   });
 
   useEffect(() => {
-    setCurrentOfferList(offersList)
-  }, [])
-  
+    setCurrentOfferList(offersList);
+  }, []);
+
   const handleCategoryChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value as string);
     setFormData({
@@ -71,21 +73,18 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   };
 
   const createOffer = () => {
-    currentOfferList?.push(formData);
-    console.log('submit');
-    console.log(currentOfferList);
-  }
+    currentOfferList?.push({
+      ...formData,
+      id: currentOfferList.length + 1,
+    });
+  };
 
-  console.log(offersList);
- 
-  console.log(currentOfferList);
 
 
   // let bgcArray: string[] = [];
   // for (let i = 1; i <= categoriesList.length; i++) {
   //   bgcArray.push(`bgc-${i}`);
   // }
-
 
   return (
     <div className="add-offer-container">
@@ -97,7 +96,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       >
         <Box sx={boxStyle}>
           <h1>Add your offer</h1>
-          <form action="" className="offer-modal-form" >
+          <form action="" className="offer-modal-form">
             <TextField
               name="title"
               label="Title"
@@ -126,7 +125,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               >
                 {categoriesList.map((e, i) => {
                   return (
-                    <MenuItem value={(i + 1) * 10}>
+                    <MenuItem value={(i + 1) * 10} key={i + 1}>
                       {/* <div className={`category bgc-${i + 1}`} key={i}>
                         <img src={categoriesList[i].url} alt="category-image" />
                       </div> */}
@@ -145,18 +144,18 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
             </div>
             <label htmlFor="description"></label>
             <TextField
-                  name="price"
-                  label="Price"
-                  defaultValue=""
-                  required
-                  sx={{ width: "510px"}}
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      [e.currentTarget.name]: e.currentTarget.value,
-                    });
-                  }}
-                />
+              name="price"
+              label="Price"
+              defaultValue=""
+              required
+              sx={{ width: "510px" }}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  [e.currentTarget.name]: e.currentTarget.value,
+                });
+              }}
+            />
             <div className="details-holder">
               <Textarea
                 name="description"
@@ -228,10 +227,11 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               </div>
             </div>
             <Button
+              type="submit"
               variant="contained"
               onClick={() => {
-                createOffer()
-                props.setOpenOfferModal(false)
+                createOffer();
+                props.setOpenOfferModal(false);
               }}
             >
               Add to Market Place

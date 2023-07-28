@@ -9,18 +9,23 @@ import Searchbar from '../components/Searchbar';
 import { useState, useEffect } from "react";
 
 
-const Home = (): JSX.Element => {
+type HomeProps = {
+    openOfferModal: boolean;
+    setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-    const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
+const Home = (props:HomeProps): JSX.Element => {
+
+   
 
     return (
         <div className="home">
-            <Header setOpenOfferModal={setOpenOfferModal}/>
+            <Header setOpenOfferModal={props.setOpenOfferModal}/>
             <Searchbar/>
             <Categories/>
             <Offers/>
             <Footer/>
-            <AddOffer openOfferModal={openOfferModal} setOpenOfferModal={setOpenOfferModal}/>
+            <AddOffer openOfferModal={props.openOfferModal} setOpenOfferModal={props.setOpenOfferModal}/>
         </div>
     )
 }

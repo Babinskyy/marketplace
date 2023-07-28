@@ -17,8 +17,8 @@ const Categories = (): JSX.Element => {
       <div className="sub-categories-container">
         {bgcArray.map((e, i) => {
           return (
-            <div className="category-wrapper">
-              <div className={`category ${e}`} key={i}>
+            <div className="category-wrapper" key={i}>
+              <div className={`category ${e}`} >
                 <img src={categoriesList[i].url} alt="category-image" />
               </div>
               <span>{categoriesList[i].name}</span>

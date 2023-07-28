@@ -1,8 +1,9 @@
 export  type Offer = {
+  id: number | null;
   images: string[];
   title: string;
   description: string;
-  price: number;
+  price: number | null;
   date: string;
   author: string;
   country: string;
