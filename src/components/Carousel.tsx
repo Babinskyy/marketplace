@@ -9,27 +9,24 @@ type CarouselProps = {
   images: string[];
 };
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   // width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-
 const Carousel = (props: CarouselProps): JSX.Element => {
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState<number>(0);
-  const [open, setOpen] = useState(false);
+  const [openImage, setOpenImage] = useState(false);
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpenImage(false);
   const length = props.images.length;
-
-  
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
@@ -45,8 +42,6 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     return <></>;
   }
 
-  console.log(selected);
-
   return (
     <section className="slider">
       <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
@@ -59,7 +54,9 @@ const Carousel = (props: CarouselProps): JSX.Element => {
                 src={props.images[current]}
                 alt="travel image"
                 className="image"
-                onClick={() => {setOpen(true)}}
+                onClick={() => {
+                  setOpenImage(true);
+                }}
               />
             )}
           </div>
@@ -77,7 +74,6 @@ const Carousel = (props: CarouselProps): JSX.Element => {
                 onClick={() => {
                   setSelected(i);
                   setCurrent(i);
-      
                 }}
               />
             );
@@ -85,18 +81,17 @@ const Carousel = (props: CarouselProps): JSX.Element => {
         </div>
       </div>
       <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <img src={props.images[current]} alt="" />
-        </Box>
-        
-      </Modal>
-    </div>
+        <Modal
+          open={openImage}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <img src={props.images[current]} alt="" />
+          </Box>
+        </Modal>
+      </div>
     </section>
   );
 };
