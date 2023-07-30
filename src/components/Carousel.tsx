@@ -49,7 +49,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
             {i === current && (
               <img
                 src={props.images[current]}
-                alt="travel image"
+                alt="offer-image"
                 className="image"
                 onClick={() => {
                   setOpenImage(true);
