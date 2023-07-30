@@ -3,26 +3,41 @@ import "../App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { SliderData } from "../mockData/sliderData";
+import { Box, Modal, Typography } from "@mui/material";
 
 type CarouselProps = {
   images: string[];
 };
+const style = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  // width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 const Carousel = (props: CarouselProps): JSX.Element => {
   const [current, setCurrent] = useState(0);
-  const [slideCount, setSlideCount] = useState<number>(0);
   const [selected, setSelected] = useState<number>(0);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
   const length = props.images.length;
+
+  
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
-
     setSelected(current === length - 1 ? 0 : current + 1);
   };
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
-
     setSelected(current === 0 ? length - 1 : current - 1);
   };
 
@@ -44,6 +59,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
                 src={props.images[current]}
                 alt="travel image"
                 className="image"
+                onClick={() => {setOpen(true)}}
               />
             )}
           </div>
@@ -58,20 +74,29 @@ const Carousel = (props: CarouselProps): JSX.Element => {
                 alt="offer-image"
                 className={`${selected === i && "selected"}`}
                 key={i}
-                onClick={(e) => {
-                  //   setSlideCount(-i * 100);
-                  setSelected(-i);
-                  if (i > selected) {
-                    nextSlide();
-                  } else if (i < selected) {
-                    prevSlide();
-                  }
+                onClick={() => {
+                  setSelected(i);
+                  setCurrent(i);
+      
                 }}
               />
             );
           })}
         </div>
       </div>
+      <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <img src={props.images[current]} alt="" />
+        </Box>
+        
+      </Modal>
+    </div>
     </section>
   );
 };
