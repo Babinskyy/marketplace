@@ -21,21 +21,18 @@ const style = {
 };
 
 const Carousel = (props: CarouselProps): JSX.Element => {
-  const [current, setCurrent] = useState(0);
-  const [selected, setSelected] = useState<number>(0);
-  const [openImage, setOpenImage] = useState(false);
+  const [current, setCurrent] = useState<number>(0);
+  const [openImage, setOpenImage] = useState<boolean>(false);
 
   const handleClose = () => setOpenImage(false);
   const length = props.images.length;
 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
-    setSelected(current === length - 1 ? 0 : current + 1);
   };
 
   const prevSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
-    setSelected(current === 0 ? length - 1 : current - 1);
   };
 
   if (!Array.isArray(props.images) || props.images.length <= 0) {
@@ -69,10 +66,9 @@ const Carousel = (props: CarouselProps): JSX.Element => {
               <img
                 src={e}
                 alt="offer-image"
-                className={`${selected === i && "selected"}`}
+                className={`${current === i && "selected"}`}
                 key={i}
                 onClick={() => {
-                  setSelected(i);
                   setCurrent(i);
                 }}
               />
