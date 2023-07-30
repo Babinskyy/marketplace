@@ -21,9 +21,12 @@ const Searchbar = (): JSX.Element => {
   }, [inputValue]);
 
   return (
-    <form className="searchbar-container" onSubmit={(e) => {
-      e.preventDefault()
-    }}>
+    <form
+      className="searchbar-container"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <div className="icon-holder">
         <SearchIcon sx={{ fontSize: 35, opacity: 0.5 }} />
       </div>

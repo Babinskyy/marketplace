@@ -16,86 +16,92 @@
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
     }
+    h1.title1 {
+      margin-bottom: 55px;
+    }
     .image-slider {
       @include flexbox(row, space-around, center);
-
-
 
       .arrow {
         position: relative;
         cursor: pointer;
-        transition: .2s;
-        &:hover{
-            opacity: 0.6;
+        transition: 0.2s;
+        &:hover {
+          opacity: 0.6;
         }
       }
       .img-container-showed {
-        
         position: relative;
-        
-        width: 600px;
+
+        width: 800px;
         overflow: hidden;
-        .img-contaier-slide{
-            @include flexbox(row);
-            transition: .2s;
-            img {
-                width: 600px;
-                object-fit: cover;
-              }
-        }   
-        
+        .img-contaier-slide {
+          @include flexbox;
+          transition: 0.3s;
+          img {
+            width: 800px;
+            object-fit: cover;
+          }
+        }
       }
     }
+
     .price-container {
-      text-align: center;
+      text-align: left;
       font-weight: 700;
       font-size: 35px;
-      letter-spacing: 3px;
-      p {
-        margin-top: 25px;
-        margin-bottom: 0;
-      }
+      margin: 0;
+      // letter-spacing: 3px;
     }
     .details-wrapper {
-      @include flexbox(row);
+      @include flexbox();
       .details-container {
-    
-        // height: 500px;
+        @include flexbox(column, space-around);
+        float: left;
+        text-align: left;
         width: 60%;
         padding: 20px;
-
-        h1{
-            text-align: left;
+        h1 {
+          text-align: left;
+          font-family: "Nunito", sans-serif;
+        }
+        p.description {
+          word-wrap: break-word;
+          justify-self: flex-end;
         }
       }
       .author-data-container {
-        @include flexbox(column, space-around, center);
-     
-        // height: 500px;
+        @include flexbox(column, center, center);
         width: 40%;
-        padding: 20px;
-        .avatar-name-container{
-            @include flexbox(column, initial, center);
-            img {
-                width: 75px;
-              }
+        padding: 0px;
+        .avatar-name-container {
+          @include flexbox(column, initial, center);
+          width: 100%;
+          img {
+            width: 75px;
+          }
         }
-      
-        p{
-            margin: 0;
-        }
-        p.name{
-            font-weight: 600;
-        }
-        p.number{
-         @include flexbox;
-        }
-        p.show {
-            @include flexbox;
-          font-size: 23px;
-          cursor: pointer;
+        .number-button-container {
+          @include flexbox(column, center, center);
         }
 
+        p {
+          margin: 0;
+        }
+        p.name {
+          font-weight: 600;
+        }
+        p.number {
+          @include flexbox;
+        }
+        p.show {
+          @include flexbox;
+          font-size: 18px;
+          cursor: pointer;
+        }
+        .map-container {
+          @include flexbox(row, center);
+        }
       }
     }
   }
