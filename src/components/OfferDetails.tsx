@@ -15,9 +15,6 @@ const OfferDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const offer = offersList.find((o) => o.id?.toString() === id);
-  // useEffect(() => {
-  //   console.log(selected, slideCount);
-  // }, [selected]);
 
   if (!offer) {
     return <p>Loading...</p>;
@@ -27,41 +24,6 @@ const OfferDetails = () => {
       <div className="sub-offer-view-container">
         <h1 className="title1">{offer?.title}</h1>
         <Carousel images={offer.images} />
-        {/* <div className="image-slider">
-          <div className="arrow left">
-            <ArrowBackIosNewIcon
-              sx={{ fontSize: "50px" }}
-              onClick={() => {
-                if (slideCount < 0) {
-                  setSlideCount(slideCount + 100);
-                  setSelected(selected + 1);
-                }
-              }}
-            />
-          </div>
-          <div className="img-container-showed">
-            <div
-              className="img-contaier-slide"
-              style={{ transform: `translate(${slideCount}%)` }}
-            >
-              {offer?.images.map((e, i) => {
-                return <img src={e} alt="offer-image" key={i} />;
-              })}
-            </div>
-          </div>
-          <div className="arrow right">
-            <ArrowForwardIosIcon
-              sx={{ fontSize: "50px" }}
-              onClick={() => {
-                if (slideCount > offer.images.length * -100 + 100) {
-                  setSlideCount(slideCount - 100);
-                  setSelected(selected - 1);
-                }
-              }}
-            />
-          </div>
-        </div> */}
-
         <div className="details-wrapper">
           <div className="details-container">
             <div className="title-price">

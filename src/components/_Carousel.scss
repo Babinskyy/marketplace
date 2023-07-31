@@ -34,16 +34,15 @@
 }
 
 .slide {
-  opacity: 0;
+  // opacity: 0;
   transition-duration: 0.1s;
 }
 
 .slide.active {
-  opacity: 1;
+  // opacity: 1;
   transition-duration: 0.1s;
   transform: scale(1.08);
   height: 500px;
-  margin: auto;
   @include flexbox(row, center, center);
 }
 .images-preview-container {

@@ -13,9 +13,9 @@ import Textarea from "@mui/joy/Textarea";
 import "../App.scss";
 import { useState, useEffect } from "react";
 import { categoriesList } from "../mockData/categoryList";
-import { Offer } from "../types/Offer";
+import { Offer } from "../types/Types";
 import { offersList } from "../mockData/offersList";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const boxStyle = {
   position: "absolute" as "absolute",
@@ -85,7 +85,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   // for (let i = 1; i <= categoriesList.length; i++) {
   //   bgcArray.push(`bgc-${i}`);
   // }
-
+  const navigate = useNavigate();
   return (
     <div className="add-offer-container">
       <Modal
@@ -232,6 +232,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               onClick={() => {
                 createOffer();
                 props.setOpenOfferModal(false);
+                navigate("/");
                 window.scroll({
                   top: document.body.scrollHeight,
                   left: 0,

@@ -25,18 +25,17 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   const [openImage, setOpenImage] = useState<boolean>(false);
 
   const handleClose = () => setOpenImage(false);
-  const length = props.images.length;
 
   const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setCurrent(current === props.images.length - 1 ? 0 : current + 1);
   };
 
   const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setCurrent(current === 0 ? props.images.length - 1 : current - 1);
   };
 
   if (!Array.isArray(props.images) || props.images.length <= 0) {
-    return <></>;
+    return <h1>Sorry, we could not find this offer.</h1>;
   }
 
   return (

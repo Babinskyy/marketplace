@@ -1,6 +1,6 @@
 import "../App.scss";
 import { categoriesList } from "../mockData/categoryList";
-import { Category } from "../types/Offer";
+import { Category } from "../types/Types";
 
 
 const Categories = (): JSX.Element => {
