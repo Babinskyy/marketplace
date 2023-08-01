@@ -108,7 +108,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                 <h2 className="offer-title">{e.title}</h2>
                 <h3 className="offer-price">{e.price} $</h3>
                 <p className="offer-phone">
-                  <span>+ 00 {e.phone}</span>
+                  <span>+ 00 XXX XX XX</span>
                   <LocalPhoneOutlinedIcon />
                 </p>
                 <p className="offer-date">{e.date}</p>

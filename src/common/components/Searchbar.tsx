@@ -3,6 +3,8 @@ import "../../common/assets/styles/scss/App.scss";
 import { TextField } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 type SearchbarProps = {
   inputValue?: string;
@@ -25,6 +27,8 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
       handleHideX();
     }
   }, [props.inputValue]);
+
+  const navigate = useNavigate();
 
   return (
     <form
@@ -74,6 +78,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
               props.setInputValue(props.currentInputValue);
             }
           }
+          navigate('/');
         }}
       >
         <span>Search</span>

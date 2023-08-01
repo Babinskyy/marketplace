@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(36, 12, 247);
+  background-color: rgba(194, 43, 205);
 }
 
 .bgc-2 {
-  background-color: rgba(115, 214, 152);
+  background-color: rgba(168, 83, 211);
 }
 
 .bgc-3 {
-  background-color: rgba(237, 153, 248);
+  background-color: rgba(117, 148, 225);
 }
 
 .bgc-4 {
-  background-color: rgba(198, 130, 69);
+  background-color: rgba(199, 180, 209);
 }
 
 .bgc-5 {
-  background-color: rgba(182, 41, 65);
+  background-color: rgba(26, 189, 52);
 }
 
 .bgc-6 {
-  background-color: rgba(30, 143, 65);
+  background-color: rgba(23, 248, 38);
 }
 
 .bgc-7 {
-  background-color: rgba(181, 187, 104);
+  background-color: rgba(36, 117, 249);
 }
 
 .bgc-8 {
-  background-color: rgba(30, 27, 175);
+  background-color: rgba(194, 116, 197);
 }
 
 .bgc-9 {
-  background-color: rgba(112, 58, 160);
+  background-color: rgba(60, 226, 188);
 }
 
 .bgc-10 {
-  background-color: rgba(157, 171, 131);
+  background-color: rgba(149, 221, 120);
 }
 
 .bgc-11 {
-  background-color: rgba(103, 230, 181);
+  background-color: rgba(18, 68, 170);
 }
 
 .bgc-12 {
-  background-color: rgba(216, 61, 101);
+  background-color: rgba(132, 42, 107);
 }
 
 .bgc-13 {
-  background-color: rgba(159, 55, 101);
+  background-color: rgba(177, 8, 194);
 }
 
 .bgc-14 {
-  background-color: rgba(27, 12, 85);
+  background-color: rgba(88, 18, 187);
 }
 
 .bgc-15 {
-  background-color: rgba(117, 141, 44);
+  background-color: rgba(213, 179, 60);
 }
 
 .bgc-16 {
-  background-color: rgba(163, 34, 239);
+  background-color: rgba(187, 227, 162);
 }
 
 .bgc-17 {
-  background-color: rgba(38, 229, 28);
+  background-color: rgba(157, 16, 122);
 }
 
 .bgc-18 {
-  background-color: rgba(101, 239, 183);
+  background-color: rgba(238, 120, 28);
 }
 
 .bgc-19 {
-  background-color: rgba(211, 241, 59);
+  background-color: rgba(243, 16, 173);
 }
 
 nav.main-header {
@@ -318,6 +318,7 @@ nav.main-header ul.main-navigation button:hover {
   color: #3586ff;
   font-weight: 800;
   font-size: 15px;
+  height: 25px;
   transition: 0.3s;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -397,9 +398,6 @@ nav.main-header ul.main-navigation button:hover {
 .offers-wrapper .offers-wrapper-2 .offers-container .offer-item p.offer-phone span {
   font-weight: 600;
   margin-right: 5px;
-}
-.offers-wrapper .offers-wrapper-2 .offers-container .offer-item p.offer-phone:hover {
-  background-color: #e4e4e4;
 }
 .offers-wrapper .offers-wrapper-2 .offers-container .offer-item p.offer-date {
   align-self: flex-end;
