@@ -55,7 +55,7 @@ const Offers = (props: OffersProps): JSX.Element => {
               {filteredItems.length ? "" : "We are sorry, there are no "}
               {}
             </span>
-            <span
+            <span style={{textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)"}}
               className={`category-name ${
                 !filteredItems.length && "font-weight"
               }`}
