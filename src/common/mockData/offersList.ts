@@ -147,20 +147,9 @@ export const offersList: Offer[] = [
     phone: "888 900 900",
     category: "Sport",
   },
+  // 
   {
     id: 10,
-    images: ["https://i.postimg.cc/26LRV5cg/image1.jpg", "https://i.postimg.cc/jdb0Stzk/image2.jpg", "https://i.postimg.cc/PfZnHP8w/image3.jpg"],
-    title: "Luxury apartment",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
-    price: 400,
-    date: "16-07-2023",
-    author: "John",
-    country: "USA",
-    phone: "888 900 900",
-    category: "Hotels",
-  },
-  {
-    id: 11,
     images: ["https://i.postimg.cc/bJkC7SFY/image1.jpg", "https://i.postimg.cc/rs9hmXkv/image3.jpg", "https://i.postimg.cc/gjpSmcfV/image2.jpg"],
     title: "Used headphones",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
@@ -172,7 +161,7 @@ export const offersList: Offer[] = [
     category: "Electronics",
   },
   {
-    id: 12,
+    id: 11,
     images: ["https://i.postimg.cc/qvvFNRgQ/image1.jpg", "https://i.postimg.cc/N0yPxz6H/image2.jpg"],
     title: "Antic chair",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
@@ -184,7 +173,7 @@ export const offersList: Offer[] = [
     category: "Furnitures",
   },
   {
-    id: 13,
+    id: 12,
     images: ["https://i.postimg.cc/jdZgYbvf/image1.jpg", "https://i.postimg.cc/W1z92HfH/image2.jpg", "https://i.postimg.cc/yNSvRSKh/image3.jpg"],
     title: "LCD TV",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
@@ -207,4 +196,16 @@ export const offersList: Offer[] = [
     phone: "888 900 900",
     category: "Clothes",
   },
+  // {
+    //   id: 14,
+    //   images: ["https://i.postimg.cc/26LRV5cg/image1.jpg", "https://i.postimg.cc/jdb0Stzk/image2.jpg", "https://i.postimg.cc/PfZnHP8w/image3.jpg"],
+    //   title: "Luxury apartment",
+    //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
+    //   price: 400,
+    //   date: "16-07-2023",
+    //   author: "John",
+    //   country: "USA",
+    //   phone: "888 900 900",
+    //   category: "Hotels",
+    // },
 ];
