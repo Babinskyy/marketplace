@@ -1,7 +1,7 @@
 import { Route, Routes, useRoutes } from "react-router-dom";
-import './App.scss';
-import Home from './pages/Home';
-import OfferView from "./pages/OfferView";
+import './common/assets/styles/scss/App.scss';
+import Home from './modules/offers/views/Home';
+import OfferView from "./modules/offers/views/OfferView";
 import { useState } from "react";
 
 
@@ -14,7 +14,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home openOfferModal={openOfferModal} setOpenOfferModal={setOpenOfferModal}/>}></Route>
       <Route
-        path="/offerview/:id"
+        path="/offer/:id"
         element={<OfferView openOfferModal={openOfferModal} setOpenOfferModal={setOpenOfferModal}/>}
       ></Route>
       

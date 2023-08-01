@@ -1,0 +1,33 @@
+@import './_variables';
+@import './_mixins';
+
+@import './_Home';
+@import './_OfferView';
+
+@import './_Header';
+@import './_Searchbar';
+@import './_Categories';
+@import './_Offers';
+@import './_Footer';
+@import './_AddOffer';
+@import './_OfferDetails';
+@import './_Carousel';
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+*,
+*:after,
+*::before{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+h1{
+  font-weight: 700;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
+  color: $secondary-color;
+  text-align: center;
+}
+
