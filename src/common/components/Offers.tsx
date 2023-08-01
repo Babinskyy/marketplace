@@ -35,7 +35,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     <div className="offers-wrapper">
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          {props.categoryFilterValue && (
+          {(props.categoryFilterValue || props.inputValue) && (
             <Button
               className="all-offers-button"
               onClick={() => {
