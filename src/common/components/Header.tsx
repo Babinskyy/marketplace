@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
-import "../../../common/assets/styles/scss/App.scss";
-import mpBigLogo from "../../../common/assets/images/logo/marketplacelogo4.png";
-import mpSmallLogo from "../../../common/assets//images/logo/marketplacesmalllogo.png";
+import "../../common/assets/styles/scss/App.scss";
+import mpBigLogo from "../../common/assets/images/logo/marketplacelogo4.png";
+import mpSmallLogo from "../../common/assets//images/logo/marketplacesmalllogo.png";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";

@@ -10,11 +10,11 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
-import "../../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/App.scss";
 import { useState, useEffect } from "react";
-import { categoriesList } from "../../../common/mockData/categoryList";
-import { offersList } from "../../../common/mockData/offersList";
-import { Offer, Errors } from "../../../common/types/Types";
+import { categoriesList } from "../../common/mockData/categoriesList";
+import { offersList } from "../../common/mockData/offersList";
+import { Offer, Errors } from "../../common/types/Types";
 
 import { useNavigate } from "react-router-dom";
 
@@ -155,6 +155,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   };
 
   const createOffer = () => {
+    console.log(currentOfferList);
     currentOfferList?.push({
       ...formData,
       id: currentOfferList.length + 1,
@@ -231,7 +232,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               >
                 {categoriesList.map((e, i) => {
                   return (
-                    <MenuItem value={(i + 1) * 10} key={i + 1}>
+                    <MenuItem value={e.name} key={i + 1}>
                       <span className="category-name">{e.name}</span>
                     </MenuItem>
                   );
@@ -289,16 +290,15 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     label="Country"
                     onChange={handleCountryChange}
                   >
-                    <MenuItem value={10}>France</MenuItem>
-                    <MenuItem value={20}>Germany</MenuItem>
-                    <MenuItem value={30}>Great Britain</MenuItem>
-                    <MenuItem value={40}>Spain</MenuItem>
-                    <MenuItem value={50}>Poland</MenuItem>
-                    <MenuItem value={60}>Italy</MenuItem>
-                    <MenuItem value={70}>Great</MenuItem>
-                    <MenuItem value={80}>Switzerland</MenuItem>
-                    <MenuItem value={90}>Austria</MenuItem>
-                    <MenuItem value={90}>Netherlands</MenuItem>
+                    <MenuItem value={"France"}>France</MenuItem>
+                    <MenuItem value={"Germany"}>Germany</MenuItem>
+                    <MenuItem value={"Great"}>Great Britain</MenuItem>
+                    <MenuItem value={"Spain"}>Spain</MenuItem>
+                    <MenuItem value={"Poland"}>Poland</MenuItem>
+                    <MenuItem value={"Italy"}>Italy</MenuItem>
+                    <MenuItem value={"Switzerland"}>Switzerland</MenuItem>
+                    <MenuItem value={"Austria"}>Austria</MenuItem>
+                    <MenuItem value={"Netherlands"}>Netherlands</MenuItem>
                   </Select>
                 </FormControl>
 

@@ -1,68 +1,111 @@
-.offers-wrapper{
-    @include flexbox(row, center, center);
-    width: 100%;
-    .offers-wrapper-2{
-        max-width: 1360px;
-        h1{
-            padding-top: 30px;
-        }
-        .offers-container {
-            @include flexbox(row, center, center);
-            flex-wrap: wrap;
-            color: $secondary-color;
-            .offer-item{
-                @include flexbox(column, space-between, center);
-                width: 300px;
-                height: 400px;
-                background-color: #fff;
-                padding: 20px;
-                margin: 20px;
-                // box-shadow: $box-shadow;
-                cursor: pointer;
-                transition: .3s;
-                &:hover{
-                    box-shadow: $box-shadow;
-                    transform: scale(1.005);
-                }
-                img{
-                    $width: 100%;
-                    width: $width;
-                    height: ($width * 0.5);
-                    object-fit: cover;
-                }
-                p{
-                    margin: 0;
-                }
-                h2.offer-title, h3.offer-price{
-                    margin: 0;
-                    font-size: 25px;
-                    font-weight: 800;
-                }
-                p.offer-phone{
-                    @include flexbox(row, center, center);
-                    transition: .2s;
-                    border-radius: 5px;
-                    padding: 5px;
-                    span{
-                        font-weight: 600;
-                        margin-right: 5px;
-                    }
-                    &:hover {
-                        background-color: #e4e4e4;
-                    }
-                }
-                p.offer-date{
-                    align-self: flex-end;
-                }
-            }
-        }  
-
-        @media screen and (max-width: 920px) {
-            .offers-container {
-                max-height: 1760px;
-                overflow: hidden;
-            }
-  } 
-    }
+.offers-wrapper {
+  @include flexbox(row, center, center);
+  width: 100%;
+  min-height: 537px;
+  
+  .offers-wrapper-2 {
+    max-width: 1360px;
     
+    .h1-button-wrapper {
+    text-align: center;
+    .all-offers-button{
+        margin-top: 20px;
+        font-family: $primary-font;
+        background-color: #fff;
+        color: $primary-color;
+        font-weight: 800;
+        font-size: 15px;
+        transition: 0.3s;
+        box-shadow: $box-shadow;
+        &:hover {
+          background-color: $primary-color;
+          color: #fff;
+        }
+
+      }
+      h1 {
+        padding-top: 30px;
+        // text-align: center;     
+        .category-name {
+          &.font-weight {
+            font-weight: 800;
+          }
+        }
+        
+      }
+      .add-offer-button {
+        height: 50px;
+        font-family: $primary-font;
+        background-color: $primary-color;
+        color: #fff;
+        font-weight: 800;
+        font-size: 17px;
+        transition: 0.3s;
+        box-shadow: $box-shadow;
+        &:hover {
+          background-color: #fff;
+          color: $primary-color;
+        }
+      }
+    }
+
+    .offers-container {
+      @include flexbox(row, center, center);
+      flex-wrap: wrap;
+      color: $secondary-color;
+      .offer-item {
+        @include flexbox(column, space-between, center);
+        width: 300px;
+        height: 400px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 20px;
+        // box-shadow: $box-shadow;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          box-shadow: $box-shadow;
+          transform: scale(1.005);
+        }
+        img {
+          $width: 100%;
+          width: $width;
+          height: ($width * 0.5);
+          object-fit: cover;
+        }
+        p {
+          margin: 0;
+        }
+        h2.offer-title,
+        h3.offer-price {
+          margin: 0;
+          font-size: 25px;
+          font-weight: 800;
+        }
+        p.offer-phone {
+          @include flexbox(row, center, center);
+          transition: 0.2s;
+          border-radius: 5px;
+          padding: 5px;
+          span {
+            font-weight: 600;
+            margin-right: 5px;
+          }
+          &:hover {
+            background-color: #e4e4e4;
+          }
+        }
+        p.offer-date {
+          align-self: flex-end;
+        }
+      }
+    }
+
+    @media screen and (max-width: 920px) {
+      .offers-container {
+        max-height: 1760px;
+        overflow: hidden;
+      }
+    }
+  }
 }

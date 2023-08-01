@@ -1,5 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
-import "../../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/App.scss";
 import { TextField } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState, useEffect } from "react";
@@ -7,11 +7,14 @@ import { useState, useEffect } from "react";
 type SearchbarProps = {
   inputValue?: string;
   setInputValue?: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
+  currentInputValue?: string;
+
 };
 
 const Searchbar = (props: SearchbarProps): JSX.Element => {
   const [showClearX, setShowClearX] = useState<boolean>(false);
-  const [currentInputValue, setCurrentInputValue] = useState<string>("");
+  
 
   const handleShowX = () => {
     setShowClearX(true);
@@ -40,10 +43,13 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         name="search"
         placeholder="Search for offers"
         className="searchbar-input"
-        value={currentInputValue}
+        value={props.currentInputValue}
         onChange={(e: React.FormEvent<HTMLInputElement>) => {
           handleShowX();
-          setCurrentInputValue(e.currentTarget.value);
+          if(props.setCurrentInputValue){
+            props.setCurrentInputValue(e.currentTarget.value);
+          }
+          
         }}
       />
       {showClearX && (
@@ -54,7 +60,10 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
             if (props.setInputValue) {
               props.setInputValue("");
             }
-            setCurrentInputValue("");
+            if(props.setCurrentInputValue){
+            props.setCurrentInputValue("");
+
+            }
           }}
         >
           <ClearIcon sx={{ fontSize: 35, opacity: 0.7 }} />
@@ -65,8 +74,9 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         className="search-button"
         onClick={() => {
           if (props.setInputValue) {
-            props.setInputValue(currentInputValue);
-          }
+            if(props.currentInputValue){
+            props.setInputValue(props.currentInputValue);
+          }}
         }}
       >
         <span>Search</span>

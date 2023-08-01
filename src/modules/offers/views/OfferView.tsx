@@ -1,9 +1,9 @@
 import "../../../common/assets/styles/scss/App.scss";
-import AddOffer from "../components/AddOffer";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import AddOffer from "../../../common/components/AddOffer";
+import Footer from "../../../common/components/Footer";
+import Header from "../../../common/components/Header";
 import OfferDetails from "../components/OfferDetails";
-import Searchbar from "../components/Searchbar";
+import Searchbar from "../../../common/components/Searchbar";
 
 
 type OfferViewProps = {

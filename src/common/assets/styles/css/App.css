@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(58, 16, 166);
+  background-color: rgba(58, 137, 160);
 }
 
 .bgc-2 {
-  background-color: rgba(137, 91, 242);
+  background-color: rgba(14, 224, 177);
 }
 
 .bgc-3 {
-  background-color: rgba(128, 168, 211);
+  background-color: rgba(121, 130, 189);
 }
 
 .bgc-4 {
-  background-color: rgba(184, 219, 77);
+  background-color: rgba(2, 138, 7);
 }
 
 .bgc-5 {
-  background-color: rgba(86, 43, 183);
+  background-color: rgba(224, 253, 242);
 }
 
 .bgc-6 {
-  background-color: rgba(192, 125, 151);
+  background-color: rgba(75, 166, 213);
 }
 
 .bgc-7 {
-  background-color: rgba(152, 222, 203);
+  background-color: rgba(132, 210, 25);
 }
 
 .bgc-8 {
-  background-color: rgba(95, 9, 78);
+  background-color: rgba(192, 81, 71);
 }
 
 .bgc-9 {
-  background-color: rgba(232, 7, 25);
+  background-color: rgba(115, 77, 14);
 }
 
 .bgc-10 {
-  background-color: rgba(221, 239, 60);
+  background-color: rgba(180, 210, 34);
 }
 
 .bgc-11 {
-  background-color: rgba(44, 24, 94);
+  background-color: rgba(123, 94, 28);
 }
 
 .bgc-12 {
-  background-color: rgba(9, 104, 59);
+  background-color: rgba(123, 102, 142);
 }
 
 .bgc-13 {
-  background-color: rgba(90, 26, 210);
+  background-color: rgba(156, 224, 83);
 }
 
 .bgc-14 {
-  background-color: rgba(54, 101, 35);
+  background-color: rgba(89, 174, 159);
 }
 
 .bgc-15 {
-  background-color: rgba(125, 55, 144);
+  background-color: rgba(133, 229, 206);
 }
 
 .bgc-16 {
-  background-color: rgba(235, 222, 55);
+  background-color: rgba(191, 161, 75);
 }
 
 .bgc-17 {
-  background-color: rgba(207, 27, 129);
+  background-color: rgba(155, 240, 76);
 }
 
 .bgc-18 {
-  background-color: rgba(210, 75, 91);
+  background-color: rgba(57, 160, 212);
 }
 
 .bgc-19 {
-  background-color: rgba(44, 89, 159);
+  background-color: rgba(141, 242, 240);
 }
 
 nav.main-header {
@@ -277,16 +277,16 @@ nav.main-header ul.main-navigation button:hover {
   justify-content: center;
   align-items: center;
   margin: 20px;
-  transition: 0.3s;
-}
-.main-categories-container .sub-categories-container .category-wrapper:hover {
-  cursor: pointer;
-  transform: scale(1.1);
 }
 .main-categories-container .sub-categories-container .category-wrapper .category {
+  cursor: pointer;
   width: 90px;
   height: 90px;
   border-radius: 50%;
+  transition: 0.3s;
+}
+.main-categories-container .sub-categories-container .category-wrapper .category:hover {
+  transform: scale(1.1);
 }
 .main-categories-container .sub-categories-container .category-wrapper .category img {
   width: 100%;
@@ -303,12 +303,47 @@ nav.main-header ul.main-navigation button:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 537px;
 }
 .offers-wrapper .offers-wrapper-2 {
   max-width: 1360px;
 }
-.offers-wrapper .offers-wrapper-2 h1 {
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper {
+  text-align: center;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper .all-offers-button {
+  margin-top: 20px;
+  font-family: "Nunito", sans-serif;
+  background-color: #fff;
+  color: #3586ff;
+  font-weight: 800;
+  font-size: 15px;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper .all-offers-button:hover {
+  background-color: #3586ff;
+  color: #fff;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper h1 {
   padding-top: 30px;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper h1 .category-name.font-weight {
+  font-weight: 800;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper .add-offer-button {
+  height: 50px;
+  font-family: "Nunito", sans-serif;
+  background-color: #3586ff;
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
+  transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.offers-wrapper .offers-wrapper-2 .h1-button-wrapper .add-offer-button:hover {
+  background-color: #fff;
+  color: #3586ff;
 }
 .offers-wrapper .offers-wrapper-2 .offers-container {
   display: flex;
@@ -344,7 +379,8 @@ nav.main-header ul.main-navigation button:hover {
 .offers-wrapper .offers-wrapper-2 .offers-container .offer-item p {
   margin: 0;
 }
-.offers-wrapper .offers-wrapper-2 .offers-container .offer-item h2.offer-title, .offers-wrapper .offers-wrapper-2 .offers-container .offer-item h3.offer-price {
+.offers-wrapper .offers-wrapper-2 .offers-container .offer-item h2.offer-title,
+.offers-wrapper .offers-wrapper-2 .offers-container .offer-item h3.offer-price {
   margin: 0;
   font-size: 25px;
   font-weight: 800;
