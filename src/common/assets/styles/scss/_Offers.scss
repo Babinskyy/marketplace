@@ -2,13 +2,13 @@
   @include flexbox(row, center, center);
   width: 100%;
   min-height: 537px;
-  
+
   .offers-wrapper-2 {
     max-width: 1360px;
-    
+
     .h1-button-wrapper {
-    text-align: center;
-    .all-offers-button{
+      text-align: center;
+      .all-offers-button {
         margin-top: 20px;
         font-family: $primary-font;
         background-color: #fff;
@@ -21,17 +21,15 @@
           background-color: $primary-color;
           color: #fff;
         }
-
       }
       h1 {
         padding-top: 30px;
-        // text-align: center;     
+        // text-align: center;
         .category-name {
           &.font-weight {
             font-weight: 800;
           }
         }
-        
       }
       .add-offer-button {
         height: 50px;

@@ -5,20 +5,22 @@ import Header from "../../../common/components/Header";
 import OfferDetails from "../components/OfferDetails";
 import Searchbar from "../../../common/components/Searchbar";
 
-
 type OfferViewProps = {
-    openOfferModal: boolean;
-    setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
+  openOfferModal: boolean;
+  setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-const OfferView = (props:OfferViewProps): JSX.Element => {
+const OfferView = (props: OfferViewProps): JSX.Element => {
   return (
     <div className="offer-view-page">
-      <Header setOpenOfferModal={props.setOpenOfferModal}/>
-      <AddOffer openOfferModal={props.openOfferModal} setOpenOfferModal={props.setOpenOfferModal}/>
+      <Header setOpenOfferModal={props.setOpenOfferModal} />
+      <AddOffer
+        openOfferModal={props.openOfferModal}
+        setOpenOfferModal={props.setOpenOfferModal}
+      />
       <Searchbar />
-      <OfferDetails/>
-      <Footer/>
+      <OfferDetails />
+      <Footer />
     </div>
   );
 };

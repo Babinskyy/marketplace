@@ -71,7 +71,9 @@ const Offers = (props: OffersProps): JSX.Element => {
                 ? filteredItems.length
                   ? "offers"
                   : "offers"
-                : props.inputValue ? `${props.inputValue} offers` : "All offers"}{" "}
+                : props.inputValue
+                ? `${props.inputValue} offers`
+                : "All offers"}{" "}
             </span>
             <span>{!filteredItems.length && " yet."}</span>
           </h1>

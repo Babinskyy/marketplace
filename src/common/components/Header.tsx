@@ -18,7 +18,6 @@ type HeaderProps = {
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-
   const btnMenuRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState<boolean>(false);
 

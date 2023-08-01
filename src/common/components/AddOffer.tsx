@@ -33,7 +33,6 @@ const boxStyle = {
 type AddOfferProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
-
 };
 
 const AddOffer = (props: AddOfferProps): JSX.Element => {

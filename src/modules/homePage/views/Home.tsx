@@ -6,7 +6,6 @@ import Offers from "../../../common/components/Offers";
 import Footer from "../../../common/components/Footer";
 import AddOffer from "../../../common/components/AddOffer";
 import { useState } from "react";
-import { Offer } from "../../../common/types/Types";
 
 type HomeProps = {
   openOfferModal: boolean;
@@ -17,14 +16,25 @@ const Home = (props: HomeProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
   const [categoryFilterValue, setCategoryFilterValue] = useState<string>("");
-  
 
   return (
     <div className="home">
       <Header setOpenOfferModal={props.setOpenOfferModal} />
-      <Searchbar inputValue={inputValue} setInputValue={setInputValue} currentInputValue={currentInputValue} setCurrentInputValue={setCurrentInputValue}/>
-      <Categories setCategoryFilterValue={setCategoryFilterValue}/>
-      <Offers inputValue={inputValue} categoryFilterValue={categoryFilterValue} setOpenOfferModal={props.setOpenOfferModal} setCategoryFilterValue={setCategoryFilterValue} setInputValue={setInputValue} setCurrentInputValue={setCurrentInputValue}/>
+      <Searchbar
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        currentInputValue={currentInputValue}
+        setCurrentInputValue={setCurrentInputValue}
+      />
+      <Categories setCategoryFilterValue={setCategoryFilterValue} />
+      <Offers
+        inputValue={inputValue}
+        categoryFilterValue={categoryFilterValue}
+        setOpenOfferModal={props.setOpenOfferModal}
+        setCategoryFilterValue={setCategoryFilterValue}
+        setInputValue={setInputValue}
+        setCurrentInputValue={setCurrentInputValue}
+      />
       <Footer />
       <AddOffer
         openOfferModal={props.openOfferModal}

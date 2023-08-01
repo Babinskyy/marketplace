@@ -5,7 +5,7 @@ type CategoriesProps = {
   setCategoryFilterValue: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const Categories = (props:CategoriesProps): JSX.Element => {
+const Categories = (props: CategoriesProps): JSX.Element => {
   let bgcArray: string[] = [];
   for (let i = 1; i <= categoriesList.length; i++) {
     bgcArray.push(`bgc-${i}`);
@@ -24,7 +24,7 @@ const Categories = (props:CategoriesProps): JSX.Element => {
                   // console.log(
                   //   parseInt(e.currentTarget.classList.value.slice(13))
                   // );
-                  props.setCategoryFilterValue(categoriesList[i].name)
+                  props.setCategoryFilterValue(categoriesList[i].name);
                 }}
               >
                 <img src={categoriesList[i].url} alt="category-image" />

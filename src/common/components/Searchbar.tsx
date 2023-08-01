@@ -9,12 +9,10 @@ type SearchbarProps = {
   setInputValue?: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   currentInputValue?: string;
-
 };
 
 const Searchbar = (props: SearchbarProps): JSX.Element => {
   const [showClearX, setShowClearX] = useState<boolean>(false);
-  
 
   const handleShowX = () => {
     setShowClearX(true);
@@ -46,10 +44,9 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         value={props.currentInputValue}
         onChange={(e: React.FormEvent<HTMLInputElement>) => {
           handleShowX();
-          if(props.setCurrentInputValue){
+          if (props.setCurrentInputValue) {
             props.setCurrentInputValue(e.currentTarget.value);
           }
-          
         }}
       />
       {showClearX && (
@@ -60,9 +57,8 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
             if (props.setInputValue) {
               props.setInputValue("");
             }
-            if(props.setCurrentInputValue){
-            props.setCurrentInputValue("");
-
+            if (props.setCurrentInputValue) {
+              props.setCurrentInputValue("");
             }
           }}
         >
@@ -74,9 +70,10 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         className="search-button"
         onClick={() => {
           if (props.setInputValue) {
-            if(props.currentInputValue){
-            props.setInputValue(props.currentInputValue);
-          }}
+            if (props.currentInputValue) {
+              props.setInputValue(props.currentInputValue);
+            }
+          }
         }}
       >
         <span>Search</span>
