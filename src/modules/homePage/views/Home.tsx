@@ -26,7 +26,7 @@ const Home = (props: HomeProps): JSX.Element => {
         currentInputValue={currentInputValue}
         setCurrentInputValue={setCurrentInputValue}
       />
-      <Categories setCategoryFilterValue={setCategoryFilterValue} />
+      <Categories setCategoryFilterValue={setCategoryFilterValue} categoryFilterValue={categoryFilterValue}/>
       <Offers
         inputValue={inputValue}
         categoryFilterValue={categoryFilterValue}

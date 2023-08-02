@@ -17,15 +17,11 @@ export type Category = {
 }
 
 export type Errors = {
-  id: boolean;
-  images: boolean;
-  title: boolean;
-  description: boolean;
-  price: boolean;
-  date: boolean;
-  author: boolean;
-  country: boolean;
-  phone: boolean;
-  category: boolean;
+  [title:string]: string | undefined;
+  price: string | undefined;
+  author?: string | undefined;
+  country?: string | undefined;
+  phone?: string | undefined;
+  category: string | undefined;
 }
 

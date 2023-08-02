@@ -11,7 +11,7 @@ import {
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
 import "../../common/assets/styles/scss/App.scss";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import { categoriesList } from "../../common/mockData/categoriesList";
 import { offersList } from "../../common/mockData/offersList";
 import { Offer, Errors } from "../../common/types/Types";
@@ -57,16 +57,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   });
 
   const [errors, setErrors] = useState<Errors>({
-    id: false,
-    images: false,
-    title: false,
-    description: false,
-    price: false,
-    date: false,
-    author: false,
-    country: false,
-    phone: false,
-    category: false,
+    title: undefined,
+    price: undefined,
+    author: undefined,
+    country: undefined,
+    phone: undefined,
+    category: undefined,
   });
   const navigate = useNavigate();
   const handleClose = () => props.setOpenOfferModal(false);
@@ -93,76 +89,63 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   };
 
   const validate = () => {
-    setErrors({
-      id: false,
-      images: false,
-      title: false,
-      description: false,
-      price: false,
-      date: false,
-      author: false,
-      country: false,
-      phone: false,
-      category: false,
-    });
+    let result: boolean = true;
 
-    if (formData.title === "") {
-      setErrors((prev) => ({
-        ...prev,
-        title: true,
-      }));
-    }
-    if (formData.price === null) {
-      setErrors((prev) => ({
-        ...prev,
-        price: true,
-      }));
-    }
-    if (formData.author === null) {
-      setErrors((prev) => ({
-        ...prev,
-        author: true,
-      }));
-    }
-    if (formData.country === null) {
-      setErrors((prev) => ({
-        ...prev,
-        country: true,
-      }));
-    }
-    if (formData.phone === null) {
-      setErrors((prev) => ({
-        ...prev,
-        phone: true,
-      }));
-    }
-    if (formData.category === null) {
-      setErrors((prev) => ({
-        ...prev,
-        category: true,
-      }));
+    const tmpErrors: Errors = {
+      title: undefined,
+      category: undefined,
+      price: undefined,
+      country: undefined,
+      author: undefined,
+      phone: undefined,
+    };
+
+    if (formData.title.trim().length === 0) {
+      tmpErrors.title = "field should not be empty";
     }
 
-    return (
-      !errors.title &&
-      !errors.price &&
-      !errors.author &&
-      !errors.country &&
-      !errors.phone &&
-      !errors.category
-    );
+    if (formData.category.length === 0) {
+      tmpErrors.category = "field should not be empty";
+    }
+
+    if (!formData.price) {
+      tmpErrors.price = "field should not be empty";
+    }
+    
+    if (formData.country.length === 0) {
+      tmpErrors.country = "field should not be empty";
+    }
+    
+    if (formData.author.trim().length === 0) {
+      tmpErrors.author = "field should not be empty";
+    }
+    
+    if (formData.phone.trim().length === 0) {
+      tmpErrors.phone = "field should not be empty";
+    }
+    
+
+    setErrors(tmpErrors);
+
+    for (const key in tmpErrors) {
+      if (tmpErrors[key]) {
+        result = false;
+        break;
+      }
+    }
+
+    return result;
   };
 
   const createOffer = () => {
-    console.log(currentOfferList);
-    currentOfferList?.push({
+    currentOfferList?.unshift({
       ...formData,
       id: currentOfferList.length + 1,
     });
     props.setOpenOfferModal(false);
     navigate("/");
     window.scroll({
-      top: document.body.scrollHeight,
+      top: document.body.scrollTop + 500,
       left: 0,
       behavior: "smooth",
     });
@@ -182,12 +165,15 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       phone: "",
       category: "",
     });
+    setCategory("")
+    setCountry("");
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createOffer();
-    console.log("submit");
+    if (validate()) {
+      createOffer();
+    }
   };
 
   return (
@@ -202,11 +188,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
           <h1>Add your offer</h1>
           <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
-              error={errors.title}
+              error={errors.title ? true : false}
               name="title"
               label="Title"
               defaultValue=""
-              required
               sx={{ width: "510px", fontSize: "25px" }}
               onChange={(e) => {
                 setFormData({
@@ -215,12 +200,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 });
               }}
             />
-            <FormControl sx={{ width: "510px" }} required>
+            <FormControl sx={{ width: "510px" }}>
               <InputLabel id="category-label" sx={{ marginTop: "10px" }}>
                 Category
               </InputLabel>
               <Select
-                error={errors.category}
+                error={errors.category ? true : false}
                 name="category"
                 sx={{ marginTop: "10px" }}
                 labelId="category-label"
@@ -247,16 +232,15 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
             </div>
             <label htmlFor="description"></label>
             <TextField
-              error={errors.price}
+              error={!!errors.price}
               name="price"
               label="Price"
               defaultValue=""
-              required
               sx={{ width: "510px" }}
               onChange={(e) => {
                 setFormData({
                   ...formData,
-                  [e.currentTarget.name]: e.currentTarget.value,
+                  [e.currentTarget.name]: +e.currentTarget.value,
                 });
               }}
             />
@@ -276,12 +260,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 }}
               />
               <div className="author-data-holder">
-                <FormControl sx={{ width: "310px" }} required>
+                <FormControl sx={{ width: "310px" }}>
                   <InputLabel id="country-label" sx={{ marginTop: "10px" }}>
                     Country
                   </InputLabel>
                   <Select
-                    error={errors.country}
+                    error={errors.country ? true : false}
                     sx={{ marginTop: "10px" }}
                     labelId="country-label"
                     id="country-select"
@@ -302,11 +286,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 </FormControl>
 
                 <TextField
-                  error={errors.author}
+                  error={errors.author ? true : false}
                   name="author"
                   label="Name"
                   defaultValue=""
-                  required
                   sx={{ width: "310px" }}
                   onChange={(e) => {
                     setFormData({
@@ -316,11 +299,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                   }}
                 />
                 <TextField
-                  error={errors.phone}
+                  error={errors.phone ? true : false}
                   name="phone"
                   label="Phone number"
                   defaultValue=""
-                  required
                   sx={{ width: "310px" }}
                   id="data-textfield"
                   onChange={(e) => {

@@ -61,9 +61,9 @@ const Offers = (props: OffersProps): JSX.Element => {
               }`}
             >
               {filteredItems.length
-                ? props.categoryFilterValue
+                ? `${props.categoryFilterValue} ${props.inputValue}`
                 : props.categoryFilterValue &&
-                  LowerCaseFirstLetter(props.categoryFilterValue)}
+                  `${LowerCaseFirstLetter(props.categoryFilterValue)} ${props.inputValue}`} 
             </span>
             <span>
               {" "}

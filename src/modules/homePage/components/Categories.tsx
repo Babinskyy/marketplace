@@ -3,6 +3,7 @@ import { categoriesList } from "../../../common/mockData/categoriesList";
 
 type CategoriesProps = {
   setCategoryFilterValue: React.Dispatch<React.SetStateAction<string>>;
+  categoryFilterValue: string;
 };
 
 const Categories = (props: CategoriesProps): JSX.Element => {
@@ -19,11 +20,8 @@ const Categories = (props: CategoriesProps): JSX.Element => {
           return (
             <div className="category-wrapper" key={i}>
               <div
-                className={`category ${e}`}
-                onClick={(e) => {
-                  // console.log(
-                  //   parseInt(e.currentTarget.classList.value.slice(13))
-                  // );
+                className={`category ${e} ${categoriesList[i].name === props.categoryFilterValue && 'selected'}`}
+                onClick={() => {
                   props.setCategoryFilterValue(categoriesList[i].name);
                 }}
               >

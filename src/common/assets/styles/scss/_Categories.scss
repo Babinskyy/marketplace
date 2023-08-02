@@ -28,6 +28,9 @@
           width: 100%;
         }
       }
+      .selected {
+        transform: scale(1.1);
+      }
       span {
         font-size: 15px;
         font-weight: 700;
