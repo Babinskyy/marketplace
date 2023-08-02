@@ -40,24 +40,30 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <section className="slider">
+      <div className="slide-container">
+
       <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
-      <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
       {props.images.map((e: string, i: number) => {
-        return (
-          <div className={i === current ? "slide active" : "slide"} key={i}>
-            {i === current && (
-              <img
+        if(i === current){
+          return (
+            <div className={"slide active"} key={i}>
+              {i === current && (
+                <img
                 src={props.images[current]}
                 alt="offer-image"
                 className="image"
                 onClick={() => {
                   setOpenImage(true);
                 }}
-              />
-            )}
-          </div>
-        );
+                />
+                )}
+            </div>
+          );
+        }
+        
       })}
+      <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
+      </div>
       <div className="images-preview-container">
         <div className="images-preview-slide">
           {props.images.map((e, i) => {

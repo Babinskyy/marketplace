@@ -75,7 +75,7 @@
       .author-data-container {
         @include flexbox(column, center, center);
         width: 40%;
-        padding: 0px;
+        padding: 20px;
         .avatar-name-container {
           @include flexbox(column, initial, center);
           width: 100%;

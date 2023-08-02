@@ -29,7 +29,6 @@ const boxStyle = {
   borderRadius: "15px",
   boxShadow: 24,
   p: 2,
-  // overflowY: "scroll"
 };
 
 type AddOfferProps = {
@@ -75,7 +74,25 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     category: undefined,
   });
   const navigate = useNavigate();
-  const handleClose = () => props.setOpenOfferModal(false);
+  const handleClose = () => {
+    setErrors({
+    title: undefined,
+    price: undefined,
+    author: undefined,
+    country: undefined,
+    phone: undefined,
+    category: undefined,
+    })
+    setErrorMessages({
+      title: "",
+      category: "",
+      price: "",
+      country: "",
+      author: "",
+      phone: "",
+    })
+    props.setOpenOfferModal(false)
+  };
 
   useEffect(() => {
     if (setCurrentOfferList) {

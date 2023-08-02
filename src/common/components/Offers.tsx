@@ -55,7 +55,8 @@ const Offers = (props: OffersProps): JSX.Element => {
               {filteredItems.length ? "" : "We are sorry, there are no "}
               {}
             </span>
-            <span style={{textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)"}}
+            <span
+              style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)" }}
               className={`category-name ${
                 !filteredItems.length && "font-weight"
               }`}
@@ -63,7 +64,9 @@ const Offers = (props: OffersProps): JSX.Element => {
               {filteredItems.length
                 ? `${props.categoryFilterValue} ${props.inputValue}`
                 : props.categoryFilterValue &&
-                  `${LowerCaseFirstLetter(props.categoryFilterValue)} ${props.inputValue}`} 
+                  `${LowerCaseFirstLetter(props.categoryFilterValue)} ${
+                    props.inputValue
+                  }`}
             </span>
             <span>
               {" "}
@@ -109,7 +112,10 @@ const Offers = (props: OffersProps): JSX.Element => {
                   <span>+ 00 XXX XX XX</span>
                   <LocalPhoneOutlinedIcon />
                 </p>
-                <p className="offer-date">{e.date}</p>
+                <div className="category-date-container">
+                  <span className="offer-category">{e.category}</span>
+                  <span className="offer-date">{e.date}</span>
+                </div>
               </div>
             );
           })}
