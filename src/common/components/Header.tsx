@@ -43,10 +43,10 @@ const Header = (props: HeaderProps): JSX.Element => {
             <FavoriteBorderIcon />
             <span>Favorite</span>
           </li>
-          <li className="icon search">
+          {/* <li className="icon search">
             <SearchIcon />
             <span>Search</span>
-          </li>
+          </li> */}
           <li className="icon account">
             <PersonOutlineOutlinedIcon />
             <span>Account</span>
@@ -83,7 +83,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           >
             <MenuItem onClick={handleClose}>Account</MenuItem>
             <MenuItem onClick={handleClose}>Favorite</MenuItem>
-            <MenuItem onClick={handleClose}>Search</MenuItem>
+            {/* <MenuItem onClick={handleClose}>Search</MenuItem> */}
           </Menu>
         </div>
 

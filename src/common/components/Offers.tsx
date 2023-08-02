@@ -26,7 +26,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     const categoryValue = props.categoryFilterValue || "";
 
     return (
-      offer.title.toLowerCase().includes(inputValue.toLocaleLowerCase()) &&
+      offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
       (categoryValue === "" || offer.category === categoryValue)
     );
   });
@@ -77,7 +77,7 @@ const Offers = (props: OffersProps): JSX.Element => {
             </span>
             <span>{!filteredItems.length && " yet."}</span>
           </h1>
-          {!filteredItems.length ? (
+          {!filteredItems.length && (
             <div>
               <Button
                 variant="contained"
@@ -87,8 +87,6 @@ const Offers = (props: OffersProps): JSX.Element => {
                 Add an offer
               </Button>
             </div>
-          ) : (
-            <></>
           )}
         </div>
 
@@ -103,7 +101,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                   window.scrollTo(0, 0);
                 }}
               >
-                {e.images.length > 0 && <img src={e.images[0]} alt="" />}
+                {e.images?.length > 0 && <img src={e.images[0]} alt="" />}
 
                 <h2 className="offer-title">{e.title}</h2>
                 <h3 className="offer-price">{e.price} $</h3>

@@ -15,12 +15,12 @@ const Footer = (): JSX.Element => {
       </div>
       <ul className="social-icon">
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <a className="social-icon__link">
             <FacebookOutlinedIcon sx={{ fontSize: "50px" }} />
           </a>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <a className="social-icon__link">
             <TwitterIcon sx={{ fontSize: "50px" }} />
           </a>
         </li>
@@ -34,7 +34,7 @@ const Footer = (): JSX.Element => {
           </a>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <a className="social-icon__link">
             <InstagramIcon sx={{ fontSize: "50px" }} />
           </a>
         </li>

@@ -208,23 +208,23 @@ export const offersList: Offer[] = [
     phone: "888 900 900",
     category: "Electronics",
   },
-  {
-    id: 13,
-    images: [
-      "https://i.postimg.cc/qqQLrscr/image2.jpg",
-      "https://i.postimg.cc/D07gRjX5/image1.jpg",
-      "https://i.postimg.cc/bYRL1h75/image3.jpg",
-    ],
-    title: "Leather bag",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
-    price: 300,
-    date: "16-07-2023",
-    author: "John",
-    country: "USA",
-    phone: "888 900 900",
-    category: "Clothes",
-  },
+  // {
+  //   id: 13,
+  //   images: [
+  //     "https://i.postimg.cc/qqQLrscr/image2.jpg",
+  //     "https://i.postimg.cc/D07gRjX5/image1.jpg",
+  //     "https://i.postimg.cc/bYRL1h75/image3.jpg",
+  //   ],
+  //   title: "Leather bag",
+  //   description:
+  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
+  //   price: 300,
+  //   date: "16-07-2023",
+  //   author: "John",
+  //   country: "USA",
+  //   phone: "888 900 900",
+  //   category: "Clothes",
+  // },
   // {
   //   id: 14,
   //   images: ["https://i.postimg.cc/26LRV5cg/image1.jpg", "https://i.postimg.cc/jdb0Stzk/image2.jpg", "https://i.postimg.cc/PfZnHP8w/image3.jpg"],

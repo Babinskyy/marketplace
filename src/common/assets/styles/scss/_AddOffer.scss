@@ -1,26 +1,38 @@
-h1 {
-  margin: 0;
-  margin-bottom: 20px;
+
+h2 {
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+.modal-box{
+  border-radius: 10px
 }
 
 .offer-modal-form {
   @include flexbox(column, center, center);
-  
-    
-     
-  
+  .error-message {
+    margin: 10px 0;
+    color: #d32f2f;
+    font-size: 15px;
+  }
+  .mg {
+    margin-bottom: 0;
+  }
   h2 {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .add-images-h3{
+    margin: 0;
+  }
   .add-images-container {
     @include flexbox(row, center, center);
     flex-wrap: wrap;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     .add {
       @include flexbox(row, center, center);
-      width: 200px;
-      height: 200px;
+      width: 154px;
+      height: 154px;
       background-color: #f2f4f5;
       margin: 10px;
       box-shadow: $box-shadow;
@@ -35,7 +47,6 @@ h1 {
   .details-holder {
     @include flexbox(row, space-between, center);
     width: 650px;
-    margin: 25px 0;
 
     Textarea {
       border-radius: 5px;
@@ -53,9 +64,13 @@ h1 {
       }
     }
     .author-data-holder {
-      @include flexbox(column, space-between, center);
-      height: 200px;
-      transform: translate(0, -5px);
+      // @include flexbox(column, center, center);
+      // height: 240px;
+      // transform: translate(0, -5px);
+      // border: 1px solid black;
     }
+  }
+  .submit-button{
+    margin-top: 10px;
   }
 }

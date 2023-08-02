@@ -25,9 +25,11 @@ const boxStyle = {
   transform: "translate(-50%, -50%)",
   width: 800,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "1px solid #000",
+  borderRadius: "15px",
   boxShadow: 24,
-  p: 4,
+  p: 2,
+  // overflowY: "scroll"
 };
 
 type AddOfferProps = {
@@ -37,6 +39,14 @@ type AddOfferProps = {
 
 const AddOffer = (props: AddOfferProps): JSX.Element => {
   const [category, setCategory] = useState<string>("");
+  const [errorMessages, setErrorMessages] = useState<Errors>({
+    title: "",
+    category: "",
+    price: "",
+    country: "",
+    author: "",
+    phone: "",
+  });
   const [country, setCountry] = useState<string>("");
   const [currentOfferList, setCurrentOfferList] = useState<Offer[]>();
   const [formData, setFormData] = useState<Offer>({
@@ -101,29 +111,34 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     };
 
     if (formData.title.trim().length === 0) {
-      tmpErrors.title = "field should not be empty";
+      tmpErrors.title = "Title should not be empty!";
+    } else if (formData.title.trim().length < 5) {
+      tmpErrors.title = "Title should have at least 5 characters!";
+    } else if (formData.title.trim().length > 25) {
+      tmpErrors.title = "Title should have maximum of 25 characters!";
     }
 
     if (formData.category.length === 0) {
-      tmpErrors.category = "field should not be empty";
+      tmpErrors.category = "Choose category of your offer!";
     }
 
     if (!formData.price) {
-      tmpErrors.price = "field should not be empty";
+      tmpErrors.price = "Set correct price of your offer!";
     }
-    
+
     if (formData.country.length === 0) {
-      tmpErrors.country = "field should not be empty";
+      tmpErrors.country = "Choose a country!";
     }
-    
+
     if (formData.author.trim().length === 0) {
-      tmpErrors.author = "field should not be empty";
+      tmpErrors.author = "Enter your name!";
     }
-    
+
     if (formData.phone.trim().length === 0) {
-      tmpErrors.phone = "field should not be empty";
+      tmpErrors.phone = "Enter your contact number!";
+    } else if (!/^\d+$/.test(formData.phone.trim())) {
+      tmpErrors.phone = "Contact phone should contain only numbers!";
     }
-    
 
     setErrors(tmpErrors);
 
@@ -133,14 +148,19 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         break;
       }
     }
-
+    setErrorMessages(tmpErrors);
     return result;
   };
 
   const createOffer = () => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
     currentOfferList?.unshift({
       ...formData,
       id: currentOfferList.length + 1,
+      date: (dd + "-" + mm + "-" + yyyy),
     });
     props.setOpenOfferModal(false);
     navigate("/");
@@ -165,7 +185,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       phone: "",
       category: "",
     });
-    setCategory("")
+    setCategory("");
     setCountry("");
   };
 
@@ -175,7 +195,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       createOffer();
     }
   };
-
   return (
     <div className="add-offer-container">
       <Modal
@@ -183,9 +202,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className="modal-box"
       >
         <Box sx={boxStyle}>
-          <h1>Add your offer</h1>
+          <h2>Add your offer</h2>
           <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
               error={errors.title ? true : false}
@@ -200,6 +220,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 });
               }}
             />
+            <div className="error-message mg">{errorMessages.title}</div>
             <FormControl sx={{ width: "510px" }}>
               <InputLabel id="category-label" sx={{ marginTop: "10px" }}>
                 Category
@@ -223,8 +244,8 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 })}
               </Select>
             </FormControl>
-
-            <h2>Add images</h2>
+            <div className="error-message mg">{errorMessages.category}</div>
+            <h3 className="add-images-h3">Add images</h3>
             <div className="add-images-container">
               <div className="add main-image">+</div>
               <div className="add sub-image">+</div>
@@ -244,6 +265,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 });
               }}
             />
+            <div className="error-message mg">{errorMessages.price}</div>
             <div className="details-holder">
               <Textarea
                 name="description"
@@ -284,7 +306,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     <MenuItem value={"Netherlands"}>Netherlands</MenuItem>
                   </Select>
                 </FormControl>
-
+                <div className="error-message">{errorMessages.country}</div>
                 <TextField
                   error={errors.author ? true : false}
                   name="author"
@@ -298,6 +320,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     });
                   }}
                 />
+                <div className="error-message">{errorMessages.author}</div>
                 <TextField
                   error={errors.phone ? true : false}
                   name="phone"
@@ -312,9 +335,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     });
                   }}
                 />
+                <div className="error-message">{errorMessages.phone}</div>
               </div>
             </div>
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" className="submit-button">
               Add to Market Place
             </Button>
           </form>
