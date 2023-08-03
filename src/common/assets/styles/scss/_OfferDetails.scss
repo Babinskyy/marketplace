@@ -19,32 +19,6 @@
     h1.title1 {
       margin-bottom: 55px;
     }
-    .image-slider {
-      @include flexbox(row, space-around, center);
-
-      .arrow {
-        position: relative;
-        cursor: pointer;
-        transition: 0.2s;
-        &:hover {
-          opacity: 0.6;
-        }
-      }
-      .img-container-showed {
-        position: relative;
-
-        width: 800px;
-        overflow: hidden;
-        .img-contaier-slide {
-          @include flexbox;
-          transition: 0.3s;
-          img {
-            width: 800px;
-            object-fit: cover;
-          }
-        }
-      }
-    }
 
     .price-container {
       text-align: left;
@@ -108,10 +82,67 @@
     }
   }
 
-  @media screen and (max-width: 920px) {
+  @media screen and (max-width: 843px) {
     .sub-offer-view-container {
-      width: 100%;
-      margin: 0;
+      padding: 20px;
+      h1.title1 {
+        font-size: 30px;
+        margin-top: 0;
+        margin-bottom: 0px;
+
+      }
+      .details-wrapper {
+        @include flexbox(column);
+        .details-container {
+          @include flexbox(column, space-around);
+          float: left;
+          text-align: left;
+          width: 100%;
+          padding: 20px;
+          h1 {
+            text-align: left;
+            font-family: "Nunito", sans-serif;
+            color: $secondary-color;
+          }
+          p.description {
+            word-wrap: break-word;
+            justify-self: flex-end;
+          }
+        }
+        .author-data-container {
+          @include flexbox(column, center, center);
+          width: 100%;
+          padding: 0px;
+          .avatar-name-container {
+            @include flexbox(column, initial, center);
+            width: 100%;
+            img {
+              width: 75px;
+            }
+          }
+          .number-button-container {
+            @include flexbox(column, center, center);
+          }
+  
+          p {
+            margin: 0;
+          }
+          p.name {
+            font-weight: 600;
+          }
+          p.number {
+            @include flexbox;
+          }
+          p.show {
+            @include flexbox;
+            font-size: 18px;
+            cursor: pointer;
+          }
+          .map-container {
+            @include flexbox(row, center);
+          }
+        }
+      }
     }
   }
 }

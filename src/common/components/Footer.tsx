@@ -62,7 +62,7 @@ const Footer = (): JSX.Element => {
           </a>
         </li>
       </ul> */}
-      <p>&copy;2023 John Babinsky | All Rights Reserved</p>
+      <p className="copyright">&copy;2023 John Babinsky | All Rights Reserved</p>
     </footer>
   );
 };
