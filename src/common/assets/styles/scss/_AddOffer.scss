@@ -80,6 +80,7 @@
   .modal-box {
     width: 300px;
     padding: 10px;
+    
     .error-message {
       display: none;
     }
@@ -114,6 +115,8 @@
         .css-7mosfj {
           width: 350px;
           padding: 12px;
+          padding-left: 0;
+          padding-right: 0;
           margin-right: 10px;
           transform: translate(0, 10px);
           .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder,
@@ -132,7 +135,7 @@
           .css-76kop8 {
             // @include flexbox(initial, space-between);
             // height: 70px;
-            width: 118px;
+            width: 122px;
             margin-top: 10px;
           }
         }

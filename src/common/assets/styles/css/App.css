@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(77, 161, 209);
+  background-color: rgba(132, 229, 193);
 }
 
 .bgc-2 {
-  background-color: rgba(188, 91, 54);
+  background-color: rgba(83, 193, 227);
 }
 
 .bgc-3 {
-  background-color: rgba(200, 244, 172);
+  background-color: rgba(212, 60, 77);
 }
 
 .bgc-4 {
-  background-color: rgba(137, 166, 58);
+  background-color: rgba(24, 196, 148);
 }
 
 .bgc-5 {
-  background-color: rgba(1, 50, 178);
+  background-color: rgba(55, 214, 208);
 }
 
 .bgc-6 {
-  background-color: rgba(58, 5, 92);
+  background-color: rgba(7, 71, 59);
 }
 
 .bgc-7 {
-  background-color: rgba(240, 134, 11);
+  background-color: rgba(211, 50, 245);
 }
 
 .bgc-8 {
-  background-color: rgba(17, 29, 206);
+  background-color: rgba(211, 152, 52);
 }
 
 .bgc-9 {
-  background-color: rgba(163, 170, 141);
+  background-color: rgba(237, 207, 155);
 }
 
 .bgc-10 {
-  background-color: rgba(220, 214, 146);
+  background-color: rgba(163, 221, 6);
 }
 
 .bgc-11 {
-  background-color: rgba(88, 179, 13);
+  background-color: rgba(113, 162, 205);
 }
 
 .bgc-12 {
-  background-color: rgba(211, 199, 211);
+  background-color: rgba(90, 60, 228);
 }
 
 .bgc-13 {
-  background-color: rgba(76, 92, 253);
+  background-color: rgba(243, 40, 67);
 }
 
 .bgc-14 {
-  background-color: rgba(135, 62, 84);
+  background-color: rgba(28, 246, 3);
 }
 
 .bgc-15 {
-  background-color: rgba(52, 252, 57);
+  background-color: rgba(97, 144, 68);
 }
 
 .bgc-16 {
-  background-color: rgba(152, 77, 181);
+  background-color: rgba(116, 26, 40);
 }
 
 .bgc-17 {
-  background-color: rgba(151, 225, 124);
+  background-color: rgba(90, 12, 61);
 }
 
 .bgc-18 {
-  background-color: rgba(1, 169, 137);
+  background-color: rgba(174, 249, 228);
 }
 
 .bgc-19 {
-  background-color: rgba(191, 36, 27);
+  background-color: rgba(91, 165, 136);
 }
 
 nav.main-header {
@@ -666,6 +666,8 @@ ul {
   .modal-box .offer-modal-form .details-holder .css-7mosfj {
     width: 350px;
     padding: 12px;
+    padding-left: 0;
+    padding-right: 0;
     margin-right: 10px;
     transform: translate(0, 10px);
   }
@@ -686,7 +688,7 @@ ul {
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-9zrq44,
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-76kop8 {
-    width: 118px;
+    width: 122px;
     margin-top: 10px;
   }
 }
