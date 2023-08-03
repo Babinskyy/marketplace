@@ -117,9 +117,11 @@
           margin-right: 10px;
           transform: translate(0, 10px);
           .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder,
+          .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder ~ div,
           .css-1qmqn4r::-webkit-input-placeholder,
-          .css-1qmqn4r::-webkit-input-placeholder,
+          .css-1qmqn4r::-webkit-input-placeholder ~ div,
           .css-1qmqn4r,
+          .css-1qmqn4r ~ div,
           #placeholder ~ div {
             inline-size: 90px;
           }
