@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(164, 178, 117);
+  background-color: rgba(117, 82, 230);
 }
 
 .bgc-2 {
-  background-color: rgba(137, 248, 64);
+  background-color: rgba(42, 170, 6);
 }
 
 .bgc-3 {
-  background-color: rgba(54, 206, 111);
+  background-color: rgba(79, 5, 37);
 }
 
 .bgc-4 {
-  background-color: rgba(122, 41, 55);
+  background-color: rgba(196, 79, 44);
 }
 
 .bgc-5 {
-  background-color: rgba(90, 139, 204);
+  background-color: rgba(96, 137, 226);
 }
 
 .bgc-6 {
-  background-color: rgba(142, 169, 73);
+  background-color: rgba(35, 242, 22);
 }
 
 .bgc-7 {
-  background-color: rgba(65, 51, 113);
+  background-color: rgba(244, 154, 144);
 }
 
 .bgc-8 {
-  background-color: rgba(157, 157, 64);
+  background-color: rgba(185, 83, 9);
 }
 
 .bgc-9 {
-  background-color: rgba(176, 104, 192);
+  background-color: rgba(150, 38, 89);
 }
 
 .bgc-10 {
-  background-color: rgba(43, 243, 170);
+  background-color: rgba(123, 97, 149);
 }
 
 .bgc-11 {
-  background-color: rgba(202, 111, 68);
+  background-color: rgba(228, 213, 129);
 }
 
 .bgc-12 {
-  background-color: rgba(172, 50, 212);
+  background-color: rgba(133, 44, 161);
 }
 
 .bgc-13 {
-  background-color: rgba(55, 70, 38);
+  background-color: rgba(82, 102, 36);
 }
 
 .bgc-14 {
-  background-color: rgba(93, 20, 228);
+  background-color: rgba(78, 96, 137);
 }
 
 .bgc-15 {
-  background-color: rgba(144, 91, 254);
+  background-color: rgba(137, 204, 240);
 }
 
 .bgc-16 {
-  background-color: rgba(37, 175, 16);
+  background-color: rgba(198, 251, 129);
 }
 
 .bgc-17 {
-  background-color: rgba(251, 34, 189);
+  background-color: rgba(126, 134, 34);
 }
 
 .bgc-18 {
-  background-color: rgba(208, 42, 52);
+  background-color: rgba(115, 163, 111);
 }
 
 .bgc-19 {
-  background-color: rgba(7, 100, 125);
+  background-color: rgba(217, 107, 176);
 }
 
 nav.main-header {
@@ -823,19 +823,19 @@ ul {
     flex-direction: column;
     justify-content: space-around;
     align-items: normal;
-    float: left;
-    text-align: left;
     width: 100%;
-    padding: 20px;
   }
   .main-offer-view-container .sub-offer-view-container .details-wrapper .details-container h1 {
-    text-align: left;
-    font-family: "Nunito", sans-serif;
-    color: #002f34;
+    font-size: 25px;
+    text-align: center;
+  }
+  .main-offer-view-container .sub-offer-view-container .details-wrapper .details-container .price-container {
+    font-size: 25px;
+    text-align: center;
   }
   .main-offer-view-container .sub-offer-view-container .details-wrapper .details-container p.description {
-    word-wrap: break-word;
-    justify-self: flex-end;
+    font-size: 20px;
+    text-align: justify;
   }
   .main-offer-view-container .sub-offer-view-container .details-wrapper .author-data-container {
     display: flex;
@@ -955,13 +955,13 @@ ul {
   }
   .slider .slide-container .right-arrow,
   .slider .slide-container .left-arrow {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-left: 0px;
     margin-right: 0px;
   }
   .slider .slide-container .image {
     max-height: 230px;
-    max-width: 312px;
+    max-width: 300px;
   }
   .slider .slide-container .slide.active {
     height: 232px;
