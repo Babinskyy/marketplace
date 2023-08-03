@@ -1,0 +1,33 @@
+@import '../utilities/_variables';
+@import '../utilities/_mixins';
+
+@import '../components/_Home';
+@import '../components/_OfferView';
+
+@import '../components/_Header';
+@import '../components/_Searchbar';
+@import '../components/_Categories';
+@import '../components/_Offers';
+@import '../components/_Footer';
+@import '../components/_AddOffer';
+@import '../components/_OfferDetails';
+@import '../components/_Carousel';
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+*,
+*:after,
+*::before{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+h1{
+  font-weight: 700;
+  font-size: 35px;
+  font-family: 'Roboto', sans-serif;
+  color: $secondary-color;
+  text-align: center;
+}
+

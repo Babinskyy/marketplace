@@ -1,4 +1,4 @@
-import "../../../common/assets/styles/scss/App.scss";
+import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";

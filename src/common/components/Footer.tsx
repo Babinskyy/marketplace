@@ -1,4 +1,4 @@
-import "../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/main/App.scss";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";

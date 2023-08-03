@@ -1,5 +1,5 @@
 import { Route, Routes, useRoutes } from "react-router-dom";
-import "./common/assets/styles/scss/App.scss";
+import "./common/assets/styles/scss/main/App.scss";
 import Home from "./modules/homePage/views/Home";
 import OfferView from "./modules/offers/views/OfferView";
 import { useState } from "react";

@@ -1,4 +1,4 @@
-import "../../../common/assets/styles/scss/App.scss";
+import "../../../common/assets/styles/scss/main/App.scss";
 import Header from "../../../common/components/Header";
 import Searchbar from "../../../common/components/Searchbar";
 import Categories from "./../components/Categories";

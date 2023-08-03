@@ -1,4 +1,4 @@
-import "../../../common/assets/styles/scss/App.scss";
+import "../../../common/assets/styles/scss/main/App.scss";
 import { categoriesList } from "../../../common/mockData/categoriesList";
 
 type CategoriesProps = {

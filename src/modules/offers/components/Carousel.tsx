@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../../common/assets/styles/scss/App.scss";
+import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // import { SliderData } from "../mockData/sliderData";

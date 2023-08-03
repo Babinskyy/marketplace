@@ -1,4 +1,4 @@
-import "../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/main/App.scss";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import { offersList } from "../mockData/offersList";
 import { useNavigate } from "react-router-dom";

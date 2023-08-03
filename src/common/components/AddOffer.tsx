@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
-import "../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/main/App.scss";
 import React, { useState, useEffect, FormEvent } from "react";
 import { categoriesList } from "../../common/mockData/categoriesList";
 import { offersList } from "../../common/mockData/offersList";

@@ -1,5 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
-import "../../common/assets/styles/scss/App.scss";
+import "../../common/assets/styles/scss/main/App.scss";
 import { TextField } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState, useEffect } from "react";
