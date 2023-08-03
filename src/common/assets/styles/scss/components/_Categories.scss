@@ -40,3 +40,28 @@
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .main-categories-container {
+    .sub-categories-container {
+      .category-wrapper {
+        .category {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 360px) {
+  .main-categories-container {
+    .sub-categories-container {
+      .category-wrapper {
+        .category {
+          width: 72px;
+          height: 72px;
+        }
+      }
+    }
+  }
+}
