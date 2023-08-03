@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(89, 19, 214);
+  background-color: rgba(161, 174, 228);
 }
 
 .bgc-2 {
-  background-color: rgba(57, 18, 33);
+  background-color: rgba(166, 210, 35);
 }
 
 .bgc-3 {
-  background-color: rgba(14, 180, 72);
+  background-color: rgba(160, 37, 226);
 }
 
 .bgc-4 {
-  background-color: rgba(36, 163, 58);
+  background-color: rgba(27, 113, 125);
 }
 
 .bgc-5 {
-  background-color: rgba(140, 151, 236);
+  background-color: rgba(119, 130, 34);
 }
 
 .bgc-6 {
-  background-color: rgba(240, 203, 70);
+  background-color: rgba(54, 7, 206);
 }
 
 .bgc-7 {
-  background-color: rgba(120, 221, 142);
+  background-color: rgba(117, 67, 236);
 }
 
 .bgc-8 {
-  background-color: rgba(45, 31, 73);
+  background-color: rgba(92, 231, 129);
 }
 
 .bgc-9 {
-  background-color: rgba(226, 25, 194);
+  background-color: rgba(47, 79, 169);
 }
 
 .bgc-10 {
-  background-color: rgba(13, 47, 41);
+  background-color: rgba(151, 237, 4);
 }
 
 .bgc-11 {
-  background-color: rgba(84, 169, 4);
+  background-color: rgba(37, 248, 199);
 }
 
 .bgc-12 {
-  background-color: rgba(181, 131, 122);
+  background-color: rgba(58, 29, 1);
 }
 
 .bgc-13 {
-  background-color: rgba(113, 10, 14);
+  background-color: rgba(138, 100, 223);
 }
 
 .bgc-14 {
-  background-color: rgba(169, 110, 195);
+  background-color: rgba(161, 12, 192);
 }
 
 .bgc-15 {
-  background-color: rgba(65, 215, 100);
+  background-color: rgba(87, 33, 88);
 }
 
 .bgc-16 {
-  background-color: rgba(159, 102, 44);
+  background-color: rgba(101, 192, 134);
 }
 
 .bgc-17 {
-  background-color: rgba(245, 122, 210);
+  background-color: rgba(179, 242, 19);
 }
 
 .bgc-18 {
-  background-color: rgba(39, 209, 249);
+  background-color: rgba(5, 228, 171);
 }
 
 .bgc-19 {
-  background-color: rgba(228, 145, 92);
+  background-color: rgba(206, 161, 60);
 }
 
 nav.main-header {
@@ -682,6 +682,7 @@ ul {
   .modal-box .offer-modal-form .details-holder .css-7mosfj .css-1qmqn4r,
   .modal-box .offer-modal-form .details-holder .css-7mosfj #placeholder ~ div {
     inline-size: 100px;
+    overflow: hidden;
   }
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-ola9b9-MuiFormControl-root,
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
