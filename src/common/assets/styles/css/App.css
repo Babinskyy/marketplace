@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(133, 111, 141);
+  background-color: rgba(226, 108, 72);
 }
 
 .bgc-2 {
-  background-color: rgba(100, 59, 114);
+  background-color: rgba(140, 52, 105);
 }
 
 .bgc-3 {
-  background-color: rgba(100, 56, 236);
+  background-color: rgba(121, 123, 90);
 }
 
 .bgc-4 {
-  background-color: rgba(164, 51, 7);
+  background-color: rgba(117, 216, 34);
 }
 
 .bgc-5 {
-  background-color: rgba(122, 231, 238);
+  background-color: rgba(197, 102, 92);
 }
 
 .bgc-6 {
-  background-color: rgba(186, 152, 192);
+  background-color: rgba(149, 155, 187);
 }
 
 .bgc-7 {
-  background-color: rgba(180, 192, 245);
+  background-color: rgba(171, 57, 123);
 }
 
 .bgc-8 {
-  background-color: rgba(199, 42, 15);
+  background-color: rgba(81, 12, 217);
 }
 
 .bgc-9 {
-  background-color: rgba(199, 252, 237);
+  background-color: rgba(7, 153, 143);
 }
 
 .bgc-10 {
-  background-color: rgba(91, 36, 101);
+  background-color: rgba(71, 145, 117);
 }
 
 .bgc-11 {
-  background-color: rgba(211, 127, 225);
+  background-color: rgba(111, 132, 150);
 }
 
 .bgc-12 {
-  background-color: rgba(237, 118, 78);
+  background-color: rgba(52, 128, 10);
 }
 
 .bgc-13 {
-  background-color: rgba(81, 138, 201);
+  background-color: rgba(140, 232, 224);
 }
 
 .bgc-14 {
-  background-color: rgba(151, 175, 187);
+  background-color: rgba(103, 42, 209);
 }
 
 .bgc-15 {
-  background-color: rgba(38, 206, 206);
+  background-color: rgba(66, 49, 122);
 }
 
 .bgc-16 {
-  background-color: rgba(2, 17, 197);
+  background-color: rgba(58, 54, 49);
 }
 
 .bgc-17 {
-  background-color: rgba(89, 90, 35);
+  background-color: rgba(253, 172, 22);
 }
 
 .bgc-18 {
-  background-color: rgba(151, 114, 201);
+  background-color: rgba(181, 55, 45);
 }
 
 .bgc-19 {
-  background-color: rgba(172, 52, 150);
+  background-color: rgba(39, 47, 70);
 }
 
 nav.main-header {
@@ -668,7 +668,9 @@ ul {
     margin-right: 10px;
     transform: translate(0, 4px);
   }
-  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder, .modal-box .offer-modal-form .details-holder .css-7mosfj .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder {
+  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder,
+  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root .css-1qmqn4r::-webkit-input-placeholder, .modal-box .offer-modal-form .details-holder .css-7mosfj .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder,
+  .modal-box .offer-modal-form .details-holder .css-7mosfj .css-1qmqn4r::-webkit-input-placeholder {
     inline-size: 90px;
   }
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-ola9b9-MuiFormControl-root,
