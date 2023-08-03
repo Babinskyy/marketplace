@@ -19,7 +19,7 @@
         width: 90px;
         height: 90px;
         border-radius: 50%;
-        transition: 0.3s;
+        transition: 0.2s;
         &:hover {
           transform: scale(1.1);
         }
@@ -30,6 +30,7 @@
       }
       .selected {
         transform: scale(1.1);
+        box-shadow: $primary-color 0px 0px 20px;
       }
       span {
         font-size: 15px;

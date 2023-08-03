@@ -19,16 +19,16 @@ import { Offer, Errors } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
 
 const boxStyle = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  borderRadius: "15px",
-  boxShadow: 24,
-  p: 2,
+  // position: "absolute" as "absolute",
+  // top: "50%",
+  // left: "50%",
+  // transform: "translate(-50%, -50%)",
+  // width: 800,
+  // bgcolor: "background.paper",
+  // border: "1px solid #000",
+  // borderRadius: "15px",
+  // boxShadow: 24,
+  // p: 2,
 };
 
 type AddOfferProps = {
@@ -76,13 +76,13 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   const navigate = useNavigate();
   const handleClose = () => {
     setErrors({
-    title: undefined,
-    price: undefined,
-    author: undefined,
-    country: undefined,
-    phone: undefined,
-    category: undefined,
-    })
+      title: undefined,
+      price: undefined,
+      author: undefined,
+      country: undefined,
+      phone: undefined,
+      category: undefined,
+    });
     setErrorMessages({
       title: "",
       category: "",
@@ -90,8 +90,8 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       country: "",
       author: "",
       phone: "",
-    })
-    props.setOpenOfferModal(false)
+    });
+    props.setOpenOfferModal(false);
   };
 
   useEffect(() => {
@@ -177,7 +177,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     currentOfferList?.unshift({
       ...formData,
       id: currentOfferList.length + 1,
-      date: (dd + "-" + mm + "-" + yyyy),
+      date: dd + "-" + mm + "-" + yyyy,
     });
     props.setOpenOfferModal(false);
     navigate("/");
@@ -219,12 +219,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className="modal-box"
       >
-        <Box sx={boxStyle}>
+        <Box sx={boxStyle} className="modal-box">
           <h2>Add your offer</h2>
           <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
+              id="title"
               error={errors.title ? true : false}
               name="title"
               label="Title"
@@ -341,7 +341,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 <TextField
                   error={errors.phone ? true : false}
                   name="phone"
-                  label="Phone number"
+                  label="Phone"
                   defaultValue=""
                   sx={{ width: "310px" }}
                   id="data-textfield"

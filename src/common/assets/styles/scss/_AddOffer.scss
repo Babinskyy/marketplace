@@ -1,76 +1,134 @@
-
-h2 {
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 16px;
-}
-.modal-box{
-  border-radius: 10px
-}
-
-.offer-modal-form {
-  @include flexbox(column, center, center);
-  .error-message {
-    margin: 10px 0;
-    color: #d32f2f;
-    font-size: 15px;
-  }
-  .mg {
-    margin-bottom: 0;
-  }
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 15px;
+  box-shadow: $box-shadow;
+  padding: 20px;
   h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 16px;
   }
-  .add-images-h3{
-    margin: 0;
-  }
-  .add-images-container {
-    @include flexbox(row, center, center);
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-    .add {
+  .offer-modal-form {
+    @include flexbox(column, center, center);
+    .error-message {
+      margin: 10px 0;
+      color: #d32f2f;
+      font-size: 15px;
+    }
+    .mg {
+      margin-bottom: 0;
+    }
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .add-images-h3 {
+      margin: 0;
+    }
+    .add-images-container {
       @include flexbox(row, center, center);
-      width: 154px;
-      height: 154px;
-      background-color: #f2f4f5;
-      margin: 10px;
-      box-shadow: $box-shadow;
-      transition: 0.2s;
-      cursor: pointer;
-      &:hover {
-        transform: scale(1.02);
-        background-color: #ececec;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      .add {
+        @include flexbox(row, center, center);
+        width: 154px;
+        height: 154px;
+        background-color: #f2f4f5;
+        margin: 10px;
+        box-shadow: $box-shadow;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.02);
+          background-color: #ececec;
+        }
       }
+    }
+    .details-holder {
+      @include flexbox(row, space-between, center);
+      width: 650px;
+
+      Textarea {
+        border-radius: 5px;
+        padding: 10px;
+        --Textarea-paddingBlock: 0 !important;
+        --Textarea-paddingInline: 0 !important;
+        width: 300px;
+        height: 200px;
+
+        &:focus-within {
+          outline: none;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+  
+    }
+    .submit-button {
+      margin-top: 10px;
     }
   }
-  .details-holder {
-    @include flexbox(row, space-between, center);
-    width: 650px;
+}
 
-    Textarea {
-      border-radius: 5px;
-      padding: 10px;
-      --Textarea-paddingBlock: 0 !important;
-      --Textarea-paddingInline: 0 !important;
-      width: 300px;
-      height: 200px;
+@media screen and (max-width: 576px) {
+  .modal-box {
+    width: 300px;
+    padding: 10px;
+    .error-message{
+      display: none;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .offer-modal-form {
 
-      &:focus-within {
-        outline: none;
+      .css-1nesouq-MuiFormControl-root-MuiTextField-root,
+      .css-s7chh5-MuiFormControl-root,
+      .css-1ofdigz-MuiFormControl-root-MuiTextField-root {
+        width: 90%;
       }
-      &:focus {
-        outline: none;
+      .add-images-h3{
+        margin-top: 10px;
+      }
+      .add-images-container {
+        .add {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .details-holder {
+        width: 250px;
+        // border: 1px solid black;
+        // @include flexbox(row, center, center);
+        // padding: 5px;
+        .css-bryhrq-JoyTextarea-root {
+          width: 350px;
+          padding: 2px;
+          margin-right: 10px;
+          transform: translate(0, 4px);
+          .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder{
+            inline-size: 90px;
+        
+            
+          }
+        }
+        .author-data-holder {
+          .css-ola9b9-MuiFormControl-root,
+          .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
+          .css-1ed0zk4-MuiFormControl-root-MuiTextField-root {
+            width: 118px;
+          }
+        }
+      
       }
     }
-    .author-data-holder {
-      // @include flexbox(column, center, center);
-      // height: 240px;
-      // transform: translate(0, -5px);
-      // border: 1px solid black;
-    }
-  }
-  .submit-button{
-    margin-top: 10px;
   }
 }
