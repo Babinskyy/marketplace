@@ -107,6 +107,9 @@
         }
       }
       .details-holder {
+        Textarea{
+          width: 120px;
+        }
         width: 250px;
         // border: 1px solid black;
         // @include flexbox(row, center, center);
