@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(138, 50, 70);
+  background-color: rgba(133, 111, 141);
 }
 
 .bgc-2 {
-  background-color: rgba(188, 55, 209);
+  background-color: rgba(100, 59, 114);
 }
 
 .bgc-3 {
-  background-color: rgba(11, 245, 221);
+  background-color: rgba(100, 56, 236);
 }
 
 .bgc-4 {
-  background-color: rgba(235, 179, 216);
+  background-color: rgba(164, 51, 7);
 }
 
 .bgc-5 {
-  background-color: rgba(194, 64, 205);
+  background-color: rgba(122, 231, 238);
 }
 
 .bgc-6 {
-  background-color: rgba(3, 142, 129);
+  background-color: rgba(186, 152, 192);
 }
 
 .bgc-7 {
-  background-color: rgba(137, 160, 147);
+  background-color: rgba(180, 192, 245);
 }
 
 .bgc-8 {
-  background-color: rgba(70, 89, 47);
+  background-color: rgba(199, 42, 15);
 }
 
 .bgc-9 {
-  background-color: rgba(58, 249, 195);
+  background-color: rgba(199, 252, 237);
 }
 
 .bgc-10 {
-  background-color: rgba(65, 190, 205);
+  background-color: rgba(91, 36, 101);
 }
 
 .bgc-11 {
-  background-color: rgba(79, 245, 21);
+  background-color: rgba(211, 127, 225);
 }
 
 .bgc-12 {
-  background-color: rgba(97, 135, 82);
+  background-color: rgba(237, 118, 78);
 }
 
 .bgc-13 {
-  background-color: rgba(25, 255, 217);
+  background-color: rgba(81, 138, 201);
 }
 
 .bgc-14 {
-  background-color: rgba(179, 93, 197);
+  background-color: rgba(151, 175, 187);
 }
 
 .bgc-15 {
-  background-color: rgba(141, 67, 2);
+  background-color: rgba(38, 206, 206);
 }
 
 .bgc-16 {
-  background-color: rgba(174, 127, 50);
+  background-color: rgba(2, 17, 197);
 }
 
 .bgc-17 {
-  background-color: rgba(33, 23, 80);
+  background-color: rgba(89, 90, 35);
 }
 
 .bgc-18 {
-  background-color: rgba(180, 189, 68);
+  background-color: rgba(151, 114, 201);
 }
 
 .bgc-19 {
-  background-color: rgba(92, 231, 148);
+  background-color: rgba(172, 52, 150);
 }
 
 nav.main-header {
@@ -646,7 +646,10 @@ ul {
   }
   .modal-box .offer-modal-form .css-1nesouq-MuiFormControl-root-MuiTextField-root,
   .modal-box .offer-modal-form .css-s7chh5-MuiFormControl-root,
-  .modal-box .offer-modal-form .css-1ofdigz-MuiFormControl-root-MuiTextField-root {
+  .modal-box .offer-modal-form .css-1ofdigz-MuiFormControl-root-MuiTextField-root,
+  .modal-box .offer-modal-form .css-13c8g2j,
+  .modal-box .offer-modal-form .css-s780dy,
+  .modal-box .offer-modal-form .css-l20ofb {
     width: 90%;
   }
   .modal-box .offer-modal-form .add-images-h3 {
@@ -659,18 +662,20 @@ ul {
   .modal-box .offer-modal-form .details-holder {
     width: 250px;
   }
-  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root {
+  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root, .modal-box .offer-modal-form .details-holder .css-7mosfj {
     width: 350px;
     padding: 2px;
     margin-right: 10px;
     transform: translate(0, 4px);
   }
-  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder {
+  .modal-box .offer-modal-form .details-holder .css-bryhrq-JoyTextarea-root .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder, .modal-box .offer-modal-form .details-holder .css-7mosfj .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder {
     inline-size: 90px;
   }
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-ola9b9-MuiFormControl-root,
   .modal-box .offer-modal-form .details-holder .author-data-holder .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
-  .modal-box .offer-modal-form .details-holder .author-data-holder .css-1ed0zk4-MuiFormControl-root-MuiTextField-root {
+  .modal-box .offer-modal-form .details-holder .author-data-holder .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
+  .modal-box .offer-modal-form .details-holder .author-data-holder .css-9zrq44,
+  .modal-box .offer-modal-form .details-holder .author-data-holder .css-76kop8 {
     width: 118px;
   }
 }
