@@ -18,7 +18,7 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
       />
-      <Searchbar />
+      {/* <Searchbar /> */}
       <OfferDetails />
       <Footer />
     </div>

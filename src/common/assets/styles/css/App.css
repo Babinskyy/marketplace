@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(99, 172, 168);
+  background-color: rgba(164, 178, 117);
 }
 
 .bgc-2 {
-  background-color: rgba(191, 228, 59);
+  background-color: rgba(137, 248, 64);
 }
 
 .bgc-3 {
-  background-color: rgba(135, 155, 7);
+  background-color: rgba(54, 206, 111);
 }
 
 .bgc-4 {
-  background-color: rgba(192, 120, 92);
+  background-color: rgba(122, 41, 55);
 }
 
 .bgc-5 {
-  background-color: rgba(118, 45, 216);
+  background-color: rgba(90, 139, 204);
 }
 
 .bgc-6 {
-  background-color: rgba(226, 84, 190);
+  background-color: rgba(142, 169, 73);
 }
 
 .bgc-7 {
-  background-color: rgba(202, 133, 115);
+  background-color: rgba(65, 51, 113);
 }
 
 .bgc-8 {
-  background-color: rgba(2, 113, 246);
+  background-color: rgba(157, 157, 64);
 }
 
 .bgc-9 {
-  background-color: rgba(155, 245, 199);
+  background-color: rgba(176, 104, 192);
 }
 
 .bgc-10 {
-  background-color: rgba(232, 74, 232);
+  background-color: rgba(43, 243, 170);
 }
 
 .bgc-11 {
-  background-color: rgba(193, 109, 155);
+  background-color: rgba(202, 111, 68);
 }
 
 .bgc-12 {
-  background-color: rgba(187, 210, 173);
+  background-color: rgba(172, 50, 212);
 }
 
 .bgc-13 {
-  background-color: rgba(200, 114, 123);
+  background-color: rgba(55, 70, 38);
 }
 
 .bgc-14 {
-  background-color: rgba(76, 122, 138);
+  background-color: rgba(93, 20, 228);
 }
 
 .bgc-15 {
-  background-color: rgba(222, 139, 49);
+  background-color: rgba(144, 91, 254);
 }
 
 .bgc-16 {
-  background-color: rgba(96, 165, 27);
+  background-color: rgba(37, 175, 16);
 }
 
 .bgc-17 {
-  background-color: rgba(137, 216, 160);
+  background-color: rgba(251, 34, 189);
 }
 
 .bgc-18 {
-  background-color: rgba(206, 21, 134);
+  background-color: rgba(208, 42, 52);
 }
 
 .bgc-19 {
-  background-color: rgba(242, 137, 214);
+  background-color: rgba(7, 100, 125);
 }
 
 nav.main-header {
@@ -716,6 +716,7 @@ ul {
   -webkit-appearance: none;
 }
 .main-offer-view-container .sub-offer-view-container h1.title1 {
+  margin-top: 0;
   margin-bottom: 55px;
 }
 .main-offer-view-container .sub-offer-view-container .price-container {
@@ -809,7 +810,6 @@ ul {
   }
   .main-offer-view-container .sub-offer-view-container h1.title1 {
     font-size: 30px;
-    margin-top: 0;
     margin-bottom: 0px;
   }
   .main-offer-view-container .sub-offer-view-container .details-wrapper {
@@ -950,7 +950,7 @@ ul {
     width: 100%;
   }
   .slider .slide-container {
-    height: 300px;
+    height: 280px;
     width: 100%;
   }
   .slider .slide-container .right-arrow,
