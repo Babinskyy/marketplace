@@ -119,7 +119,8 @@
           .css-sws92j-JoyTextarea-textarea::-webkit-input-placeholder,
           .css-1qmqn4r::-webkit-input-placeholder,
           .css-1qmqn4r::-webkit-input-placeholder,
-          #placeholder {
+          .css-1qmqn4r,
+          #placeholder ~ div {
             inline-size: 90px;
           }
         }
@@ -127,7 +128,6 @@
           .css-ola9b9-MuiFormControl-root,
           .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
           .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
-          .css-1qmqn4r,
           .css-9zrq44,
           .css-76kop8 {
             // @include flexbox(initial, space-between);
