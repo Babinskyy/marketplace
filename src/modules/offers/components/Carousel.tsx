@@ -8,17 +8,6 @@ import { Box, Modal, Typography } from "@mui/material";
 type CarouselProps = {
   images: string[];
 };
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  // width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const Carousel = (props: CarouselProps): JSX.Element => {
   const [current, setCurrent] = useState<number>(0);
@@ -88,7 +77,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box className="zoom-img-box">
             <img src={props.images[current]} alt="" />
           </Box>
         </Modal>

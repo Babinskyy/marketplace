@@ -83,4 +83,18 @@
       }
     }
   }
+  .zoom-img-box{
+    position: absolute;
+    top: 50%;
+    // left: 50%;
+    transform: translate(0%, -100px);
+    max-width: 100% ;
+    background-color: #fff;
+    height: 0;
+    // border: 2px solid #000;
+    // padding: 10px;
+    img{
+      max-width: 100%;
+    }
+  }
 }

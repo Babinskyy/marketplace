@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(161, 174, 228);
+  background-color: rgba(99, 172, 168);
 }
 
 .bgc-2 {
-  background-color: rgba(166, 210, 35);
+  background-color: rgba(191, 228, 59);
 }
 
 .bgc-3 {
-  background-color: rgba(160, 37, 226);
+  background-color: rgba(135, 155, 7);
 }
 
 .bgc-4 {
-  background-color: rgba(27, 113, 125);
+  background-color: rgba(192, 120, 92);
 }
 
 .bgc-5 {
-  background-color: rgba(119, 130, 34);
+  background-color: rgba(118, 45, 216);
 }
 
 .bgc-6 {
-  background-color: rgba(54, 7, 206);
+  background-color: rgba(226, 84, 190);
 }
 
 .bgc-7 {
-  background-color: rgba(117, 67, 236);
+  background-color: rgba(202, 133, 115);
 }
 
 .bgc-8 {
-  background-color: rgba(92, 231, 129);
+  background-color: rgba(2, 113, 246);
 }
 
 .bgc-9 {
-  background-color: rgba(47, 79, 169);
+  background-color: rgba(155, 245, 199);
 }
 
 .bgc-10 {
-  background-color: rgba(151, 237, 4);
+  background-color: rgba(232, 74, 232);
 }
 
 .bgc-11 {
-  background-color: rgba(37, 248, 199);
+  background-color: rgba(193, 109, 155);
 }
 
 .bgc-12 {
-  background-color: rgba(58, 29, 1);
+  background-color: rgba(187, 210, 173);
 }
 
 .bgc-13 {
-  background-color: rgba(138, 100, 223);
+  background-color: rgba(200, 114, 123);
 }
 
 .bgc-14 {
-  background-color: rgba(161, 12, 192);
+  background-color: rgba(76, 122, 138);
 }
 
 .bgc-15 {
-  background-color: rgba(87, 33, 88);
+  background-color: rgba(222, 139, 49);
 }
 
 .bgc-16 {
-  background-color: rgba(101, 192, 134);
+  background-color: rgba(96, 165, 27);
 }
 
 .bgc-17 {
-  background-color: rgba(179, 242, 19);
+  background-color: rgba(137, 216, 160);
 }
 
 .bgc-18 {
-  background-color: rgba(5, 228, 171);
+  background-color: rgba(206, 21, 134);
 }
 
 .bgc-19 {
-  background-color: rgba(206, 161, 60);
+  background-color: rgba(242, 137, 214);
 }
 
 nav.main-header {
@@ -976,6 +976,17 @@ ul {
   .images-preview-container .images-preview-slide img {
     height: 60px;
     margin-right: 10px;
+  }
+  .zoom-img-box {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -100px);
+    max-width: 100%;
+    background-color: #fff;
+    height: 0;
+  }
+  .zoom-img-box img {
+    max-width: 100%;
   }
 }
 * {
