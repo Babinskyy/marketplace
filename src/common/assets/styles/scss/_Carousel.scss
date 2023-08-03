@@ -53,12 +53,10 @@
 
 @media screen and (max-width: 843px) {
   .slider {
-    border: 1px solid black;
     min-height: 0px;
     width: 100%;
     .slide-container {
       height: 300px;
-      border: 1px solid red;
       width: 100%;
       .right-arrow,
       .left-arrow {

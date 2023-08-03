@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(249, 55, 162);
+  background-color: rgba(138, 50, 70);
 }
 
 .bgc-2 {
-  background-color: rgba(130, 89, 29);
+  background-color: rgba(188, 55, 209);
 }
 
 .bgc-3 {
-  background-color: rgba(183, 162, 211);
+  background-color: rgba(11, 245, 221);
 }
 
 .bgc-4 {
-  background-color: rgba(58, 87, 4);
+  background-color: rgba(235, 179, 216);
 }
 
 .bgc-5 {
-  background-color: rgba(209, 245, 198);
+  background-color: rgba(194, 64, 205);
 }
 
 .bgc-6 {
-  background-color: rgba(64, 111, 237);
+  background-color: rgba(3, 142, 129);
 }
 
 .bgc-7 {
-  background-color: rgba(83, 96, 127);
+  background-color: rgba(137, 160, 147);
 }
 
 .bgc-8 {
-  background-color: rgba(20, 128, 249);
+  background-color: rgba(70, 89, 47);
 }
 
 .bgc-9 {
-  background-color: rgba(32, 210, 42);
+  background-color: rgba(58, 249, 195);
 }
 
 .bgc-10 {
-  background-color: rgba(115, 211, 32);
+  background-color: rgba(65, 190, 205);
 }
 
 .bgc-11 {
-  background-color: rgba(106, 87, 165);
+  background-color: rgba(79, 245, 21);
 }
 
 .bgc-12 {
-  background-color: rgba(199, 207, 201);
+  background-color: rgba(97, 135, 82);
 }
 
 .bgc-13 {
-  background-color: rgba(114, 151, 216);
+  background-color: rgba(25, 255, 217);
 }
 
 .bgc-14 {
-  background-color: rgba(229, 56, 210);
+  background-color: rgba(179, 93, 197);
 }
 
 .bgc-15 {
-  background-color: rgba(233, 78, 194);
+  background-color: rgba(141, 67, 2);
 }
 
 .bgc-16 {
-  background-color: rgba(235, 93, 244);
+  background-color: rgba(174, 127, 50);
 }
 
 .bgc-17 {
-  background-color: rgba(65, 164, 19);
+  background-color: rgba(33, 23, 80);
 }
 
 .bgc-18 {
-  background-color: rgba(194, 228, 194);
+  background-color: rgba(180, 189, 68);
 }
 
 .bgc-19 {
-  background-color: rgba(126, 85, 128);
+  background-color: rgba(92, 231, 148);
 }
 
 nav.main-header {
@@ -927,13 +927,11 @@ ul {
 
 @media screen and (max-width: 843px) {
   .slider {
-    border: 1px solid black;
     min-height: 0px;
     width: 100%;
   }
   .slider .slide-container {
     height: 300px;
-    border: 1px solid red;
     width: 100%;
   }
   .slider .slide-container .right-arrow,
