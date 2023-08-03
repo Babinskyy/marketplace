@@ -38,21 +38,21 @@ const Header = (props: HeaderProps): JSX.Element => {
           </Link>
         </div>
 
-        <ul className="navigation">
+        {/* <ul className="navigation">
           <li className="icon favorite">
             <FavoriteBorderIcon />
             <span>Favorite</span>
-          </li>
+          </li> */}
           {/* <li className="icon search">
             <SearchIcon />
             <span>Search</span>
           </li> */}
-          <li className="icon account">
+          {/* <li className="icon account">
             <PersonOutlineOutlinedIcon />
             <span>Account</span>
           </li>
-        </ul>
-        <div>
+        </ul> */}
+        {/* <div>
           <Button
             id="fade-button"
             aria-controls={open ? "fade-menu" : undefined}
@@ -83,9 +83,8 @@ const Header = (props: HeaderProps): JSX.Element => {
           >
             <MenuItem onClick={handleClose}>Account</MenuItem>
             <MenuItem onClick={handleClose}>Favorite</MenuItem>
-            {/* <MenuItem onClick={handleClose}>Search</MenuItem> */}
           </Menu>
-        </div>
+        </div> */}
 
         <Button
           variant="contained"
