@@ -3,7 +3,8 @@ import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // import { SliderData } from "../mockData/sliderData";
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Modal} from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 
 type CarouselProps = {
   images: string[];
@@ -78,7 +79,8 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           aria-describedby="modal-modal-description"
         >
           <Box className="zoom-img-box">
-            <img src={props.images[current]} alt="" />
+            <img src={props.images[current]} alt="" ></img>
+            
           </Box>
         </Modal>
       </div>

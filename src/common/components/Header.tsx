@@ -13,20 +13,25 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import MenuIcon from "@mui/icons-material/Menu";
 
+import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
+import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
+
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isNightMode?: boolean;
+  setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const btnMenuRef = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState<boolean>(false);
+  // const btnMenuRef = useRef<HTMLButtonElement>(null);
+  // const [open, setOpen] = useState<boolean>(false);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <nav className="main-header">
@@ -43,11 +48,11 @@ const Header = (props: HeaderProps): JSX.Element => {
             <FavoriteBorderIcon />
             <span>Favorite</span>
           </li> */}
-          {/* <li className="icon search">
+        {/* <li className="icon search">
             <SearchIcon />
             <span>Search</span>
           </li> */}
-          {/* <li className="icon account">
+        {/* <li className="icon account">
             <PersonOutlineOutlinedIcon />
             <span>Account</span>
           </li>
@@ -85,6 +90,23 @@ const Header = (props: HeaderProps): JSX.Element => {
             <MenuItem onClick={handleClose}>Favorite</MenuItem>
           </Menu>
         </div> */}
+        {/* {props.isNightMode ? (
+          <NightlightRoundIcon
+            sx={{ fontSize: "35px", cursor:"pointer" }}
+            onClick={() => {
+              if (props.setIsNightMode) {
+                props.setIsNightMode(!props.isNightMode);
+              }
+            }}
+          />
+        ) : (
+          <BrightnessHighIcon sx={{ fontSize: "35px", cursor:"pointer" }} 
+          onClick={() => {
+            if (props.setIsNightMode) {
+              props.setIsNightMode(!props.isNightMode);
+            }
+          }}/>
+        )} */}
 
         <Button
           variant="contained"

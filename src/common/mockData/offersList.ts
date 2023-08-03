@@ -4,9 +4,10 @@ export const offersList: Offer[] = [
   {
     id: 1,
     images: [
-      "https://i.postimg.cc/G3sw-ckqd/image3.jpg",
+      
       "https://i.postimg.cc/Qdzrq0M9/image4.jpg",
       "https://i.postimg.cc/T1bZC6pp/image1.jpg",
+      "https://i.postimg.cc/G3sw-ckqd/image3.jpg",
       "https://i.postimg.cc/yY4qWkb9/image2.jpg",
     ],
     title: "Red Giant Bike",

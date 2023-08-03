@@ -13,14 +13,17 @@ const Categories = (props: CategoriesProps): JSX.Element => {
   }
 
   return (
-    <div className="main-categories-container">
+    <div className={`main-categories-container`} >
       <h1>Categories</h1>
       <div className="sub-categories-container">
         {bgcArray.map((e, i) => {
           return (
             <div className="category-wrapper" key={i}>
               <div
-                className={`category ${e} ${categoriesList[i].name === props.categoryFilterValue && 'selected'}`}
+                className={`category ${e} ${
+                  categoriesList[i].name === props.categoryFilterValue &&
+                  "selected"
+                }`}
                 onClick={() => {
                   props.setCategoryFilterValue(categoriesList[i].name);
                 }}

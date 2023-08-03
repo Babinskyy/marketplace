@@ -16,10 +16,11 @@ const Home = (props: HomeProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
   const [categoryFilterValue, setCategoryFilterValue] = useState<string>("");
+  const [isNightMode, setIsNightMode] = useState<boolean>(false);
 
   return (
     <div className="home">
-      <Header setOpenOfferModal={props.setOpenOfferModal} />
+      <Header setOpenOfferModal={props.setOpenOfferModal} isNightMode={isNightMode} setIsNightMode={setIsNightMode}/>
       <Searchbar
         inputValue={inputValue}
         setInputValue={setInputValue}

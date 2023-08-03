@@ -52,6 +52,21 @@
     }
   }
 }
+.zoom-img-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: transparent;
+  min-width: 80%;
+  // min-height: 80%;
+  @include flexbox(row, center, center);
+  img{
+    max-width: 100%;
+  }
+
+}
 
 @media screen and (max-width: 843px) {
   .slider {
@@ -87,15 +102,14 @@
     }
   }
   .zoom-img-box{
-    position: absolute;
-    top: 50%;
-    // left: 50%;
+    left: initial;
     transform: translate(0%, -100px);
-    max-width: 100% ;
-    background-color: #fff;
+    max-width: 100%;
+    width: initial;
     height: 0;
-    // border: 2px solid #000;
-    // padding: 10px;
+    min-width: initial;
+    min-height: initial;
+    display: initial;
     img{
       max-width: 100%;
     }
