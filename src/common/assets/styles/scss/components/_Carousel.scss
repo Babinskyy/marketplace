@@ -62,7 +62,7 @@
   min-width: 80%;
   // min-height: 80%;
   outline: none;
-  border: none;
+  // border: none;
   @include flexbox(row, center, center);
   img{
     max-width: 100%;

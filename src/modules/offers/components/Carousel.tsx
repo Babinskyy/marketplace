@@ -78,7 +78,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className="zoom-img-box">
+          <Box className="zoom-img-box" onClick={handleClose}>
             <img src={props.images[current]} alt="" ></img>
             
           </Box>
