@@ -8,6 +8,7 @@
     border: none;
     background-color: #fff;
     margin: 0px 40px;
+    border-radius: 15px;
 
     &:hover,
     &:focus {
@@ -84,7 +85,10 @@
 
   @media screen and (max-width: 843px) {
     .sub-offer-view-container {
-      padding: 20px;
+      padding: 0px;
+      padding-top: 10px;
+      width: 100%;
+      margin: 0;
       h1.title1 {
         font-size: 30px;
         margin-top: 0;

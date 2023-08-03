@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(30, 68, 218);
+  background-color: rgba(249, 55, 162);
 }
 
 .bgc-2 {
-  background-color: rgba(40, 72, 205);
+  background-color: rgba(130, 89, 29);
 }
 
 .bgc-3 {
-  background-color: rgba(64, 94, 112);
+  background-color: rgba(183, 162, 211);
 }
 
 .bgc-4 {
-  background-color: rgba(219, 107, 102);
+  background-color: rgba(58, 87, 4);
 }
 
 .bgc-5 {
-  background-color: rgba(31, 209, 231);
+  background-color: rgba(209, 245, 198);
 }
 
 .bgc-6 {
-  background-color: rgba(24, 140, 121);
+  background-color: rgba(64, 111, 237);
 }
 
 .bgc-7 {
-  background-color: rgba(64, 242, 130);
+  background-color: rgba(83, 96, 127);
 }
 
 .bgc-8 {
-  background-color: rgba(41, 228, 203);
+  background-color: rgba(20, 128, 249);
 }
 
 .bgc-9 {
-  background-color: rgba(74, 105, 226);
+  background-color: rgba(32, 210, 42);
 }
 
 .bgc-10 {
-  background-color: rgba(126, 49, 125);
+  background-color: rgba(115, 211, 32);
 }
 
 .bgc-11 {
-  background-color: rgba(132, 84, 233);
+  background-color: rgba(106, 87, 165);
 }
 
 .bgc-12 {
-  background-color: rgba(57, 128, 218);
+  background-color: rgba(199, 207, 201);
 }
 
 .bgc-13 {
-  background-color: rgba(210, 253, 161);
+  background-color: rgba(114, 151, 216);
 }
 
 .bgc-14 {
-  background-color: rgba(201, 61, 89);
+  background-color: rgba(229, 56, 210);
 }
 
 .bgc-15 {
-  background-color: rgba(76, 104, 186);
+  background-color: rgba(233, 78, 194);
 }
 
 .bgc-16 {
-  background-color: rgba(78, 247, 120);
+  background-color: rgba(235, 93, 244);
 }
 
 .bgc-17 {
-  background-color: rgba(185, 33, 109);
+  background-color: rgba(65, 164, 19);
 }
 
 .bgc-18 {
-  background-color: rgba(34, 205, 154);
+  background-color: rgba(194, 228, 194);
 }
 
 .bgc-19 {
-  background-color: rgba(79, 32, 210);
+  background-color: rgba(126, 85, 128);
 }
 
 nav.main-header {
@@ -688,6 +688,7 @@ ul {
   border: none;
   background-color: #fff;
   margin: 0px 40px;
+  border-radius: 15px;
 }
 .main-offer-view-container .sub-offer-view-container:hover, .main-offer-view-container .sub-offer-view-container:focus {
   outline: none;
@@ -782,7 +783,10 @@ ul {
 }
 @media screen and (max-width: 843px) {
   .main-offer-view-container .sub-offer-view-container {
-    padding: 20px;
+    padding: 0px;
+    padding-top: 10px;
+    width: 100%;
+    margin: 0;
   }
   .main-offer-view-container .sub-offer-view-container h1.title1 {
     font-size: 30px;
@@ -901,7 +905,7 @@ ul {
 }
 
 .images-preview-container {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 .images-preview-container .images-preview-slide {
   display: flex;
@@ -923,10 +927,14 @@ ul {
 
 @media screen and (max-width: 843px) {
   .slider {
+    border: 1px solid black;
     min-height: 0px;
+    width: 100%;
   }
   .slider .slide-container {
     height: 300px;
+    border: 1px solid red;
+    width: 100%;
   }
   .slider .slide-container .right-arrow,
   .slider .slide-container .left-arrow {
@@ -936,7 +944,7 @@ ul {
   }
   .slider .slide-container .image {
     max-height: 230px;
-    max-width: 400px;
+    max-width: 312px;
   }
   .slider .slide-container .slide.active {
     height: 232px;
