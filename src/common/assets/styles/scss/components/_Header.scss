@@ -3,7 +3,7 @@ nav.main-header {
   background-color: $primary-color;
   color: white;
   padding: 0 50px;
-  box-shadow: $box-shadow;
+  // box-shadow: $box-shadow;
 
   ul.main-navigation {
     @include flexbox(row, space-between, center);

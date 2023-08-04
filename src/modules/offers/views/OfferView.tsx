@@ -2,7 +2,7 @@ import "../../../common/assets/styles/scss/main/App.scss";
 import AddOffer from "../../../common/components/AddOffer";
 import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
-import OfferDetails from "../components/Offer";
+import Offer from "../components/Offer";
 import Searchbar from "../../../common/components/Searchbar";
 
 type OfferViewProps = {
@@ -19,7 +19,7 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
       />
       {/* <Searchbar /> */}
-      <OfferDetails />
+      <Offer />
       <Footer />
     </div>
   );

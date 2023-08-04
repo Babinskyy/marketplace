@@ -1,5 +1,6 @@
 .main-offer-view-container {
   background-color: #f2f4f5;
+  margin-top: 35px;
   @include flexbox(row, center);
   .sub-offer-view-container {
     padding: 40px;
