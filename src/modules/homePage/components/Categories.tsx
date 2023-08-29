@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
-import { categoriesList } from "../../../common/mockData/categoriesList";
+import { Category } from "../../../common/types/Types";
 
 type CategoriesProps = {
   setCategoryFilterValue: React.Dispatch<React.SetStateAction<string>>;
@@ -7,30 +8,50 @@ type CategoriesProps = {
 };
 
 const Categories = (props: CategoriesProps): JSX.Element => {
+  const [categories, setCategories] = useState<Category[] | undefined>();
   let bgcArray: string[] = [];
-  for (let i = 1; i <= categoriesList.length; i++) {
-    bgcArray.push(`bgc-${i}`);
-  }
+  if (categories)
+    for (let i = 1; i <= categories.length; i++) {
+      bgcArray.push(`bgc-${i}`);
+    }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/categories");
+        const data = await response.json();
+        setCategories(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div className={`main-categories-container`} >
+    <div className={`main-categories-container`}>
       <h1>Categories</h1>
       <div className="sub-categories-container">
         {bgcArray.map((e, i) => {
           return (
             <div className="category-wrapper" key={i}>
-              <div
-                className={`category ${e} ${
-                  categoriesList[i].name === props.categoryFilterValue &&
-                  "selected"
-                }`}
-                onClick={() => {
-                  props.setCategoryFilterValue(categoriesList[i].name);
-                }}
-              >
-                <img src={categoriesList[i].url} alt="category-image" />
-              </div>
-              <span>{categoriesList[i].name}</span>
+              {categories && (
+                <div
+                  className={`category ${e} ${
+                    categories[i].name === props.categoryFilterValue &&
+                    "selected"
+                  }`}
+                  onClick={() => {
+                    props.setCategoryFilterValue(categories[i].name);
+                  }}
+                >
+                  {categories && (
+                    <img src={categories[i].url} alt="category-image" />
+                  )}
+                </div>
+              )}
+              {categories && <span>{categories[i].name}</span>}
             </div>
           );
         })}

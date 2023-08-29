@@ -1,9 +1,9 @@
 import "../../common/assets/styles/scss/main/App.scss";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import { offersList } from "../mockData/offersList";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Offer } from "../types/Types"
 
 type OffersProps = {
   inputValue?: string;
@@ -15,21 +15,41 @@ type OffersProps = {
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
+  const [offers, setOffers] = useState<Offer[]>();
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/offers");
+        const data = await response.json();
+        setOffers(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const navigate = useNavigate();
 
   const LowerCaseFirstLetter = (string: string) => {
     return string.charAt(0).toLowerCase() + string.slice(1);
   };
 
-  const filteredItems = offersList.filter((offer) => {
-    const inputValue = props.inputValue || "";
-    const categoryValue = props.categoryFilterValue || "";
+  
 
-    return (
-      offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
-      (categoryValue === "" || offer.category === categoryValue)
-    );
-  });
+    const filteredItems = offers?.filter((offer) => {
+      const inputValue = props.inputValue || "";
+      const categoryValue = props.categoryFilterValue || "";
+  
+      return (
+        offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
+        (categoryValue === "" || offer.category === categoryValue)
+      );
+    });
+  
 
   return (
     <div className="offers-wrapper">
@@ -52,16 +72,16 @@ const Offers = (props: OffersProps): JSX.Element => {
 
           <h1>
             <span>
-              {filteredItems.length ? "" : "We are sorry, there are no "}
+              {filteredItems?.length ? "" : "We are sorry, there are no "}
               {}
             </span>
             <span
               style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)" }}
               className={`category-name ${
-                !filteredItems.length && "font-weight"
+                !filteredItems?.length && "font-weight"
               }`}
             >
-              {filteredItems.length
+              {filteredItems?.length
                 ? `${props.categoryFilterValue} ${props.inputValue}`
                 : props.categoryFilterValue &&
                   `${LowerCaseFirstLetter(props.categoryFilterValue)} ${
@@ -71,16 +91,16 @@ const Offers = (props: OffersProps): JSX.Element => {
             <span>
               {" "}
               {props.categoryFilterValue
-                ? filteredItems.length
+                ? filteredItems?.length
                   ? "offers"
                   : "offers"
                 : props.inputValue
                 ? `${props.inputValue} offers`
                 : "All offers"}{" "}
             </span>
-            <span>{!filteredItems.length && " yet."}</span>
+            <span>{!filteredItems?.length && " yet."}</span>
           </h1>
-          {!filteredItems.length && (
+          {!filteredItems?.length && (
             <div>
               <Button
                 variant="contained"
@@ -94,7 +114,7 @@ const Offers = (props: OffersProps): JSX.Element => {
         </div>
 
         <div className="offers-container">
-          {filteredItems.map((e, i) => {
+          {filteredItems?.map((e, i) => {
             return (
               <div
                 className="offer-item"

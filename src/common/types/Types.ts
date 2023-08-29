@@ -12,6 +12,7 @@ export  type Offer = {
 };
 
 export type Category = {
+  id: number;
   url: string;
   name: string;
 }

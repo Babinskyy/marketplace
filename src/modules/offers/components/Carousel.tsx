@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// import { SliderData } from "../mockData/sliderData";
 import { Box, Modal} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 

@@ -2,19 +2,35 @@ import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";
-import { useState } from "react";
-import { offersList } from "../../../common/mockData/offersList";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "@mui/joy";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Carousel from "./Carousel";
+import { Offer } from "../../../common/types/Types";
 
 const OfferDetails = () => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
+  const [offer, setOffer] = useState<Offer>();
 
   const { id } = useParams<{ id: string }>();
 
-  const offer = offersList.find((o) => o.id?.toString() === id);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/offers");
+        const data = await response.json();
+        const offer = data.find((o:Offer) => o.id?.toString() === id);
+        setOffer(offer);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
 
   if (!offer) {
     return <p>Loading...</p>;

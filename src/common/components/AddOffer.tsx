@@ -95,9 +95,17 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   };
 
   useEffect(() => {
-    if (setCurrentOfferList) {
-      setCurrentOfferList(offersList);
-    }
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/offers");
+        const data = await response.json();
+        setCurrentOfferList(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleCategoryChange = (event: SelectChangeEvent) => {
