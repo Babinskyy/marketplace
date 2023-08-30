@@ -8,7 +8,7 @@ export  type Offer = {
   author: string;
   country: string;
   phone: string;
-  category: string;
+  category?: Category;
 };
 
 export type Category = {

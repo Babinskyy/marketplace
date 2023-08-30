@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { Category } from "../../../common/types/Types";
+import { categoriesList } from "../../../common/mockData/categoriesList";
 
 type CategoriesProps = {
   setCategoryFilterValue: React.Dispatch<React.SetStateAction<string>>;
@@ -11,7 +12,7 @@ const Categories = (props: CategoriesProps): JSX.Element => {
   const [categories, setCategories] = useState<Category[] | undefined>();
   let bgcArray: string[] = [];
   if (categories)
-    for (let i = 1; i <= categories.length; i++) {
+    for (let i = 1; i <= categoriesList.length; i++) {
       bgcArray.push(`bgc-${i}`);
     }
 

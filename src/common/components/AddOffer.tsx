@@ -62,7 +62,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     author: "",
     country: "",
     phone: "",
-    category: "",
+    category: undefined,
   });
 
   const [errors, setErrors] = useState<Errors>({
@@ -112,7 +112,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     setCategory(event.target.value as string);
     setFormData({
       ...formData,
-      category: event.target.value as string,
+      // category: event.target.value as string,
     });
   };
   const handleCountryChange = (event: SelectChangeEvent) => {
@@ -143,7 +143,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       tmpErrors.title = "Title should have maximum of 25 characters!";
     }
 
-    if (formData.category.length === 0) {
+    if (formData.category?.name.length === 0) {
       tmpErrors.category = "Choose category of your offer!";
     }
 
@@ -208,7 +208,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       author: "",
       country: "",
       phone: "",
-      category: "",
+      category: undefined,
     });
     setCategory("");
     setCountry("");

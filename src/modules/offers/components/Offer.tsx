@@ -30,8 +30,6 @@ const OfferDetails = () => {
     fetchData();
   }, []);
 
-  
-
   if (!offer) {
     return <p>Loading...</p>;
   }

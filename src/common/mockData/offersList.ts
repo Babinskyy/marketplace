@@ -18,7 +18,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Sport",
+    // category: "Sport",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Houses",
+    // category: "Houses",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Cars",
+    // category: "Cars",
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Cars",
+    // category: "Cars",
   },
   {
     id: 5,
@@ -87,7 +87,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Electronics",
+    // category: "Electronics",
   },
   {
     id: 6,
@@ -104,7 +104,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Electronics",
+    // category: "Electronics",
   },
   {
     id: 7,
@@ -121,7 +121,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Hobby",
+    // category: "Hobby",
   },
   {
     id: 8,
@@ -138,7 +138,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Hobby",
+    // category: "Hobby",
   },
   {
     id: 9,
@@ -155,7 +155,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Sport",
+    // category: "Sport",
   },
   //
   {
@@ -173,7 +173,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Electronics",
+    // category: "Electronics",
   },
   {
     id: 11,
@@ -189,7 +189,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Furnitures",
+    // category: "Furnitures",
   },
   {
     id: 12,
@@ -207,7 +207,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    category: "Electronics",
+    // category: "Electronics",
   },
   // {
   //   id: 13,

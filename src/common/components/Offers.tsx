@@ -47,7 +47,7 @@ const Offers = (props: OffersProps): JSX.Element => {
   
       return (
         offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
-        (categoryValue === "" || offer.category === categoryValue)
+        (categoryValue === "" || offer.category?.name === categoryValue)
       );
     });
   return (
@@ -114,6 +114,7 @@ const Offers = (props: OffersProps): JSX.Element => {
 
         <div className="offers-container">
           {filteredItems?.map((e, i) => {
+  
             return (
               <div
                 className="offer-item"
@@ -132,7 +133,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                   <LocalPhoneOutlinedIcon />
                 </p>
                 <div className="category-date-container">
-                  <span className="offer-category">{e.category}</span>
+                  <span className="offer-category">{e.category?.name}</span>
                   <span className="offer-date">{e.date}</span>
                 </div>
               </div>
