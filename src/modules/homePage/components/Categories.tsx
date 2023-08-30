@@ -28,7 +28,6 @@ const Categories = (props: CategoriesProps): JSX.Element => {
 
     fetchData();
   }, []);
-
   return (
     <div className={`main-categories-container`}>
       <h1>Categories</h1>

@@ -24,6 +24,7 @@ const Offers = (props: OffersProps): JSX.Element => {
         const response = await fetch("http://localhost:8000/offers");
         const data = await response.json();
         setOffers(data);
+        
       } catch (err) {
         console.error(err);
       }
@@ -49,8 +50,6 @@ const Offers = (props: OffersProps): JSX.Element => {
         (categoryValue === "" || offer.category === categoryValue)
       );
     });
-  
-
   return (
     <div className="offers-wrapper">
       <div className="offers-wrapper-2">
