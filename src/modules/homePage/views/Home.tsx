@@ -17,24 +17,7 @@ const Home = (props: HomeProps): JSX.Element => {
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
   const [categoryFilterValue, setCategoryFilterValue] = useState<string>("");
   const [isNightMode, setIsNightMode] = useState<boolean>(false);
-  const [imageData, setImageData] = useState<any>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/image");
-        const data = await response.json();
-        
-        const base64String = data[0].image.data.map((byte:any) => String.fromCharCode(byte)).join('');
-        const dataUrl = `data:image/jpeg;base64,${base64String}`;
-        setImageData(dataUrl);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchData();
-  }, []);
-  console.log(imageData);
   return (
     <div className="home">
       <Header
@@ -52,8 +35,6 @@ const Home = (props: HomeProps): JSX.Element => {
         setCategoryFilterValue={setCategoryFilterValue}
         categoryFilterValue={categoryFilterValue}
       />
-      {imageData && <img src={imageData} alt="Image" />}
-
       <Offers
         inputValue={inputValue}
         categoryFilterValue={categoryFilterValue}

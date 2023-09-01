@@ -8,6 +8,7 @@ import { Button } from "@mui/joy";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Carousel from "./Carousel";
 import { Offer } from "../../../common/types/Types";
+import Loader from "../../../common/components/Loader";
 
 const OfferDetails = () => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
@@ -31,7 +32,7 @@ const OfferDetails = () => {
   }, []);
 
   if (!offer) {
-    return <p>Loading...</p>;
+    return <div className="loader-container"><Loader/></div>;
   }
   return (
     <div className="main-offer-view-container">

@@ -3,7 +3,8 @@ import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Offer } from "../types/Types"
+import { Offer } from "../types/Types";
+import Loader from "./Loader";
 
 type OffersProps = {
   inputValue?: string;
@@ -16,7 +17,7 @@ type OffersProps = {
 
 const Offers = (props: OffersProps): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>();
-
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +25,7 @@ const Offers = (props: OffersProps): JSX.Element => {
         const response = await fetch("http://localhost:8000/offers");
         const data = await response.json();
         setOffers(data);
-        
+        setLoading(false);
       } catch (err) {
         console.error(err);
       }
@@ -39,17 +40,16 @@ const Offers = (props: OffersProps): JSX.Element => {
     return string.charAt(0).toLowerCase() + string.slice(1);
   };
 
-  
+  const filteredItems = offers?.filter((offer) => {
+    const inputValue = props.inputValue || "";
+    const categoryValue = props.categoryFilterValue || "";
 
-    const filteredItems = offers?.filter((offer) => {
-      const inputValue = props.inputValue || "";
-      const categoryValue = props.categoryFilterValue || "";
-  
-      return (
-        offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
-        (categoryValue === "" || offer.category?.name === categoryValue)
-      );
-    });
+    return (
+      offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
+      (categoryValue === "" || offer.category?.name === categoryValue)
+    );
+  });
+  if (loading) return <div className="loader-container"><Loader/></div>;
   return (
     <div className="offers-wrapper">
       <div className="offers-wrapper-2">
@@ -114,7 +114,7 @@ const Offers = (props: OffersProps): JSX.Element => {
 
         <div className="offers-container">
           {filteredItems?.map((e, i) => {
-  
+            console.log(e, e.id);
             return (
               <div
                 className="offer-item"
@@ -124,7 +124,9 @@ const Offers = (props: OffersProps): JSX.Element => {
                   window.scrollTo(0, 0);
                 }}
               >
-                {e.images?.length > 0 && <img src={e.images[0]} alt="" />}
+                {e.images?.length > 0 && (
+                  <img src={`data:image/jpeg;base64,${e.images[0]}`} alt="" />
+                )}
 
                 <h2 className="offer-title">{e.title}</h2>
                 <h3 className="offer-price">{e.price} $</h3>

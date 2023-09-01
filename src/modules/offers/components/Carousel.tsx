@@ -38,7 +38,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
             <div className={"slide active"} key={i}>
               {i === current && (
                 <img
-                src={props.images[current]}
+                src={`data:image/jpeg;base64,${props.images[current]}`}
                 alt="offer-image"
                 className="image"
                 onClick={() => {
@@ -58,7 +58,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           {props.images.map((e, i) => {
             return (
               <img
-                src={e}
+                src={`data:image/jpeg;base64,${e}`}
                 alt="offer-image"
                 className={`${current === i && "selected"}`}
                 key={i}
@@ -78,7 +78,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           aria-describedby="modal-modal-description"
         >
           <Box className="zoom-img-box" onClick={handleClose}>
-            <img src={props.images[current]} alt="" ></img>
+            <img src={`data:image/jpeg;base64,${props.images[current]}`} alt="" ></img>
             
           </Box>
         </Modal>

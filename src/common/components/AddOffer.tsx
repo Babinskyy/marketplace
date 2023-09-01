@@ -15,8 +15,8 @@ import React, { useState, useEffect, FormEvent } from "react";
 import { categoriesList } from "../../common/mockData/categoriesList";
 import { offersList } from "../../common/mockData/offersList";
 import { Offer, Errors } from "../../common/types/Types";
-
 import { useNavigate } from "react-router-dom";
+import Dropzone from "react-dropzone";
 
 const boxStyle = {
   // position: "absolute" as "absolute",
@@ -73,6 +73,8 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     phone: undefined,
     category: undefined,
   });
+
+  const [files, setFiles] = useState<any[]>([]);
   const navigate = useNavigate();
   const handleClose = () => {
     setErrors({
@@ -177,6 +179,18 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     return result;
   };
 
+  const handleOnDrop = (files: any, rejectedFiles: any) => {
+    files.length > 0 && setFiles((prev: any) => [...prev, files]);
+
+    rejectedFiles.length > 0 &&
+      console.log(
+        "error code:",
+        rejectedFiles[0].errors[0].code,
+        "reason:",
+        rejectedFiles[0].errors[0].message
+      );
+  };
+
   const createOffer = () => {
     const today = new Date();
     const dd = String(today.getDate()).padStart(2, "0");
@@ -196,11 +210,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     });
     setFormData({
       id: null,
-      images: [
-        "https://i.postimg.cc/XJVHJXTY/image1.jpg",
-        "https://i.postimg.cc/mkkmYJZx/image2.jpg",
-        "https://i.postimg.cc/Y08hHDQS/image.png",
-      ],
+      images: [],
       title: "",
       description: "",
       price: null,
@@ -220,6 +230,63 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       createOffer();
     }
   };
+
+  const [image, setImage] = useState({ preview: "", data: "" });
+  const [status, setStatus] = useState("");
+
+  const handleFileChange = (e: any) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    };
+    setImage(img);
+  };
+
+  const handleImageSubmit = async (e: any) => {
+    e.preventDefault();
+
+    const uploadImage = async () => {
+      let imageData = new FormData();
+      imageData.append("file", image.data);
+      imageData.append("name", "exampleName");
+      try {
+        const response = await fetch("http://localhost:8000/offers/upload", {
+          method: "POST",
+          body: imageData,
+        });
+        if (response) {
+          setStatus(response.statusText);
+          console.log("send");
+        } else console.log("err");
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    uploadImage();
+
+    const fetchData = async () => {
+      
+      
+      try {
+        const response = await fetch("http://localhost:8000/offers/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+          
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  };
+
   return (
     <div className="add-offer-container">
       <Modal
@@ -230,7 +297,16 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       >
         <Box sx={boxStyle} className="modal-box">
           <h2>Add your offer</h2>
-          <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
+          <form
+            action=""
+            className="offer-modal-form"
+            onSubmit={handleImageSubmit}
+          >
+            <input type="file" name="file" onChange={handleFileChange}></input>
+            {image.preview && (
+              <img src={image.preview} width="100" height="100" />
+            )}
+            {status && <h4>{status}</h4>}
             <TextField
               id="title"
               error={errors.title ? true : false}
@@ -262,7 +338,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               >
                 {categoriesList.map((e, i) => {
                   return (
-                    <MenuItem value={e.name} key={i + 1}>
+                    <MenuItem value={e.id} key={i + 1}>
                       <span className="category-name">{e.name}</span>
                     </MenuItem>
                   );
@@ -272,9 +348,48 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
             <div className="error-message mg">{errorMessages.category}</div>
             <h3 className="add-images-h3">Add images</h3>
             <div className="add-images-container">
-              <div className="add main-image">+</div>
-              <div className="add sub-image">+</div>
-              <div className="add sub-image">+</div>
+              <Dropzone
+                onDrop={handleFileChange}
+                multiple={false}
+                maxSize={2000000}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <div className="add main-image">+</div>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+              <Dropzone
+                onDrop={handleOnDrop}
+                multiple={false}
+                maxSize={2000000}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <div className="add second-image">+</div>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+              <Dropzone
+                onDrop={handleOnDrop}
+                multiple={false}
+                maxSize={2000000}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      <div className="add third-image">+</div>
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
             </div>
             <label htmlFor="description"></label>
             <TextField
