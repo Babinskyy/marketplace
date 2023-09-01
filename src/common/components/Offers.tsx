@@ -125,7 +125,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                 }}
               >
                 {e.images?.length > 0 && (
-                  <img src={`data:image/jpeg;base64,${e.images[0]}`} alt="" />
+                  <img src={e.images[0]} alt="" />
                 )}
 
                 <h2 className="offer-title">{e.title}</h2>

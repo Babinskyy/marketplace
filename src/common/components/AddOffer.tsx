@@ -247,8 +247,9 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
 
     const uploadImage = async () => {
       let imageData = new FormData();
+      console.log(formData.title);
       imageData.append("file", image.data);
-      imageData.append("name", "exampleName");
+      imageData.append("title", formData.title);
       try {
         const response = await fetch("http://localhost:8000/offers/upload", {
           method: "POST",
@@ -265,9 +266,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
 
     uploadImage();
 
-    const fetchData = async () => {
-      
-      
+    const createOffer = async () => {
       try {
         const response = await fetch("http://localhost:8000/offers/create", {
           method: "POST",
@@ -275,7 +274,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
-          
         });
         const data = await response.json();
         console.log(data);
@@ -284,7 +282,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       }
     };
 
-    fetchData();
+    createOffer();
   };
 
   return (
