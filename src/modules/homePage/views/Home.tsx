@@ -6,17 +6,22 @@ import Offers from "../../../common/components/Offers";
 import Footer from "../../../common/components/Footer";
 import AddOffer from "../../../common/components/AddOffer";
 import { useEffect, useState } from "react";
+import { Category } from "../../../common/types/Types";
 
 type HomeProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  categories: Category[] | undefined;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
-  const [categoryFilterValue, setCategoryFilterValue] = useState<string>("");
+  const [categoryFilterValue, setCategoryFilterValue] = useState<number | undefined>();
   const [isNightMode, setIsNightMode] = useState<boolean>(false);
+  
+
+ 
 
   return (
     <div className="home">
@@ -34,6 +39,7 @@ const Home = (props: HomeProps): JSX.Element => {
       <Categories
         setCategoryFilterValue={setCategoryFilterValue}
         categoryFilterValue={categoryFilterValue}
+        categories={props.categories}
       />
       <Offers
         inputValue={inputValue}
@@ -42,11 +48,13 @@ const Home = (props: HomeProps): JSX.Element => {
         setCategoryFilterValue={setCategoryFilterValue}
         setInputValue={setInputValue}
         setCurrentInputValue={setCurrentInputValue}
+        categories={props.categories}
       />
       <Footer />
       <AddOffer
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
+        categories={props.categories}
       />
     </div>
   );

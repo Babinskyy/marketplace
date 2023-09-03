@@ -3,16 +3,19 @@ import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Offer } from "../types/Types";
+import { Category, Offer } from "../types/Types";
 import Loader from "./Loader";
 
 type OffersProps = {
   inputValue?: string;
-  categoryFilterValue?: string;
+  categoryFilterValue?: number | undefined;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setCategoryFilterValue: React.Dispatch<React.SetStateAction<string>>;
+  setCategoryFilterValue: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
+  categories: Category[] | undefined;
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
@@ -34,6 +37,31 @@ const Offers = (props: OffersProps): JSX.Element => {
     fetchData();
   }, []);
 
+  const categorySwitch = (id: number | undefined) => {
+    switch (id) {
+      case 1:
+        return "Cars";
+      case 2:
+        return "Houses";
+      case 3:
+        return "Work";
+      case 4:
+        return "Electronics";
+      case 5:
+        return "Clothes";
+      case 6:
+        return "Sport";
+      case 7:
+        return "Hotels";
+      case 8:
+        return "Hobby";
+      case 9:
+        return "Furnitures";
+      case undefined:
+        return "";
+    }
+  };
+
   const navigate = useNavigate();
 
   const LowerCaseFirstLetter = (string: string) => {
@@ -46,10 +74,15 @@ const Offers = (props: OffersProps): JSX.Element => {
 
     return (
       offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
-      (categoryValue === "" || offer.category?.name === categoryValue)
+      (categoryValue === "" || offer.category?.id === categoryValue)
     );
   });
-  if (loading) return <div className="loader-container"><Loader/></div>;
+  if (loading)
+    return (
+      <div className="loader-container">
+        <Loader />
+      </div>
+    );
   return (
     <div className="offers-wrapper">
       <div className="offers-wrapper-2">
@@ -58,7 +91,7 @@ const Offers = (props: OffersProps): JSX.Element => {
             <Button
               className="all-offers-button"
               onClick={() => {
-                props.setCategoryFilterValue("");
+                props.setCategoryFilterValue(undefined);
                 props.setInputValue("");
                 if (props.setCurrentInputValue) {
                   props.setCurrentInputValue("");
@@ -81,11 +114,11 @@ const Offers = (props: OffersProps): JSX.Element => {
               }`}
             >
               {filteredItems?.length
-                ? `${props.categoryFilterValue} ${props.inputValue}`
-                : props.categoryFilterValue &&
-                  `${LowerCaseFirstLetter(props.categoryFilterValue)} ${
+                ? `${categorySwitch(props.categoryFilterValue)} ${
                     props.inputValue
-                  }`}
+                  }`
+                : props.categoryFilterValue &&
+                  `${categorySwitch(props.categoryFilterValue)} ${props.inputValue}`}
             </span>
             <span>
               {" "}
@@ -94,8 +127,8 @@ const Offers = (props: OffersProps): JSX.Element => {
                   ? "offers"
                   : "offers"
                 : props.inputValue
-                ? `${props.inputValue} offers`
-                : "All offers"}{" "}
+                ? `offers`
+                : "Suggested offers"}{" "}
             </span>
             <span>{!filteredItems?.length && " yet."}</span>
           </h1>
@@ -114,7 +147,6 @@ const Offers = (props: OffersProps): JSX.Element => {
 
         <div className="offers-container">
           {filteredItems?.map((e, i) => {
-            console.log(e, e.id);
             return (
               <div
                 className="offer-item"
@@ -124,9 +156,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                   window.scrollTo(0, 0);
                 }}
               >
-                {e.images?.length > 0 && (
-                  <img src={e.images[0]} alt="" />
-                )}
+                {e.images?.length > 0 && <img src={e.images[0]} alt="" />}
 
                 <h2 className="offer-title">{e.title}</h2>
                 <h3 className="offer-price">{e.price} $</h3>

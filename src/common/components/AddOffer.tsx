@@ -11,33 +11,18 @@ import {
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
 import "../../common/assets/styles/scss/main/App.scss";
-import React, { useState, useEffect, FormEvent } from "react";
-import { categoriesList } from "../../common/mockData/categoriesList";
-import { offersList } from "../../common/mockData/offersList";
-import { Offer, Errors } from "../../common/types/Types";
+import React, { useState, useEffect, FormEvent, useRef } from "react";
+import { Offer, Errors, Category } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
-import Dropzone from "react-dropzone";
-
-const boxStyle = {
-  // position: "absolute" as "absolute",
-  // top: "50%",
-  // left: "50%",
-  // transform: "translate(-50%, -50%)",
-  // width: 800,
-  // bgcolor: "background.paper",
-  // border: "1px solid #000",
-  // borderRadius: "15px",
-  // boxShadow: 24,
-  // p: 2,
-};
+import AddIcon from "@mui/icons-material/Add";
 
 type AddOfferProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  categories: Category[] | undefined;
 };
 
 const AddOffer = (props: AddOfferProps): JSX.Element => {
-  const [category, setCategory] = useState<string>("");
   const [errorMessages, setErrorMessages] = useState<Errors>({
     title: "",
     category: "",
@@ -47,14 +32,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     phone: "",
   });
   const [country, setCountry] = useState<string>("");
-  const [currentOfferList, setCurrentOfferList] = useState<Offer[]>();
+
   const [formData, setFormData] = useState<Offer>({
     id: null,
-    images: [
-      "https://i.postimg.cc/XJVHJXTY/image1.jpg",
-      "https://i.postimg.cc/mkkmYJZx/image2.jpg",
-      "https://i.postimg.cc/Y08hHDQS/image.png",
-    ],
+    images: [],
     title: "",
     description: "",
     price: null,
@@ -72,9 +53,11 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     country: undefined,
     phone: undefined,
     category: undefined,
+    images: undefined,
   });
 
-  const [files, setFiles] = useState<any[]>([]);
+  const inputFileRef = useRef<HTMLInputElement | null>(null);
+
   const navigate = useNavigate();
   const handleClose = () => {
     setErrors({
@@ -84,6 +67,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       country: undefined,
       phone: undefined,
       category: undefined,
+      images: undefined,
     });
     setErrorMessages({
       title: "",
@@ -92,30 +76,31 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       country: "",
       author: "",
       phone: "",
+      images: "",
     });
     props.setOpenOfferModal(false);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/offers");
-        const data = await response.json();
-        setCurrentOfferList(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
+    null
+  );
 
   const handleCategoryChange = (event: SelectChangeEvent) => {
-    setCategory(event.target.value as string);
-    setFormData({
-      ...formData,
-      // category: event.target.value as string,
-    });
+    const selectedCategoryId = parseInt(event.target.value, 10);
+
+    if (!isNaN(selectedCategoryId)) {
+      setSelectedCategoryId(selectedCategoryId);
+
+      const result = props.categories?.filter(
+        (category) => category.id === selectedCategoryId
+      );
+      console.log(result);
+      if (result)
+        setFormData({
+          ...formData,
+          category: result[0],
+        });
+    }
   };
   const handleCountryChange = (event: SelectChangeEvent) => {
     setCountry(event.target.value as string);
@@ -135,6 +120,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       country: undefined,
       author: undefined,
       phone: undefined,
+      images: undefined,
     };
 
     if (formData.title.trim().length === 0) {
@@ -145,8 +131,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       tmpErrors.title = "Title should have maximum of 25 characters!";
     }
 
-    if (formData.category?.name.length === 0) {
+    if (!formData.category) {
       tmpErrors.category = "Choose category of your offer!";
+    }
+
+    if (imagePreviews.every((preview) => preview.preview === "")) {
+      tmpErrors.images = "Add at least 1 image!";
     }
 
     if (!formData.price) {
@@ -179,110 +169,89 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     return result;
   };
 
-  const handleOnDrop = (files: any, rejectedFiles: any) => {
-    files.length > 0 && setFiles((prev: any) => [...prev, files]);
+  const [imagePreviews, setImagePreviews] = useState([
+    { preview: "", data: "" },
+    { preview: "", data: "" },
+    { preview: "", data: "" },
+  ]);
 
-    rejectedFiles.length > 0 &&
-      console.log(
-        "error code:",
-        rejectedFiles[0].errors[0].code,
-        "reason:",
-        rejectedFiles[0].errors[0].message
-      );
+  const handleFileChange = (e: any, index: number) => {
+    if (e.target.files[0]) {
+      const img = {
+        preview: URL.createObjectURL(e.target.files[0]),
+        data: e.target.files[0],
+      };
+
+      const updatedImagePreviews = [...imagePreviews];
+      updatedImagePreviews[index] = img;
+      setImagePreviews(updatedImagePreviews);
+    }
   };
-
-  const createOffer = () => {
-    const today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const yyyy = today.getFullYear();
-    currentOfferList?.unshift({
-      ...formData,
-      id: currentOfferList.length + 1,
-      date: dd + "-" + mm + "-" + yyyy,
-    });
-    props.setOpenOfferModal(false);
-    navigate("/");
-    window.scroll({
-      top: document.body.scrollTop + 500,
-      left: 0,
-      behavior: "smooth",
-    });
-    setFormData({
-      id: null,
-      images: [],
-      title: "",
-      description: "",
-      price: null,
-      date: "",
-      author: "",
-      country: "",
-      phone: "",
-      category: undefined,
-    });
-    setCategory("");
-    setCountry("");
+  const handleClearPreview = (index: number) => {
+    const updatedImagePreviews = [...imagePreviews];
+    updatedImagePreviews[index] = { preview: "", data: "" };
+    setImagePreviews(updatedImagePreviews);
   };
+  const uploadImages = async () => {
+    let imageData = new FormData();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (validate()) {
-      createOffer();
+    imagePreviews.forEach((preview, index) => {
+      imageData.append(`file`, preview.data);
+    });
+    imageData.append("title", formData.title);
+    try {
+      const response = await fetch("http://localhost:8000/offers/upload", {
+        method: "POST",
+        body: imageData,
+      });
+      if (response) {
+        console.log("send");
+      } else console.log("err");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const createNewOffer = async () => {
+    console.log(formData);
+    try {
+      const response = await fetch("http://localhost:8000/offers/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  const [image, setImage] = useState({ preview: "", data: "" });
-  const [status, setStatus] = useState("");
-
-  const handleFileChange = (e: any) => {
-    const img = {
-      preview: URL.createObjectURL(e.target.files[0]),
-      data: e.target.files[0],
-    };
-    setImage(img);
-  };
-
-  const handleImageSubmit = async (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if (validate()) {
+      uploadImages();
+      createNewOffer();
 
-    const uploadImage = async () => {
-      let imageData = new FormData();
-      console.log(formData.title);
-      imageData.append("file", image.data);
-      imageData.append("title", formData.title);
-      try {
-        const response = await fetch("http://localhost:8000/offers/upload", {
-          method: "POST",
-          body: imageData,
-        });
-        if (response) {
-          setStatus(response.statusText);
-          console.log("send");
-        } else console.log("err");
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    uploadImage();
-
-    const createOffer = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/offers/create", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        const data = await response.json();
-        console.log(data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    createOffer();
+      //reset values
+      props.setOpenOfferModal(false);
+      navigate("/");
+      setFormData({
+        id: null,
+        images: [],
+        title: "",
+        description: "",
+        price: null,
+        date: "",
+        author: "",
+        country: "",
+        phone: "",
+        category: undefined,
+      });
+      setSelectedCategoryId(null);
+      setCountry("");
+    }
   };
 
   return (
@@ -293,18 +262,9 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={boxStyle} className="modal-box">
+        <Box className="modal-box">
           <h2>Add your offer</h2>
-          <form
-            action=""
-            className="offer-modal-form"
-            onSubmit={handleImageSubmit}
-          >
-            <input type="file" name="file" onChange={handleFileChange}></input>
-            {image.preview && (
-              <img src={image.preview} width="100" height="100" />
-            )}
-            {status && <h4>{status}</h4>}
+          <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
               id="title"
               error={errors.title ? true : false}
@@ -330,11 +290,11 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                 sx={{ marginTop: "10px" }}
                 labelId="category-label"
                 id="category-select"
-                value={category}
+                value={selectedCategoryId?.toString() || ""}
                 label="Category"
                 onChange={handleCategoryChange}
               >
-                {categoriesList.map((e, i) => {
+                {props.categories?.map((e, i) => {
                   return (
                     <MenuItem value={e.id} key={i + 1}>
                       <span className="category-name">{e.name}</span>
@@ -344,51 +304,72 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               </Select>
             </FormControl>
             <div className="error-message mg">{errorMessages.category}</div>
+
             <h3 className="add-images-h3">Add images</h3>
+            <div className="error-message mg">{errorMessages.images}</div>
             <div className="add-images-container">
-              <Dropzone
-                onDrop={handleFileChange}
-                multiple={false}
-                maxSize={2000000}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <section>
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <div className="add main-image">+</div>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-              <Dropzone
-                onDrop={handleOnDrop}
-                multiple={false}
-                maxSize={2000000}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <section>
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <div className="add second-image">+</div>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-              <Dropzone
-                onDrop={handleOnDrop}
-                multiple={false}
-                maxSize={2000000}
-              >
-                {({ getRootProps, getInputProps }) => (
-                  <section>
-                    <div {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      <div className="add third-image">+</div>
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
+              {imagePreviews.map((preview, index) => (
+                <div key={index}>
+                  <label
+                    htmlFor={`file-upload${index}`}
+                    style={{
+                      borderRadius: "5px",
+                      backgroundImage: `url(${preview.preview})`,
+                      backgroundSize: "contain",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      pointerEvents: imagePreviews[index].preview
+                        ? "none"
+                        : "auto",
+                      marginBottom: imagePreviews[index].preview
+                        ? "0px"
+                        : "30px",
+                    }}
+                    className={"add"}
+                  >
+                    {!imagePreviews[index].preview && (
+                      <div className="add-icon">
+                        <AddIcon />
+                      </div>
+                    )}
+                  </label>
+
+                  <input
+                    ref={inputFileRef}
+                    id={`file-upload${index}`}
+                    type="file"
+                    onChange={(e) => {
+                      handleFileChange(e, index);
+                    }}
+                    style={{ display: "none" }}
+                  />
+
+                  {imagePreviews[index].preview && (
+                    <Button
+                      color="error"
+                      variant="contained"
+                      style={{
+                        padding: "0px",
+                        fontSize: "10px",
+                        fontWeight: "400",
+                        left: "57px",
+                        marginTop: "10px",
+                      }}
+                      className="close-button"
+                      onClick={() => {
+                        handleClearPreview(index);
+                        if (inputFileRef.current) {
+                          inputFileRef.current.value = "";
+                        }
+                      }}
+                    >
+                      delete
+                    </Button>
+                  )}
+                </div>
+              ))}
             </div>
+
             <label htmlFor="description"></label>
             <TextField
               error={!!errors.price}

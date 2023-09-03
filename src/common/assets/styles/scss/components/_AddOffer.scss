@@ -38,15 +38,23 @@
       .add {
         @include flexbox(row, center, center);
         width: 154px;
-        height: 154px;
+        height: 115px;
         background-color: #f2f4f5;
         margin: 10px;
         box-shadow: $box-shadow;
-        transition: 0.2s;
+        // transition: 0.2s;
+        font-size: 15px;
         cursor: pointer;
         &:hover {
           transform: scale(1.02);
           background-color: #ececec;
+        }
+
+        .close-button {
+         
+        }
+        .add-icon {
+          color: grey;
         }
       }
     }
@@ -80,7 +88,7 @@
   .modal-box {
     width: 300px;
     padding: 10px;
-    
+
     .error-message {
       display: none;
     }
@@ -107,7 +115,7 @@
         }
       }
       .details-holder {
-        Textarea{
+        Textarea {
           width: 120px;
         }
         width: 250px;

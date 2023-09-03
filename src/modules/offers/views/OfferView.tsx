@@ -2,12 +2,13 @@ import "../../../common/assets/styles/scss/main/App.scss";
 import AddOffer from "../../../common/components/AddOffer";
 import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
+import { Category } from "../../../common/types/Types";
 import Offer from "../components/Offer";
-import Searchbar from "../../../common/components/Searchbar";
 
 type OfferViewProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  categories: Category[] | undefined;
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
@@ -17,8 +18,9 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
       <AddOffer
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
+        categories={props.categories}
       />
-      {/* <Searchbar /> */}
+      
       <Offer />
       <Footer />
     </div>

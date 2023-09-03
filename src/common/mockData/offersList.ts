@@ -1,6 +1,6 @@
 import { Offer } from "../types/Types";
 
-export const offersList: Offer[] = [
+export const offersList = [
   {
     id: 1,
     images: [
@@ -18,7 +18,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Sport",
+    category: "Sport",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Houses",
+    category: "Houses",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Cars",
+    category: "Cars",
   },
   {
     id: 4,
@@ -70,7 +70,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Cars",
+    category: "Cars",
   },
   {
     id: 5,
@@ -87,7 +87,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Electronics",
+    category: "Electronics",
   },
   {
     id: 6,
@@ -104,7 +104,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Electronics",
+    category: "Electronics",
   },
   {
     id: 7,
@@ -121,7 +121,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Hobby",
+    category: "Hobby",
   },
   {
     id: 8,
@@ -138,7 +138,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Hobby",
+    category: "Hobby",
   },
   {
     id: 9,
@@ -155,7 +155,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Sport",
+    category: "Sport",
   },
   //
   {
@@ -173,7 +173,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Electronics",
+    category: "Electronics",
   },
   {
     id: 11,
@@ -189,7 +189,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Furnitures",
+    category: "Furnitures",
   },
   {
     id: 12,
@@ -207,35 +207,7 @@ export const offersList: Offer[] = [
     author: "John",
     country: "USA",
     phone: "888 900 900",
-    // category: "Electronics",
+    category: "Electronics",
   },
-  // {
-  //   id: 13,
-  //   images: [
-  //     "https://i.postimg.cc/qqQLrscr/image2.jpg",
-  //     "https://i.postimg.cc/D07gRjX5/image1.jpg",
-  //     "https://i.postimg.cc/bYRL1h75/image3.jpg",
-  //   ],
-  //   title: "Leather bag",
-  //   description:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
-  //   price: 300,
-  //   date: "16-07-2023",
-  //   author: "John",
-  //   country: "USA",
-  //   phone: "888 900 900",
-  //   category: "Clothes",
-  // },
-  // {
-  //   id: 14,
-  //   images: ["https://i.postimg.cc/26LRV5cg/image1.jpg", "https://i.postimg.cc/jdb0Stzk/image2.jpg", "https://i.postimg.cc/PfZnHP8w/image3.jpg"],
-  //   title: "Luxury apartment",
-  //   description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure consequatur, vero facilis suscipit mollitia architecto explicabo aut accusamus beatae nostrum at Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti quo, unde natus voluptatum similique accusamus nihil ipsa, consequuntur praesentium assumenda sunt iure veritatis animi eum sint? Itaque delectus voluptatum quos optio voluptatem eius possimus quibusdam.",
-  //   price: 400,
-  //   date: "16-07-2023",
-  //   author: "John",
-  //   country: "USA",
-  //   phone: "888 900 900",
-  //   category: "Hotels",
-  // },
+  
 ];

@@ -2,6 +2,7 @@
 .searchbar-container {
   background-color: #f2f4f5;
   height: 152px;
+  
   @include flexbox(row, center, center);
   .icon-holder {
     height: 72px;
@@ -10,8 +11,10 @@
     padding: 0 20px;
     margin-left: 40px;
     @include flexbox(row, center, center);
+    border-radius: 10px 0px 0px 10px;
   }
   .searchbar-input {
+    
     width: 1000px;
     height: 72px;
     font-size: 25px;
@@ -42,6 +45,7 @@
     padding: 0 20px;
     margin-right: 40px;
     transition: 0.3s;
+    border-radius: 0px 10px 10px 0px;
     cursor: pointer;
     span {
       margin-right: 10px;
