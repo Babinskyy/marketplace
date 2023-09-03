@@ -1,77 +1,77 @@
 .bgc-1 {
-  background-color: rgba(42, 91, 171);
+  background-color: rgba(224, 41, 3);
 }
 
 .bgc-2 {
-  background-color: rgba(70, 149, 159);
+  background-color: rgba(208, 86, 126);
 }
 
 .bgc-3 {
-  background-color: rgba(170, 246, 22);
+  background-color: rgba(215, 252, 246);
 }
 
 .bgc-4 {
-  background-color: rgba(157, 180, 139);
+  background-color: rgba(24, 127, 103);
 }
 
 .bgc-5 {
-  background-color: rgba(21, 255, 79);
+  background-color: rgba(129, 54, 110);
 }
 
 .bgc-6 {
-  background-color: rgba(131, 176, 118);
+  background-color: rgba(168, 56, 93);
 }
 
 .bgc-7 {
-  background-color: rgba(209, 41, 49);
+  background-color: rgba(39, 17, 74);
 }
 
 .bgc-8 {
-  background-color: rgba(55, 40, 158);
+  background-color: rgba(221, 239, 39);
 }
 
 .bgc-9 {
-  background-color: rgba(64, 16, 16);
+  background-color: rgba(70, 70, 145);
 }
 
 .bgc-10 {
-  background-color: rgba(229, 228, 177);
+  background-color: rgba(139, 142, 141);
 }
 
 .bgc-11 {
-  background-color: rgba(78, 84, 151);
+  background-color: rgba(79, 62, 215);
 }
 
 .bgc-12 {
-  background-color: rgba(177, 82, 85);
+  background-color: rgba(217, 183, 193);
 }
 
 .bgc-13 {
-  background-color: rgba(66, 57, 126);
+  background-color: rgba(11, 246, 45);
 }
 
 .bgc-14 {
-  background-color: rgba(147, 57, 98);
+  background-color: rgba(246, 56, 179);
 }
 
 .bgc-15 {
-  background-color: rgba(144, 182, 157);
+  background-color: rgba(213, 226, 154);
 }
 
 .bgc-16 {
-  background-color: rgba(2, 103, 35);
+  background-color: rgba(68, 168, 63);
 }
 
 .bgc-17 {
-  background-color: rgba(157, 40, 107);
+  background-color: rgba(204, 225, 167);
 }
 
 .bgc-18 {
-  background-color: rgba(46, 55, 202);
+  background-color: rgba(247, 111, 184);
 }
 
 .bgc-19 {
-  background-color: rgba(29, 68, 123);
+  background-color: rgba(39, 198, 175);
 }
 
 nav.main-header {
@@ -82,7 +82,6 @@ nav.main-header {
   background-color: #3586ff;
   color: white;
   padding: 0 50px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 nav.main-header ul.main-navigation {
   display: flex;
@@ -144,7 +143,7 @@ nav.main-header ul.main-navigation button:hover {
   background-color: #0045ad;
   color: #fff;
 }
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 620px) {
   nav.main-header ul.main-navigation .logo-holder img.big-logo {
     display: none;
   }
@@ -184,6 +183,7 @@ nav.main-header ul.main-navigation button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 10px 0px 0px 10px;
 }
 .searchbar-container .searchbar-input {
   width: 1000px;
@@ -220,6 +220,7 @@ nav.main-header ul.main-navigation button:hover {
   padding: 0 20px;
   margin-right: 40px;
   transition: 0.3s;
+  border-radius: 0px 10px 10px 0px;
   cursor: pointer;
 }
 .searchbar-container .search-button span {
@@ -301,6 +302,18 @@ nav.main-header ul.main-navigation button:hover {
   margin-top: 10px;
 }
 
+@media screen and (max-width: 400px) {
+  .main-categories-container .sub-categories-container .category-wrapper .category {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .main-categories-container .sub-categories-container .category-wrapper .category {
+    width: 72px;
+    height: 72px;
+  }
+}
 .offers-wrapper {
   display: flex;
   flex-direction: row;
@@ -363,6 +376,7 @@ nav.main-header ul.main-navigation button:hover {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  border-radius: 10px;
   width: 300px;
   height: 400px;
   background-color: #fff;
@@ -596,16 +610,19 @@ ul {
   justify-content: center;
   align-items: center;
   width: 154px;
-  height: 154px;
+  height: 115px;
   background-color: #f2f4f5;
   margin: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transition: 0.2s;
+  font-size: 15px;
   cursor: pointer;
 }
 .modal-box .offer-modal-form .add-images-container .add:hover {
   transform: scale(1.02);
   background-color: #ececec;
+}
+.modal-box .offer-modal-form .add-images-container .add .add-icon {
+  color: grey;
 }
 .modal-box .offer-modal-form .details-holder {
   display: flex;
@@ -698,6 +715,7 @@ ul {
 }
 .main-offer-view-container {
   background-color: #f2f4f5;
+  margin-top: 35px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -813,6 +831,7 @@ ul {
   }
   .main-offer-view-container .sub-offer-view-container h1.title1 {
     font-size: 30px;
+    margin-top: 8px;
     margin-bottom: 0px;
   }
   .main-offer-view-container .sub-offer-view-container .details-wrapper {
@@ -919,11 +938,16 @@ ul {
 }
 .slider .slide-container .image {
   max-height: 500px;
+  max-width: 100%;
   border-radius: 10px;
 }
 .slider .slide-container .slide.active {
   transform: scale(1.08);
   height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .images-preview-container {
@@ -945,6 +969,24 @@ ul {
 }
 .images-preview-container .images-preview-slide img.selected {
   border-color: #3586ff;
+}
+
+.zoom-img-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  background-color: transparent;
+  min-width: 80%;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.zoom-img-box img {
+  max-width: 100%;
 }
 
 @media screen and (max-width: 843px) {
@@ -981,17 +1023,44 @@ ul {
     margin-right: 10px;
   }
   .zoom-img-box {
-    position: absolute;
-    top: 50%;
+    left: initial;
     transform: translate(0%, -100px);
     max-width: 100%;
-    background-color: #fff;
+    width: initial;
     height: 0;
+    min-width: initial;
+    min-height: initial;
+    display: initial;
   }
   .zoom-img-box img {
     max-width: 100%;
   }
 }
+.loader-container {
+  height: 80vh;
+  display: flex;
+  flex-direction: initial;
+  justify-content: center;
+  align-items: center;
+  /* Safari */
+}
+.loader-container .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px; /* Safari */
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 * {
   font-family: "Nunito", sans-serif;
 }
@@ -1005,7 +1074,6 @@ ul {
 h1 {
   font-weight: 700;
   font-size: 35px;
-  font-family: "Roboto", sans-serif;
   color: #002f34;
   text-align: center;
 }/*# sourceMappingURL=App.css.map */
