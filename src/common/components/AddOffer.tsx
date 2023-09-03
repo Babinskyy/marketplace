@@ -20,6 +20,7 @@ type AddOfferProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AddOffer = (props: AddOfferProps): JSX.Element => {
@@ -251,6 +252,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       });
       setSelectedCategoryId(null);
       setCountry("");
+      props.setTrigger((prev) => !prev)
     }
   };
 

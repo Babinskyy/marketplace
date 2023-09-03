@@ -8,6 +8,7 @@ import { Category } from "./common/types/Types";
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
+  const [trigger, setTrigger] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +33,8 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
+              trigger={trigger}
+              setTrigger={setTrigger}
             />
           }
         ></Route>
@@ -42,6 +45,7 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
+              setTrigger={setTrigger}
             />
           }
         ></Route>

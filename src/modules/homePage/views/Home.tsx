@@ -7,11 +7,14 @@ import Footer from "../../../common/components/Footer";
 import AddOffer from "../../../common/components/AddOffer";
 import { useEffect, useState } from "react";
 import { Category } from "../../../common/types/Types";
+import { BooleanLiteral } from "typescript";
 
 type HomeProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
+  trigger: boolean;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
@@ -19,6 +22,8 @@ const Home = (props: HomeProps): JSX.Element => {
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
   const [categoryFilterValue, setCategoryFilterValue] = useState<number | undefined>();
   const [isNightMode, setIsNightMode] = useState<boolean>(false);
+  
+
   
 
  
@@ -49,12 +54,14 @@ const Home = (props: HomeProps): JSX.Element => {
         setInputValue={setInputValue}
         setCurrentInputValue={setCurrentInputValue}
         categories={props.categories}
+        trigger={props.trigger}
       />
       <Footer />
       <AddOffer
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}
+        setTrigger={props.setTrigger}
       />
     </div>
   );

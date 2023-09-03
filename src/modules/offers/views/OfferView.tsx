@@ -9,6 +9,7 @@ type OfferViewProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
@@ -19,6 +20,7 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}
+        setTrigger={props.setTrigger}
       />
       
       <Offer />

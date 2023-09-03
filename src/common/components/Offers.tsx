@@ -16,6 +16,7 @@ type OffersProps = {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   categories: Category[] | undefined;
+  trigger: boolean;
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
@@ -35,7 +36,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     };
 
     fetchData();
-  }, []);
+  }, [props.trigger]);
 
   const categorySwitch = (id: number | undefined) => {
     switch (id) {
@@ -63,10 +64,6 @@ const Offers = (props: OffersProps): JSX.Element => {
   };
 
   const navigate = useNavigate();
-
-  const LowerCaseFirstLetter = (string: string) => {
-    return string.charAt(0).toLowerCase() + string.slice(1);
-  };
 
   const filteredItems = offers?.filter((offer) => {
     const inputValue = props.inputValue || "";
@@ -127,7 +124,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                   ? "offers"
                   : "offers"
                 : props.inputValue
-                ? `offers`
+                ? 'offers'
                 : "Suggested offers"}{" "}
             </span>
             <span>{!filteredItems?.length && " yet."}</span>
