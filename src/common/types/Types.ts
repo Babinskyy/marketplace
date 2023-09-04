@@ -26,3 +26,10 @@ export type Errors = {
   category: string | undefined;
 }
 
+export type User = {
+  id: number;
+  username: string;
+  password: string;
+  offers: Offer[] | undefined;
+}
+

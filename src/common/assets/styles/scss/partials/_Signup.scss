@@ -1,0 +1,58 @@
+.signup-container {
+  @include flexbox(column, center, center);
+  height: 100vh;
+  form {
+    @include flexbox(column, center, center);
+    height: 400px;
+    width: 400px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid rgb(148, 148, 148);
+
+    h1 {
+      margin: 10px;
+      color: #fafafa;
+    }
+    #username,
+    #password {
+      width: 250px;
+      height: 50px;
+      font-size: large;
+      border-radius: 15px;
+      border: none;
+      padding: 10px;
+      &:focus-visible {
+        outline: none;
+        border: 1px solid rgb(100, 100, 100);
+      }
+    }
+
+    .error-container {
+      height: 40px;
+      .error {
+        color: red;
+        margin: 8px;
+      }
+    }
+    .buttons-panel {
+      @include flexbox(row, space-between);
+      width: 250px;
+      #submit {
+        width: 120px;
+        height: 35px;
+        font-size: large;
+        background-color: $primary-color;
+        color: #fff;
+        border-radius: 15px;
+        outline: none;
+        border: none;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+          background-color: #0f6fff;
+        }
+      }
+    }
+  }
+}
