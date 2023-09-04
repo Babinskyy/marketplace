@@ -1,47 +1,25 @@
 import "../../../common/assets/styles/scss/main/App.scss";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import SignupForm from "../components/SignupForm";
+import Header from "../../../common/components/Header";
+import Footer from "../../../common/components/Footer";
+import LoginForm from "../components/LoginForm";
+import { useState } from "react";
 
 const Signup = (): JSX.Element => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const navigate = useNavigate();
+  const [login, setLogin] = useState<boolean>(false);
   return (
     <div className="signup-container">
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
-        <h1>Sign up</h1>
-        <input
-          {...register("username", { required: true })}
-          type="text"
-          id="username"
-          placeholder="username"
-        />
-        <div className="error-container">
-          {errors.username && <p className="error">Enter username.</p>}
-        </div>
+      <Header />
 
-        <input
-          {...register("password", { required: true })}
-          type="password"
-          id="password"
-          placeholder="password"
-        />
-        <div className="error-container">
-          {errors.password && <p className="error">Enter password.</p>}
-        </div>
-        <div className="buttons-panel">
-          <button type="submit" id="submit">
-            Sign up
-          </button>
-          <button type="submit" id="submit" onClick={() => navigate("/login")}>
-            Go to Login
-          </button>
-        </div>
-      </form>
+      <div className="signup-content">
+        <h1>{login ? <span>Log in</span> : <span>Sign up</span>}</h1>
+        {login ? (
+          <LoginForm setLogin={setLogin} />
+        ) : (
+          <SignupForm setLogin={setLogin} />
+        )}
+      </div>
+      <Footer />
     </div>
   );
 };

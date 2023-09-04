@@ -17,7 +17,7 @@ import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 
 type HeaderProps = {
-  setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenOfferModal?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
   isNightMode?: boolean;
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -107,13 +107,14 @@ const Header = (props: HeaderProps): JSX.Element => {
             }
           }}/>
         )} */}
-
-        <Button
-          variant="contained"
-          onClick={() => props.setOpenOfferModal(true)}
-        >
-          Add an offer
-        </Button>
+       
+          {/* <Button
+            variant="contained"
+            onClick={() => props.setOpenOfferModal(true)}
+          >
+            Add an offer
+          </Button> */}
+        
       </ul>
     </nav>
   );

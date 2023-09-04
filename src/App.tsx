@@ -5,7 +5,6 @@ import OfferView from "./modules/offers/views/OfferView";
 import { useEffect, useState } from "react";
 import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
-import Login from "./modules/users/views/Login";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
@@ -51,18 +50,7 @@ function App() {
             />
           }
         ></Route>
-        <Route
-          path="/signup"
-          element={
-            <Signup/>
-          }
-        ></Route>
-        <Route
-          path="/login"
-          element={
-            <Login/>
-          }
-        ></Route>
+        <Route path="/auth" element={<Signup />}></Route>
       </Routes>
     </div>
   );

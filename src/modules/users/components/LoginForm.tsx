@@ -1,0 +1,73 @@
+import { useNavigate } from "react-router-dom";
+import "../../../common/assets/styles/scss/main/App.scss";
+import { useForm } from "react-hook-form";
+
+type SignupFormType = {
+  setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const LoginForm = (props: SignupFormType): JSX.Element => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = handleSubmit((values) => {
+    const login = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(values),
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    login();
+  });
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        {...register("username", { required: true })}
+        type="text"
+        id="username"
+        placeholder="username"
+      />
+      <div className="error-container">
+        {errors.username && <p className="error">Enter username.</p>}
+      </div>
+
+      <input
+        {...register("password", { required: true })}
+        type="password"
+        id="password"
+        placeholder="password"
+      />
+      <div className="error-container">
+        {errors.password && <p className="error">Enter password.</p>}
+      </div>
+      <div className="buttons-panel">
+        <button type="submit" id="login-submit">
+          Login
+        </button>
+        <button
+          type="submit"
+          id="signup-submit"
+          onClick={() => props.setLogin((prev) => !prev)}
+        >
+          Go to Signup
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default LoginForm;
