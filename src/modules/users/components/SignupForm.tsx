@@ -43,6 +43,7 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
   });
   return (
     <form onSubmit={onSubmit}>
+      <div className="form-content">
       <p className="response">{response && response}</p>
       <input
         {...register("username", { required: true })}
@@ -75,6 +76,8 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
           Go to Login
         </button>
       </div>
+      </div>
+      
     </form>
   );
 };

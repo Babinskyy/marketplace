@@ -11,52 +11,55 @@
       background-color: rgb(255, 255, 255);
       border-radius: 15px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
-      .response {
-        height: 20px;
-        color: red;
-      }
-      #username,
-      #password {
-        width: 250px;
-        height: 50px;
-        font-size: large;
-        border-radius: 15px;
-        border: 1px solid rgba(100, 100, 100, 0.3);
-        padding: 10px;
-        background-color: #f2f4f5;
-        &:focus-visible {
-          outline: none;
-          border: 1px solid rgb(100, 100, 100);
-        }
-      }
-
-      .error-container {
-        height: 40px;
-        .error {
+      .form-content{
+        margin-bottom: 50px;
+        .response {
+          height: 20px;
           color: red;
-          margin: 8px;
         }
-      }
-      .buttons-panel {
-        @include flexbox(row, space-between);
-        width: 250px;
-        #signup-submit, #login-submit {
-          width: 120px;
-          height: 35px;
+        #username,
+        #password {
+          width: 250px;
+          height: 50px;
           font-size: large;
-          background-color: $primary-color;
-          color: #fff;
           border-radius: 15px;
-          outline: none;
-          border: none;
-          transition: 0.2s;
-          cursor: pointer;
-          &:hover {
-            background-color: #0f6fff;
+          border: 1px solid rgba(100, 100, 100, 0.3);
+          padding: 10px;
+          background-color: #f2f4f5;
+          &:focus-visible {
+            outline: none;
+            border: 1px solid rgb(100, 100, 100);
+          }
+        }
+  
+        .error-container {
+          height: 40px;
+          .error {
+            color: red;
+            margin: 8px;
+          }
+        }
+        .buttons-panel {
+          @include flexbox(row, space-between);
+          width: 250px;
+          #signup-submit, #login-submit {
+            width: 120px;
+            height: 35px;
+            font-size: large;
+            background-color: $primary-color;
+            color: #fff;
+            border-radius: 15px;
+            outline: none;
+            border: none;
+            transition: 0.2s;
+            cursor: pointer;
+            &:hover {
+              background-color: #0f6fff;
+            }
           }
         }
       }
+      
     }
   }
 }

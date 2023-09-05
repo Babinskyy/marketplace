@@ -43,38 +43,40 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
   });
   return (
     <form onSubmit={onSubmit}>
-      <p className="response">{response && response}</p>
+      <div className="form-content">
+        <p className="response">{response && response}</p>
 
-      <input
-        {...register("username", { required: true })}
-        type="text"
-        id="username"
-        placeholder="username"
-      />
-      <div className="error-container">
-        {errors.username && <p className="error">Enter username.</p>}
-      </div>
+        <input
+          {...register("username", { required: true })}
+          type="text"
+          id="username"
+          placeholder="username"
+        />
+        <div className="error-container">
+          {errors.username && <p className="error">Enter username.</p>}
+        </div>
 
-      <input
-        {...register("password", { required: true })}
-        type="password"
-        id="password"
-        placeholder="password"
-      />
-      <div className="error-container">
-        {errors.password && <p className="error">Enter password.</p>}
-      </div>
-      <div className="buttons-panel">
-        <button type="submit" id="login-submit">
-          Login
-        </button>
-        <button
-          type="submit"
-          id="signup-submit"
-          onClick={() => props.setLogin((prev) => !prev)}
-        >
-          Go to Signup
-        </button>
+        <input
+          {...register("password", { required: true })}
+          type="password"
+          id="password"
+          placeholder="password"
+        />
+        <div className="error-container">
+          {errors.password && <p className="error">Enter password.</p>}
+        </div>
+        <div className="buttons-panel">
+          <button type="submit" id="login-submit">
+            Login
+          </button>
+          <button
+            type="submit"
+            id="signup-submit"
+            onClick={() => props.setLogin((prev) => !prev)}
+          >
+            Go to Signup
+          </button>
+        </div>
       </div>
     </form>
   );
