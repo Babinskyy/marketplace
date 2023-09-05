@@ -1,19 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginForm = (props: SignupFormType): JSX.Element => {
+  const [response, setResponse] = useState<string>("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  const navigate = useNavigate();
   const onSubmit = handleSubmit((values) => {
+    setResponse("");
     const login = async () => {
       try {
         const response = await fetch("http://localhost:8000/users/login", {
@@ -25,16 +31,20 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        console.log(data);
+        if (data.message === "logged") navigate("/");
+        else setResponse(data.message);
       } catch (err) {
         console.error(err);
       }
     };
 
     login();
+    reset();
   });
   return (
     <form onSubmit={onSubmit}>
+      <p className="response">{response && response}</p>
+
       <input
         {...register("username", { required: true })}
         type="text"

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -7,15 +8,18 @@ type SignupFormType = {
 };
 
 const SignupForm = (props: SignupFormType): JSX.Element => {
+  const [response, setResponse] = useState<string>("");
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit((values) => {
+    setResponse("");
     const signup = async () => {
       try {
         const response = await fetch("http://localhost:8000/users/signup", {
@@ -27,16 +31,19 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        console.log(data);
+        setResponse(data);
+        
       } catch (err) {
         console.error(err);
       }
     };
 
     signup();
+    reset();
   });
   return (
     <form onSubmit={onSubmit}>
+      <p className="response">{response && response}</p>
       <input
         {...register("username", { required: true })}
         type="text"

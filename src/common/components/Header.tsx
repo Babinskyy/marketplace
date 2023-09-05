@@ -15,9 +15,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import BrightnessHighIcon from "@mui/icons-material/BrightnessHigh";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
+import { useNavigate } from "react-router-dom";
 
 type HeaderProps = {
-  setOpenOfferModal?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
+  setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   isNightMode?: boolean;
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -32,7 +33,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-
+  const navigate = useNavigate();
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -107,14 +108,18 @@ const Header = (props: HeaderProps): JSX.Element => {
             }
           }}/>
         )} */}
-       
-          {/* <Button
+        <div className="buttons-panel">
+          <Button variant="contained" onClick={() => navigate("/auth")}>
+            Login
+          </Button>
+
+          <Button
             variant="contained"
             onClick={() => props.setOpenOfferModal(true)}
           >
             Add an offer
-          </Button> */}
-        
+          </Button>
+        </div>
       </ul>
     </nav>
   );

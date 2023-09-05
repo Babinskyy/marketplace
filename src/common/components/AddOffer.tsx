@@ -252,7 +252,12 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       });
       setSelectedCategoryId(null);
       setCountry("");
-      props.setTrigger((prev) => !prev)
+      setImagePreviews([
+        { preview: "", data: "" },
+        { preview: "", data: "" },
+        { preview: "", data: "" },
+      ]);
+      props.setTrigger((prev) => !prev);
     }
   };
 

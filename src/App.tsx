@@ -50,7 +50,7 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/auth" element={<Signup />}></Route>
+        <Route path="/auth" element={<Signup setOpenOfferModal={setOpenOfferModal}/>}></Route>
       </Routes>
     </div>
   );

@@ -5,18 +5,22 @@ import Footer from "../../../common/components/Footer";
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
 
-const Signup = (): JSX.Element => {
+type SignupType = {
+  setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
   return (
     <div className="signup-container">
-      <Header />
+      <Header setOpenOfferModal={props.setOpenOfferModal} />
 
       <div className="signup-content">
-        <h1>{login ? <span>Log in</span> : <span>Sign up</span>}</h1>
+        <h1>{login ? <span>Sign up</span> : <span>Log in</span>}</h1>
         {login ? (
-          <LoginForm setLogin={setLogin} />
-        ) : (
           <SignupForm setLogin={setLogin} />
+        ) : (
+          <LoginForm setLogin={setLogin} />
         )}
       </div>
       <Footer />

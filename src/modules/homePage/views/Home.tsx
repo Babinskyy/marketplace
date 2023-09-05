@@ -20,13 +20,10 @@ type HomeProps = {
 const Home = (props: HomeProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>("");
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
-  const [categoryFilterValue, setCategoryFilterValue] = useState<number | undefined>();
+  const [categoryFilterValue, setCategoryFilterValue] = useState<
+    number | undefined
+  >();
   const [isNightMode, setIsNightMode] = useState<boolean>(false);
-  
-
-  
-
- 
 
   return (
     <div className="home">
