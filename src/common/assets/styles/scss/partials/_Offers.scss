@@ -95,17 +95,16 @@
           //   background-color: #e4e4e4;
           // }
         }
-        .category-date-container{
+        .category-date-container {
           @include flexbox(row, space-between);
           width: 100%;
-          .offer-category{
+          .offer-category {
             font-weight: 700;
           }
           // .offer-date {
-            
+
           // }
         }
-        
       }
     }
 

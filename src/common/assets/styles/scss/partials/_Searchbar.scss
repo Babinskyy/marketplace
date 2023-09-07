@@ -13,7 +13,8 @@
     border-radius: 10px 0px 0px 10px;
   }
   .searchbar-input {
-    width: 1080px;
+    padding: 0;
+    width: 1070px;
     height: 72px;
     font-size: 25px;
     border: none;
@@ -42,6 +43,7 @@
   .search-button {
     @include flexbox(row, center, center);
     height: 72px;
+    width: 140px;
     background-color: #fff;
     border: none;
     font-size: 20px;

@@ -10,7 +10,7 @@ nav.main-header {
     margin: 0;
     height: 90px;
     padding: 0;
-    width: 1325px;
+    width: 1320px;
     .logo-holder {
       img.big-logo {
         width: 250px;
@@ -69,7 +69,7 @@ nav.main-header {
     }
     
     
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width: 666px) {
       .logo-holder {
         img.big-logo {
           display: none;
