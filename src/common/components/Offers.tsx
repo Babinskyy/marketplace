@@ -102,7 +102,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                 }
               }}
             >
-              all offers
+              clear filters
             </Button>
           )}
 

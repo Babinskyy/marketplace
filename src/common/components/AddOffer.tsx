@@ -223,6 +223,8 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+      console.log(data.username, "data.username");
+      console.log(data, "data");
       navigate(`/offer/${data.id}`);
     } catch (err) {
       console.error(err);
