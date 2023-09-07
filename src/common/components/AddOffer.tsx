@@ -33,6 +33,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     phone: "",
   });
   const [country, setCountry] = useState<string>("");
+  const [offerId, setOfferId] = useState<number>();
 
   const [formData, setFormData] = useState<Offer>({
     id: null,
@@ -95,7 +96,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       const result = props.categories?.filter(
         (category) => category.id === selectedCategoryId
       );
-      console.log(result);
       if (result)
         setFormData({
           ...formData,
@@ -204,26 +204,26 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       const response = await fetch("http://localhost:8000/offers/upload", {
         method: "POST",
         body: imageData,
+        credentials: "include",
       });
       if (response) {
-        console.log("send");
       } else console.log("err");
     } catch (err) {
       console.error(err);
     }
   };
   const createNewOffer = async () => {
-    console.log(formData);
     try {
       const response = await fetch("http://localhost:8000/offers/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data);
+      navigate(`/offer/${data.id}`);
     } catch (err) {
       console.error(err);
     }
@@ -234,10 +234,8 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     if (validate()) {
       uploadImages();
       createNewOffer();
-
-      //reset values
       props.setOpenOfferModal(false);
-      navigate("/");
+      
       setFormData({
         id: null,
         images: [],

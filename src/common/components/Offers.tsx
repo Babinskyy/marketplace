@@ -17,17 +17,26 @@ type OffersProps = {
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   categories: Category[] | undefined;
   trigger: boolean;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/offers");
+        const response = await fetch("http://localhost:8000/offers", {
+          credentials: "include",
+        });
         const data = await response.json();
+        if (data.error) {
+          props.setIsLogged(false);
+          navigate("/auth");
+        }
+        props.setIsLogged(true);
         setOffers(data);
         setLoading(false);
       } catch (err) {
@@ -62,8 +71,6 @@ const Offers = (props: OffersProps): JSX.Element => {
         return "";
     }
   };
-
-  const navigate = useNavigate();
 
   const filteredItems = offers?.filter((offer) => {
     const inputValue = props.inputValue || "";
@@ -115,7 +122,9 @@ const Offers = (props: OffersProps): JSX.Element => {
                     props.inputValue
                   }`
                 : props.categoryFilterValue &&
-                  `${categorySwitch(props.categoryFilterValue)} ${props.inputValue}`}
+                  `${categorySwitch(props.categoryFilterValue)} ${
+                    props.inputValue
+                  }`}
             </span>
             <span>
               {" "}
@@ -124,7 +133,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                   ? "offers"
                   : "offers"
                 : props.inputValue
-                ? 'offers'
+                ? "offers"
                 : "Suggested offers"}{" "}
             </span>
             <span>{!filteredItems?.length && " yet."}</span>

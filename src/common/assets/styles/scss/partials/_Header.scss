@@ -10,7 +10,7 @@ nav.main-header {
     margin: 0;
     height: 90px;
     padding: 0;
-    width: 1212px;
+    width: 1325px;
     .logo-holder {
       img.big-logo {
         width: 250px;
@@ -50,7 +50,7 @@ nav.main-header {
     }
 
     .buttons-panel{
-      width: 270px;
+      width: 285px;
       @include flexbox(row, space-between);
       button {
         height: 50px;

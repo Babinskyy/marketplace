@@ -21,9 +21,11 @@ type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   isNightMode?: boolean;
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
+  isLogged?: boolean;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
+  const navigate = useNavigate();
   // const btnMenuRef = useRef<HTMLButtonElement>(null);
   // const [open, setOpen] = useState<boolean>(false);
 
@@ -33,7 +35,24 @@ const Header = (props: HeaderProps): JSX.Element => {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    const logout = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/users/logout", {
+          method: "POST",
+          credentials: "include",
+        });
+        console.log("logout");
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    logout();
+    navigate("/auth");
+  };
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -108,18 +127,22 @@ const Header = (props: HeaderProps): JSX.Element => {
             }
           }}/>
         )} */}
-        <div className="buttons-panel">
-          <Button variant="contained" onClick={() => navigate("/auth")}>
-            Login
-          </Button>
+        {props.isLogged ? (
+          <div className="buttons-panel">
+            <Button variant="contained" onClick={handleLogout}>
+              Logout
+            </Button>
 
-          <Button
-            variant="contained"
-            onClick={() => props.setOpenOfferModal(true)}
-          >
-            Add an offer
-          </Button>
-        </div>
+            <Button
+              variant="contained"
+              onClick={() => props.setOpenOfferModal(true)}
+            >
+              Add an offer
+            </Button>
+          </div>
+        ) : (
+          <></>
+        )}
       </ul>
     </nav>
   );

@@ -7,6 +7,7 @@ import { useState } from "react";
 
 type SignupType = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Signup = (props: SignupType): JSX.Element => {
@@ -20,7 +21,7 @@ const Signup = (props: SignupType): JSX.Element => {
         {login ? (
           <SignupForm setLogin={setLogin} />
         ) : (
-          <LoginForm setLogin={setLogin} />
+          <LoginForm setLogin={setLogin} setIsLogged={props.setIsLogged}/>
         )}
       </div>
       <Footer />

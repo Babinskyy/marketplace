@@ -5,7 +5,6 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 type SearchbarProps = {
   inputValue?: string;
   setInputValue?: React.Dispatch<React.SetStateAction<string>>;
@@ -53,22 +52,28 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
           }
         }}
       />
-      {showClearX && (
-        <div
-          className="x-cancel-input"
-          onClick={() => {
-            handleHideX();
-            if (props.setInputValue) {
-              props.setInputValue("");
-            }
-            if (props.setCurrentInputValue) {
-              props.setCurrentInputValue("");
-            }
+
+      <div
+        className="x-cancel-input"
+        onClick={() => {
+          handleHideX();
+          if (props.setInputValue) {
+            props.setInputValue("");
+          }
+          if (props.setCurrentInputValue) {
+            props.setCurrentInputValue("");
+          }
+        }}
+      >
+        <ClearIcon
+          sx={{
+            fontSize: 35,
+            opacity: 0.7,
+            
           }}
-        >
-          <ClearIcon sx={{ fontSize: 35, opacity: 0.7 }} />
-        </div>
-      )}
+          className={showClearX ? "visible" : ""}
+        />
+      </div>
 
       <button
         className="search-button"
@@ -78,7 +83,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
               props.setInputValue(props.currentInputValue);
             }
           }
-          navigate('/');
+          navigate("/");
         }}
       >
         <span>Search</span>

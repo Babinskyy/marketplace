@@ -10,12 +10,14 @@ type OfferViewProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
   setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+  isLogged: boolean;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
   return (
     <div className="offer-view-page">
-      <Header setOpenOfferModal={props.setOpenOfferModal} />
+      <Header setOpenOfferModal={props.setOpenOfferModal} isLogged={props.isLogged}/>
       <AddOffer
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
@@ -23,7 +25,7 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         setTrigger={props.setTrigger}
       />
       
-      <Offer />
+      <Offer setIsLogged={props.setIsLogged}/>
       <Footer />
     </div>
   );

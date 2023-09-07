@@ -15,6 +15,8 @@ type HomeProps = {
   categories: Category[] | undefined;
   trigger: boolean;
   setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+  isLogged: boolean;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
@@ -31,6 +33,7 @@ const Home = (props: HomeProps): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         isNightMode={isNightMode}
         setIsNightMode={setIsNightMode}
+        isLogged={props.isLogged}
       />
       <Searchbar
         inputValue={inputValue}
@@ -52,6 +55,7 @@ const Home = (props: HomeProps): JSX.Element => {
         setCurrentInputValue={setCurrentInputValue}
         categories={props.categories}
         trigger={props.trigger}
+        setIsLogged={props.setIsLogged}
       />
       <Footer />
       <AddOffer

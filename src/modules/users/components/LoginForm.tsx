@@ -5,6 +5,7 @@ import { useState } from "react";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginForm = (props: SignupFormType): JSX.Element => {
@@ -31,8 +32,10 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        if (data.message === "logged") navigate("/");
-        else setResponse(data.message);
+        if (data.message === "logged") {
+          navigate("/");
+          props.setIsLogged(true);
+        } else setResponse(data.message);
       } catch (err) {
         console.error(err);
       }
@@ -65,10 +68,12 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         <div className="error-container">
           {errors.password && <p className="error">Enter password.</p>}
         </div>
+
         <div className="buttons-panel">
           <button type="submit" id="login-submit">
             Login
           </button>
+
           <button
             type="submit"
             id="signup-submit"

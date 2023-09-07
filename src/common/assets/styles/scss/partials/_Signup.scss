@@ -39,8 +39,10 @@
             margin: 8px;
           }
         }
+
         .buttons-panel {
           @include flexbox(row, space-between);
+          flex-wrap: wrap;
           width: 250px;
           #signup-submit, #login-submit {
             width: 120px;

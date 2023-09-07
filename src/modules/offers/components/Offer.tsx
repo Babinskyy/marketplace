@@ -3,25 +3,37 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/joy";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Carousel from "./Carousel";
 import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
 
-const OfferDetails = () => {
+type OfferDetailsType = {
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
 
   const { id } = useParams<{ id: string }>();
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/offers");
+        const response = await fetch("http://localhost:8000/offers", {
+          credentials: "include",
+        });
         const data = await response.json();
-        const offer = data.find((o:Offer) => o.id?.toString() === id);
+        if (data.error) {
+          props.setIsLogged(false);
+          navigate("/auth");
+        }
+        const offer = data.find((o: Offer) => o.id?.toString() === id);
+        props.setIsLogged(true);
         setOffer(offer);
       } catch (err) {
         console.error(err);
@@ -32,7 +44,11 @@ const OfferDetails = () => {
   }, []);
 
   if (!offer) {
-    return <div className="loader-container"><Loader/></div>;
+    return (
+      <div className="loader-container">
+        <Loader />
+      </div>
+    );
   }
   return (
     <div className="main-offer-view-container">
