@@ -18,6 +18,8 @@ type OffersProps = {
   categories: Category[] | undefined;
   trigger: boolean;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
+
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
@@ -90,12 +92,12 @@ const Offers = (props: OffersProps): JSX.Element => {
       </div>
     );
   return (
-    <div className="offers-wrapper">
+    <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
           {(props.categoryFilterValue || props.inputValue) && (
             <Button
-              className="all-offers-button"
+              className={`all-offers-button ${props.darkTheme && "dark-theme"}`}
               onClick={() => {
                 props.setCategoryFilterValue(undefined);
                 props.setInputValue("");
@@ -108,7 +110,7 @@ const Offers = (props: OffersProps): JSX.Element => {
             </Button>
           )}
 
-          <h1>
+          <h1 className={`${props.darkTheme && "dark-theme"}`}>
             <span>
               {filteredItems?.length ? "" : "We are sorry, there are no "}
               {}
@@ -153,11 +155,11 @@ const Offers = (props: OffersProps): JSX.Element => {
           )}
         </div>
 
-        <div className="offers-container">
+        <div className={`offers-container`}>
           {filteredItems?.map((e, i) => {
             return (
               <div
-                className="offer-item"
+                className={`offer-item ${props.darkTheme && "dark-theme"}`}
                 key={i}
                 onClick={() => {
                   navigate(`/offer/${e.id}`);

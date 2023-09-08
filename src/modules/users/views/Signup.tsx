@@ -8,23 +8,31 @@ import { useState } from "react";
 type SignupType = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
 const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
   return (
-    <div className="signup-container">
-      <Header setOpenOfferModal={props.setOpenOfferModal} />
+    <div className={`signup-container ${props.darkTheme && "dark-theme"}`}>
+      <Header
+        setOpenOfferModal={props.setOpenOfferModal}
+        setDarkTheme={props.setDarkTheme}
+        darkTheme={props.darkTheme}
+      />
 
       <div className="signup-content">
-        <h1>{login ? <span>Sign up</span> : <span>Log in</span>}</h1>
+        <h1 className={`${props.darkTheme && "dark-theme"}`}>
+          {login ? <span>Sign up</span> : <span>Log in</span>}
+        </h1>
         {login ? (
-          <SignupForm setLogin={setLogin} />
+          <SignupForm setLogin={setLogin} darkTheme={props.darkTheme}/>
         ) : (
-          <LoginForm setLogin={setLogin} setIsLogged={props.setIsLogged}/>
+          <LoginForm setLogin={setLogin} setIsLogged={props.setIsLogged} darkTheme={props.darkTheme}/>
         )}
       </div>
-      <Footer />
+      <Footer darkTheme={props.darkTheme} />
     </div>
   );
 };

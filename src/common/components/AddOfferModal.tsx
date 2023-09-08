@@ -21,9 +21,10 @@ type AddOfferProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
   setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
-const AddOffer = (props: AddOfferProps): JSX.Element => {
+const AddOfferModal = (props: AddOfferProps): JSX.Element => {
   const [errorMessages, setErrorMessages] = useState<Errors>({
     title: "",
     category: "",
@@ -33,8 +34,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     phone: "",
   });
   const [country, setCountry] = useState<string>("");
-  const [offerId, setOfferId] = useState<number>();
-
   const [formData, setFormData] = useState<Offer>({
     id: null,
     images: [],
@@ -119,7 +118,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
       category: undefined,
       price: undefined,
       country: undefined,
-      author: undefined,
       phone: undefined,
       images: undefined,
     };
@@ -146,10 +144,6 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
 
     if (formData.country.length === 0) {
       tmpErrors.country = "Choose a country!";
-    }
-
-    if (formData.author.trim().length === 0) {
-      tmpErrors.author = "Enter your name!";
     }
 
     if (formData.phone.trim().length === 0) {
@@ -194,6 +188,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     setImagePreviews(updatedImagePreviews);
   };
   const uploadImages = async () => {
+    
     let imageData = new FormData();
 
     imagePreviews.forEach((preview, index) => {
@@ -213,6 +208,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     }
   };
   const createNewOffer = async () => {
+    
     try {
       const response = await fetch("http://localhost:8000/offers/create", {
         method: "POST",
@@ -232,8 +228,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
   };
 
   const handleSubmit = async (e: any) => {
+    
     e.preventDefault();
     if (validate()) {
+      
       uploadImages();
       createNewOffer();
       props.setOpenOfferModal(false);
@@ -269,7 +267,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="modal-box">
+        <Box className={`modal-box ${props.darkTheme && "dark-theme"}`}>
           <h2>Add your offer</h2>
           <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
@@ -332,10 +330,10 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                         ? "0px"
                         : "30px",
                     }}
-                    className={"add"}
+                    className={`add ${props.darkTheme && "dark-theme"}`}
                   >
                     {!imagePreviews[index].preview && (
-                      <div className="add-icon">
+                      <div className={`add-icon ${props.darkTheme && "dark-theme"}`}>
                         <AddIcon />
                       </div>
                     )}
@@ -473,4 +471,4 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
     </div>
   );
 };
-export default AddOffer;
+export default AddOfferModal;

@@ -7,6 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 type CarouselProps = {
   images: string[];
+  darkTheme: boolean;
 };
 
 const Carousel = (props: CarouselProps): JSX.Element => {
@@ -59,7 +60,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
               <img
                 src={`${e}`}
                 alt="offer-image"
-                className={`${current === i && "selected"}`}
+                className={`${current === i && "selected"} ${props.darkTheme && "dark-theme"}`}
                 key={i}
                 onClick={() => {
                   setCurrent(i);

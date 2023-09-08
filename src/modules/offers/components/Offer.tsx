@@ -12,6 +12,7 @@ import Loader from "../../../common/components/Loader";
 
 type OfferDetailsType = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
 const OfferDetails = (props: OfferDetailsType) => {
@@ -51,15 +52,29 @@ const OfferDetails = (props: OfferDetailsType) => {
     );
   }
   return (
-    <div className="main-offer-view-container">
-      <div className="sub-offer-view-container">
-        <h1 className="title1">{offer?.title}</h1>
-        <Carousel images={offer.images} />
+    <div
+      className={`main-offer-view-container ${props.darkTheme && "dark-theme"}`}
+    >
+      <div
+        className={`sub-offer-view-container ${
+          props.darkTheme && "dark-theme"
+        }`}
+      >
+        <h1 className={`title1 ${props.darkTheme && "dark-theme"}`}>
+          {offer?.title}
+        </h1>
+        <Carousel images={offer.images} darkTheme={props.darkTheme}/>
         <div className="details-wrapper">
           <div className="details-container">
             <div className="title-price">
-              <h1 className="title2">{offer?.title}</h1>
-              <p className="price-container">{offer?.price} $</p>
+              <h1 className={`title2 ${props.darkTheme && "dark-theme"}`}>
+                {offer?.title}
+              </h1>
+              <p
+                className={`price-container ${props.darkTheme && "dark-theme"}`}
+              >
+                {offer?.price} $
+              </p>
             </div>
             <p className="description">{offer?.description}</p>
           </div>

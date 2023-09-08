@@ -5,16 +5,14 @@ import OfferView from "./modules/offers/views/OfferView";
 import { useEffect, useState } from "react";
 import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
-import { error } from "console";
-import { useNavigate } from "react-router-dom";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
   const [trigger, setTrigger] = useState<boolean>(false);
   const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
-  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,7 +30,7 @@ function App() {
     fetchData();
   }, []);
   return (
-    <div className="App">
+    <div className={`App`}>
       <Routes>
         <Route
           path="/"
@@ -45,6 +43,8 @@ function App() {
               setTrigger={setTrigger}
               isLogged={isLogged}
               setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
             />
           }
         ></Route>
@@ -58,12 +58,21 @@ function App() {
               setTrigger={setTrigger}
               isLogged={isLogged}
               setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
             />
           }
         ></Route>
         <Route
           path="/auth"
-          element={<Signup setOpenOfferModal={setOpenOfferModal} setIsLogged={setIsLogged} />}
+          element={
+            <Signup
+              setOpenOfferModal={setOpenOfferModal}
+              setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
+            />
+          }
         ></Route>
       </Routes>
     </div>

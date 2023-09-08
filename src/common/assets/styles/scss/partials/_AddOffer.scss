@@ -9,6 +9,10 @@
   border-radius: 15px;
   box-shadow: $box-shadow;
   padding: 20px;
+  // &.dark-theme{
+  //   background-color: rgb(68, 68, 68);
+  //   color: #fff;
+  // }
   h2 {
     text-align: center;
     margin: 0 auto;
@@ -35,28 +39,40 @@
       @include flexbox(row, center, center);
       flex-wrap: wrap;
       margin-bottom: 10px;
-      .add {
-        @include flexbox(row, center, center);
-        width: 154px;
-        height: 115px;
-        background-color: #f2f4f5;
-        margin: 10px;
-        box-shadow: $box-shadow;
-        // transition: 0.2s;
-        font-size: 15px;
-        cursor: pointer;
-        &:hover {
-          transform: scale(1.02);
-          background-color: #ececec;
-        }
-
-        .close-button {
-         
-        }
-        .add-icon {
-          color: grey;
+      div{
+       
+        .add {
+          @include flexbox(row, center, center);
+          width: 154px;
+          height: 115px;
+          background-color: #f2f4f5;
+          margin: 10px;
+          box-shadow: $box-shadow;
+          // transition: 0.2s;
+          font-size: 15px;
+          cursor: pointer;
+          transition: .2s;
+          // &.dark-theme{
+          //   background-color: rgb(117, 117, 117);
+          //   color: #fff
+          // }
+          &:hover {
+            transform: scale(1.02);
+            background-color: #ececec;
+          }
+  
+          .close-button {
+           
+          }
+          .add-icon {
+            color: grey;
+            // &.dark-theme{
+            //   color: #fff
+            // }
+          }
         }
       }
+      
     }
     .details-holder {
       @include flexbox(row, space-between, center);

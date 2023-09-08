@@ -10,6 +10,7 @@ type SearchbarProps = {
   setInputValue?: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   currentInputValue?: string;
+  darkTheme: boolean;
 };
 
 const Searchbar = (props: SearchbarProps): JSX.Element => {
@@ -31,19 +32,19 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
 
   return (
     <form
-      className="searchbar-container"
+      className={`searchbar-container ${props.darkTheme && "dark-theme"}`}
       onSubmit={(e) => {
         e.preventDefault();
       }}
     >
-      <div className="icon-holder">
+      <div className={`icon-holder ${props.darkTheme && "dark-theme"}`}>
         <SearchIcon sx={{ fontSize: 35, opacity: 0.5 }} />
       </div>
       <input
         type="search"
         name="search"
         placeholder="Search for offers"
-        className="searchbar-input"
+        className={`searchbar-input ${props.darkTheme && "dark-theme"}`}
         value={props.currentInputValue}
         onChange={(e: React.FormEvent<HTMLInputElement>) => {
           handleShowX();
@@ -54,7 +55,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
       />
 
       <div
-        className="x-cancel-input"
+        className={`x-cancel-input ${props.darkTheme && "dark-theme"}`}
         onClick={() => {
           handleHideX();
           if (props.setInputValue) {
@@ -69,14 +70,13 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
           sx={{
             fontSize: 35,
             opacity: 0.7,
-            
           }}
-          className={showClearX ? "visible" : ""}
+          className={showClearX ? `visible ${props.darkTheme && "dark-theme"}` : ""}
         />
       </div>
 
       <button
-        className="search-button"
+        className={`search-button ${props.darkTheme && "dark-theme"}`}
         onClick={() => {
           if (props.setInputValue) {
             if (props.currentInputValue) {

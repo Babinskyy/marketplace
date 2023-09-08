@@ -6,6 +6,7 @@ import { useState } from "react";
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
 const LoginForm = (props: SignupFormType): JSX.Element => {
@@ -45,7 +46,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
     reset();
   });
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={`${props.darkTheme && "dark-theme"}`}>
       <div className="form-content">
         <p className="response">{response && response}</p>
 

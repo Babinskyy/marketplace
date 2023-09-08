@@ -1,17 +1,28 @@
 .signup-container {
   @include flexbox(column);
   height: 100vh;
+  &.dark-theme {
+    background-color: rgb(44, 44, 44);
+  }
   .signup-content {
     @include flexbox(column, center, center);
     flex-grow: 1;
+    h1 {
+      &.dark-theme {
+        color: #fff;
+      }
+    }
     form {
       @include flexbox(column, center, center);
       height: 400px;
       width: 400px;
-      background-color: rgb(255, 255, 255);
+      background-color: #fff;
       border-radius: 15px;
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      .form-content{
+      &.dark-theme {
+        background-color: rgb(68, 68, 68);
+      }
+      .form-content {
         margin-bottom: 50px;
         .response {
           height: 20px;
@@ -31,7 +42,7 @@
             border: 1px solid rgb(100, 100, 100);
           }
         }
-  
+
         .error-container {
           height: 40px;
           .error {
@@ -44,7 +55,8 @@
           @include flexbox(row, space-between);
           flex-wrap: wrap;
           width: 250px;
-          #signup-submit, #login-submit {
+          #signup-submit,
+          #login-submit {
             width: 120px;
             height: 35px;
             font-size: large;
@@ -61,7 +73,6 @@
           }
         }
       }
-      
     }
   }
 }

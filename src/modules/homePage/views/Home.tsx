@@ -17,6 +17,8 @@ type HomeProps = {
   setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
   isLogged: boolean;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
@@ -35,6 +37,8 @@ const Home = (props: HomeProps): JSX.Element => {
         isNightMode={isNightMode}
         setIsNightMode={setIsNightMode}
         isLogged={props.isLogged}
+        setDarkTheme={props.setDarkTheme}
+        darkTheme={props.darkTheme}
       />
 
       <Searchbar
@@ -42,12 +46,14 @@ const Home = (props: HomeProps): JSX.Element => {
         setInputValue={setInputValue}
         currentInputValue={currentInputValue}
         setCurrentInputValue={setCurrentInputValue}
+        darkTheme={props.darkTheme}
       />
 
       <Categories
         setCategoryFilterValue={setCategoryFilterValue}
         categoryFilterValue={categoryFilterValue}
         categories={props.categories}
+        darkTheme={props.darkTheme}
       />
 
       <Offers
@@ -60,15 +66,17 @@ const Home = (props: HomeProps): JSX.Element => {
         categories={props.categories}
         trigger={props.trigger}
         setIsLogged={props.setIsLogged}
+        darkTheme={props.darkTheme}
       />
 
-      <Footer />
+      <Footer darkTheme={props.darkTheme}/>
 
       <AddOfferModal
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}
         setTrigger={props.setTrigger}
+        darkTheme={props.darkTheme}
       />
     </div>
   );

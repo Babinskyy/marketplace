@@ -1,6 +1,10 @@
 .searchbar-container {
   background-color: #f2f4f5;
   height: 152px;
+  &.dark-theme {
+    background-color: rgb(44, 44, 44);
+    color: rgb(238, 238, 238);
+  }
 
   @include flexbox(row, center, center);
   .icon-holder {
@@ -11,6 +15,9 @@
     margin-left: 40px;
     @include flexbox(row, center, center);
     border-radius: 10px 0px 0px 10px;
+    &.dark-theme {
+      background-color: rgb(68, 68, 68);
+    }
   }
   .searchbar-input {
     padding: 0;
@@ -19,6 +26,10 @@
     font-size: 25px;
     border: none;
     background-color: #fff;
+    &.dark-theme {
+      background-color: rgb(68, 68, 68);
+      color: #fff;
+    }
     &:hover,
     &:focus {
       outline: none;
@@ -32,12 +43,19 @@
     @include flexbox(row, center, center);
     background-color: #fff;
     height: 72px;
-    color: white;
+    color: #fff;
     pointer-events: none;
+    &.dark-theme {
+      background-color: rgb(68, 68, 68);
+      color: rgb(68, 68, 68);
+    }
     .visible {
       pointer-events: auto;
       color: black;
       cursor: pointer;
+      &.dark-theme {
+        color: #fff;
+      }
     }
   }
   .search-button {
@@ -55,6 +73,10 @@
     cursor: pointer;
     span {
       margin-right: 10px;
+    }
+    &.dark-theme {
+      background-color: rgb(68, 68, 68);
+      color: #bbbbbb;
     }
     &:hover {
       background-color: $primary-color;

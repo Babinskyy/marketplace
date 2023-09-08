@@ -4,9 +4,13 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
-const Footer = (): JSX.Element => {
+type FooterType = {
+  darkTheme: boolean;
+}
+
+const Footer = (props: FooterType): JSX.Element => {
   return (
-    <footer className="footer">
+    <footer className={`footer ${props.darkTheme && "dark-theme"}`}>
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+  darkTheme: boolean;
 };
 
 const SignupForm = (props: SignupFormType): JSX.Element => {
@@ -32,7 +33,6 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
         });
         const data = await response.json();
         setResponse(data);
-        
       } catch (err) {
         console.error(err);
       }
@@ -42,42 +42,41 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
     reset();
   });
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={`${props.darkTheme && "dark-theme"}`}>
       <div className="form-content">
-      <p className="response">{response && response}</p>
-      <input
-        {...register("username", { required: true })}
-        type="text"
-        id="username"
-        placeholder="username"
-      />
-      <div className="error-container">
-        {errors.username && <p className="error">Enter username.</p>}
-      </div>
+        <p className="response">{response && response}</p>
+        <input
+          {...register("username", { required: true })}
+          type="text"
+          id="username"
+          placeholder="username"
+        />
+        <div className="error-container">
+          {errors.username && <p className="error">Enter username.</p>}
+        </div>
 
-      <input
-        {...register("password", { required: true })}
-        type="password"
-        id="password"
-        placeholder="password"
-      />
-      <div className="error-container">
-        {errors.password && <p className="error">Enter password.</p>}
+        <input
+          {...register("password", { required: true })}
+          type="password"
+          id="password"
+          placeholder="password"
+        />
+        <div className="error-container">
+          {errors.password && <p className="error">Enter password.</p>}
+        </div>
+        <div className="buttons-panel">
+          <button type="submit" id="login-submit">
+            Sign up
+          </button>
+          <button
+            type="submit"
+            id="signup-submit"
+            onClick={() => props.setLogin((prev) => !prev)}
+          >
+            Go to Login
+          </button>
+        </div>
       </div>
-      <div className="buttons-panel">
-        <button type="submit" id="login-submit">
-          Sign up
-        </button>
-        <button
-          type="submit"
-          id="signup-submit"
-          onClick={() => props.setLogin((prev) => !prev)}
-        >
-          Go to Login
-        </button>
-      </div>
-      </div>
-      
     </form>
   );
 };

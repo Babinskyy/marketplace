@@ -9,6 +9,7 @@ type CategoriesProps = {
   >;
   categoryFilterValue: number | undefined;
   categories: Category[] | undefined;
+  darkTheme: boolean;
 };
 
 const Categories = (props: CategoriesProps): JSX.Element => {
@@ -19,8 +20,10 @@ const Categories = (props: CategoriesProps): JSX.Element => {
     }
 
   return (
-    <div className={`main-categories-container`}>
-      <h1>Categories</h1>
+    <div
+      className={`main-categories-container ${props.darkTheme && "dark-theme"}`}
+    >
+      <h1 className={` ${props.darkTheme && "dark-theme"}`}>Categories</h1>
       <div className="sub-categories-container">
         {bgcArray.map((e, i) => {
           const category = props.categories?.[i];
