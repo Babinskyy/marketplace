@@ -10,22 +10,26 @@
   .sub-categories-container {
     @include flexbox(row, center, center);
     flex-wrap: wrap;
+    // background-color: aquamarine;
+    // width: 1320px;
     .category-wrapper {
       @include flexbox(column, center, center);
-      margin: 20px;
+      margin: 22px;
 
       .category {
+        @include flexbox(initial, center, center);
         cursor: pointer;
         width: 90px;
         height: 90px;
         border-radius: 50%;
         transition: 0.2s;
+        
         &:hover {
           transform: scale(1.1);
         }
 
         img {
-          width: 100%;
+          width: 65px
         }
       }
       .selected {

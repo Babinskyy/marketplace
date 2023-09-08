@@ -4,7 +4,7 @@ import Searchbar from "../../../common/components/Searchbar";
 import Categories from "./../components/Categories";
 import Offers from "../../../common/components/Offers";
 import Footer from "../../../common/components/Footer";
-import AddOffer from "../../../common/components/AddOffer";
+import AddOfferModal from "../../../common/components/AddOfferModal";
 import { useEffect, useState } from "react";
 import { Category } from "../../../common/types/Types";
 import { BooleanLiteral } from "typescript";
@@ -29,23 +29,27 @@ const Home = (props: HomeProps): JSX.Element => {
 
   return (
     <div className="home">
+      
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
         isNightMode={isNightMode}
         setIsNightMode={setIsNightMode}
         isLogged={props.isLogged}
       />
+
       <Searchbar
         inputValue={inputValue}
         setInputValue={setInputValue}
         currentInputValue={currentInputValue}
         setCurrentInputValue={setCurrentInputValue}
       />
+
       <Categories
         setCategoryFilterValue={setCategoryFilterValue}
         categoryFilterValue={categoryFilterValue}
         categories={props.categories}
       />
+
       <Offers
         inputValue={inputValue}
         categoryFilterValue={categoryFilterValue}
@@ -57,8 +61,10 @@ const Home = (props: HomeProps): JSX.Element => {
         trigger={props.trigger}
         setIsLogged={props.setIsLogged}
       />
+
       <Footer />
-      <AddOffer
+
+      <AddOfferModal
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}

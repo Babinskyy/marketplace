@@ -67,6 +67,8 @@ const Offers = (props: OffersProps): JSX.Element => {
         return "Hobby";
       case 9:
         return "Furnitures";
+      case 10:
+        return "Books";
       case undefined:
         return "";
     }

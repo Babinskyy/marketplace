@@ -61,15 +61,12 @@
     .details-holder {
       @include flexbox(row, space-between, center);
       width: 650px;
-
       Textarea {
         border-radius: 5px;
-        padding: 10px;
+        padding: 2px;
         --Textarea-paddingBlock: 0 !important;
         --Textarea-paddingInline: 0 !important;
         width: 300px;
-        height: 200px;
-
         &:focus-within {
           outline: none;
         }
@@ -119,7 +116,6 @@
           width: 120px;
         }
         width: 250px;
-        // border: 1px solid black;
         // @include flexbox(row, center, center);
         // padding: 5px;
         .css-bryhrq-JoyTextarea-root,
@@ -140,13 +136,12 @@
           }
         }
         .author-data-holder {
+          @include flexbox(column, space-between);
           .css-ola9b9-MuiFormControl-root,
           .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
           .css-1ed0zk4-MuiFormControl-root-MuiTextField-root,
           .css-9zrq44,
           .css-76kop8 {
-            // @include flexbox(initial, space-between);
-            // height: 70px;
             width: 122px;
             margin-top: 10px;
           }

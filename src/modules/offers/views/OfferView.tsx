@@ -1,5 +1,5 @@
 import "../../../common/assets/styles/scss/main/App.scss";
-import AddOffer from "../../../common/components/AddOffer";
+import AddOfferModal from "../../../common/components/AddOfferModal";
 import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
 import { Category } from "../../../common/types/Types";
@@ -18,7 +18,7 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
   return (
     <div className="offer-view-page">
       <Header setOpenOfferModal={props.setOpenOfferModal} isLogged={props.isLogged}/>
-      <AddOffer
+      <AddOfferModal
         openOfferModal={props.openOfferModal}
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}

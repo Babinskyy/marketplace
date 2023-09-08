@@ -396,7 +396,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
               <Textarea
                 name="description"
                 color="neutral"
-                minRows={6}
+                minRows={4}
                 placeholder="Write as many details as possible..."
                 size="lg"
                 variant="outlined"
@@ -433,7 +433,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                   </Select>
                 </FormControl>
                 <div className="error-message">{errorMessages.country}</div>
-                <TextField
+                {/* <TextField
                   error={errors.author ? true : false}
                   name="author"
                   label="Name"
@@ -446,7 +446,7 @@ const AddOffer = (props: AddOfferProps): JSX.Element => {
                     });
                   }}
                 />
-                <div className="error-message">{errorMessages.author}</div>
+                <div className="error-message">{errorMessages.author}</div> */}
                 <TextField
                   error={errors.phone ? true : false}
                   name="phone"
