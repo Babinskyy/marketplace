@@ -44,7 +44,7 @@ function App() {
     fetchData();
   }, []);
   return (
-    <div className={`App`}>
+    <div className={`App ${darkTheme && "dark-theme"}`}>
       <Routes>
         <Route
           path="/"

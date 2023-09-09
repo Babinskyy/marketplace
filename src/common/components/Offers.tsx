@@ -88,7 +88,7 @@ const Offers = (props: OffersProps): JSX.Element => {
   if (loading)
     return (
       <div className="loader-container">
-        <Loader />
+        <Loader darkTheme={props.darkTheme}/>
       </div>
     );
   return (

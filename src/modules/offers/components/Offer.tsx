@@ -47,7 +47,7 @@ const OfferDetails = (props: OfferDetailsType) => {
   if (!offer) {
     return (
       <div className="loader-container">
-        <Loader />
+        <Loader darkTheme={props.darkTheme} />
       </div>
     );
   }
@@ -63,7 +63,7 @@ const OfferDetails = (props: OfferDetailsType) => {
         <h1 className={`title1 ${props.darkTheme && "dark-theme"}`}>
           {offer?.title}
         </h1>
-        <Carousel images={offer.images} darkTheme={props.darkTheme}/>
+        <Carousel images={offer.images} darkTheme={props.darkTheme} />
         <div className="details-wrapper">
           <div className="details-container">
             <div className="title-price">
@@ -117,7 +117,11 @@ const OfferDetails = (props: OfferDetailsType) => {
               <iframe
                 width="300px"
                 height="300"
-                style={{ borderWidth: "0", margin: "25px 0" }}
+                style={{
+                  borderWidth: "0",
+                  margin: "25px 0",
+                  borderRadius: "10px",
+                }}
                 src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ireland+()&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               ></iframe>
             </div>

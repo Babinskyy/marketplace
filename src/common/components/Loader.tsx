@@ -1,7 +1,11 @@
-import '../assets/styles/scss/main/App.scss';
+import "../assets/styles/scss/main/App.scss";
 
-const Loader = ():JSX.Element => {
- return <div className='loader'></div>
-}
+type LoaderType = {
+  darkTheme: boolean;
+};
+
+const Loader = (props: LoaderType): JSX.Element => {
+  return <div className={`loader ${props.darkTheme && "dark-theme"}`}></div>;
+};
 
 export default Loader;

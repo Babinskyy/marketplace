@@ -1,42 +1,44 @@
-@import '../utilities/_variables';
-@import '../utilities/_mixins';
+@import "../utilities/_variables";
+@import "../utilities/_mixins";
 
-@import '../partials/_Home';
-@import '../partials/_OfferView';
-@import '../partials/_Signup';
-@import '../partials/_Login';
+@import "../partials/_Home";
+@import "../partials/_OfferView";
+@import "../partials/_Signup";
+@import "../partials/_Login";
 
-@import '../partials/_Header';
-@import '../partials/_Searchbar';
-@import '../partials/_Categories';
-@import '../partials/_Offers';
-@import '../partials/_Footer';
-@import '../partials/_AddOffer';
-@import '../partials/_OfferDetails';
-@import '../partials/_Carousel';
-@import '../partials/_Loader';
-@import '../partials/_AllOffers';
+@import "../partials/_Header";
+@import "../partials/_Searchbar";
+@import "../partials/_Categories";
+@import "../partials/_Offers";
+@import "../partials/_Footer";
+@import "../partials/_AddOffer";
+@import "../partials/_OfferDetails";
+@import "../partials/_Carousel";
+@import "../partials/_Loader";
+@import "../partials/_AllOffers";
 
 * {
-    font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 *,
 *:after,
-*::before{
+*::before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-h1{
+
+
+h1 {
   font-weight: 700;
   font-size: 35px;
   // font-family: 'Roboto', sans-serif;
   color: $secondary-color;
   text-align: center;
 }
-
-.dark-mode{
-  background-color: black;
+.App{
+  &.dark-theme {
+    background-color: rgb(44, 44, 44);
+  }
 }
-

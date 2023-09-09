@@ -1,4 +1,5 @@
 import "../../../common/assets/styles/scss/main/App.scss";
+import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
 import Offers from "../../../common/components/Offers";
 import { Category } from "../../../common/types/Types";
@@ -42,6 +43,7 @@ const AllOffers = (props: allOffersType): JSX.Element => {
         setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
       />
+      <Footer darkTheme={props.darkTheme}/>
     </div>
   );
 };
