@@ -27,15 +27,13 @@ const Home = (props: HomeProps): JSX.Element => {
   const [categoryFilterValue, setCategoryFilterValue] = useState<
     number | undefined
   >();
-  const [isNightMode, setIsNightMode] = useState<boolean>(false);
+
 
   return (
     <div className="home">
       
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
-        isNightMode={isNightMode}
-        setIsNightMode={setIsNightMode}
         isLogged={props.isLogged}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}

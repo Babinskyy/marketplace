@@ -5,6 +5,7 @@ import OfferView from "./modules/offers/views/OfferView";
 import { useEffect, useState } from "react";
 import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
+import AllOffers from "./modules/offers/views/AllOffers";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
@@ -76,6 +77,16 @@ function App() {
             <Signup
               setOpenOfferModal={setOpenOfferModal}
               setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
+            />
+          }
+        ></Route>
+        <Route
+          path="/offer/all"
+          element={
+            <AllOffers
+              setOpenOfferModal={setOpenOfferModal}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
             />

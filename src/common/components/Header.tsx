@@ -6,9 +6,7 @@ import mpSmallLogo from "../../common/assets//images/logo/marketplacesmalllogo.p
 import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-dark.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
-import { useEffect, useState } from "react";
+
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   isNightMode?: boolean;
@@ -79,7 +77,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                 onClick={handleLogout}
                 className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
-                Logout
+                Log out
               </Button>
 
               <Button
@@ -95,7 +93,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               </Button>
             </>
           ) : (
-            <></>
+           <></>
           )}
         </div>
       </ul>
