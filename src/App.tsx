@@ -14,6 +14,13 @@ function App() {
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem("themePreference");
+    if (storedTheme === "light") {
+      setDarkTheme(false);
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:8000/categories", {

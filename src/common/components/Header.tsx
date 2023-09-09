@@ -38,16 +38,10 @@ const Header = (props: HeaderProps): JSX.Element => {
   };
 
   const handleModeChange = async () => {
-    try {
-      const localStorageItem: string | null = await localStorage.getItem(
-        "isLightPrefered"
-      );
-      const changedLocalStorageItem: boolean = localStorageItem === "true";
-      props.setDarkTheme((prev) => !prev);
-    } catch (err) {
-      console.log(err);
-    }
-    localStorage.setItem("isLightPrefered", props.darkTheme.toString());
+    const newTheme = !props.darkTheme;
+    props.setDarkTheme(newTheme);
+    localStorage.setItem('themePreference', newTheme ? 'dark' : 'light');
+  
   };
 
   return (
@@ -70,7 +64,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         <div className="buttons-panel">
           <div className="toggle-switch">
             <label>
-              <input type="checkbox" onChange={handleModeChange} />
+              <input type="checkbox" onChange={handleModeChange} checked={!props.darkTheme}/>
               <span className="slider-toggle"></span>
             </label>
           </div>

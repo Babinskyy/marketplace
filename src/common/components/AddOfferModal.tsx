@@ -11,10 +11,18 @@ import {
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
 import "../../common/assets/styles/scss/main/App.scss";
-import React, { useState, useEffect, FormEvent, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  FormEvent,
+  useRef,
+  ChangeEvent,
+  SyntheticEvent,
+} from "react";
 import { Offer, Errors, Category } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import { ImagePreviewType } from "../../common/types/Types";
 
 type AddOfferProps = {
   openOfferModal: boolean;
@@ -164,14 +172,17 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     return result;
   };
 
-  const [imagePreviews, setImagePreviews] = useState([
-    { preview: "", data: "" },
-    { preview: "", data: "" },
-    { preview: "", data: "" },
+  const [imagePreviews, setImagePreviews] = useState<ImagePreviewType[]>([
+    { preview: "", data: new File([], "") },
+    { preview: "", data: new File([], "") },
+    { preview: "", data: new File([], "") },
   ]);
 
-  const handleFileChange = (e: any, index: number) => {
-    if (e.target.files[0]) {
+  const handleFileChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    if (e.target.files) {
       const img = {
         preview: URL.createObjectURL(e.target.files[0]),
         data: e.target.files[0],
@@ -184,11 +195,10 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
   };
   const handleClearPreview = (index: number) => {
     const updatedImagePreviews = [...imagePreviews];
-    updatedImagePreviews[index] = { preview: "", data: "" };
+    updatedImagePreviews[index] = { preview: "", data: new File([], "") };
     setImagePreviews(updatedImagePreviews);
   };
   const uploadImages = async () => {
-    
     let imageData = new FormData();
 
     imagePreviews.forEach((preview, index) => {
@@ -208,7 +218,6 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     }
   };
   const createNewOffer = async () => {
-    
     try {
       const response = await fetch("http://localhost:8000/offers/create", {
         method: "POST",
@@ -227,15 +236,13 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     }
   };
 
-  const handleSubmit = async (e: any) => {
-    
+  const handleSubmit = async (e: SyntheticEvent ) => {
     e.preventDefault();
     if (validate()) {
-      
       uploadImages();
       createNewOffer();
       props.setOpenOfferModal(false);
-      
+
       setFormData({
         id: null,
         images: [],
@@ -251,9 +258,9 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       setSelectedCategoryId(null);
       setCountry("");
       setImagePreviews([
-        { preview: "", data: "" },
-        { preview: "", data: "" },
-        { preview: "", data: "" },
+        { preview: "", data: new File([], "") },
+        { preview: "", data: new File([], "") },
+        { preview: "", data: new File([], "") },
       ]);
       props.setTrigger((prev) => !prev);
     }
@@ -333,7 +340,11 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                     className={`add ${props.darkTheme && "dark-theme"}`}
                   >
                     {!imagePreviews[index].preview && (
-                      <div className={`add-icon ${props.darkTheme && "dark-theme"}`}>
+                      <div
+                        className={`add-icon ${
+                          props.darkTheme && "dark-theme"
+                        }`}
+                      >
                         <AddIcon />
                       </div>
                     )}
@@ -343,7 +354,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                     ref={inputFileRef}
                     id={`file-upload${index}`}
                     type="file"
-                    onChange={(e) => {
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       handleFileChange(e, index);
                     }}
                     style={{ display: "none" }}

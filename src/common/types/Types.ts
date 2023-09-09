@@ -33,3 +33,8 @@ export type User = {
   offers: Offer[] | undefined;
 }
 
+export type ImagePreviewType = {
+  preview: string;
+  data: File;
+}
+
