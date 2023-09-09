@@ -5,9 +5,7 @@ import Categories from "./../components/Categories";
 import Offers from "../../../common/components/Offers";
 import Footer from "../../../common/components/Footer";
 import AddOfferModal from "../../../common/components/AddOfferModal";
-import { useEffect, useState } from "react";
 import { Category } from "../../../common/types/Types";
-import { BooleanLiteral } from "typescript";
 
 type HomeProps = {
   openOfferModal: boolean;
@@ -19,19 +17,19 @@ type HomeProps = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+  inputValue: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
+  currentInputValue: string;
+  setCurrentInputValue: React.Dispatch<React.SetStateAction<string>>;
+  setCategoryFilterValue: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
+  categoryFilterValue: number | undefined;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [currentInputValue, setCurrentInputValue] = useState<string>("");
-  const [categoryFilterValue, setCategoryFilterValue] = useState<
-    number | undefined
-  >();
-
-
   return (
     <div className="home">
-      
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
         isLogged={props.isLogged}
@@ -40,34 +38,43 @@ const Home = (props: HomeProps): JSX.Element => {
       />
 
       <Searchbar
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        currentInputValue={currentInputValue}
-        setCurrentInputValue={setCurrentInputValue}
+        inputValue={props.inputValue}
+        setInputValue={props.setInputValue}
+        currentInputValue={props.currentInputValue}
+        setCurrentInputValue={props.setCurrentInputValue}
         darkTheme={props.darkTheme}
       />
 
       <Categories
-        setCategoryFilterValue={setCategoryFilterValue}
-        categoryFilterValue={categoryFilterValue}
+        setCategoryFilterValue={props.setCategoryFilterValue}
+        categoryFilterValue={props.categoryFilterValue}
         categories={props.categories}
         darkTheme={props.darkTheme}
       />
-
+      {/* <h1
+        style={{
+          backgroundColor: "rgb(44, 44, 44)",
+          margin: "0",
+          paddingTop: "10px",
+          color: "#fff",
+        }}
+      >
+        Suggested offers
+      </h1> */}
       <Offers
-        inputValue={inputValue}
-        categoryFilterValue={categoryFilterValue}
+        inputValue={props.inputValue}
+        categoryFilterValue={props.categoryFilterValue}
         setOpenOfferModal={props.setOpenOfferModal}
-        setCategoryFilterValue={setCategoryFilterValue}
-        setInputValue={setInputValue}
-        setCurrentInputValue={setCurrentInputValue}
+        setCategoryFilterValue={props.setCategoryFilterValue}
+        setInputValue={props.setInputValue}
+        setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
         trigger={props.trigger}
         setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
       />
 
-      <Footer darkTheme={props.darkTheme}/>
+      <Footer darkTheme={props.darkTheme} />
 
       <AddOfferModal
         openOfferModal={props.openOfferModal}

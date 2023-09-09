@@ -39,8 +39,7 @@
       @include flexbox(row, center, center);
       flex-wrap: wrap;
       margin-bottom: 10px;
-      div{
-       
+      div {
         .add {
           @include flexbox(row, center, center);
           width: 154px;
@@ -51,7 +50,7 @@
           // transition: 0.2s;
           font-size: 15px;
           cursor: pointer;
-          transition: .2s;
+          transition: 0.2s;
           // &.dark-theme{
           //   background-color: rgb(117, 117, 117);
           //   color: #fff
@@ -60,9 +59,8 @@
             transform: scale(1.02);
             background-color: #ececec;
           }
-  
+
           .close-button {
-           
           }
           .add-icon {
             color: grey;
@@ -71,8 +69,14 @@
             // }
           }
         }
+        .close-button {
+          padding: 0;
+          font-size: 10px;
+          font-weight: 400;
+          left: 57px;
+          margin-top: 10px;
+        }
       }
-      
     }
     .details-holder {
       @include flexbox(row, space-between, center);
@@ -97,9 +101,9 @@
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 700px) {
   .modal-box {
-    width: 300px;
+    width: 400px;
     padding: 10px;
 
     .error-message {
@@ -122,16 +126,21 @@
         margin-top: 10px;
       }
       .add-images-container {
-        .add {
-          width: 60px;
-          height: 60px;
+        div {
+          .add {
+            width: 98px;
+            height: 98px;
+          }
+          .close-button {
+            left: 30px;
+          }
         }
       }
       .details-holder {
         Textarea {
-          width: 120px;
+          padding-left: 20px;
         }
-        width: 250px;
+        width: 340px;
         // @include flexbox(row, center, center);
         // padding: 5px;
         .css-bryhrq-JoyTextarea-root,
@@ -162,6 +171,31 @@
             margin-top: 10px;
           }
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 410px) {
+  .modal-box {
+    width: 300px;
+    padding: 10px;
+    .offer-modal-form {
+      .add-images-container {
+        div {
+          .add {
+            width: 70px;
+            height: 70px;
+          }
+          .close-button {
+            left: 14px;
+          }
+        }
+      }
+      .details-holder {
+        Textarea {
+          padding-left: 10px;
+        }
+        width: 250px;
       }
     }
   }

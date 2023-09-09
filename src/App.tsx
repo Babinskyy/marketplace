@@ -14,6 +14,12 @@ function App() {
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
+  const [inputValue, setInputValue] = useState<string>("");
+  const [currentInputValue, setCurrentInputValue] = useState<string>("");
+  const [categoryFilterValue, setCategoryFilterValue] = useState<
+    number | undefined
+  >();
+
   useEffect(() => {
     const storedTheme = localStorage.getItem("themePreference");
     if (storedTheme === "light") {
@@ -44,6 +50,12 @@ function App() {
           path="/"
           element={
             <Home
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              currentInputValue={currentInputValue}
+              setCurrentInputValue={setCurrentInputValue}
+              setCategoryFilterValue={setCategoryFilterValue}
+              categoryFilterValue={categoryFilterValue}
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
@@ -86,9 +98,21 @@ function App() {
           path="/offer/all"
           element={
             <AllOffers
-              setOpenOfferModal={setOpenOfferModal}
-              setDarkTheme={setDarkTheme}
-              darkTheme={darkTheme}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            currentInputValue={currentInputValue}
+            setCurrentInputValue={setCurrentInputValue}
+            setCategoryFilterValue={setCategoryFilterValue}
+            categoryFilterValue={categoryFilterValue}
+
+            setOpenOfferModal={setOpenOfferModal}
+            categories={categories}
+            trigger={trigger}
+            setTrigger={setTrigger}
+            isLogged={isLogged}
+            setIsLogged={setIsLogged}
+            setDarkTheme={setDarkTheme}
+            darkTheme={darkTheme}
             />
           }
         ></Route>

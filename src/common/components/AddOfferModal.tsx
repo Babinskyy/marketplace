@@ -364,13 +364,6 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                     <Button
                       color="error"
                       variant="contained"
-                      style={{
-                        padding: "0px",
-                        fontSize: "10px",
-                        fontWeight: "400",
-                        left: "57px",
-                        marginTop: "10px",
-                      }}
                       className="close-button"
                       onClick={() => {
                         handleClearPreview(index);
@@ -392,6 +385,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
               name="price"
               label="Price"
               defaultValue=""
+              
               sx={{ width: "510px" }}
               onChange={(e) => {
                 setFormData({
@@ -406,6 +400,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                 name="description"
                 color="neutral"
                 minRows={4}
+                maxRows={6}
                 placeholder="Write as many details as possible..."
                 size="lg"
                 variant="outlined"
