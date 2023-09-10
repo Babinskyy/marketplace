@@ -10,6 +10,7 @@ type SignupType = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+
 };
 
 const Signup = (props: SignupType): JSX.Element => {
@@ -20,6 +21,7 @@ const Signup = (props: SignupType): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
+
       />
 
       <div className="signup-content">

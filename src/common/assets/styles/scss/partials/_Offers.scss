@@ -32,7 +32,6 @@
       }
       h1 {
         padding-top: 30px;
-        // text-align: center;
         &.dark-theme {
           color: rgb(238, 238, 238);
         }
@@ -81,6 +80,9 @@
         &.dark-theme {
           background-color: rgb(68, 68, 68);
           color: rgb(238, 238, 238);
+          &:hover{
+            box-shadow: $box-shadow-dark;
+          }
         }
         img {
           $width: 100%;

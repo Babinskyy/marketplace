@@ -9,6 +9,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import Carousel from "./Carousel";
 import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
+import { Input } from "@mui/material";
 
 type OfferDetailsType = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,12 +19,14 @@ type OfferDetailsType = {
 const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
+  const [editOffer, setEditOffer] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
 
   const { id } = useParams<{ id: string }>();
 
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchOffers = async () => {
       try {
         const response = await fetch("http://localhost:8000/offers", {
           credentials: "include",
@@ -33,24 +36,49 @@ const OfferDetails = (props: OfferDetailsType) => {
           props.setIsLogged(false);
           navigate("/auth");
         }
-        const offer = data.find((o: Offer) => o.id?.toString() === id);
+        const offer = data.offers.find((o: Offer) => o.id?.toString() === id);
         props.setIsLogged(true);
         setOffer(offer);
+        setUsername(data.username);
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchData();
+    fetchOffers();
   }, []);
 
-  if (!offer) {
-    return (
-      <div className="loader-container">
-        <Loader darkTheme={props.darkTheme} />
-      </div>
-    );
-  }
+  const handleOfferDelete = () => {
+    if (window.confirm("Are you sure?")) {
+      const deleteOffer = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:8000/offers/delete/${id}`,
+            {
+              method: "DELETE",
+              credentials: "include",
+            }
+          );
+          const data = await response.json();
+          if (data.error) {
+            props.setIsLogged(false);
+            navigate("/auth");
+          } else {
+            navigate("/");
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      };
+
+      deleteOffer();
+    } else {
+      console.log("Deleting canceled");
+    }
+  };
+  const isAuthorLogged = () => {
+    return username === offer?.author;
+  };
   return (
     <div
       className={`main-offer-view-container ${props.darkTheme && "dark-theme"}`}
@@ -60,21 +88,88 @@ const OfferDetails = (props: OfferDetailsType) => {
           props.darkTheme && "dark-theme"
         }`}
       >
-        <h1 className={`title1 ${props.darkTheme && "dark-theme"}`}>
-          {offer?.title}
-        </h1>
-        <Carousel images={offer.images} darkTheme={props.darkTheme} />
+        {isAuthorLogged() && (
+          <div className="buttons-panel">
+            {editOffer ? (
+              <>
+                <Button color="warning" onClick={() => setEditOffer(false)}>
+                  Cancel
+                </Button>
+                <Button onClick={() => setEditOffer(false)}>Confirm</Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  className="edit-button"
+                  color="warning"
+                  onClick={() => setEditOffer(true)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  className="delete-button"
+                  color="danger"
+                  onClick={handleOfferDelete}
+                >
+                  Delete
+                </Button>
+              </>
+            )}
+          </div>
+        )}
+
+        {editOffer ? (
+          <div className={`h1-input-container`}>
+            <input
+              className={`h1-input ${props.darkTheme && "dark-theme"}`}
+              defaultValue={offer?.title}
+            ></input>
+          </div>
+        ) : (
+          <h1 className={`title1 ${props.darkTheme && "dark-theme"}`}>
+            {offer?.title}
+          </h1>
+        )}
+
+        {offer && (
+          <Carousel images={offer.images} darkTheme={props.darkTheme} />
+        )}
+
         <div className="details-wrapper">
           <div className="details-container">
             <div className="title-price">
-              <h1 className={`title2 ${props.darkTheme && "dark-theme"}`}>
-                {offer?.title}
-              </h1>
-              <p
-                className={`price-container ${props.darkTheme && "dark-theme"}`}
-              >
-                {offer?.price} $
-              </p>
+              {editOffer ? (
+                <div className={`title2-input-container`}>
+                  <input
+                    className={`title2-input ${
+                      props.darkTheme && "dark-theme"
+                    }`}
+                    defaultValue={offer?.title}
+                  ></input>
+                </div>
+              ) : (
+                <h1 className={`title2 ${props.darkTheme && "dark-theme"}`}>
+                  {offer?.title}
+                </h1>
+              )}
+
+              {editOffer && offer?.price ? (
+                <input
+                type="number"
+                className={`price-input ${
+                  props.darkTheme && "dark-theme"
+                }`}
+                defaultValue={offer?.price}
+              ></input>
+              ) : (
+                <p
+                  className={`price-container ${
+                    props.darkTheme && "dark-theme"
+                  }`}
+                >
+                  {offer?.price} $
+                </p>
+              )}
             </div>
             <p className="description">{offer?.description}</p>
           </div>

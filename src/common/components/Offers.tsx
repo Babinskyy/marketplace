@@ -1,6 +1,6 @@
 import "../../common/assets/styles/scss/main/App.scss";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Category, Offer } from "../types/Types";
@@ -16,10 +16,8 @@ type OffersProps = {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   categories: Category[] | undefined;
-  trigger: boolean;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-
 };
 
 const Offers = (props: OffersProps): JSX.Element => {
@@ -27,10 +25,16 @@ const Offers = (props: OffersProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     const fetchData = async () => {
+      let url = `http://localhost:8000/offers`;
+      if (location.pathname === "/offers/user") {
+        url = "http://localhost:8000/offers/user";
+      }
       try {
-        const response = await fetch("http://localhost:8000/offers", {
+        const response = await fetch(url, {
           credentials: "include",
         });
         const data = await response.json();
@@ -38,8 +42,8 @@ const Offers = (props: OffersProps): JSX.Element => {
           props.setIsLogged(false);
           navigate("/auth");
         }
+        setOffers(data.offers);
         props.setIsLogged(true);
-        setOffers(data);
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -47,7 +51,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     };
 
     fetchData();
-  }, [props.trigger]);
+  }, [location.pathname]);
 
   const categorySwitch = (id: number | undefined) => {
     switch (id) {
@@ -85,10 +89,11 @@ const Offers = (props: OffersProps): JSX.Element => {
       (categoryValue === "" || offer.category?.id === categoryValue)
     );
   });
+
   if (loading)
     return (
       <div className="loader-container">
-        <Loader darkTheme={props.darkTheme}/>
+        <Loader darkTheme={props.darkTheme} />
       </div>
     );
   return (
@@ -113,7 +118,6 @@ const Offers = (props: OffersProps): JSX.Element => {
           <h1 className={`${props.darkTheme && "dark-theme"}`}>
             <span>
               {filteredItems?.length ? "" : "We are sorry, there are no "}
-              {}
             </span>
             <span
               style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)" }}
@@ -138,6 +142,8 @@ const Offers = (props: OffersProps): JSX.Element => {
                   : "offers"
                 : props.inputValue
                 ? "offers"
+                : location.pathname === "/offers/user"
+                ? "My offers"
                 : "Suggested offers"}{" "}
             </span>
             <span>{!filteredItems?.length && " yet."}</span>

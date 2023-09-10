@@ -78,6 +78,7 @@
         }
       }
     }
+
     .details-holder {
       @include flexbox(row, space-between, center);
       width: 650px;

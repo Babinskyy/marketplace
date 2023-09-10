@@ -34,6 +34,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         });
         const data = await response.json();
         if (data.message === "logged") {
+          // localStorage.setItem("userLogged", `${data.user_id}`);
           navigate("/");
           props.setIsLogged(true);
         } else setResponse(data.message);

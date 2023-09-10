@@ -27,14 +27,67 @@
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
     }
+    div.buttons-panel {
+      // border: 3px solid blue;
+      position: absolute;
+      Button {
+        margin-left: 10px;
+      }
+    }
     h1.title1 {
       margin-top: 0;
       margin-bottom: 55px;
+
       &.dark-theme {
         color: rgb(238, 238, 238);
       }
     }
+    div.h1-input-container {
+      width: 100%;
+      text-align: center;
+      .h1-input {
+        text-align: center;
+        margin-bottom: 55px;
+        height: 47px;
+        background-color: transparent;
+        border: none;
+        font-size: 35px;
+        border-radius: 5px;
+        border: 1px solid rgb(0, 0, 0);
+        // border-bottom: 3px solid rgb(218, 196, 0);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        font-weight: 700;
+        font-style: italic;
+        &.dark-theme {
+          color: rgb(238, 238, 238);
+        }
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
     .title-price {
+      div.title2-input-container {
+        margin-top: 12px;
+        .title2-input {
+          margin-bottom: 30px;
+          background-color: transparent;
+          border: none;
+          font-size: 35px;
+          border-radius: 5px;
+          border: 1px solid rgb(0, 0, 0);
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          font-weight: 700;
+          font-style: italic;
+          &.dark-theme {
+            color: rgb(238, 238, 238);
+          }
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
       h1.title2 {
         color: #fff;
         &.dark-theme {

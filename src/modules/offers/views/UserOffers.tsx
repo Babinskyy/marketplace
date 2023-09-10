@@ -9,8 +9,6 @@ type allOffersType = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   categories: Category[] | undefined;
-  trigger: boolean;
-  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
   isLogged: boolean;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   inputValue: string;
@@ -23,13 +21,14 @@ type allOffersType = {
   categoryFilterValue: number | undefined;
 };
 
-const AllOffers = (props: allOffersType): JSX.Element => {
+const UserOffers = (props: allOffersType): JSX.Element => {
   return (
     <div className="all-offers-container">
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
+        isLogged={props.isLogged}
       />
       <Offers
         inputValue={props.inputValue}
@@ -39,13 +38,12 @@ const AllOffers = (props: allOffersType): JSX.Element => {
         setInputValue={props.setInputValue}
         setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
-        trigger={props.trigger}
         setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
       />
-      <Footer darkTheme={props.darkTheme}/>
+      <Footer darkTheme={props.darkTheme} />
     </div>
   );
 };
 
-export default AllOffers;
+export default UserOffers;

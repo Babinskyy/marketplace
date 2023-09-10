@@ -28,7 +28,6 @@ type AddOfferProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
-  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
 };
 
@@ -228,15 +227,17 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-      console.log(data.username, "data.username");
-      console.log(data, "data");
-      navigate(`/offer/${data.id}`);
+      if (data.error) {
+        console.log("Error while creating offer", data.error);
+      } else {
+        navigate(`/offer/${data.id}`);
+      }
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleSubmit = async (e: SyntheticEvent ) => {
+  const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (validate()) {
       uploadImages();
@@ -262,7 +263,6 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
         { preview: "", data: new File([], "") },
         { preview: "", data: new File([], "") },
       ]);
-      props.setTrigger((prev) => !prev);
     }
   };
 
@@ -379,21 +379,22 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
               ))}
             </div>
 
-            <label htmlFor="description"></label>
-            <TextField
-              error={!!errors.price}
-              name="price"
-              label="Price"
-              defaultValue=""
-              
-              sx={{ width: "510px" }}
-              onChange={(e) => {
-                setFormData({
-                  ...formData,
-                  [e.currentTarget.name]: +e.currentTarget.value,
-                });
-              }}
-            />
+      
+              <TextField
+                error={!!errors.price}
+                name="price"
+                label="Price in $"
+                defaultValue=""
+                sx={{ width: "510px" }}
+                onChange={(e) => {
+                  setFormData({
+                    ...formData,
+                    [e.currentTarget.name]: +e.currentTarget.value,
+                  });
+                }}
+              />
+     
+
             <div className="error-message mg">{errorMessages.price}</div>
             <div className="details-holder">
               <Textarea

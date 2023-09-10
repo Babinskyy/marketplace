@@ -6,6 +6,7 @@ import mpSmallLogo from "../../common/assets//images/logo/marketplacesmalllogo.p
 import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-dark.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,7 @@ type HeaderProps = {
   isLogged?: boolean;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
@@ -30,7 +32,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         console.error(err);
       }
     };
-
+    localStorage.removeItem("userLogged")
     logout();
     navigate("/auth");
   };
@@ -38,9 +40,9 @@ const Header = (props: HeaderProps): JSX.Element => {
   const handleModeChange = async () => {
     const newTheme = !props.darkTheme;
     props.setDarkTheme(newTheme);
-    localStorage.setItem('themePreference', newTheme ? 'dark' : 'light');
-  
+    localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
+
 
   return (
     <nav className="main-header">
@@ -62,12 +64,27 @@ const Header = (props: HeaderProps): JSX.Element => {
         <div className="buttons-panel">
           <div className="toggle-switch">
             <label>
-              <input type="checkbox" onChange={handleModeChange} checked={!props.darkTheme}/>
+              <input
+                type="checkbox"
+                onChange={handleModeChange}
+                checked={!props.darkTheme}
+              />
               <span className="slider-toggle"></span>
             </label>
           </div>
           {props.isLogged ? (
             <>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: props.darkTheme ? "#444444" : "",
+                  color: props.darkTheme ? "#d8dbe0" : "",
+                }}
+                onClick={() => navigate(`/offers/user`)}
+                className={`${props.darkTheme ? "dark-theme" : ""}`}
+              >
+                My offers
+              </Button>
               <Button
                 variant="contained"
                 style={{
@@ -93,7 +110,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               </Button>
             </>
           ) : (
-           <></>
+            <></>
           )}
         </div>
       </ul>

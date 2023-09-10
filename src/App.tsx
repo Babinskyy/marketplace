@@ -5,12 +5,12 @@ import OfferView from "./modules/offers/views/OfferView";
 import { useEffect, useState } from "react";
 import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
-import AllOffers from "./modules/offers/views/AllOffers";
+import UserOffers from "./modules/offers/views/UserOffers";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
-  const [trigger, setTrigger] = useState<boolean>(false);
+
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
@@ -59,8 +59,6 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
-              trigger={trigger}
-              setTrigger={setTrigger}
               isLogged={isLogged}
               setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
@@ -75,7 +73,6 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
-              setTrigger={setTrigger}
               isLogged={isLogged}
               setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
@@ -95,24 +92,21 @@ function App() {
           }
         ></Route>
         <Route
-          path="/offer/all"
+          path="/offers/user"
           element={
-            <AllOffers
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            currentInputValue={currentInputValue}
-            setCurrentInputValue={setCurrentInputValue}
-            setCategoryFilterValue={setCategoryFilterValue}
-            categoryFilterValue={categoryFilterValue}
-
-            setOpenOfferModal={setOpenOfferModal}
-            categories={categories}
-            trigger={trigger}
-            setTrigger={setTrigger}
-            isLogged={isLogged}
-            setIsLogged={setIsLogged}
-            setDarkTheme={setDarkTheme}
-            darkTheme={darkTheme}
+            <UserOffers
+              inputValue={inputValue}
+              setInputValue={setInputValue}
+              currentInputValue={currentInputValue}
+              setCurrentInputValue={setCurrentInputValue}
+              setCategoryFilterValue={setCategoryFilterValue}
+              categoryFilterValue={categoryFilterValue}
+              setOpenOfferModal={setOpenOfferModal}
+              categories={categories}
+              isLogged={isLogged}
+              setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
             />
           }
         ></Route>
