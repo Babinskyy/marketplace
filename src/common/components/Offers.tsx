@@ -40,8 +40,8 @@ const Offers = (props: OffersProps): JSX.Element => {
         });
         const data = await response.json();
         if (data.error) {
-          // props.setIsLogged(false);
-          // navigate("/auth");
+          props.setIsLogged(false);
+          navigate("/auth");
         }
         setOffers(data.offers);
         props.setIsLogged(true);
