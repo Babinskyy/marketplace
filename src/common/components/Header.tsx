@@ -29,7 +29,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           method: "POST",
           credentials: "include",
         });
-        console.log("logout");
+        console.log(response);
       } catch (err) {
         console.error(err);
       }
