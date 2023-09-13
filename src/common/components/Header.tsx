@@ -34,7 +34,6 @@ const Header = (props: HeaderProps): JSX.Element => {
         console.error(err);
       }
     };
-    localStorage.removeItem("userLogged")
     logout();
     navigate("/auth");
   };
