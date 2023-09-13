@@ -36,7 +36,7 @@ const OfferDetails = (props: OfferDetailsType) => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchOffers = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
       // const url = "http://localhost:8000/"
       try {
         const response = await fetch(`${url}offers`, {
@@ -62,16 +62,13 @@ const OfferDetails = (props: OfferDetailsType) => {
   const handleOfferDelete = () => {
     if (window.confirm("Are you sure?")) {
       const deleteOffer = async () => {
-        const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      // const url = "http://localhost:8000/"
+        const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
+        // const url = "http://localhost:8000/"
         try {
-          const response = await fetch(
-            `${url}offers/delete/${id}`,
-            {
-              method: "DELETE",
-              credentials: "include",
-            }
-          );
+          const response = await fetch(`${url}offers/delete/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+          });
           const data = await response.json();
           if (data.error) {
             props.setIsLogged(false);
@@ -95,22 +92,20 @@ const OfferDetails = (props: OfferDetailsType) => {
   const onSubmit = handleSubmit((values) => {
     setEditOffer(false);
     const updateOffer = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
       // const url = "http://localhost:8000/"
       try {
-        const response = await fetch(
-          `${url}offers/update/${id}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify(values),
-          }
-        );
+        const response = await fetch(`${url}offers/update/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(values),
+        });
         const data = await response.json();
         console.log(data);
+        setTrigger((prev) => !prev);
       } catch (err) {
         console.error(err);
       }

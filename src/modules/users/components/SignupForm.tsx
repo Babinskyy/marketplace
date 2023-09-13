@@ -17,8 +17,6 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
     reset,
   } = useForm();
 
-  const navigate = useNavigate();
-
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const signup = async () => {
