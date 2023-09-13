@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
       // const url = "http://localhost:8000/"
       try {
         const response = await fetch(`${url}categories`, {
@@ -85,12 +85,30 @@ function App() {
         <Route
           path="/auth"
           element={
-            <Signup
-              setOpenOfferModal={setOpenOfferModal}
-              setIsLogged={setIsLogged}
-              setDarkTheme={setDarkTheme}
-              darkTheme={darkTheme}
-            />
+            isLogged ? (
+              <Home
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+                currentInputValue={currentInputValue}
+                setCurrentInputValue={setCurrentInputValue}
+                setCategoryFilterValue={setCategoryFilterValue}
+                categoryFilterValue={categoryFilterValue}
+                openOfferModal={openOfferModal}
+                setOpenOfferModal={setOpenOfferModal}
+                categories={categories}
+                isLogged={isLogged}
+                setIsLogged={setIsLogged}
+                setDarkTheme={setDarkTheme}
+                darkTheme={darkTheme}
+              />
+            ) : (
+              <Signup
+                setOpenOfferModal={setOpenOfferModal}
+                setIsLogged={setIsLogged}
+                setDarkTheme={setDarkTheme}
+                darkTheme={darkTheme}
+              />
+            )
           }
         ></Route>
         <Route
