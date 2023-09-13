@@ -26,6 +26,13 @@ nav.main-header {
       img.small-logo {
         display: none;
       }
+      &.login {
+        pointer-events: none;
+        cursor: initial;
+        &:hover{
+          opacity: 1;
+        }
+      }
     }
 
     ul.navigation {
@@ -57,6 +64,9 @@ nav.main-header {
       @include flexbox(row, space-between);
       .css-j204z7-MuiFormControlLabel-root {
         margin-right: 0;
+      }
+      &.login {
+        width: 100px
       }
 
       .toggle-switch {

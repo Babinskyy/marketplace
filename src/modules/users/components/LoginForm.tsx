@@ -8,6 +8,7 @@ type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+  setIsLoginView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginForm = (props: SignupFormType): JSX.Element => {
@@ -41,6 +42,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         if (data.message === "logged") {
           navigate("/");
           props.setIsLogged(true);
+          props.setIsLoginView(false)
         } else setResponse(data.message);
       } catch (err) {
         console.error(err);

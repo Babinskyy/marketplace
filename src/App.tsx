@@ -13,6 +13,7 @@ function App() {
 
   const [isLogged, setIsLogged] = useState<boolean>(false);
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
+  const [isLoginView, setIsLoginView] = useState<boolean>(false);
 
   const [inputValue, setInputValue] = useState<string>("");
   const [currentInputValue, setCurrentInputValue] = useState<string>("");
@@ -91,6 +92,8 @@ function App() {
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
               isLogged={isLogged}
+              setIsLoginView={setIsLoginView}
+              isLoginView={isLoginView}
             />
           }
         ></Route>

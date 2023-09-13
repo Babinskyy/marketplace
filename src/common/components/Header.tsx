@@ -15,6 +15,7 @@ type HeaderProps = {
   isLogged?: boolean;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+  isLoginView?: boolean;
 
 };
 
@@ -43,12 +44,11 @@ const Header = (props: HeaderProps): JSX.Element => {
     props.setDarkTheme(newTheme);
     localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
-
-
+console.log(props.isLoginView);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
-        <div className="logo-holder">
+        <div className={`logo-holder ${props.isLoginView && "login"}`}>
           <Link to="/">
             <img
               src={props.darkTheme ? mpDarkBigLogo : mpBigLogo}
@@ -62,7 +62,7 @@ const Header = (props: HeaderProps): JSX.Element => {
             />
           </Link>
         </div>
-        <div className="buttons-panel">
+        <div className={`buttons-panel ${props.isLoginView && "login"}`}>
           <div className="toggle-switch">
             <label>
               <input
