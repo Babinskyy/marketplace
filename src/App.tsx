@@ -85,30 +85,13 @@ function App() {
         <Route
           path="/auth"
           element={
-            isLogged ? (
-              <Home
-                inputValue={inputValue}
-                setInputValue={setInputValue}
-                currentInputValue={currentInputValue}
-                setCurrentInputValue={setCurrentInputValue}
-                setCategoryFilterValue={setCategoryFilterValue}
-                categoryFilterValue={categoryFilterValue}
-                openOfferModal={openOfferModal}
-                setOpenOfferModal={setOpenOfferModal}
-                categories={categories}
-                isLogged={isLogged}
-                setIsLogged={setIsLogged}
-                setDarkTheme={setDarkTheme}
-                darkTheme={darkTheme}
-              />
-            ) : (
-              <Signup
-                setOpenOfferModal={setOpenOfferModal}
-                setIsLogged={setIsLogged}
-                setDarkTheme={setDarkTheme}
-                darkTheme={darkTheme}
-              />
-            )
+            <Signup
+              setOpenOfferModal={setOpenOfferModal}
+              setIsLogged={setIsLogged}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
+              isLogged={isLogged}
+            />
           }
         ></Route>
         <Route
