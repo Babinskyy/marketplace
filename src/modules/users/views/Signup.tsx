@@ -17,8 +17,6 @@ type SignupType = {
 const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
 
-
-
   return (
     <div className={`signup-container ${props.darkTheme && "dark-theme"}`}>
       <Header
