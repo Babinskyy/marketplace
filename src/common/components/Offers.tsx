@@ -29,18 +29,19 @@ const Offers = (props: OffersProps): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let url = `http://localhost:8000/offers`;
+      let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
       if (location.pathname === "/offers/user") {
-        url = "http://localhost:8000/offers/user";
+        url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
       }
       try {
         const response = await fetch(url, {
+          method: 'GET',
           credentials: "include",
         });
         const data = await response.json();
         if (data.error) {
-          props.setIsLogged(false);
-          navigate("/auth");
+          // props.setIsLogged(false);
+          // navigate("/auth");
         }
         setOffers(data.offers);
         props.setIsLogged(true);

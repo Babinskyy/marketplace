@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Cookies from 'universal-cookie';
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,11 +21,14 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
   } = useForm();
 
   const navigate = useNavigate();
+  const cookies = new Cookies();
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const login = async () => {
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch("http://localhost:8000/users/login", {
+        const response = await fetch(`${url}users/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -33,8 +37,9 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
+        console.log(data);
         if (data.message === "logged") {
-          // localStorage.setItem("userLogged", `${data.user_id}`);
+          cookies.set('AuthenticationToken', data.token);
           navigate("/");
           props.setIsLogged(true);
         } else setResponse(data.message);

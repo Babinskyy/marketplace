@@ -36,8 +36,10 @@ const OfferDetails = (props: OfferDetailsType) => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchOffers = async () => {
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com"
+      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch("http://localhost:8000/offers", {
+        const response = await fetch(`${url}/offers`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -60,9 +62,11 @@ const OfferDetails = (props: OfferDetailsType) => {
   const handleOfferDelete = () => {
     if (window.confirm("Are you sure?")) {
       const deleteOffer = async () => {
+        const url = "https://marketplaceserver-2777642eddf2.herokuapp.com"
+      // const url = "http://localhost:8000/"
         try {
           const response = await fetch(
-            `http://localhost:8000/offers/delete/${id}`,
+            `${url}offers/delete/${id}`,
             {
               method: "DELETE",
               credentials: "include",
@@ -91,9 +95,11 @@ const OfferDetails = (props: OfferDetailsType) => {
   const onSubmit = handleSubmit((values) => {
     setEditOffer(false);
     const updateOffer = async () => {
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com"
+      // const url = "http://localhost:8000/"
       try {
         const response = await fetch(
-          `http://localhost:8000/offers/update/${id}`,
+          `${url}/offers/update/${id}`,
           {
             method: "PUT",
             headers: {

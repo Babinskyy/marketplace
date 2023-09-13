@@ -29,8 +29,10 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch("http://localhost:8000/categories", {
+        const response = await fetch(`${url}categories`, {
           credentials: "include",
         });
         const data = await response.json();

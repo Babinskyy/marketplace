@@ -204,8 +204,10 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       imageData.append(`file`, preview.data);
     });
     imageData.append("title", formData.title);
+    const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+    // const url = "http://localhost:8000/"
     try {
-      const response = await fetch("http://localhost:8000/offers/upload", {
+      const response = await fetch(`${url}offers/upload`, {
         method: "POST",
         body: imageData,
         credentials: "include",
@@ -217,8 +219,10 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     }
   };
   const createNewOffer = async () => {
+    const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
+    // const url = "http://localhost:8000/"
     try {
-      const response = await fetch("http://localhost:8000/offers/create", {
+      const response = await fetch(`${url}offers/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

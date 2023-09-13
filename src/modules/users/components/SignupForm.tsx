@@ -22,8 +22,10 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const signup = async () => {
+      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com"
+      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch("http://localhost:8000/users/signup", {
+        const response = await fetch(`${url}users/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
