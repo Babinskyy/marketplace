@@ -3,8 +3,8 @@ import SignupForm from "../components/SignupForm";
 import Header from "../../../common/components/Header";
 import Footer from "../../../common/components/Footer";
 import LoginForm from "../components/LoginForm";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 type SignupType = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,10 +16,8 @@ type SignupType = {
 
 const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    props.isLogged && navigate("/");
-  }, []);
+
+
 
   return (
     <div className={`signup-container ${props.darkTheme && "dark-theme"}`}>
