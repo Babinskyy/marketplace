@@ -39,7 +39,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         const data = await response.json();
         console.log(data);
         if (data.message === "logged") {
-          cookies.set('AuthenticationToken', data.token);
           navigate("/");
           props.setIsLogged(true);
         } else setResponse(data.message);
