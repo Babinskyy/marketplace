@@ -60,6 +60,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           type="text"
           id="username"
           placeholder="username"
+          className={`${props.darkTheme && "dark-theme"}`}
         />
         <div className="error-container">
           {errors.username && <p className="error">Enter username.</p>}
@@ -70,6 +71,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           type="password"
           id="password"
           placeholder="password"
+          className={`${props.darkTheme && "dark-theme"}`}
         />
         <div className="error-container">
           {errors.password && <p className="error">Enter password.</p>}
@@ -80,13 +82,13 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
             Login
           </button>
 
-          <button
+          {/* <button
             type="submit"
             id="signup-submit"
             onClick={() => props.setLogin((prev) => !prev)}
           >
             Go to Signup
-          </button>
+          </button> */}
         </div>
       </div>
     </form>
