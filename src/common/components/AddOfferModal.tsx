@@ -244,8 +244,8 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     if (validate()) {
-      uploadImages();
-      createNewOffer();
+      await uploadImages();
+      await createNewOffer();
       props.setOpenOfferModal(false);
 
       setFormData({
