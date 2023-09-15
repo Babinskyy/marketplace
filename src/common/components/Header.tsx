@@ -44,7 +44,6 @@ const Header = (props: HeaderProps): JSX.Element => {
     props.setDarkTheme(newTheme);
     localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
-console.log(props.isLoginView);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
