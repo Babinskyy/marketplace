@@ -29,11 +29,11 @@ const Offers = (props: OffersProps): JSX.Element => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
-      let url = `http://localhost:8000/offers`;
+      let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
+      // let url = `http://localhost:8000/offers`;
       if (location.pathname === "/offers/user") {
-        // url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
-        url = "http://localhost:3000/offers/user";
+        url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
+        // url = "http://localhost:3000/offers/user";
       }
       try {
         const response = await fetch(url, {
