@@ -60,15 +60,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
   background-color: transparent;
-  min-width: 80%;
-  // min-height: 80%;
+  height: 80vh;
   outline: none;
-  // border: none;
   @include flexbox(row, center, center);
   img {
-    max-width: 100%;
+    max-width: 120%;
+    max-height: 120%;
   }
 }
 
