@@ -61,6 +61,7 @@ nav.main-header {
 
     .buttons-panel {
       width: 500px;
+      margin-left: 5px;
       @include flexbox(row, space-between);
       .css-j204z7-MuiFormControlLabel-root {
         margin-right: 0;
@@ -196,7 +197,7 @@ nav.main-header {
     }
     @media screen and (max-width: 470px) {
       .buttons-panel {
-        width: 265px;
+        width: 280px;
         // @include flexbox(column);
         // flex-wrap: wrap;
         button {
