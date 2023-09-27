@@ -5,6 +5,8 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Category, Offer } from "../types/Types";
 import Loader from "./Loader";
+import { BASE_URL } from "../config/env-variable";
+import { useAuth } from "../functions/useAuth";
 
 type OffersProps = {
   inputValue?: string;
@@ -26,25 +28,25 @@ const Offers = (props: OffersProps): JSX.Element => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   useEffect(() => {
     const fetchData = async () => {
-      let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
-      // let url = `http://localhost:8000/offers`;
-      if (location.pathname === "/offers/user") {
-        url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
-        // url = "http://localhost:3000/offers/user";
-      }
       try {
+        let url = `${BASE_URL}offers`;
+        if (window.location.pathname === "/offers/user") {
+          url = `${BASE_URL}offers/user`;
+        }
         const response = await fetch(url, {
-          method: 'GET',
+          method: "GET",
           credentials: "include",
         });
         const data = await response.json();
+
         if (data.error) {
           props.setIsLogged(false);
           navigate("/auth");
         }
+        const currentPathname = window.location.pathname;
+
         setOffers(data.offers);
         props.setIsLogged(true);
         setLoading(false);

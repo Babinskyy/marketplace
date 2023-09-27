@@ -23,6 +23,7 @@ import { Offer, Errors, Category } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import { ImagePreviewType } from "../../common/types/Types";
+import { BASE_URL } from "../config/env-variable";
 
 type AddOfferProps = {
   openOfferModal: boolean;
@@ -204,10 +205,9 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       imageData.append(`file`, preview.data);
     });
     imageData.append("title", formData.title);
-    const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-    // const url = "http://localhost:8000/"
+
     try {
-      const response = await fetch(`${url}offers/upload`, {
+      const response = await fetch(`${BASE_URL}offers/upload`, {
         method: "POST",
         body: imageData,
         credentials: "include",
@@ -219,10 +219,8 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     }
   };
   const createNewOffer = async () => {
-    const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-    // const url = "http://localhost:8000/"
     try {
-      const response = await fetch(`${url}offers/create`, {
+      const response = await fetch(`${BASE_URL}offers/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -383,21 +381,19 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
               ))}
             </div>
 
-      
-              <TextField
-                error={!!errors.price}
-                name="price"
-                label="Price in $"
-                defaultValue=""
-                sx={{ width: "510px" }}
-                onChange={(e) => {
-                  setFormData({
-                    ...formData,
-                    [e.currentTarget.name]: +e.currentTarget.value,
-                  });
-                }}
-              />
-     
+            <TextField
+              error={!!errors.price}
+              name="price"
+              label="Price in $"
+              defaultValue=""
+              sx={{ width: "510px" }}
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  [e.currentTarget.name]: +e.currentTarget.value,
+                });
+              }}
+            />
 
             <div className="error-message mg">{errorMessages.price}</div>
             <div className="details-holder">

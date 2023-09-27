@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
 import UserOffers from "./modules/offers/views/UserOffers";
+import { BASE_URL } from "./common/config/env-variable";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
@@ -30,10 +31,8 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
-      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch(`${url}categories`, {
+        const response = await fetch(`${BASE_URL}categories`, {
           credentials: "include",
         });
         const data = await response.json();
@@ -113,6 +112,7 @@ function App() {
               setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
+              openOfferModal={openOfferModal}
             />
           }
         ></Route>

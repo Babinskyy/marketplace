@@ -7,6 +7,8 @@ import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-dark.pn
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuth } from "../functions/useAuth";
+import { BASE_URL } from "../config/env-variable";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,17 +18,16 @@ type HeaderProps = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   isLoginView?: boolean;
-
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
+  const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
+  const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
     const logout = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch(`${url}users/logout`, {
+        const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
           credentials: "include",
         });
@@ -44,6 +45,28 @@ const Header = (props: HeaderProps): JSX.Element => {
     props.setDarkTheme(newTheme);
     localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
+
+  const handleClick = async () => {
+    const result = await checkIsLogged(); // Call the function to trigger the fetch
+    if (result?.message === "auth success") {
+      props.setOpenOfferModal(true);
+    } else {
+      navigate("/auth");
+    }
+  };
+
+  useEffect(() => {
+    const checkLogStatus = async () => {
+      const result = await checkIsLogged();
+      if (result?.message === "auth success") {
+        setIsUserLogged(true);
+      } else {
+        setIsUserLogged(false);
+      }
+    };
+    checkLogStatus();
+  }, []);
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -72,19 +95,9 @@ const Header = (props: HeaderProps): JSX.Element => {
               <span className="slider-toggle"></span>
             </label>
           </div>
-          {props.isLogged ? (
+          {/* {props.isLogged ? (
             <>
-              <Button
-                variant="contained"
-                style={{
-                  backgroundColor: props.darkTheme ? "#444444" : "",
-                  color: props.darkTheme ? "#d8dbe0" : "",
-                }}
-                onClick={() => navigate(`/offers/user`)}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
-              >
-                My offers
-              </Button>
+              
               <Button
                 variant="contained"
                 style={{
@@ -111,6 +124,62 @@ const Header = (props: HeaderProps): JSX.Element => {
             </>
           ) : (
             <></>
+          )} */}
+          {props.isLoginView ? (
+            <></>
+          ) : (
+            <>
+              {isUserLogged ? (
+                <>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={() => navigate(`/offers/user`)}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    My offers
+                  </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={handleLogout}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    Log out
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={handleLogout}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  Log in
+                </Button>
+              )}
+
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: props.darkTheme ? "#444444" : "",
+                  color: props.darkTheme ? "#d8dbe0" : "",
+                }}
+                onClick={handleClick}
+                className={`${props.darkTheme ? "dark-theme" : ""}`}
+              >
+                Add an offer
+              </Button>
+            </>
           )}
         </div>
       </ul>

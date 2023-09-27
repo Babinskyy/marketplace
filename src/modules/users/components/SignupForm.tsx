@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../common/config/env-variable";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,10 +21,14 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const signup = async () => {
+<<<<<<< HEAD
       const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
       // const url = "http://localhost:8000/"
+=======
+
+>>>>>>> c84d3743cf245fe9ff4b115b461cb723acb73275
       try {
-        const response = await fetch(`${url}users/signup`, {
+        const response = await fetch(`${BASE_URL}users/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

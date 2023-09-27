@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
+import { BASE_URL } from "../../../common/config/env-variable";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,14 +23,11 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
   } = useForm();
 
   const navigate = useNavigate();
-  const cookies = new Cookies();
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const login = async () => {
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      // const url = "http://localhost:8000/"
       try {
-        const response = await fetch(`${url}users/login`, {
+        const response = await fetch(`${BASE_URL}users/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -42,7 +40,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         if (data.message === "logged") {
           navigate("/");
           props.setIsLogged(true);
-          props.setIsLoginView(false)
+          props.setIsLoginView(false);
         } else setResponse(data.message);
       } catch (err) {
         console.error(err);

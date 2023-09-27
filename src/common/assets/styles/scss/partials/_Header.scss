@@ -14,7 +14,7 @@ nav.main-header {
     .logo-holder {
       transition: 0.2s;
       // background-color: aquamarine;
-      // padding: 0px 15px 0px 15px;
+      padding: 0px 15px 0px 15px;
       &:hover {
         opacity: 0.7;
       }
@@ -26,13 +26,13 @@ nav.main-header {
       img.small-logo {
         display: none;
       }
-      &.login {
-        pointer-events: none;
-        cursor: initial;
-        &:hover {
-          opacity: 1;
-        }
-      }
+      // &.login {
+      //   pointer-events: none;
+      //   cursor: initial;
+      //   &:hover{
+      //     opacity: 1;
+      //   }
+      // }
     }
 
     ul.navigation {
