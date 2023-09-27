@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Category, Offer } from "../types/Types";
 import Loader from "./Loader";
 import { BASE_URL } from "../config/env-variable";
+import { useAuth } from "../functions/useAuth";
 
 type OffersProps = {
   inputValue?: string;
@@ -27,23 +28,25 @@ const Offers = (props: OffersProps): JSX.Element => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   useEffect(() => {
     const fetchData = async () => {
-      // let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
-      let url = `http://localhost:8000/offers`;
-    
       try {
-        const response = await fetch(`${BASE_URL}offers`, {
-          method: 'GET',
+        let url = `${BASE_URL}offers`
+        if(window.location.pathname === "/offers/user"){
+          url = `${BASE_URL}offers/user`
+        }
+        const response = await fetch(url, {
+          method: "GET",
           credentials: "include",
         });
         const data = await response.json();
-        console.log(data);
+
         if (data.error) {
           props.setIsLogged(false);
           navigate("/auth");
         }
+        const currentPathname = window.location.pathname;
+        console.log(currentPathname);
         setOffers(data.offers);
         props.setIsLogged(true);
         setLoading(false);

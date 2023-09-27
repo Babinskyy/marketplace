@@ -26,8 +26,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const navigate = useNavigate();
   const handleLogout = () => {
     const logout = async () => {
-      // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      const url = "http://localhost:8000/";
+
       try {
         const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
