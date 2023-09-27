@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../functions/useAuth";
+import { BASE_URL } from "../config/env-variable";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,7 +29,7 @@ const Header = (props: HeaderProps): JSX.Element => {
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
       const url = "http://localhost:8000/";
       try {
-        const response = await fetch(`${url}users/logout`, {
+        const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
           credentials: "include",
         });

@@ -23,6 +23,7 @@ import { Offer, Errors, Category } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
 import { ImagePreviewType } from "../../common/types/Types";
+import { BASE_URL } from "../config/env-variable";
 
 type AddOfferProps = {
   openOfferModal: boolean;
@@ -207,7 +208,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
     const url = "http://localhost:8000/"
     try {
-      const response = await fetch(`${url}offers/upload`, {
+      const response = await fetch(`${BASE_URL}offers/upload`, {
         method: "POST",
         body: imageData,
         credentials: "include",
@@ -222,7 +223,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
     const url = "http://localhost:8000/"
     try {
-      const response = await fetch(`${url}offers/create`, {
+      const response = await fetch(`${BASE_URL}offers/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Category, Offer } from "../types/Types";
 import Loader from "./Loader";
+import { BASE_URL } from "../config/env-variable";
 
 type OffersProps = {
   inputValue?: string;
@@ -31,12 +32,9 @@ const Offers = (props: OffersProps): JSX.Element => {
     const fetchData = async () => {
       // let url = `https://marketplaceserver-2777642eddf2.herokuapp.com/offers`;
       let url = `http://localhost:8000/offers`;
-      if (location.pathname === "/offers/user") {
-        // url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
-        url = "http://localhost:8000/offers/user";
-      }
+    
       try {
-        const response = await fetch(url, {
+        const response = await fetch(`${BASE_URL}offers`, {
           method: 'GET',
           credentials: "include",
         });

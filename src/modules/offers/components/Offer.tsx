@@ -10,6 +10,7 @@ import Loader from "../../../common/components/Loader";
 import { Input } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
+import { BASE_URL } from "../../../common/config/env-variable";
 
 type OfferDetailsType = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
@@ -37,18 +38,16 @@ const OfferDetails = (props: OfferDetailsType) => {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchOffer = async () => {
+      console.log(URL);
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
       const url = "http://localhost:8000/";
 
       try {
         // const response = await fetch(`${url}offers/88`, {
-        const response = await fetch(
-          `${url}offers/findOne/${id}`,
-          {
-            method: "GET",
-            credentials: "include",
-          }
-        );
+        const response = await fetch(`${BASE_URL}offers/findOne/${id}`, {
+          method: "GET",
+          credentials: "include",
+        });
         const data = await response.json();
 
         setOffer(data.offer);
@@ -69,7 +68,7 @@ const OfferDetails = (props: OfferDetailsType) => {
     };
 
     fetchOffer();
-  }, []);
+  }, [trigger]);
 
   const handleOfferDelete = () => {
     if (window.confirm("Are you sure?")) {
@@ -77,7 +76,7 @@ const OfferDetails = (props: OfferDetailsType) => {
         // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
         const url = "http://localhost:8000/";
         try {
-          const response = await fetch(`${url}offers/delete/${id}`, {
+          const response = await fetch(`${BASE_URL}offers/delete/${id}`, {
             method: "DELETE",
             credentials: "include",
           });
@@ -105,7 +104,7 @@ const OfferDetails = (props: OfferDetailsType) => {
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
       const url = "http://localhost:8000/";
       try {
-        const response = await fetch(`${url}offers/update/${id}`, {
+        const response = await fetch(`${BASE_URL}offers/update/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

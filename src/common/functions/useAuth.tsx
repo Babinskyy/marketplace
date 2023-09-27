@@ -1,9 +1,10 @@
+import { BASE_URL } from "../config/env-variable";
+
 export function useAuth() {
-  const url = "http://localhost:8000/";
 
   const checkIsLogged = async () => {
     try {
-      const response = await fetch(`${url}offers/logged`, {
+      const response = await fetch(`${BASE_URL}offers/logged`, {
         method: "GET",
         credentials: "include",
       });
