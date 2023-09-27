@@ -26,13 +26,13 @@ nav.main-header {
       img.small-logo {
         display: none;
       }
-      &.login {
-        pointer-events: none;
-        cursor: initial;
-        &:hover{
-          opacity: 1;
-        }
-      }
+      // &.login {
+      //   pointer-events: none;
+      //   cursor: initial;
+      //   &:hover{
+      //     opacity: 1;
+      //   }
+      // }
     }
 
     ul.navigation {
@@ -66,7 +66,7 @@ nav.main-header {
         margin-right: 0;
       }
       &.login {
-        width: 100px
+        // width: 100px;
       }
 
       .toggle-switch {

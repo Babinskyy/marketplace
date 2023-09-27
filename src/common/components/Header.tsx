@@ -7,6 +7,7 @@ import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-dark.pn
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuth } from "../functions/useAuth";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,15 +17,15 @@ type HeaderProps = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   isLoginView?: boolean;
-
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
+  const authResult = useAuth() as { message?: string } | null;
   const navigate = useNavigate();
   const handleLogout = () => {
     const logout = async () => {
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      const url = "http://localhost:8000/"
+      const url = "http://localhost:8000/";
       try {
         const response = await fetch(`${url}users/logout`, {
           method: "POST",
@@ -43,6 +44,17 @@ const Header = (props: HeaderProps): JSX.Element => {
     const newTheme = !props.darkTheme;
     props.setDarkTheme(newTheme);
     localStorage.setItem("themePreference", newTheme ? "dark" : "light");
+  };
+
+  const handleClick = async () => {
+    console.log(authResult);
+    if (authResult && authResult.message === "auth success") {
+      // User is authenticated
+      console.log("auth success");
+    } else {
+      // Authentication failed or is still in progress
+      console.log("auth failed");
+    }
   };
   return (
     <nav className="main-header">
@@ -72,7 +84,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               <span className="slider-toggle"></span>
             </label>
           </div>
-          {props.isLogged ? (
+          {/* {props.isLogged ? (
             <>
               <Button
                 variant="contained"
@@ -111,7 +123,31 @@ const Header = (props: HeaderProps): JSX.Element => {
             </>
           ) : (
             <></>
-          )}
+          )} */}
+
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: props.darkTheme ? "#444444" : "",
+              color: props.darkTheme ? "#d8dbe0" : "",
+            }}
+            onClick={() => navigate("/auth")}
+            className={`${props.darkTheme ? "dark-theme" : ""}`}
+          >
+            Log in
+          </Button>
+
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: props.darkTheme ? "#444444" : "",
+              color: props.darkTheme ? "#d8dbe0" : "",
+            }}
+            onClick={handleClick}
+            className={`${props.darkTheme ? "dark-theme" : ""}`}
+          >
+            Add an offer
+          </Button>
         </div>
       </ul>
     </nav>

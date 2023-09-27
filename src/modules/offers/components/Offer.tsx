@@ -48,7 +48,6 @@ const OfferDetails = (props: OfferDetailsType) => {
           navigate("/auth");
         }
         const offer = data.offers.find((o: Offer) => o.id?.toString() === id);
-        props.setIsLogged(true);
         setOffer(offer);
         setUsername(data.username);
       } catch (err) {

@@ -22,7 +22,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
   } = useForm();
 
   const navigate = useNavigate();
-  const cookies = new Cookies();
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const login = async () => {
