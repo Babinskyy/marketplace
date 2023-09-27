@@ -113,6 +113,8 @@ function App() {
               setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
+              openOfferModal={openOfferModal}
+  
             />
           }
         ></Route>

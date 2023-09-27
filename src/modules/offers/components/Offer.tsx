@@ -1,6 +1,4 @@
 import "../../../common/assets/styles/scss/main/App.scss";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -11,6 +9,7 @@ import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
 import { Input } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../../common/functions/useAuth";
 
 type OfferDetailsType = {
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,9 +19,11 @@ type OfferDetailsType = {
 const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
+  const [offerAuthorId, setOfferAuthorId] = useState<number>();
   const [editOffer, setEditOffer] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [trigger, setTrigger] = useState<boolean>(false);
+  const [isAuthorLogged, setIsAuthorLogged] = useState<boolean>(false);
 
   const {
     register,
@@ -32,37 +33,49 @@ const OfferDetails = (props: OfferDetailsType) => {
   } = useForm();
 
   const { id } = useParams<{ id: string }>();
-
+  const checkIsLogged = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchOffers = async () => {
+    const fetchOffer = async () => {
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
-      const url = "http://localhost:8000/"
+      const url = "http://localhost:8000/";
+
       try {
-        const response = await fetch(`${url}offers`, {
-          credentials: "include",
-        });
+        // const response = await fetch(`${url}offers/88`, {
+        const response = await fetch(
+          `${url}offers/findOne/${id}`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
         const data = await response.json();
-        if (data.error) {
-          props.setIsLogged(false);
-          navigate("/auth");
+
+        setOffer(data.offer);
+        setOfferAuthorId(data.authorId);
+        console.log("data.authorId:", data.authorId);
+
+        const isLoggedResponse = await checkIsLogged();
+        const loggedUserId = isLoggedResponse?.userId;
+
+        if (loggedUserId === data.authorId) {
+          setIsAuthorLogged(true);
+        } else {
+          setIsAuthorLogged(false);
         }
-        const offer = data.offers.find((o: Offer) => o.id?.toString() === id);
-        setOffer(offer);
-        setUsername(data.username);
       } catch (err) {
         console.error(err);
       }
     };
 
-    fetchOffers();
-  }, [trigger]);
+    fetchOffer();
+  }, []);
 
   const handleOfferDelete = () => {
     if (window.confirm("Are you sure?")) {
       const deleteOffer = async () => {
         // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
-        const url = "http://localhost:8000/"
+        const url = "http://localhost:8000/";
         try {
           const response = await fetch(`${url}offers/delete/${id}`, {
             method: "DELETE",
@@ -85,14 +98,12 @@ const OfferDetails = (props: OfferDetailsType) => {
       console.log("Deleting canceled");
     }
   };
-  const isAuthorLogged = () => {
-    return username === offer?.author;
-  };
+
   const onSubmit = handleSubmit((values) => {
     setEditOffer(false);
     const updateOffer = async () => {
       // const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/";
-      const url = "http://localhost:8000/"
+      const url = "http://localhost:8000/";
       try {
         const response = await fetch(`${url}offers/update/${id}`, {
           method: "PUT",
@@ -124,7 +135,7 @@ const OfferDetails = (props: OfferDetailsType) => {
         }`}
       >
         <form onSubmit={onSubmit}>
-          {isAuthorLogged() && (
+          {isAuthorLogged && (
             <div className="buttons-panel">
               {editOffer ? (
                 <>

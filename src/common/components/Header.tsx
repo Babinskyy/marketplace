@@ -20,7 +20,8 @@ type HeaderProps = {
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const authResult = useAuth() as { message?: string } | null;
+  const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
+  const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
     const logout = async () => {
@@ -47,15 +48,26 @@ const Header = (props: HeaderProps): JSX.Element => {
   };
 
   const handleClick = async () => {
-    console.log(authResult);
-    if (authResult && authResult.message === "auth success") {
-      // User is authenticated
-      console.log("auth success");
+    const result = await checkIsLogged(); // Call the function to trigger the fetch
+    if (result?.message === "auth success") {
+      props.setOpenOfferModal(true);
     } else {
-      // Authentication failed or is still in progress
-      console.log("auth failed");
+      navigate("/auth");
     }
   };
+
+  useEffect(() => {
+    const checkLogStatus = async () => {
+      const result = await checkIsLogged();
+      if (result?.message === "auth success") {
+        setIsUserLogged(true);
+      } else {
+        setIsUserLogged(false);
+      }
+    };
+    checkLogStatus();
+  }, []);
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -86,17 +98,7 @@ const Header = (props: HeaderProps): JSX.Element => {
           </div>
           {/* {props.isLogged ? (
             <>
-              <Button
-                variant="contained"
-                style={{
-                  backgroundColor: props.darkTheme ? "#444444" : "",
-                  color: props.darkTheme ? "#d8dbe0" : "",
-                }}
-                onClick={() => navigate(`/offers/user`)}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
-              >
-                My offers
-              </Button>
+              
               <Button
                 variant="contained"
                 style={{
@@ -124,30 +126,62 @@ const Header = (props: HeaderProps): JSX.Element => {
           ) : (
             <></>
           )} */}
+          {props.isLoginView ? (
+            <></>
+          ) : (
+            <>
+              {isUserLogged ? (
+                <>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={() => navigate(`/offers/user`)}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    My offers
+                  </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={handleLogout}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    Log out
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={handleLogout}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  Log in
+                </Button>
+              )}
 
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: props.darkTheme ? "#444444" : "",
-              color: props.darkTheme ? "#d8dbe0" : "",
-            }}
-            onClick={() => navigate("/auth")}
-            className={`${props.darkTheme ? "dark-theme" : ""}`}
-          >
-            Log in
-          </Button>
-
-          <Button
-            variant="contained"
-            style={{
-              backgroundColor: props.darkTheme ? "#444444" : "",
-              color: props.darkTheme ? "#d8dbe0" : "",
-            }}
-            onClick={handleClick}
-            className={`${props.darkTheme ? "dark-theme" : ""}`}
-          >
-            Add an offer
-          </Button>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: props.darkTheme ? "#444444" : "",
+                  color: props.darkTheme ? "#d8dbe0" : "",
+                }}
+                onClick={handleClick}
+                className={`${props.darkTheme ? "dark-theme" : ""}`}
+              >
+                Add an offer
+              </Button>
+            </>
+          )}
         </div>
       </ul>
     </nav>

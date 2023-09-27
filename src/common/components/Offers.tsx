@@ -33,7 +33,7 @@ const Offers = (props: OffersProps): JSX.Element => {
       let url = `http://localhost:8000/offers`;
       if (location.pathname === "/offers/user") {
         // url = "https://marketplaceserver-2777642eddf2.herokuapp.com/offers/user";
-        url = "http://localhost:3000/offers/user";
+        url = "http://localhost:8000/offers/user";
       }
       try {
         const response = await fetch(url, {
@@ -41,6 +41,7 @@ const Offers = (props: OffersProps): JSX.Element => {
           credentials: "include",
         });
         const data = await response.json();
+        console.log(data);
         if (data.error) {
           props.setIsLogged(false);
           navigate("/auth");
