@@ -21,12 +21,6 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
   const onSubmit = handleSubmit((values) => {
     setResponse("");
     const signup = async () => {
-<<<<<<< HEAD
-      const url = "https://marketplaceserver-2777642eddf2.herokuapp.com/"
-      // const url = "http://localhost:8000/"
-=======
-
->>>>>>> c84d3743cf245fe9ff4b115b461cb723acb73275
       try {
         const response = await fetch(`${BASE_URL}users/signup`, {
           method: "POST",

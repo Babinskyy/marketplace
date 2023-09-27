@@ -1,4 +1,5 @@
 import "../../../common/assets/styles/scss/main/App.scss";
+import AddOfferModal from "../../../common/components/AddOfferModal";
 import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
 import Offers from "../../../common/components/Offers";
@@ -19,6 +20,7 @@ type allOffersType = {
     React.SetStateAction<number | undefined>
   >;
   categoryFilterValue: number | undefined;
+  openOfferModal: boolean;
 };
 
 const UserOffers = (props: allOffersType): JSX.Element => {
@@ -42,6 +44,12 @@ const UserOffers = (props: allOffersType): JSX.Element => {
         darkTheme={props.darkTheme}
       />
       <Footer darkTheme={props.darkTheme} />
+      <AddOfferModal
+        openOfferModal={props.openOfferModal}
+        setOpenOfferModal={props.setOpenOfferModal}
+        categories={props.categories}
+        darkTheme={props.darkTheme}
+      />
     </div>
   );
 };
