@@ -62,6 +62,9 @@ nav.main-header {
       &.logged-out {
         width: 350px;
       }
+      &.login-view {
+        width: 100px;
+      }
 
       .toggle-switch {
         @include flexbox(row, center, center);
@@ -161,6 +164,9 @@ nav.main-header {
         &.logged-out {
           width: 300px;
         }
+        &.login-view {
+          width: 100px;
+        }
         button {
           font-size: 12px;
           font-weight: 1000;
@@ -170,6 +176,9 @@ nav.main-header {
     @media screen and (max-width: 580px) {
       .buttons-panel {
         width: 360px;
+        &.login-view {
+          width: 100px;
+        }
         button {
           height: 40px;
           font-size: 10px;
@@ -183,6 +192,9 @@ nav.main-header {
 
         &.logged-out {
           width: 250px;
+        }
+        &.login-view {
+          width: 100px;
         }
         button {
           height: 28px;
@@ -206,6 +218,9 @@ nav.main-header {
         width: 280px;
         // @include flexbox(column);
         // flex-wrap: wrap;
+        &.login-view {
+          width: 100px;
+        }
         button {
           height: 28px;
           padding: 5px;

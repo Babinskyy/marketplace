@@ -132,10 +132,10 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
 
     if (formData.title.trim().length === 0) {
       tmpErrors.title = "Title should not be empty!";
-    } else if (formData.title.trim().length < 5) {
-      tmpErrors.title = "Title should have at least 5 characters!";
-    } else if (formData.title.trim().length > 25) {
-      tmpErrors.title = "Title should have maximum of 25 characters!";
+    } else if (formData.title.trim().length < 3) {
+      tmpErrors.title = "Title should have at least 3 characters!";
+    } else if (formData.title.trim().length > 45) {
+      tmpErrors.title = "Title should have maximum of 45 characters!";
     }
 
     if (!formData.category) {

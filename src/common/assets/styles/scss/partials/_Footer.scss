@@ -9,14 +9,13 @@
   align-items: center;
   flex-direction: column;
   margin-top: 150px;
-  &.dark-theme{
+  &.dark-theme {
     margin-top: 0;
     border-top: 150px solid rgb(44, 44, 44);
   }
 }
 ul {
-    padding: 0;
-    
+  padding: 0;
 }
 
 .social-icon,
@@ -69,22 +68,24 @@ ul {
 }
 
 @media screen and (max-width: 400px) {
-  .social-icon{
-    display: none;
+  .social-icon,
+  .menu {
+    // width: 300px;
+    // font-size: 10px;
   }
+
   .footer p {
-  display: none;
+    // display: none;
   }
 }
 @media screen and (max-height: 720px) {
-  .social-icon{
+  .social-icon {
     display: none;
   }
   .footer p {
-  display: none;
+    display: none;
   }
 }
-
 
 .wave {
   position: absolute;
@@ -124,7 +125,7 @@ ul {
   animation: animate 12s linear infinite;
 }
 
-.copyright{
+.copyright {
   text-align: center;
 }
 

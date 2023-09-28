@@ -1,3 +1,7 @@
+.add-offer-container {
+  display: none;
+}
+
 .modal-box {
   position: absolute;
   top: 50%;
@@ -9,7 +13,7 @@
   border-radius: 15px;
   box-shadow: $box-shadow;
   padding: 20px;
-  // &.dark-theme{
+  // &.dark-theme {
   //   background-color: rgb(68, 68, 68);
   //   color: #fff;
   // }
@@ -51,9 +55,9 @@
           font-size: 15px;
           cursor: pointer;
           transition: 0.2s;
-          // &.dark-theme{
+          // &.dark-theme {
           //   background-color: rgb(117, 117, 117);
-          //   color: #fff
+          //   color: #fff;
           // }
           &:hover {
             transform: scale(1.02);
@@ -140,6 +144,7 @@
       .details-holder {
         Textarea {
           padding-left: 20px;
+          width: 200px;
         }
         width: 340px;
         // @include flexbox(row, center, center);
@@ -176,6 +181,7 @@
     }
   }
 }
+
 @media screen and (max-width: 410px) {
   .modal-box {
     width: 300px;
@@ -195,6 +201,7 @@
       .details-holder {
         Textarea {
           padding-left: 10px;
+          width: 100px;
         }
         width: 250px;
       }

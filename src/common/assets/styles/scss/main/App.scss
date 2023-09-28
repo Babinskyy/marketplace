@@ -17,6 +17,7 @@
 @import "../partials/_Loader";
 @import "../partials/_AllOffers";
 @import "../partials/_Greetings";
+@import "../partials/_UserOffers";
 
 * {
   font-family: "Nunito", sans-serif;
@@ -29,8 +30,6 @@
   box-sizing: border-box;
 }
 
-
-
 h1 {
   font-weight: 700;
   font-size: 35px;
@@ -38,7 +37,7 @@ h1 {
   color: $secondary-color;
   text-align: center;
 }
-.App{
+.App {
   &.dark-theme {
     background-color: rgb(44, 44, 44);
   }

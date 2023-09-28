@@ -34,6 +34,9 @@ const Home = (props: HomeProps): JSX.Element => {
         isLogged={props.isLogged}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
+        setCategoryFilterValue={props.setCategoryFilterValue}
+        setInputValue={props.setInputValue}
+        setCurrentInputValue={props.setCurrentInputValue}
       />
       <Greetings darkTheme={props.darkTheme} />
       <Searchbar
@@ -50,16 +53,6 @@ const Home = (props: HomeProps): JSX.Element => {
         categories={props.categories}
         darkTheme={props.darkTheme}
       />
-      {/* <h1
-        style={{
-          backgroundColor: "rgb(44, 44, 44)",
-          margin: "0",
-          paddingTop: "10px",
-          color: "#fff",
-        }}
-      >
-        Suggested offers
-      </h1> */}
       <Offers
         inputValue={props.inputValue}
         categoryFilterValue={props.categoryFilterValue}

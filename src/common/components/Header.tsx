@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
+import { Category } from "../types/Types";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +19,11 @@ type HeaderProps = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   isLoginView?: boolean;
+  setCategoryFilterValue?: React.Dispatch<
+    React.SetStateAction<number | undefined>
+  >;
+  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
@@ -80,6 +86,17 @@ const Header = (props: HeaderProps): JSX.Element => {
               src={props.darkTheme ? mpDarkBigLogo : mpBigLogo}
               alt="logo"
               className="big-logo"
+              onClick={() => {
+                if (
+                  props.setCurrentInputValue &&
+                  props.setCategoryFilterValue &&
+                  props.setInputValue
+                ) {
+                  props.setCurrentInputValue("");
+                  props.setCategoryFilterValue(undefined);
+                  props.setInputValue("");
+                }
+              }}
             />
             <img
               src={props.darkTheme ? mpDarkSmallLogo : mpSmallLogo}
@@ -88,7 +105,11 @@ const Header = (props: HeaderProps): JSX.Element => {
             />
           </Link>
         </div>
-        <div className={`buttons-panel ${!isUserLogged && "logged-out"}`}>
+        <div
+          className={`buttons-panel ${!isUserLogged ? "logged-out" : ""} ${
+            props.isLoginView ? "login-view" : ""
+          }`}
+        >
           <div className="toggle-switch">
             <label>
               <input
@@ -112,7 +133,18 @@ const Header = (props: HeaderProps): JSX.Element => {
                       backgroundColor: props.darkTheme ? "#444444" : "",
                       color: props.darkTheme ? "#d8dbe0" : "",
                     }}
-                    onClick={() => navigate(`/offers/user`)}
+                    onClick={() => {
+                      navigate(`/offers/user`);
+                      if (
+                        props.setCurrentInputValue &&
+                        props.setCategoryFilterValue &&
+                        props.setInputValue
+                      ) {
+                        props.setCurrentInputValue("");
+                        props.setCategoryFilterValue(undefined);
+                        props.setInputValue("");
+                      }
+                    }}
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
                   >
                     My offers

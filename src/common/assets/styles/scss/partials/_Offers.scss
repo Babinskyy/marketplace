@@ -1,7 +1,7 @@
 .offers-wrapper {
-  @include flexbox(row, center, center);
+  @include flexbox(row, center, flex-start);
   width: 100%;
-  min-height: 70vh;
+  // min-height: 70vh;
   &.dark-theme {
     background-color: rgb(44, 44, 44);
   }
@@ -80,7 +80,7 @@
         &.dark-theme {
           background-color: rgb(68, 68, 68);
           color: rgb(238, 238, 238);
-          &:hover{
+          &:hover {
             box-shadow: $box-shadow-dark;
           }
         }

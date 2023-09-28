@@ -45,8 +45,6 @@ const Offers = (props: OffersProps): JSX.Element => {
           props.setIsLogged(false);
           navigate("/auth");
         }
-        const currentPathname = window.location.pathname;
-
         setOffers(data.offers);
         props.setIsLogged(true);
         setLoading(false);
