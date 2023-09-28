@@ -2,8 +2,8 @@ import { useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Box, Modal} from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import { Box, Modal } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 type CarouselProps = {
   images: string[];
@@ -30,28 +30,36 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <section className="slider">
-      <div className="slide-container">
-      <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
-      {props.images.map((e: string, i: number) => {
-        if(i === current){
-          return (
-            <div className={"slide active"} key={i}>
-              {i === current && (
-                <img
-                src={`${props.images[current]}`}
-                alt="offer-image"
-                className="image"
-                onClick={() => {
-                  setOpenImage(true);
-                }}
-                />
+      <div
+        className={`slide-container ${
+          props.images.length > 1 ? "" : "one-image"
+        }`}
+      >
+        {props.images.length > 1 && (
+          <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
+        )}
+
+        {props.images.map((e: string, i: number) => {
+          if (i === current) {
+            return (
+              <div className={"slide active"} key={i}>
+                {i === current && (
+                  <img
+                    src={`${props.images[current]}`}
+                    alt="offer-image"
+                    className="image"
+                    onClick={() => {
+                      setOpenImage(true);
+                    }}
+                  />
                 )}
-            </div>
-          );
-        }
-        
-      })}
-      <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
+              </div>
+            );
+          }
+        })}
+        {props.images.length > 1 && (
+          <ArrowForwardIosIcon className="right-arrow" onClick={nextSlide} />
+        )}
       </div>
       <div className="images-preview-container">
         <div className="images-preview-slide">
@@ -60,7 +68,9 @@ const Carousel = (props: CarouselProps): JSX.Element => {
               <img
                 src={`${e}`}
                 alt="offer-image"
-                className={`${current === i && "selected"} ${props.darkTheme && "dark-theme"}`}
+                className={`${current === i && "selected"} ${
+                  props.darkTheme && "dark-theme"
+                }`}
                 key={i}
                 onClick={() => {
                   setCurrent(i);
@@ -78,8 +88,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           aria-describedby="modal-modal-description"
         >
           <Box className="zoom-img-box" onClick={handleClose}>
-            <img src={`${props.images[current]}`} alt="" ></img>
-            
+            <img src={`${props.images[current]}`} alt=""></img>
           </Box>
         </Modal>
       </div>
