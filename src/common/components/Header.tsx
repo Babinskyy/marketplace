@@ -46,8 +46,8 @@ const Header = (props: HeaderProps): JSX.Element => {
     localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
 
-  const handleClick = async () => {
-    const result = await checkIsLogged(); // Call the function to trigger the fetch
+  const handleModalOpen = async () => {
+    const result = await checkIsLogged();
     if (result?.message === "auth success") {
       props.setOpenOfferModal(true);
     } else {
@@ -70,7 +70,11 @@ const Header = (props: HeaderProps): JSX.Element => {
   return (
     <nav className="main-header">
       <ul className="main-navigation">
-        <div className={`logo-holder ${props.isLoginView && "login"}`}>
+        <div
+          className={`logo-holder ${props.isLoginView && "login"} ${
+            !isUserLogged && "logged-out"
+          }`}
+        >
           <Link to="/">
             <img
               src={props.darkTheme ? mpDarkBigLogo : mpBigLogo}
@@ -84,7 +88,7 @@ const Header = (props: HeaderProps): JSX.Element => {
             />
           </Link>
         </div>
-        <div className={`buttons-panel ${props.isLoginView && "login"}`}>
+        <div className={`buttons-panel ${!isUserLogged && "logged-out"}`}>
           <div className="toggle-switch">
             <label>
               <input
@@ -95,36 +99,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               <span className="slider-toggle"></span>
             </label>
           </div>
-          {/* {props.isLogged ? (
-            <>
-              
-              <Button
-                variant="contained"
-                style={{
-                  backgroundColor: props.darkTheme ? "#444444" : "",
-                  color: props.darkTheme ? "#d8dbe0" : "",
-                }}
-                onClick={handleLogout}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
-              >
-                Log out
-              </Button>
 
-              <Button
-                variant="contained"
-                style={{
-                  backgroundColor: props.darkTheme ? "#444444" : "",
-                  color: props.darkTheme ? "#d8dbe0" : "",
-                }}
-                onClick={() => props.setOpenOfferModal(true)}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
-              >
-                Add an offer
-              </Button>
-            </>
-          ) : (
-            <></>
-          )} */}
           {props.isLoginView ? (
             <></>
           ) : (
@@ -174,7 +149,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                   backgroundColor: props.darkTheme ? "#444444" : "",
                   color: props.darkTheme ? "#d8dbe0" : "",
                 }}
-                onClick={handleClick}
+                onClick={handleModalOpen}
                 className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
                 Add an offer

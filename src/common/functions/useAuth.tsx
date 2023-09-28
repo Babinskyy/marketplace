@@ -1,18 +1,22 @@
 import { BASE_URL } from "../config/env-variable";
 
 export function useAuth() {
-
   const checkIsLogged = async () => {
     try {
-      const response = await fetch(`${BASE_URL}offers/logged`, {
+      const response = await fetch(`${BASE_URL}users/logged`, {
         method: "GET",
         credentials: "include",
       });
       const data = await response.json();
+      console.log(data);
       if (data.error) {
         return { message: "auth failed" };
       } else {
-        return { message: "auth success", userId: data.userId };
+        return {
+          message: "auth success",
+          userId: data.userId,
+          username: data.username,
+        };
       }
     } catch (err) {
       console.error(err);

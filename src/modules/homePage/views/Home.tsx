@@ -6,6 +6,7 @@ import Offers from "../../../common/components/Offers";
 import Footer from "../../../common/components/Footer";
 import AddOfferModal from "../../../common/components/AddOfferModal";
 import { Category } from "../../../common/types/Types";
+import Greetings from "../../../common/components/Greetings";
 
 type HomeProps = {
   openOfferModal: boolean;
@@ -23,7 +24,6 @@ type HomeProps = {
     React.SetStateAction<number | undefined>
   >;
   categoryFilterValue: number | undefined;
-
 };
 
 const Home = (props: HomeProps): JSX.Element => {
@@ -34,9 +34,8 @@ const Home = (props: HomeProps): JSX.Element => {
         isLogged={props.isLogged}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
-
       />
-
+      <Greetings darkTheme={props.darkTheme} />
       <Searchbar
         inputValue={props.inputValue}
         setInputValue={props.setInputValue}
@@ -71,7 +70,6 @@ const Home = (props: HomeProps): JSX.Element => {
         categories={props.categories}
         setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
-
       />
 
       <Footer darkTheme={props.darkTheme} />
