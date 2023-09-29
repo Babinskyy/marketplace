@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { Category } from "../../../common/types/Types";
-import { categoriesList } from "../../../common/mockData/categoriesList";
 
 type CategoriesProps = {
   setCategoryFilterValue: React.Dispatch<
