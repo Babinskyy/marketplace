@@ -26,6 +26,7 @@ const Offers = (props: OffersProps): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
+  const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
@@ -93,6 +94,15 @@ const Offers = (props: OffersProps): JSX.Element => {
     );
   });
 
+  const handleModalOpen = async () => {
+    const result = await checkIsLogged();
+    if (result?.message === "auth success") {
+      props.setOpenOfferModal(true);
+    } else {
+      navigate("/auth");
+    }
+  };
+
   if (loading)
     return (
       <div className="loader-container">
@@ -156,7 +166,7 @@ const Offers = (props: OffersProps): JSX.Element => {
               <Button
                 variant="contained"
                 className="add-offer-button"
-                onClick={() => props.setOpenOfferModal(true)}
+                onClick={handleModalOpen}
               >
                 Add an offer
               </Button>
