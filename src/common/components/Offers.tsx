@@ -99,6 +99,11 @@ const Offers = (props: OffersProps): JSX.Element => {
     if (result?.message === "auth success") {
       props.setOpenOfferModal(true);
     } else {
+      props.setCategoryFilterValue(undefined);
+      props.setInputValue("");
+      if (props.setCurrentInputValue) {
+        props.setCurrentInputValue("");
+      }
       navigate("/auth");
     }
   };
