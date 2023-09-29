@@ -12,7 +12,6 @@ function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
 
-  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
   const [isLoginView, setIsLoginView] = useState<boolean>(false);
 
@@ -61,8 +60,6 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
-              isLogged={isLogged}
-              setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
             />
@@ -75,8 +72,6 @@ function App() {
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
-              isLogged={isLogged}
-              setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
             />
@@ -87,10 +82,8 @@ function App() {
           element={
             <Signup
               setOpenOfferModal={setOpenOfferModal}
-              setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
-              isLogged={isLogged}
               setIsLoginView={setIsLoginView}
               isLoginView={isLoginView}
             />
@@ -108,8 +101,6 @@ function App() {
               categoryFilterValue={categoryFilterValue}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
-              isLogged={isLogged}
-              setIsLogged={setIsLogged}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
               openOfferModal={openOfferModal}

@@ -10,8 +10,6 @@ type allOffersType = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   categories: Category[] | undefined;
-  isLogged: boolean;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   inputValue: string;
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   currentInputValue: string;
@@ -30,7 +28,6 @@ const UserOffers = (props: allOffersType): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
-        isLogged={props.isLogged}
       />
       <Offers
         inputValue={props.inputValue}
@@ -40,7 +37,6 @@ const UserOffers = (props: allOffersType): JSX.Element => {
         setInputValue={props.setInputValue}
         setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
-        setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
       />
       <Footer darkTheme={props.darkTheme} />

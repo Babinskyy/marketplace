@@ -13,7 +13,6 @@ import { useAuth } from "../../../common/functions/useAuth";
 import { BASE_URL } from "../../../common/config/env-variable";
 
 type OfferDetailsType = {
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
 };
 
@@ -76,7 +75,6 @@ const OfferDetails = (props: OfferDetailsType) => {
           });
           const data = await response.json();
           if (data.error) {
-            props.setIsLogged(false);
             navigate("/auth");
           } else {
             navigate("/");

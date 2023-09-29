@@ -10,12 +10,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
 import { Category } from "../types/Types";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { LoginViewFalse } from "../../store/features/LoginViewSlice";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   isNightMode?: boolean;
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
-  isLogged?: boolean;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   isLoginView?: boolean;
@@ -28,6 +29,7 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps): JSX.Element => {
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
   const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -73,6 +75,11 @@ const Header = (props: HeaderProps): JSX.Element => {
     checkLogStatus();
   }, []);
 
+  const appSelectorState = useAppSelector(
+    (state) => state.isLoginView.isLoginView
+  );
+  console.log(appSelectorState);
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -87,6 +94,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               alt="logo"
               className="big-logo"
               onClick={() => {
+                dispatch(LoginViewFalse());
                 if (
                   props.setCurrentInputValue &&
                   props.setCategoryFilterValue &&
@@ -121,7 +129,7 @@ const Header = (props: HeaderProps): JSX.Element => {
             </label>
           </div>
 
-          {props.isLoginView ? (
+          {appSelectorState ? (
             <></>
           ) : (
             <>

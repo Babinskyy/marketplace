@@ -9,11 +9,8 @@ type OfferViewProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
-  isLogged: boolean;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
-  darkTheme: boolean
-
+  darkTheme: boolean;
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
@@ -21,10 +18,8 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
     <div className="offer-view-page">
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
-        isLogged={props.isLogged}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
-
       />
       <AddOfferModal
         openOfferModal={props.openOfferModal}
@@ -33,8 +28,8 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         darkTheme={props.darkTheme}
       />
 
-      <Offer setIsLogged={props.setIsLogged} darkTheme={props.darkTheme}/>
-      <Footer darkTheme={props.darkTheme}/>
+      <Offer darkTheme={props.darkTheme} />
+      <Footer darkTheme={props.darkTheme} />
     </div>
   );
 };

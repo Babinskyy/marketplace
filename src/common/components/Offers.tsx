@@ -18,7 +18,6 @@ type OffersProps = {
   setInputValue: React.Dispatch<React.SetStateAction<string>>;
   setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   categories: Category[] | undefined;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
 };
 
@@ -43,11 +42,9 @@ const Offers = (props: OffersProps): JSX.Element => {
         const data = await response.json();
 
         if (data.error) {
-          props.setIsLogged(false);
           navigate("/auth");
         }
         setOffers(data.offers);
-        props.setIsLogged(true);
         setLoading(false);
       } catch (err) {
         console.error(err);

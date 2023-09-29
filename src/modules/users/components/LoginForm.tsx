@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Cookies from "universal-cookie";
 import { BASE_URL } from "../../../common/config/env-variable";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { LoginViewFalse } from "../../../store/features/LoginViewSlice";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   setIsLoginView: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -21,7 +21,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
     formState: { errors },
     reset,
   } = useForm();
-
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onSubmit = handleSubmit((values) => {
     setResponse("");
@@ -39,8 +39,8 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         console.log(data);
         if (data.message === "logged") {
           navigate("/");
-          props.setIsLogged(true);
-          props.setIsLoginView(false);
+          // props.setIsLoginView(false);
+          dispatch(LoginViewFalse());
         } else setResponse(data.message);
       } catch (err) {
         console.error(err);
@@ -50,6 +50,11 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
     login();
     reset();
   });
+
+  const appSelectorState = useAppSelector(
+    (state) => state.isLoginView.isLoginView
+  );
+  console.log(appSelectorState);
   return (
     <form onSubmit={onSubmit} className={`${props.darkTheme && "dark-theme"}`}>
       <div className="form-content">

@@ -12,8 +12,6 @@ type HomeProps = {
   openOfferModal: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
-  isLogged: boolean;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   inputValue: string;
@@ -31,7 +29,6 @@ const Home = (props: HomeProps): JSX.Element => {
     <div className="home">
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
-        isLogged={props.isLogged}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
         setCategoryFilterValue={props.setCategoryFilterValue}
@@ -61,7 +58,6 @@ const Home = (props: HomeProps): JSX.Element => {
         setInputValue={props.setInputValue}
         setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
-        setIsLogged={props.setIsLogged}
         darkTheme={props.darkTheme}
       />
 
