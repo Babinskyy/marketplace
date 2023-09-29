@@ -24,7 +24,6 @@ type HeaderProps = {
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-  isLoginView?: boolean;
   setCategoryFilterValue?: React.Dispatch<
     React.SetStateAction<number | undefined>
   >;
@@ -78,7 +77,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     checkLogStatus();
   }, []);
 
-  const appSelectorState = useAppSelector(
+  const isLoginViewState = useAppSelector(
     (state) => state.isLoginView.isLoginView
   );
 
@@ -86,7 +85,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     <nav className="main-header">
       <ul className="main-navigation">
         <div
-          className={`logo-holder ${props.isLoginView && "login"} ${
+          className={`logo-holder ${isLoginViewState && "login"} ${
             !isUserLogged && "logged-out"
           }`}
         >
@@ -97,13 +96,9 @@ const Header = (props: HeaderProps): JSX.Element => {
               className="big-logo"
               onClick={() => {
                 dispatch(LoginViewFalse());
-                // if (props.setCategoryFilterValue) {
-                // props.setCurrentInputValue("");
                 dispatch(currentInputValueClear());
-                // props.setCategoryFilterValue(undefined);
                 dispatch(categoryFilterValueClear());
                 dispatch(inputValueClear());
-                // }
               }}
             />
             <img
@@ -115,7 +110,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         </div>
         <div
           className={`buttons-panel ${!isUserLogged ? "logged-out" : ""} ${
-            props.isLoginView ? "login-view" : ""
+            isLoginViewState ? "login-view" : ""
           }`}
         >
           <div className="toggle-switch">
@@ -129,7 +124,7 @@ const Header = (props: HeaderProps): JSX.Element => {
             </label>
           </div>
 
-          {appSelectorState ? (
+          {isLoginViewState ? (
             <></>
           ) : (
             <>
@@ -143,13 +138,9 @@ const Header = (props: HeaderProps): JSX.Element => {
                     }}
                     onClick={() => {
                       navigate(`/offers/user`);
-                      // if (props.setCategoryFilterValue) {
-                      // props.setCurrentInputValue("");
                       dispatch(currentInputValueClear());
-                      // props.setCategoryFilterValue(undefined);
                       dispatch(categoryFilterValueClear());
                       dispatch(inputValueClear());
-                      // }
                     }}
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
                   >
