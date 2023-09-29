@@ -10,14 +10,6 @@ type allOffersType = {
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   categories: Category[] | undefined;
-  inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  currentInputValue: string;
-  setCurrentInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setCategoryFilterValue: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
-  categoryFilterValue: number | undefined;
   openOfferModal: boolean;
 };
 
@@ -30,12 +22,7 @@ const UserOffers = (props: allOffersType): JSX.Element => {
         darkTheme={props.darkTheme}
       />
       <Offers
-        inputValue={props.inputValue}
-        categoryFilterValue={props.categoryFilterValue}
         setOpenOfferModal={props.setOpenOfferModal}
-        setCategoryFilterValue={props.setCategoryFilterValue}
-        setInputValue={props.setInputValue}
-        setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
         darkTheme={props.darkTheme}
       />

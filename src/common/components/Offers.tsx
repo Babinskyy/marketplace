@@ -7,16 +7,16 @@ import { Category, Offer } from "../types/Types";
 import Loader from "./Loader";
 import { BASE_URL } from "../config/env-variable";
 import { useAuth } from "../functions/useAuth";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import {
+  categoryFilterValueClear,
+  currentInputValueClear,
+  inputValueClear,
+} from "../../store/features/FiltersSlice";
 
 type OffersProps = {
-  inputValue?: string;
   categoryFilterValue?: number | undefined;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setCategoryFilterValue: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
   categories: Category[] | undefined;
   darkTheme: boolean;
 };
@@ -25,6 +25,7 @@ const Offers = (props: OffersProps): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
+  const dispatch = useAppDispatch();
   const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -81,9 +82,14 @@ const Offers = (props: OffersProps): JSX.Element => {
     }
   };
 
+  const appSelectorState = useAppSelector((state) => state.filters.inputValue);
+  const categoryState = useAppSelector(
+    (state) => state.filters.categoryFilterValue
+  );
+
   const filteredItems = offers?.filter((offer) => {
-    const inputValue = props.inputValue || "";
-    const categoryValue = props.categoryFilterValue || "";
+    const inputValue = appSelectorState || "";
+    const categoryValue = categoryState || "";
 
     return (
       offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
@@ -96,11 +102,14 @@ const Offers = (props: OffersProps): JSX.Element => {
     if (result?.message === "auth success") {
       props.setOpenOfferModal(true);
     } else {
-      props.setCategoryFilterValue(undefined);
-      props.setInputValue("");
-      if (props.setCurrentInputValue) {
-        props.setCurrentInputValue("");
-      }
+      // props.setCategoryFilterValue(undefined);
+      dispatch(categoryFilterValueClear());
+      dispatch(inputValueClear());
+
+      // if (props.setCurrentInputValue) {
+      // props.setCurrentInputValue("");
+      dispatch(currentInputValueClear());
+      // }
       navigate("/auth");
     }
   };
@@ -115,15 +124,17 @@ const Offers = (props: OffersProps): JSX.Element => {
     <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          {(props.categoryFilterValue || props.inputValue) && (
+          {(categoryState || appSelectorState) && (
             <Button
               className={`all-offers-button ${props.darkTheme && "dark-theme"}`}
               onClick={() => {
-                props.setCategoryFilterValue(undefined);
-                props.setInputValue("");
-                if (props.setCurrentInputValue) {
-                  props.setCurrentInputValue("");
-                }
+                // props.setCategoryFilterValue(undefined);
+                dispatch(categoryFilterValueClear());
+                dispatch(inputValueClear());
+                // if (props.setCurrentInputValue) {
+                //   props.setCurrentInputValue("");
+                // }
+                dispatch(currentInputValueClear());
               }}
             >
               clear filters
@@ -141,21 +152,17 @@ const Offers = (props: OffersProps): JSX.Element => {
               }`}
             >
               {filteredItems?.length
-                ? `${categorySwitch(props.categoryFilterValue)} ${
-                    props.inputValue
-                  }`
-                : props.categoryFilterValue &&
-                  `${categorySwitch(props.categoryFilterValue)} ${
-                    props.inputValue
-                  }`}
+                ? `${categorySwitch(categoryState)} ${appSelectorState}`
+                : categoryState &&
+                  `${categorySwitch(categoryState)} ${appSelectorState}`}
             </span>
             <span>
               {" "}
-              {props.categoryFilterValue
+              {categoryState
                 ? filteredItems?.length
                   ? "offers"
                   : "offers"
-                : props.inputValue
+                : appSelectorState
                 ? "offers"
                 : location.pathname === "/offers/user"
                 ? "My offers"

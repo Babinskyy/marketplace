@@ -1,11 +1,9 @@
 import "../../../common/assets/styles/scss/main/App.scss";
 import { Category } from "../../../common/types/Types";
+import { categoryFilterValueSet } from "../../../store/features/FiltersSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/store";
 
 type CategoriesProps = {
-  setCategoryFilterValue: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
-  categoryFilterValue: number | undefined;
   categories: Category[] | undefined;
   darkTheme: boolean;
 };
@@ -16,7 +14,10 @@ const Categories = (props: CategoriesProps): JSX.Element => {
     for (let i = 1; i <= props.categories.length; i++) {
       bgcArray.push(`bgc-${i}`);
     }
-
+  const dispatch = useAppDispatch();
+  const categoryState = useAppSelector(
+    (state) => state.filters.categoryFilterValue
+  );
   return (
     <div
       className={`main-categories-container ${props.darkTheme && "dark-theme"}`}
@@ -30,10 +31,11 @@ const Categories = (props: CategoriesProps): JSX.Element => {
               {category && (
                 <div
                   className={`category ${e} ${
-                    category.id === props.categoryFilterValue && "selected"
+                    category.id === categoryState && "selected"
                   }`}
                   onClick={() => {
-                    props.setCategoryFilterValue(category.id);
+                    // props.setCategoryFilterValue(category.id);
+                    dispatch(categoryFilterValueSet(category.id));
                   }}
                 >
                   {category && <img src={category.url} alt="category-image" />}

@@ -5,14 +5,12 @@ import Footer from "../../../common/components/Footer";
 import LoginForm from "../components/LoginForm";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { LoginViewTrue } from "../../../store/features/LoginViewSlice";
+import { LoginViewTrue } from "../../../store/features/IsLoginViewSlice";
 
 type SignupType = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-  isLoginView: boolean;
-  setIsLoginView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const Signup = (props: SignupType): JSX.Element => {
@@ -33,7 +31,6 @@ const Signup = (props: SignupType): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
-        isLoginView={props.isLoginView}
       />
 
       <div className="signup-content">
@@ -43,11 +40,7 @@ const Signup = (props: SignupType): JSX.Element => {
         {login ? (
           <SignupForm setLogin={setLogin} darkTheme={props.darkTheme} />
         ) : (
-          <LoginForm
-            setLogin={setLogin}
-            darkTheme={props.darkTheme}
-            setIsLoginView={props.setIsLoginView}
-          />
+          <LoginForm setLogin={setLogin} darkTheme={props.darkTheme} />
         )}
       </div>
       <Footer darkTheme={props.darkTheme} />

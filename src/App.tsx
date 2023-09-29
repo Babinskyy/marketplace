@@ -11,15 +11,7 @@ import { BASE_URL } from "./common/config/env-variable";
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
-
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
-  const [isLoginView, setIsLoginView] = useState<boolean>(false);
-
-  const [inputValue, setInputValue] = useState<string>("");
-  const [currentInputValue, setCurrentInputValue] = useState<string>("");
-  const [categoryFilterValue, setCategoryFilterValue] = useState<
-    number | undefined
-  >();
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("themePreference");
@@ -51,12 +43,6 @@ function App() {
           path="/"
           element={
             <Home
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-              currentInputValue={currentInputValue}
-              setCurrentInputValue={setCurrentInputValue}
-              setCategoryFilterValue={setCategoryFilterValue}
-              categoryFilterValue={categoryFilterValue}
               openOfferModal={openOfferModal}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
@@ -84,8 +70,6 @@ function App() {
               setOpenOfferModal={setOpenOfferModal}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
-              setIsLoginView={setIsLoginView}
-              isLoginView={isLoginView}
             />
           }
         ></Route>
@@ -93,12 +77,6 @@ function App() {
           path="/offers/user"
           element={
             <UserOffers
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-              currentInputValue={currentInputValue}
-              setCurrentInputValue={setCurrentInputValue}
-              setCategoryFilterValue={setCategoryFilterValue}
-              categoryFilterValue={categoryFilterValue}
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
               setDarkTheme={setDarkTheme}

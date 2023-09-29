@@ -11,7 +11,12 @@ import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
 import { Category } from "../types/Types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { LoginViewFalse } from "../../store/features/LoginViewSlice";
+import { LoginViewFalse } from "../../store/features/IsLoginViewSlice";
+import {
+  categoryFilterValueClear,
+  currentInputValueClear,
+  inputValueClear,
+} from "../../store/features/FiltersSlice";
 
 type HeaderProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,8 +28,6 @@ type HeaderProps = {
   setCategoryFilterValue?: React.Dispatch<
     React.SetStateAction<number | undefined>
   >;
-  setInputValue?: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentInputValue?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
@@ -78,7 +81,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   const appSelectorState = useAppSelector(
     (state) => state.isLoginView.isLoginView
   );
-  console.log(appSelectorState);
 
   return (
     <nav className="main-header">
@@ -95,15 +97,13 @@ const Header = (props: HeaderProps): JSX.Element => {
               className="big-logo"
               onClick={() => {
                 dispatch(LoginViewFalse());
-                if (
-                  props.setCurrentInputValue &&
-                  props.setCategoryFilterValue &&
-                  props.setInputValue
-                ) {
-                  props.setCurrentInputValue("");
-                  props.setCategoryFilterValue(undefined);
-                  props.setInputValue("");
-                }
+                // if (props.setCategoryFilterValue) {
+                // props.setCurrentInputValue("");
+                dispatch(currentInputValueClear());
+                // props.setCategoryFilterValue(undefined);
+                dispatch(categoryFilterValueClear());
+                dispatch(inputValueClear());
+                // }
               }}
             />
             <img
@@ -143,15 +143,13 @@ const Header = (props: HeaderProps): JSX.Element => {
                     }}
                     onClick={() => {
                       navigate(`/offers/user`);
-                      if (
-                        props.setCurrentInputValue &&
-                        props.setCategoryFilterValue &&
-                        props.setInputValue
-                      ) {
-                        props.setCurrentInputValue("");
-                        props.setCategoryFilterValue(undefined);
-                        props.setInputValue("");
-                      }
+                      // if (props.setCategoryFilterValue) {
+                      // props.setCurrentInputValue("");
+                      dispatch(currentInputValueClear());
+                      // props.setCategoryFilterValue(undefined);
+                      dispatch(categoryFilterValueClear());
+                      dispatch(inputValueClear());
+                      // }
                     }}
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
                   >

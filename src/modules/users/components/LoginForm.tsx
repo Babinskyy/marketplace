@@ -4,12 +4,11 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BASE_URL } from "../../../common/config/env-variable";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { LoginViewFalse } from "../../../store/features/LoginViewSlice";
+import { LoginViewFalse } from "../../../store/features/IsLoginViewSlice";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-  setIsLoginView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginForm = (props: SignupFormType): JSX.Element => {

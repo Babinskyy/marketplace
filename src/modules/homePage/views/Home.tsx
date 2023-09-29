@@ -14,14 +14,6 @@ type HomeProps = {
   categories: Category[] | undefined;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-  inputValue: string;
-  setInputValue: React.Dispatch<React.SetStateAction<string>>;
-  currentInputValue: string;
-  setCurrentInputValue: React.Dispatch<React.SetStateAction<string>>;
-  setCategoryFilterValue: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
-  categoryFilterValue: number | undefined;
 };
 
 const Home = (props: HomeProps): JSX.Element => {
@@ -31,32 +23,13 @@ const Home = (props: HomeProps): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
         darkTheme={props.darkTheme}
-        setCategoryFilterValue={props.setCategoryFilterValue}
-        setInputValue={props.setInputValue}
-        setCurrentInputValue={props.setCurrentInputValue}
       />
       <Greetings darkTheme={props.darkTheme} />
-      <Searchbar
-        inputValue={props.inputValue}
-        setInputValue={props.setInputValue}
-        currentInputValue={props.currentInputValue}
-        setCurrentInputValue={props.setCurrentInputValue}
-        darkTheme={props.darkTheme}
-      />
+      <Searchbar darkTheme={props.darkTheme} />
 
-      <Categories
-        setCategoryFilterValue={props.setCategoryFilterValue}
-        categoryFilterValue={props.categoryFilterValue}
-        categories={props.categories}
-        darkTheme={props.darkTheme}
-      />
+      <Categories categories={props.categories} darkTheme={props.darkTheme} />
       <Offers
-        inputValue={props.inputValue}
-        categoryFilterValue={props.categoryFilterValue}
         setOpenOfferModal={props.setOpenOfferModal}
-        setCategoryFilterValue={props.setCategoryFilterValue}
-        setInputValue={props.setInputValue}
-        setCurrentInputValue={props.setCurrentInputValue}
         categories={props.categories}
         darkTheme={props.darkTheme}
       />
