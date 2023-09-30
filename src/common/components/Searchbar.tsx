@@ -7,9 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   inputValueSet,
-  inputValueClear,
   currentInputValueSet,
-  currentInputValueClear,
 } from "../../store/features/FiltersSlice";
 
 type SearchbarProps = {
@@ -70,13 +68,13 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         onClick={() => {
           handleHideX();
 
-          dispatch(inputValueClear());
+          dispatch(inputValueSet(""));
 
           // if (props.setCurrentInputValue) {
           //   props.setCurrentInputValue("");
 
           // }
-          dispatch(currentInputValueClear());
+          dispatch(currentInputValueSet(""));
         }}
       >
         <ClearIcon

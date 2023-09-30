@@ -13,9 +13,9 @@ import { Category } from "../types/Types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { LoginViewFalse } from "../../store/features/IsLoginViewSlice";
 import {
-  categoryFilterValueClear,
-  currentInputValueClear,
-  inputValueClear,
+  categoryFilterValueSet,
+  currentInputValueSet,
+  inputValueSet,
 } from "../../store/features/FiltersSlice";
 
 type HeaderProps = {
@@ -96,9 +96,9 @@ const Header = (props: HeaderProps): JSX.Element => {
               className="big-logo"
               onClick={() => {
                 dispatch(LoginViewFalse());
-                dispatch(currentInputValueClear());
-                dispatch(categoryFilterValueClear());
-                dispatch(inputValueClear());
+                dispatch(currentInputValueSet(""));
+                dispatch(categoryFilterValueSet(undefined));
+                dispatch(inputValueSet(""));
               }}
             />
             <img
@@ -138,9 +138,9 @@ const Header = (props: HeaderProps): JSX.Element => {
                     }}
                     onClick={() => {
                       navigate(`/offers/user`);
-                      dispatch(currentInputValueClear());
-                      dispatch(categoryFilterValueClear());
-                      dispatch(inputValueClear());
+                      dispatch(currentInputValueSet(""));
+                      dispatch(categoryFilterValueSet(undefined));
+                      dispatch(inputValueSet(""));
                     }}
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
                   >

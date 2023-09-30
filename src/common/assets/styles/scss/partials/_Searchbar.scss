@@ -21,7 +21,7 @@
   }
   .searchbar-input {
     padding: 0;
-    width: 1080px;
+    width: 1060px;
     height: 72px;
     font-size: 25px;
     border: none;
@@ -45,8 +45,9 @@
     height: 72px;
     color: #fff;
     pointer-events: none;
+    padding: 0px 10px 0px 10px;
     &.dark-theme {
-      background-color: rgb(68, 68, 68);
+      background-color: #444;
       color: rgb(68, 68, 68);
     }
     .visible {

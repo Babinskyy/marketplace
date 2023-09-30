@@ -9,9 +9,9 @@ import { BASE_URL } from "../config/env-variable";
 import { useAuth } from "../functions/useAuth";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
-  categoryFilterValueClear,
-  currentInputValueClear,
-  inputValueClear,
+  categoryFilterValueSet,
+  currentInputValueSet,
+  inputValueSet,
 } from "../../store/features/FiltersSlice";
 
 type OffersProps = {
@@ -103,12 +103,13 @@ const Offers = (props: OffersProps): JSX.Element => {
       props.setOpenOfferModal(true);
     } else {
       // props.setCategoryFilterValue(undefined);
-      dispatch(categoryFilterValueClear());
-      dispatch(inputValueClear());
+      dispatch(categoryFilterValueSet(undefined));
+      dispatch(inputValueSet(""));
 
       // if (props.setCurrentInputValue) {
       // props.setCurrentInputValue("");
-      dispatch(currentInputValueClear());
+      dispatch(currentInputValueSet(""));
+
       // }
       navigate("/auth");
     }
@@ -126,15 +127,17 @@ const Offers = (props: OffersProps): JSX.Element => {
         <div className="h1-button-wrapper">
           {(categoryState || appSelectorState) && (
             <Button
-              className={`all-offers-button ${props.darkTheme && "dark-theme"}`}
+              className={`clear-filters-button ${
+                props.darkTheme && "dark-theme"
+              }`}
               onClick={() => {
                 // props.setCategoryFilterValue(undefined);
-                dispatch(categoryFilterValueClear());
-                dispatch(inputValueClear());
+                dispatch(categoryFilterValueSet(undefined));
+                dispatch(inputValueSet(""));
                 // if (props.setCurrentInputValue) {
                 //   props.setCurrentInputValue("");
                 // }
-                dispatch(currentInputValueClear());
+                dispatch(currentInputValueSet(""));
               }}
             >
               clear filters

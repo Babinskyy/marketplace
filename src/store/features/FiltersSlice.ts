@@ -19,15 +19,9 @@ export const FiltersSlice = createSlice({
     inputValueSet: (state, action: PayloadAction<string>) => {
       state.inputValue = action.payload;
     },
-    inputValueClear: (state) => {
-      state.inputValue = "";
-    },
 
     currentInputValueSet: (state, action: PayloadAction<string>) => {
       state.currentInputValue = action.payload;
-    },
-    currentInputValueClear: (state) => {
-      state.currentInputValue = "";
     },
 
     categoryFilterValueSet: (
@@ -36,19 +30,9 @@ export const FiltersSlice = createSlice({
     ) => {
       state.categoryFilterValue = action.payload;
     },
-    categoryFilterValueClear: (state) => {
-      console.log("hello?");
-      state.categoryFilterValue = undefined;
-    },
   },
 });
 
 export default FiltersSlice.reducer;
-export const {
-  inputValueSet,
-  inputValueClear,
-  currentInputValueSet,
-  currentInputValueClear,
-  categoryFilterValueSet,
-  categoryFilterValueClear,
-} = FiltersSlice.actions;
+export const { inputValueSet, currentInputValueSet, categoryFilterValueSet } =
+  FiltersSlice.actions;

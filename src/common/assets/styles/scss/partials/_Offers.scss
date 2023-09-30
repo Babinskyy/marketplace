@@ -1,7 +1,7 @@
 .offers-wrapper {
-  @include flexbox(row, center, flex-start);
+  @include flexbox(row, center, center);
   width: 100%;
-  // min-height: 70vh;
+  min-height: 347px;
   &.dark-theme {
     background-color: rgb(44, 44, 44);
   }
@@ -11,7 +11,7 @@
 
     .h1-button-wrapper {
       text-align: center;
-      .all-offers-button {
+      .clear-filters-button {
         margin-top: 20px;
         font-family: $primary-font;
         background-color: #fff;
@@ -31,8 +31,6 @@
         }
       }
       h1 {
-        // padding-top: 30px;
-        margin: 40px 0px 20px 0px;
         &.dark-theme {
           color: rgb(238, 238, 238);
         }
