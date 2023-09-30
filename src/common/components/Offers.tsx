@@ -39,7 +39,8 @@ const Offers = (props: OffersProps): JSX.Element => {
         shuffledArray[i],
       ];
     }
-    return shuffledArray.slice(0, 8);
+    // return shuffledArray.slice(0, 8);
+    return shuffledArray;
   };
 
   useEffect(() => {
