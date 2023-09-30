@@ -1,7 +1,7 @@
 .offers-wrapper {
   @include flexbox(row, center, center);
   width: 100%;
-  min-height: 382px;
+  min-height: 469px;
   &.dark-theme {
     background-color: rgb(44, 44, 44);
   }
