@@ -24,11 +24,24 @@ type OffersProps = {
 const Offers = (props: OffersProps): JSX.Element => {
   const [offers, setOffers] = useState<Offer[]>();
   const [loading, setLoading] = useState<boolean>(true);
-
+  const [randomizedOffers, setRandomizedOffers] = useState<Offer[]>();
   const dispatch = useAppDispatch();
   const checkIsLogged = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const randomizeArray = (array: []) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray.slice(0, 8);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,6 +59,7 @@ const Offers = (props: OffersProps): JSX.Element => {
           navigate("/auth");
         }
         setOffers(data.offers);
+        setRandomizedOffers(randomizeArray(data.offers));
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -87,7 +101,13 @@ const Offers = (props: OffersProps): JSX.Element => {
     (state) => state.filters.categoryFilterValue
   );
 
-  const filteredItems = offers?.filter((offer) => {
+  //conditionally randomize offers based on location
+  let offersToFilter = randomizedOffers;
+  if (window.location.pathname === "/offers/user") {
+    offersToFilter = offers;
+  }
+
+  const filteredItems = offersToFilter?.filter((offer) => {
     const inputValue = appSelectorState || "";
     const categoryValue = categoryState || "";
 

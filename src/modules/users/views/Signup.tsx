@@ -4,7 +4,7 @@ import Header from "../../../common/components/Header";
 import Footer from "../../../common/components/Footer";
 import LoginForm from "../components/LoginForm";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../store/store";
+import { useAppDispatch } from "../../../store/store";
 import { LoginView } from "../../../store/features/IsLoginViewSlice";
 
 type SignupType = {
