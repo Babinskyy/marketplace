@@ -34,7 +34,6 @@ const Categories = (props: CategoriesProps): JSX.Element => {
                     category.id === categoryState && "selected"
                   }`}
                   onClick={() => {
-                    // props.setCategoryFilterValue(category.id);
                     dispatch(categoryFilterValueSet(category.id));
                   }}
                 >

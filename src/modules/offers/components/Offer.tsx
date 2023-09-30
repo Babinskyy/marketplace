@@ -19,9 +19,7 @@ type OfferDetailsType = {
 const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
-  const [offerAuthorId, setOfferAuthorId] = useState<number>();
   const [editOffer, setEditOffer] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>("");
   const [trigger, setTrigger] = useState<boolean>(false);
   const [isAuthorLogged, setIsAuthorLogged] = useState<boolean>(false);
 
@@ -38,7 +36,6 @@ const OfferDetails = (props: OfferDetailsType) => {
   useEffect(() => {
     const fetchOffer = async () => {
       try {
-        // const response = await fetch(`${url}offers/88`, {
         const response = await fetch(`${BASE_URL}offers/findOne/${id}`, {
           method: "GET",
           credentials: "include",
@@ -46,7 +43,6 @@ const OfferDetails = (props: OfferDetailsType) => {
         const data = await response.json();
 
         setOffer(data.offer);
-        setOfferAuthorId(data.authorId);
         console.log("data.authorId:", data.authorId);
 
         const isLoggedResponse = await checkIsLogged();

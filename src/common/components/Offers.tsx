@@ -102,15 +102,9 @@ const Offers = (props: OffersProps): JSX.Element => {
     if (result?.message === "auth success") {
       props.setOpenOfferModal(true);
     } else {
-      // props.setCategoryFilterValue(undefined);
       dispatch(categoryFilterValueSet(undefined));
       dispatch(inputValueSet(""));
-
-      // if (props.setCurrentInputValue) {
-      // props.setCurrentInputValue("");
       dispatch(currentInputValueSet(""));
-
-      // }
       navigate("/auth");
     }
   };
@@ -131,12 +125,8 @@ const Offers = (props: OffersProps): JSX.Element => {
                 props.darkTheme && "dark-theme"
               }`}
               onClick={() => {
-                // props.setCategoryFilterValue(undefined);
                 dispatch(categoryFilterValueSet(undefined));
                 dispatch(inputValueSet(""));
-                // if (props.setCurrentInputValue) {
-                //   props.setCurrentInputValue("");
-                // }
                 dispatch(currentInputValueSet(""));
               }}
             >

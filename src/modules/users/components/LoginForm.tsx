@@ -38,7 +38,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         console.log(data);
         if (data.message === "logged") {
           navigate("/");
-          // props.setIsLoginView(false);
           dispatch(LoginViewFalse());
         } else setResponse(data.message);
       } catch (err) {

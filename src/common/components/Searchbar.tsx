@@ -1,6 +1,5 @@
 import SearchIcon from "@mui/icons-material/Search";
 import "../../common/assets/styles/scss/main/App.scss";
-import { TextField } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -52,13 +51,9 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         name="search"
         placeholder="Search for offers"
         className={`searchbar-input ${props.darkTheme && "dark-theme"}`}
-        // value={props.currentInputValue}
         value={currentInputState}
         onChange={(e: React.FormEvent<HTMLInputElement>) => {
           handleShowX();
-          // if (props.setCurrentInputValue) {
-          //   props.setCurrentInputValue(e.currentTarget.value);
-          // }
           dispatch(currentInputValueSet(e.currentTarget.value));
         }}
       />
@@ -69,11 +64,6 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
           handleHideX();
 
           dispatch(inputValueSet(""));
-
-          // if (props.setCurrentInputValue) {
-          //   props.setCurrentInputValue("");
-
-          // }
           dispatch(currentInputValueSet(""));
         }}
       >
@@ -91,11 +81,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
       <button
         className={`search-button ${props.darkTheme && "dark-theme"}`}
         onClick={() => {
-          // if (props.currentInputValue) {
-          // dispatch(inputValueSet(props.currentInputValue));
           dispatch(inputValueSet(currentInputState));
-          // }
-
           navigate("/");
         }}
       >

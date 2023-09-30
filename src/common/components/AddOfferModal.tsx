@@ -438,20 +438,6 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                   </Select>
                 </FormControl>
                 <div className="error-message">{errorMessages.country}</div>
-                {/* <TextField
-                  error={errors.author ? true : false}
-                  name="author"
-                  label="Name"
-                  defaultValue=""
-                  sx={{ width: "310px" }}
-                  onChange={(e) => {
-                    setFormData({
-                      ...formData,
-                      [e.currentTarget.name]: e.currentTarget.value,
-                    });
-                  }}
-                />
-                <div className="error-message">{errorMessages.author}</div> */}
                 <TextField
                   error={errors.phone ? true : false}
                   name="phone"

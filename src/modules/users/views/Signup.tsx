@@ -17,7 +17,6 @@ const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    // props.setIsLoginView(true);
     dispatch(LoginViewTrue());
   }, []);
 
