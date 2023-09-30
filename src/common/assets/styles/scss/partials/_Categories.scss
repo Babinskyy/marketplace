@@ -1,6 +1,6 @@
 .main-categories-container {
   background-color: #fff;
-  padding-bottom: 40px;
+  padding: 40px 0px 40px 0px;
   &.dark-theme {
     background-color: rgb(68, 68, 68);
     color: rgb(238, 238, 238);
@@ -8,7 +8,7 @@
 
   @include flexbox(column, center, center);
   h1 {
-    margin: 40px 0px 20px 0px;
+    margin: 0px 0px 20px 0px;
     &.dark-theme {
       color: rgb(238, 238, 238);
     }
@@ -21,7 +21,7 @@
 
     .category-wrapper {
       @include flexbox(column, center, center);
-      margin: 22px;
+      margin: 20px 22px 20px 22px;
 
       .category {
         @include flexbox(initial, center, center);
