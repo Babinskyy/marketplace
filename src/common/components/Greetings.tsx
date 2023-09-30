@@ -13,7 +13,7 @@ const Greetings = (props: GreetingsProps) => {
   useEffect(() => {
     const checkLogStatus = async () => {
       const result = await checkIsLogged();
-      if (result?.message === "auth success") {
+      if (result?.success) {
         setUsername(result.username);
       }
     };

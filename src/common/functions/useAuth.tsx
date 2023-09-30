@@ -12,6 +12,7 @@ export function useAuth() {
         return { message: "auth failed" };
       } else {
         return {
+          success: true,
           message: "auth success",
           userId: data.userId,
           username: data.username,

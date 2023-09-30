@@ -11,7 +11,7 @@ import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
 import { Category } from "../types/Types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { LoginViewFalse } from "../../store/features/IsLoginViewSlice";
+import { LoginView } from "../../store/features/IsLoginViewSlice";
 import {
   categoryFilterValueSet,
   currentInputValueSet,
@@ -58,7 +58,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   const handleModalOpen = async () => {
     const result = await checkIsLogged();
-    if (result?.message === "auth success") {
+    if (result?.success) {
       props.setOpenOfferModal(true);
     } else {
       navigate("/auth");
@@ -68,7 +68,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   useEffect(() => {
     const checkLogStatus = async () => {
       const result = await checkIsLogged();
-      if (result?.message === "auth success") {
+      if (result?.success) {
         setIsUserLogged(true);
       } else {
         setIsUserLogged(false);
@@ -95,7 +95,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               alt="logo"
               className="big-logo"
               onClick={() => {
-                dispatch(LoginViewFalse());
+                dispatch(LoginView(false));
                 dispatch(currentInputValueSet(""));
                 dispatch(categoryFilterValueSet(undefined));
                 dispatch(inputValueSet(""));

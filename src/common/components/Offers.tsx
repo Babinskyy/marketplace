@@ -99,7 +99,7 @@ const Offers = (props: OffersProps): JSX.Element => {
 
   const handleModalOpen = async () => {
     const result = await checkIsLogged();
-    if (result?.message === "auth success") {
+    if (result?.success) {
       props.setOpenOfferModal(true);
     } else {
       dispatch(categoryFilterValueSet(undefined));

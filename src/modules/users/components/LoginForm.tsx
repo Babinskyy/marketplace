@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BASE_URL } from "../../../common/config/env-variable";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { LoginViewFalse } from "../../../store/features/IsLoginViewSlice";
+import { LoginView } from "../../../store/features/IsLoginViewSlice";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -38,7 +38,7 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         console.log(data);
         if (data.message === "logged") {
           navigate("/");
-          dispatch(LoginViewFalse());
+          dispatch(LoginView(false));
         } else setResponse(data.message);
       } catch (err) {
         console.error(err);
@@ -49,10 +49,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
     reset();
   });
 
-  const appSelectorState = useAppSelector(
-    (state) => state.isLoginView.isLoginView
-  );
-  console.log(appSelectorState);
   return (
     <form onSubmit={onSubmit} className={`${props.darkTheme && "dark-theme"}`}>
       <div className="form-content">

@@ -12,14 +12,11 @@ export const IsLoginViewSlice = createSlice({
   name: "isLoginView",
   initialState,
   reducers: {
-    LoginViewTrue: (state, action: PayloadAction) => {
-      state.isLoginView = true;
-    },
-    LoginViewFalse: (state, action: PayloadAction) => {
-      state.isLoginView = false;
+    LoginView: (state, action: PayloadAction<boolean>) => {
+      state.isLoginView = action.payload;
     },
   },
 });
 
 export default IsLoginViewSlice.reducer;
-export const { LoginViewTrue, LoginViewFalse } = IsLoginViewSlice.actions;
+export const { LoginView } = IsLoginViewSlice.actions;

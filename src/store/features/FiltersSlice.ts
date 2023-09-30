@@ -19,11 +19,9 @@ export const FiltersSlice = createSlice({
     inputValueSet: (state, action: PayloadAction<string>) => {
       state.inputValue = action.payload;
     },
-
     currentInputValueSet: (state, action: PayloadAction<string>) => {
       state.currentInputValue = action.payload;
     },
-
     categoryFilterValueSet: (
       state,
       action: PayloadAction<number | undefined>
