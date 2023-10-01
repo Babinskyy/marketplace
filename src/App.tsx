@@ -7,6 +7,7 @@ import { Category } from "./common/types/Types";
 import Signup from "./modules/users/views/Signup";
 import UserOffers from "./modules/offers/views/UserOffers";
 import { BASE_URL } from "./common/config/env-variable";
+import AllOffers from "./modules/offers/views/AllOffers";
 
 function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
@@ -77,6 +78,18 @@ function App() {
           path="/offers/user"
           element={
             <UserOffers
+              setOpenOfferModal={setOpenOfferModal}
+              categories={categories}
+              setDarkTheme={setDarkTheme}
+              darkTheme={darkTheme}
+              openOfferModal={openOfferModal}
+            />
+          }
+        ></Route>
+        <Route
+          path="/offers/all"
+          element={
+            <AllOffers
               setOpenOfferModal={setOpenOfferModal}
               categories={categories}
               setDarkTheme={setDarkTheme}

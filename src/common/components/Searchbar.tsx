@@ -49,7 +49,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
       <input
         type="search"
         name="search"
-        placeholder="Search for offers"
+        placeholder="Search Offers"
         className={`searchbar-input ${props.darkTheme && "dark-theme"}`}
         value={currentInputState}
         onChange={(e: React.FormEvent<HTMLInputElement>) => {

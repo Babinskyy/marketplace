@@ -39,7 +39,6 @@ const Offers = (props: OffersProps): JSX.Element => {
         shuffledArray[i],
       ];
     }
-    // return shuffledArray.slice(0, 8);
     return shuffledArray;
   };
 
@@ -198,7 +197,7 @@ const Offers = (props: OffersProps): JSX.Element => {
         </div>
 
         <div className={`offers-container`}>
-          {filteredItems?.slice(0, 8)?.map((e, i) => {
+          {filteredItems?.slice(0, 8).map((e, i) => {
             return (
               <div
                 className={`offer-item ${props.darkTheme && "dark-theme"}`}

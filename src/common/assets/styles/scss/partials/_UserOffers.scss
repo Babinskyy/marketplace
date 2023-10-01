@@ -1,4 +1,4 @@
-.all-offers-container {
+.user-offers-container {
   @include flexbox(column, space-between);
   min-height: 100vh;
 }

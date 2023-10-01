@@ -130,6 +130,19 @@ const Header = (props: HeaderProps): JSX.Element => {
             <>
               {isUserLogged ? (
                 <>
+                  {/* <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={() => {
+                      navigate("/offers/all");
+                    }}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    All offers
+                  </Button> */}
                   <Button
                     variant="contained"
                     style={{
