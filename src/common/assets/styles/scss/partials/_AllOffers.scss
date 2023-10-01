@@ -1,2 +1,7 @@
 .all-offers-container {
+  min-height: 100vh;
+  @include flexbox(column, flex-start);
+  .grow {
+    flex: 1;
+  }
 }
