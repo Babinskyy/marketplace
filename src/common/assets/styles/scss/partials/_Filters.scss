@@ -133,19 +133,23 @@
     }
   }
   @media screen and (max-width: 500px) {
+    height: 190px;
     .filters-subcontainer {
-      max-width: 280px;
+      max-width: 300px;
       @include flexbox(column, center, center);
       .searchbar-container {
         margin: 0;
         .icon-holder {
         }
         input {
-          width: 145px;
+          width: 165px;
         }
         .search-button {
           border-radius: 0px 10px 10px 0px;
           width: 80px;
+          svg {
+            display: none;
+          }
         }
       }
     }
