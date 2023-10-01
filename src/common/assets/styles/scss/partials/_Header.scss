@@ -2,21 +2,14 @@ nav.main-header {
   @include flexbox(row, center);
   background-color: $primary-color;
   color: white;
-  padding: 0 50px;
-  // box-shadow: $box-shadow;
-  @media screen and (max-width: 920px) {
-    padding: 0 20px;
-  }
   ul.main-navigation {
     @include flexbox(row, space-between, center);
-    margin: 0;
+    margin: 0px 0px 0px 0px;
     height: 90px;
     padding: 0;
     width: 1330px;
     .logo-holder {
       transition: 0.2s;
-      // background-color: aquamarine;
-      // padding: 0px 15px 0px 15px;
       padding-right: 15px;
       &:hover {
         opacity: 0.7;
@@ -143,8 +136,14 @@ nav.main-header {
         }
       }
     }
-
-    @media screen and (max-width: 860px) {
+    #dropdown-menu {
+      display: none;
+    }
+    @media screen and (max-width: 1380px) {
+      width: 1000px;
+    }
+    @media screen and (max-width: 1036px) {
+      width: 700px;
       .logo-holder {
         img.big-logo {
           display: none;
@@ -156,14 +155,8 @@ nav.main-header {
           transform: translate(0, 4px);
         }
       }
-      ul.navigation {
-        display: none;
-      }
-      #fade-button {
-        display: inline-flex;
-      }
       .buttons-panel {
-        width: 430px;
+        width: 620px;
         &.logged-out {
           width: 300px;
         }
@@ -171,66 +164,100 @@ nav.main-header {
           width: 100px;
         }
         button {
-          font-size: 12px;
-          font-weight: 1000;
+          font-size: 15px;
+          // font-weight: 1000;
         }
       }
     }
-    @media screen and (max-width: 580px) {
+    @media screen and (max-width: 750px) {
+      #dropdown-menu {
+        display: block;
+      }
+      width: 450px;
       .buttons-panel {
-        width: 400px;
-        &.login-view {
-          width: 100px;
-        }
-        button {
-          height: 40px;
-          font-size: 10px;
-          font-weight: 800;
-        }
+        display: none;
       }
     }
-    @media screen and (max-width: 520px) {
-      .buttons-panel {
-        width: 350px;
+    @media screen and (max-width: 500px) {
+      width: 340px;
+    }
+    // @media screen and (max-width: 860px) {
+    //   ul.navigation {
+    //     display: none;
+    //   }
+    //   #fade-button {
+    //     display: inline-flex;
+    //   }
+    //   .buttons-panel {
+    //     width: 430px;
+    //     &.logged-out {
+    //       width: 300px;
+    //     }
+    //     &.login-view {
+    //       width: 100px;
+    //     }
+    //     button {
+    //       font-size: 12px;
+    //       font-weight: 1000;
+    //     }
+    //   }
+    // }
+    // @media screen and (max-width: 580px) {
+    //   .buttons-panel {
+    //     width: 400px;
+    //     &.login-view {
+    //       width: 100px;
+    //     }
+    //     button {
+    //       height: 40px;
+    //       font-size: 10px;
+    //       font-weight: 800;
+    //     }
+    //   }
+    // }
+    // @media screen and (max-width: 520px) {
+    //   .buttons-panel {
+    //     width: 350px;
 
-        &.logged-out {
-          width: 250px;
-        }
-        &.login-view {
-          width: 100px;
-        }
-        button {
-          height: 28px;
-          padding: 10px;
-          font-size: 10px;
-          font-weight: 800;
-        }
-      }
-    }
-    @media screen and (max-width: 470px) {
-      .logo-holder {
-        padding: 0px 5px 0px 0px;
-        &.logged-out {
-          padding-right: 15px;
-        }
-        img.small-logo {
-          width: 45px;
-        }
-      }
-      .buttons-panel {
-        width: 290px;
-        // @include flexbox(column);
-        // flex-wrap: wrap;
-        &.login-view {
-          width: 100px;
-        }
-        button {
-          height: 28px;
-          padding: 5px;
-          font-size: 9px;
-          font-weight: 700;
-        }
-      }
-    }
+    //     &.logged-out {
+    //       width: 250px;
+    //     }
+    //     &.login-view {
+    //       width: 100px;
+    //     }
+    //     button {
+    //       height: 28px;
+    //       padding: 10px;
+    //       font-size: 10px;
+    //       font-weight: 800;
+    //     }
+    //   }
+    // }
+    // @media screen and (max-width: 470px) {
+    //   margin: 0px 20px 0 20px;
+    //   .logo-holder {
+    //     padding: 0px 5px 0px 0px;
+    //     &.logged-out {
+    //       padding-right: 15px;
+    //     }
+    //     img.small-logo {
+    //       // width: 45px;
+    //     }
+    //   }
+    //   .buttons-panel {
+    //     width: 290px;
+    //     // @include flexbox(column);
+    //     // flex-wrap: wrap;
+    //     &.login-view {
+    //       width: 100px;
+    //     }
+    //     button {
+    //       height: 28px;
+    //       padding: 5px;
+    //       font-size: 9px;
+    //       font-weight: 700;
+    //     }
+    //   }
+    // }
   }
 }

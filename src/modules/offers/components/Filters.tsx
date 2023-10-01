@@ -18,11 +18,11 @@ const Filters = (props: FiltersType): JSX.Element => {
   return (
     <div className="filters-container">
       <div className="filters-subcontainer">
+        <Searchbar darkTheme={props.darkTheme} />
         <CustomSelect
           categories={props.categories}
           darkTheme={props.darkTheme}
         />
-        <Searchbar darkTheme={props.darkTheme} />
       </div>
     </div>
   );

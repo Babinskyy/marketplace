@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../../../common/assets/styles/scss/main/App.scss";
 import { Category } from "../../../common/types/Types";
 import { categoryFilterValueSet } from "../../../store/features/FiltersSlice";
@@ -14,6 +15,7 @@ const Categories = (props: CategoriesProps): JSX.Element => {
     for (let i = 1; i <= props.categories.length; i++) {
       bgcArray.push(`bgc-${i}`);
     }
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const categoryState = useAppSelector(
     (state) => state.filters.categoryFilterValue
@@ -35,6 +37,7 @@ const Categories = (props: CategoriesProps): JSX.Element => {
                   }`}
                   onClick={() => {
                     dispatch(categoryFilterValueSet(category.id));
+                    navigate("/offers/all");
                   }}
                 >
                   {category && <img src={category.url} alt="category-image" />}

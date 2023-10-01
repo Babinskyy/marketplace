@@ -15,7 +15,6 @@ import {
 } from "../../store/features/FiltersSlice";
 
 type OffersProps = {
-  categoryFilterValue?: number | undefined;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
   darkTheme: boolean;
@@ -69,7 +68,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     fetchData();
   }, [location.pathname]);
 
-  const categorySwitch = (id: number | undefined) => {
+  const categorySwitch = (id: number | "") => {
     switch (id) {
       case 1:
         return "Cars";
@@ -91,24 +90,24 @@ const Offers = (props: OffersProps): JSX.Element => {
         return "Furnitures";
       case 10:
         return "Books";
-      case undefined:
+      case "":
         return "";
     }
   };
-
-  const appSelectorState = useAppSelector((state) => state.filters.inputValue);
+  const ViewState = useAppSelector((state) => state.View.view);
+  const inputValueState = useAppSelector((state) => state.filters.inputValue);
   const categoryState = useAppSelector(
     (state) => state.filters.categoryFilterValue
   );
 
   //conditionally randomize offers based on location
-  let offersToFilter = randomizedOffers;
-  if (window.location.pathname === "/offers/user") {
-    offersToFilter = offers;
+  let offersToFilter = offers;
+  if (ViewState === "home") {
+    offersToFilter = randomizedOffers?.slice(0, 8);
   }
 
   const filteredItems = offersToFilter?.filter((offer) => {
-    const inputValue = appSelectorState || "";
+    const inputValue = inputValueState || "";
     const categoryValue = categoryState || "";
 
     return (
@@ -122,7 +121,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     if (result?.success) {
       props.setOpenOfferModal(true);
     } else {
-      dispatch(categoryFilterValueSet(undefined));
+      dispatch(categoryFilterValueSet(""));
       dispatch(inputValueSet(""));
       dispatch(currentInputValueSet(""));
       navigate("/auth");
@@ -139,13 +138,13 @@ const Offers = (props: OffersProps): JSX.Element => {
     <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          {(categoryState || appSelectorState) && (
+          {(categoryState || inputValueState) && (
             <Button
               className={`clear-filters-button ${
                 props.darkTheme && "dark-theme"
               }`}
               onClick={() => {
-                dispatch(categoryFilterValueSet(undefined));
+                dispatch(categoryFilterValueSet(""));
                 dispatch(inputValueSet(""));
                 dispatch(currentInputValueSet(""));
               }}
@@ -165,22 +164,28 @@ const Offers = (props: OffersProps): JSX.Element => {
               }`}
             >
               {filteredItems?.length
-                ? `${categorySwitch(categoryState)} ${appSelectorState}`
+                ? `${categorySwitch(categoryState)} ${inputValueState}`
                 : categoryState &&
-                  `${categorySwitch(categoryState)} ${appSelectorState}`}
+                  `${categorySwitch(categoryState)} ${inputValueState}`}
             </span>
-            <span>
-              {" "}
-              {categoryState
-                ? filteredItems?.length
+            {ViewState === "home" ? (
+              <span>Suggested offers</span>
+            ) : (
+              <span>
+                {" "}
+                {categoryState
+                  ? filteredItems?.length
+                    ? "offers"
+                    : "offers"
+                  : inputValueState
                   ? "offers"
-                  : "offers"
-                : appSelectorState
-                ? "offers"
-                : location.pathname === "/offers/user"
-                ? "My offers"
-                : "Suggested offers"}{" "}
-            </span>
+                  : ViewState === "userOffers"
+                  ? "My offers"
+                  : "All offers"}{" "}
+              </span>
+              // <span>All offers</span>
+            )}
+
             <span>{!filteredItems?.length && " yet."}</span>
           </h1>
           {!filteredItems?.length && (
@@ -197,7 +202,7 @@ const Offers = (props: OffersProps): JSX.Element => {
         </div>
 
         <div className={`offers-container`}>
-          {filteredItems?.slice(0, 8).map((e, i) => {
+          {filteredItems?.map((e, i) => {
             return (
               <div
                 className={`offer-item ${props.darkTheme && "dark-theme"}`}

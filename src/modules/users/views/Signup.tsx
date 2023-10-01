@@ -5,7 +5,7 @@ import Footer from "../../../common/components/Footer";
 import LoginForm from "../components/LoginForm";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../store/store";
-import { LoginView } from "../../../store/features/IsLoginViewSlice";
+import { View } from "../../../store/features/ViewSlice";
 
 type SignupType = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +17,7 @@ const Signup = (props: SignupType): JSX.Element => {
   const [login, setLogin] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(LoginView(true));
+    dispatch(View("login"));
   }, []);
 
   return (

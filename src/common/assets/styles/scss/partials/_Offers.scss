@@ -7,7 +7,7 @@
   }
 
   .offers-wrapper-2 {
-    max-width: 1360px;
+    max-width: 1330px;
 
     .h1-button-wrapper {
       text-align: center;
@@ -31,7 +31,7 @@
         }
       }
       h1 {
-        margin: 40px 0px 20px 0px;
+        margin: 20px 0px 20px 0px;
         &.dark-theme {
           color: rgb(238, 238, 238);
         }
@@ -58,10 +58,10 @@
     }
 
     .offers-container {
-      @include flexbox(row, center, center);
+      @include flexbox(row, space-between, center);
       flex-wrap: wrap;
       color: $secondary-color;
-
+      width: 1330px;
       .offer-item {
         @include flexbox(column, space-between, center);
         border-radius: 10px;
@@ -69,7 +69,8 @@
         height: 400px;
         background-color: #fff;
         padding: 20px;
-        margin: 20px;
+        margin-bottom: 43px;
+        // margin: 20px;
         // box-shadow: $box-shadow;
         cursor: pointer;
         transition: 0.3s;
@@ -124,11 +125,80 @@
         }
       }
     }
-
-    @media screen and (max-width: 920px) {
+    @media screen and (max-width: 1380px) {
+      .h1-button-wrapper {
+        h1 {
+          width: 1000px;
+        }
+      }
       .offers-container {
-        max-height: 1760px;
-        overflow: hidden;
+        max-width: 1000px;
+      }
+    }
+    @media screen and (max-width: 1036px) {
+      .h1-button-wrapper {
+        h1 {
+          width: 700px;
+        }
+      }
+      .offers-container {
+        max-width: 700px;
+      }
+    }
+    @media screen and (max-width: 750px) {
+      .h1-button-wrapper {
+        h1 {
+          width: 450px;
+        }
+      }
+      .offers-container {
+        max-width: 450px;
+        .offer-item {
+          width: 200px;
+          height: 300px;
+          h2.offer-title,
+          h3.offer-price {
+            font-size: 20px;
+          }
+          p.offer-phone {
+            font-size: 15px;
+          }
+          .category-date-container {
+            font-size: 12px;
+            .offer-category {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .h1-button-wrapper {
+        h1 {
+          width: 280px;
+        }
+      }
+      .offers-container {
+        margin: 0 auto;
+        max-width: 280px;
+        .offer-item {
+          width: 280px;
+          height: 400px;
+          h2.offer-title,
+          h3.offer-price {
+            font-size: 25px;
+          }
+          p.offer-phone {
+            font-size: 15px;
+          }
+          .category-date-container {
+            font-size: 14px;
+            .offer-category {
+              font-weight: 500;
+            }
+          }
+        }
       }
     }
   }

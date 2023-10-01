@@ -67,23 +67,16 @@ ul {
   font-weight: 300;
 }
 
-@media screen and (max-width: 400px) {
-  .social-icon,
-  .menu {
-    // width: 300px;
-    // font-size: 10px;
-  }
-
-  .footer p {
-    // display: none;
-  }
-}
 @media screen and (max-height: 720px) {
+  .footer {
+    padding: 40px 50px;
+  }
   .social-icon {
     display: none;
   }
   .footer p {
-    display: none;
+    // display: none;
+    font-size: 14px;
   }
 }
 

@@ -3,8 +3,6 @@ import "../../../common/assets/styles/scss/main/App.scss";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { BASE_URL } from "../../../common/config/env-variable";
-import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { LoginView } from "../../../store/features/IsLoginViewSlice";
 
 type SignupFormType = {
   setLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +18,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
     formState: { errors },
     reset,
   } = useForm();
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onSubmit = handleSubmit((values) => {
     setResponse("");
@@ -38,7 +35,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         console.log(data);
         if (data.message === "logged") {
           navigate("/");
-          dispatch(LoginView(false));
         } else setResponse(data.message);
       } catch (err) {
         console.error(err);

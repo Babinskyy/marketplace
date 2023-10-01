@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
-import { Category } from "../types/Types";
+import DropDownMenu from "./DropDownMenu";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { LoginView } from "../../store/features/IsLoginViewSlice";
+
 import {
   categoryFilterValueSet,
   currentInputValueSet,
@@ -77,15 +77,13 @@ const Header = (props: HeaderProps): JSX.Element => {
     checkLogStatus();
   }, []);
 
-  const isLoginViewState = useAppSelector(
-    (state) => state.isLoginView.isLoginView
-  );
-  console.log(isLoginViewState);
+  const ViewState = useAppSelector((state) => state.View.view);
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
         <div
-          className={`logo-holder ${isLoginViewState && "login"} ${
+          className={`logo-holder ${ViewState === "login" ? "login" : ""} ${
             !isUserLogged && "logged-out"
           }`}
         >
@@ -94,29 +92,18 @@ const Header = (props: HeaderProps): JSX.Element => {
               src={props.darkTheme ? mpDarkBigLogo : mpBigLogo}
               alt="logo"
               className="big-logo"
-              onClick={() => {
-                dispatch(LoginView(false));
-                dispatch(currentInputValueSet(""));
-                dispatch(categoryFilterValueSet(undefined));
-                dispatch(inputValueSet(""));
-              }}
             />
             <img
               src={props.darkTheme ? mpDarkSmallLogo : mpSmallLogo}
               alt="logo"
               className="small-logo"
-              onClick={() => {
-                dispatch(LoginView(false));
-                dispatch(currentInputValueSet(""));
-                dispatch(categoryFilterValueSet(undefined));
-                dispatch(inputValueSet(""));
-              }}
             />
           </Link>
         </div>
+
         <div
           className={`buttons-panel ${!isUserLogged ? "logged-out" : ""} ${
-            isLoginViewState ? "login-view" : ""
+            ViewState === "login" ? "login-view" : ""
           }`}
         >
           <div className="toggle-switch">
@@ -130,13 +117,13 @@ const Header = (props: HeaderProps): JSX.Element => {
             </label>
           </div>
 
-          {isLoginViewState ? (
+          {ViewState === "login" ? (
             <></>
           ) : (
             <>
               {isUserLogged ? (
                 <>
-                  {/* <Button
+                  <Button
                     variant="contained"
                     style={{
                       backgroundColor: props.darkTheme ? "#444444" : "",
@@ -148,7 +135,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
                   >
                     All offers
-                  </Button> */}
+                  </Button>
                   <Button
                     variant="contained"
                     style={{
@@ -158,7 +145,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                     onClick={() => {
                       navigate(`/offers/user`);
                       dispatch(currentInputValueSet(""));
-                      dispatch(categoryFilterValueSet(undefined));
+                      dispatch(categoryFilterValueSet(""));
                       dispatch(inputValueSet(""));
                     }}
                     className={`${props.darkTheme ? "dark-theme" : ""}`}
@@ -176,6 +163,17 @@ const Header = (props: HeaderProps): JSX.Element => {
                   >
                     Log out
                   </Button>
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: props.darkTheme ? "#444444" : "",
+                      color: props.darkTheme ? "#d8dbe0" : "",
+                    }}
+                    onClick={handleModalOpen}
+                    className={`${props.darkTheme ? "dark-theme" : ""}`}
+                  >
+                    Add an offer
+                  </Button>
                 </>
               ) : (
                 <Button
@@ -190,21 +188,42 @@ const Header = (props: HeaderProps): JSX.Element => {
                   Log in
                 </Button>
               )}
-
+            </>
+          )}
+        </div>
+        {ViewState === "login" ? (
+          <></>
+        ) : (
+          <>
+            {" "}
+            {isUserLogged ? (
+              <div id="dropdown-menu">
+                <DropDownMenu
+                  isUserLogged={isUserLogged}
+                  setDarkTheme={props.setDarkTheme}
+                  darkTheme={props.darkTheme}
+                  setOpenOfferModal={props.setOpenOfferModal}
+                />
+              </div>
+            ) : (
               <Button
                 variant="contained"
                 style={{
                   backgroundColor: props.darkTheme ? "#444444" : "",
                   color: props.darkTheme ? "#d8dbe0" : "",
+                  height: "52px",
+                  width: "120px",
+                  fontSize: "16px",
+                  fontWeight: "600",
                 }}
-                onClick={handleModalOpen}
+                onClick={handleLogout}
                 className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
-                Add an offer
+                Log in
               </Button>
-            </>
-          )}
-        </div>
+            )}
+          </>
+        )}
       </ul>
     </nav>
   );

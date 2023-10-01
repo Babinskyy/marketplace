@@ -1,32 +1,150 @@
 .filters-container {
-  background-color: #fff;
-  margin-top: 100px;
+  // background-color: #fff;
+  // padding: 0px 40px 0px 40px;
+  // margin-top: 100px;
   .filters-subcontainer {
     margin: 0 auto;
     @include flexbox(row, space-between, center);
-    // background-color: antiquewhite;
-    width: 1330px;
+    max-width: 1330px;
     .searchbar-container {
-      //   @include flexbox(row, flex-start, center);
       background-color: transparent;
+      margin-right: 50px;
       .icon-holder {
         margin: 0;
         background-color: $secondary-light-color;
+        background-color: #fff;
+        height: 57px;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        border-left: 1px solid rgba(0, 0, 0, 0.25);
+        &.dark-theme {
+          background-color: rgb(68, 68, 68);
+          color: rgb(238, 238, 238);
+        }
       }
       input {
         background-color: $secondary-light-color;
+        background-color: #fff;
         width: 550px;
+        height: 57px;
+        font-size: 18px;
+        // font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
       }
       .x-cancel-input {
         background-color: $secondary-light-color;
-        color: $secondary-light-color;
+        background-color: #fff;
+        // color: $secondary-light-color;
+        height: 57px;
+
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+        svg {
+          path {
+            color: $secondary-light-color;
+            color: #fff;
+          }
+          &.visible {
+            path {
+              color: #585858;
+            }
+          }
+        }
+        &.dark-theme {
+          background-color: rgb(68, 68, 68);
+          color: rgb(238, 238, 238);
+          svg {
+            path {
+              color: rgb(68, 68, 68);
+            }
+            &.visible {
+              path {
+                color: rgb(238, 238, 238);
+              }
+            }
+          }
+        }
       }
       .search-button {
         margin: 0;
         background-color: $secondary-light-color;
+        background-color: #fff;
+        height: 57px;
+        color: #585858;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        border-right: 1px solid rgba(0, 0, 0, 0.25);
+        font-size: 16px;
+        font-weight: 500;
+        &.dark-theme {
+          background-color: rgb(68, 68, 68);
+          color: rgb(238, 238, 238);
+        }
         &:hover {
           background-color: $primary-color;
           color: #fff;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1380px) {
+    .filters-subcontainer {
+      width: 1000px;
+      .searchbar-container {
+        input {
+          width: 400px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1036px) {
+    .filters-subcontainer {
+      width: 700px;
+      .searchbar-container {
+        input {
+          width: 200px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .filters-subcontainer {
+      width: 450px;
+      .searchbar-container {
+        margin-right: 20px;
+        .icon-holder {
+          display: none;
+        }
+        input {
+          width: 130px;
+          border-radius: 10px 0px 0px 10px;
+          padding-left: 15px;
+          border-left: 1px solid rgba(0, 0, 0, 0.25);
+        }
+        .search-button {
+          width: 100px;
+          padding: 0;
+          // display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .filters-subcontainer {
+      max-width: 280px;
+      @include flexbox(column, center, center);
+      .searchbar-container {
+        margin: 0;
+        .icon-holder {
+        }
+        input {
+          width: 145px;
+        }
+        .search-button {
+          border-radius: 0px 10px 10px 0px;
+          width: 80px;
         }
       }
     }

@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import "../../../common/assets/styles/scss/main/App.scss";
 import AddOfferModal from "../../../common/components/AddOfferModal";
 import Footer from "../../../common/components/Footer";
 import Header from "../../../common/components/Header";
 import { Category } from "../../../common/types/Types";
+import { useAppDispatch } from "../../../store/store";
 import Offer from "../components/Offer";
+import { View } from "../../../store/features/ViewSlice";
 
 type OfferViewProps = {
   openOfferModal: boolean;
@@ -14,6 +17,11 @@ type OfferViewProps = {
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(View("userOffers"));
+  }, []);
   return (
     <div className="offer-view-page">
       <Header

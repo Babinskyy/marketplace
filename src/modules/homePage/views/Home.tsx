@@ -7,6 +7,14 @@ import Footer from "../../../common/components/Footer";
 import AddOfferModal from "../../../common/components/AddOfferModal";
 import { Category } from "../../../common/types/Types";
 import Greetings from "../../../common/components/Greetings";
+import { useEffect } from "react";
+import { View } from "../../../store/features/ViewSlice";
+import { useAppDispatch } from "../../../store/store";
+import {
+  categoryFilterValueSet,
+  currentInputValueSet,
+  inputValueSet,
+} from "../../../store/features/FiltersSlice";
 
 type HomeProps = {
   openOfferModal: boolean;
@@ -17,6 +25,14 @@ type HomeProps = {
 };
 
 const Home = (props: HomeProps): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(currentInputValueSet(""));
+    dispatch(categoryFilterValueSet(""));
+    dispatch(inputValueSet(""));
+    dispatch(View("home"));
+  }, []);
   return (
     <div className="home">
       <Header

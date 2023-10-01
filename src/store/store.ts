@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { IsLoginViewSlice } from "./features/IsLoginViewSlice";
+import { ViewSlice } from "./features/ViewSlice";
 import { FiltersSlice } from "./features/FiltersSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
-    isLoginView: IsLoginViewSlice.reducer,
+    View: ViewSlice.reducer,
     filters: FiltersSlice.reducer,
   },
 });

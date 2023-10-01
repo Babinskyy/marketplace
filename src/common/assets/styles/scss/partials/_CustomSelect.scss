@@ -1,6 +1,24 @@
 #custom-select {
-  height: 72px;
   border-radius: 10px;
   width: 400px;
   background-color: $secondary-light-color;
+  background-color: #fff;
+  label {
+    color: #585858;
+  }
+  &.dark-theme {
+    background-color: rgb(68, 68, 68);
+    label {
+      color: rgb(238, 238, 238);
+    }
+    span.category-name {
+      color: rgb(238, 238, 238);
+    }
+  }
+  #category-select {
+    // height: 40px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 280px;
+  }
 }

@@ -3,13 +3,13 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 type FiltersSliceState = {
   inputValue: string;
   currentInputValue: string;
-  categoryFilterValue: number | undefined;
+  categoryFilterValue: number | "";
 };
 
 const initialState: FiltersSliceState = {
   inputValue: "",
   currentInputValue: "",
-  categoryFilterValue: undefined,
+  categoryFilterValue: "",
 };
 
 export const FiltersSlice = createSlice({
@@ -22,10 +22,7 @@ export const FiltersSlice = createSlice({
     currentInputValueSet: (state, action: PayloadAction<string>) => {
       state.currentInputValue = action.payload;
     },
-    categoryFilterValueSet: (
-      state,
-      action: PayloadAction<number | undefined>
-    ) => {
+    categoryFilterValueSet: (state, action: PayloadAction<number | "">) => {
       state.categoryFilterValue = action.payload;
     },
   },
