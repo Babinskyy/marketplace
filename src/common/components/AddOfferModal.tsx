@@ -30,6 +30,8 @@ type AddOfferProps = {
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
   categories: Category[] | undefined;
   darkTheme: boolean;
+  trigger?: boolean;
+  setTrigger?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AddOfferModal = (props: AddOfferProps): JSX.Element => {
@@ -232,7 +234,12 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       if (data.error) {
         console.log("Error while creating offer", data.error);
       } else {
+        console.log("data.id:", data.id);
+
         navigate(`/offer/${data.id}`);
+        if (props.setTrigger) {
+          props.setTrigger((prev) => !prev);
+        }
       }
     } catch (err) {
       console.error(err);

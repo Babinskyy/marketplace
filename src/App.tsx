@@ -13,7 +13,7 @@ function App() {
   const [openOfferModal, setOpenOfferModal] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[] | undefined>();
   const [darkTheme, setDarkTheme] = useState<boolean>(true);
-
+  const [trigger, setTrigger] = useState<boolean>(false);
   useEffect(() => {
     const storedTheme = localStorage.getItem("themePreference");
     if (storedTheme === "light") {
@@ -61,6 +61,8 @@ function App() {
               categories={categories}
               setDarkTheme={setDarkTheme}
               darkTheme={darkTheme}
+              setTrigger={setTrigger}
+              trigger={trigger}
             />
           }
         ></Route>

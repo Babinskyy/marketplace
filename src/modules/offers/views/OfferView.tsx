@@ -14,6 +14,8 @@ type OfferViewProps = {
   categories: Category[] | undefined;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
+  trigger: boolean;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const OfferView = (props: OfferViewProps): JSX.Element => {
@@ -34,9 +36,15 @@ const OfferView = (props: OfferViewProps): JSX.Element => {
         setOpenOfferModal={props.setOpenOfferModal}
         categories={props.categories}
         darkTheme={props.darkTheme}
+        trigger={props.trigger}
+        setTrigger={props.setTrigger}
       />
 
-      <Offer darkTheme={props.darkTheme} />
+      <Offer
+        darkTheme={props.darkTheme}
+        trigger={props.trigger}
+        setTrigger={props.setTrigger}
+      />
       <Footer darkTheme={props.darkTheme} />
     </div>
   );

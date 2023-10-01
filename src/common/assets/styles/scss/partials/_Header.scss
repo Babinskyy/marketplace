@@ -139,6 +139,27 @@ nav.main-header {
     #dropdown-menu {
       display: none;
     }
+    .login-button {
+      height: 50px;
+      font-family: $primary-font;
+      background-color: #fff;
+      color: $primary-color;
+      font-weight: 800;
+      font-size: 17px;
+      transition: 0.3s;
+      box-shadow: $box-shadow;
+      &.dark-theme {
+        &:hover {
+          background-color: #d8dbe0 !important;
+          color: #444444 !important;
+        }
+      }
+      &:hover {
+        background-color: #0045ad;
+        color: #fff;
+      }
+      display: none;
+    }
     @media screen and (max-width: 1380px) {
       width: 1000px;
     }
@@ -171,6 +192,9 @@ nav.main-header {
     }
     @media screen and (max-width: 750px) {
       #dropdown-menu {
+        display: block;
+      }
+      .login-button {
         display: block;
       }
       width: 450px;

@@ -7,20 +7,21 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import Carousel from "./Carousel";
 import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
-import { Input } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
 import { BASE_URL } from "../../../common/config/env-variable";
 
 type OfferDetailsType = {
   darkTheme: boolean;
+  trigger: boolean;
+  setTrigger: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
   const [editOffer, setEditOffer] = useState<boolean>(false);
-  const [trigger, setTrigger] = useState<boolean>(false);
+
   const [isAuthorLogged, setIsAuthorLogged] = useState<boolean>(false);
 
   const {
@@ -43,7 +44,6 @@ const OfferDetails = (props: OfferDetailsType) => {
         const data = await response.json();
 
         setOffer(data.offer);
-        console.log("data.authorId:", data.authorId);
 
         const isLoggedResponse = await checkIsLogged();
         const loggedUserId = isLoggedResponse?.userId;
@@ -59,7 +59,7 @@ const OfferDetails = (props: OfferDetailsType) => {
     };
 
     fetchOffer();
-  }, [trigger]);
+  }, [props.trigger]);
 
   const handleOfferDelete = () => {
     if (window.confirm("Are you sure?")) {
@@ -100,7 +100,7 @@ const OfferDetails = (props: OfferDetailsType) => {
         });
         const data = await response.json();
         console.log(data);
-        setTrigger((prev) => !prev);
+        props.setTrigger((prev) => !prev);
       } catch (err) {
         console.error(err);
       }
@@ -108,7 +108,7 @@ const OfferDetails = (props: OfferDetailsType) => {
 
     updateOffer();
     reset();
-    setTrigger((prev) => !prev);
+    props.setTrigger((prev) => !prev);
   });
   return (
     <div

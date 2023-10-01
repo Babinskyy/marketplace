@@ -211,13 +211,11 @@ const Header = (props: HeaderProps): JSX.Element => {
                 style={{
                   backgroundColor: props.darkTheme ? "#444444" : "",
                   color: props.darkTheme ? "#d8dbe0" : "",
-                  height: "52px",
-                  width: "120px",
-                  fontSize: "16px",
-                  fontWeight: "600",
                 }}
                 onClick={handleLogout}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
+                className={`login-button ${
+                  props.darkTheme ? "dark-theme" : ""
+                }`}
               >
                 Log in
               </Button>
