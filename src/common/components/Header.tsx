@@ -80,7 +80,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const isLoginViewState = useAppSelector(
     (state) => state.isLoginView.isLoginView
   );
-
+  console.log(isLoginViewState);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -105,6 +105,12 @@ const Header = (props: HeaderProps): JSX.Element => {
               src={props.darkTheme ? mpDarkSmallLogo : mpSmallLogo}
               alt="logo"
               className="small-logo"
+              onClick={() => {
+                dispatch(LoginView(false));
+                dispatch(currentInputValueSet(""));
+                dispatch(categoryFilterValueSet(undefined));
+                dispatch(inputValueSet(""));
+              }}
             />
           </Link>
         </div>
