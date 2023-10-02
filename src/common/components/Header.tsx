@@ -1,9 +1,9 @@
-import { Button, FormControlLabel, FormGroup } from "@mui/material";
+import { Button } from "@mui/material";
 import "../../common/assets/styles/scss/main/App.scss";
-import mpBigLogo from "../../common/assets/images/logo/marketplacelogo4.png";
-import mpDarkBigLogo from "../../common/assets/images/logo/logo-dark.png";
-import mpSmallLogo from "../../common/assets//images/logo/marketplacesmalllogo.png";
-import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-dark.png";
+import mpBigLogo from "../../common/assets/images/logo/marketplace-logo-nobg-white.png";
+import mpDarkBigLogo from "../../common/assets/images/logo/marketplace-logo-nobg.png";
+import mpSmallLogo from "../../common/assets//images/logo/small-logo-nobg-white.png";
+import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-nobg.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";

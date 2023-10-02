@@ -11,14 +11,7 @@ import {
 import { SelectChangeEvent } from "@mui/material/Select";
 import Textarea from "@mui/joy/Textarea";
 import "../../common/assets/styles/scss/main/App.scss";
-import React, {
-  useState,
-  useEffect,
-  FormEvent,
-  useRef,
-  ChangeEvent,
-  SyntheticEvent,
-} from "react";
+import React, { useState, useRef, ChangeEvent, SyntheticEvent } from "react";
 import { Offer, Errors, Category } from "../../common/types/Types";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";

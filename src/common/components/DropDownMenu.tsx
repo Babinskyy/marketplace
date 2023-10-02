@@ -73,7 +73,7 @@ const DropDownMenu = (props: MenuProps) => {
               height: "50px",
               width: "120px",
               backgroundColor: props.darkTheme ? "rgb(68, 68, 68)" : "#fff",
-              color: props.darkTheme ? "rgb(238, 238, 238)" : "rgb(68, 68, 68)",
+              color: props.darkTheme ? "#eee" : "#3586ff",
               fontSize: "16px",
               fontWeight: "600",
             }}

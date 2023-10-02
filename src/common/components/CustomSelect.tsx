@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { categoryFilterValueSet } from "../../store/features/FiltersSlice";
-import { ChangeEvent } from "react";
 
 type CustomSelectType = {
   darkTheme: boolean;
