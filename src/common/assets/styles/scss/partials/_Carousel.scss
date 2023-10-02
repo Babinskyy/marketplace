@@ -132,6 +132,7 @@
 @media screen and (max-width: 375px) {
   .slider {
     .slide-container {
+      @include flexbox(row, center, center);
       .right-arrow,
       .left-arrow {
         display: none;
