@@ -24,19 +24,20 @@ const DropDownMenu = (props: MenuProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const checkIsLogged = useAuth();
-  const handleLogout = () => {
+  const handleLogout = async () => {
     const logout = async () => {
       try {
         const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
           credentials: "include",
         });
-        console.log(response);
+        console.log(response.status);
       } catch (err) {
         console.error(err);
       }
     };
     logout();
+    await checkIsLogged();
     navigate("/auth");
   };
 
@@ -69,7 +70,7 @@ const DropDownMenu = (props: MenuProps) => {
             variant="contained"
             {...bindTrigger(popupState)}
             style={{
-              height: "52px",
+              height: "50px",
               width: "120px",
               backgroundColor: props.darkTheme ? "rgb(68, 68, 68)" : "#fff",
               color: props.darkTheme ? "rgb(238, 238, 238)" : "rgb(68, 68, 68)",

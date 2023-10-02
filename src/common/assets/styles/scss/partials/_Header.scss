@@ -47,21 +47,23 @@ nav.main-header {
     #fade-button {
       display: none;
     }
-
-    .buttons-panel {
-      width: 700px;
-      margin-left: 5px;
-      @include flexbox(row, space-between);
-      .css-j204z7-MuiFormControlLabel-root {
-        margin-right: 0;
+    .buttons-holder {
+      @include flexbox(row, center);
+      .logout-buttons-panel {
+        button {
+          @include button();
+          margin-right: 20px;
+        }
       }
-      &.logged-out {
-        width: 350px;
+      .login-buttons-panel {
+        button {
+          @include button();
+          margin-right: 20px;
+        }
       }
-      &.login-view {
-        width: 100px;
+      #dropdown-menu {
+        display: none;
       }
-
       .toggle-switch {
         @include flexbox(row, center, center);
         position: relative;
@@ -114,52 +116,8 @@ nav.main-header {
           }
         }
       }
+    }
 
-      button {
-        height: 50px;
-        font-family: $primary-font;
-        background-color: #fff;
-        color: $primary-color;
-        font-weight: 800;
-        font-size: 17px;
-        transition: 0.3s;
-        box-shadow: $box-shadow;
-        &.dark-theme {
-          &:hover {
-            background-color: #d8dbe0 !important;
-            color: #444444 !important;
-          }
-        }
-        &:hover {
-          background-color: #0045ad;
-          color: #fff;
-        }
-      }
-    }
-    #dropdown-menu {
-      display: none;
-    }
-    .login-button {
-      height: 50px;
-      font-family: $primary-font;
-      background-color: #fff;
-      color: $primary-color;
-      font-weight: 800;
-      font-size: 17px;
-      transition: 0.3s;
-      box-shadow: $box-shadow;
-      &.dark-theme {
-        &:hover {
-          background-color: #d8dbe0 !important;
-          color: #444444 !important;
-        }
-      }
-      &:hover {
-        background-color: #0045ad;
-        color: #fff;
-      }
-      display: none;
-    }
     @media screen and (max-width: 1380px) {
       width: 1000px;
     }
@@ -176,112 +134,44 @@ nav.main-header {
           transform: translate(0, 4px);
         }
       }
-      .buttons-panel {
-        width: 620px;
-        &.logged-out {
-          width: 300px;
-        }
-        &.login-view {
-          width: 100px;
-        }
-        button {
-          font-size: 15px;
-          // font-weight: 1000;
+      .buttons-holder {
+        .login-buttons-panel {
+          button {
+            @include button(14px);
+          }
         }
       }
     }
+
     @media screen and (max-width: 750px) {
-      #dropdown-menu {
-        display: block;
-      }
-      .login-button {
-        display: block;
-      }
       width: 450px;
-      .buttons-panel {
-        display: none;
+      .buttons-holder {
+        .login-buttons-panel {
+          display: none;
+        }
+        #dropdown-menu {
+          display: block;
+          margin-right: 25px;
+        }
       }
     }
     @media screen and (max-width: 460px) {
-      width: 300px;
+      .logo-holder {
+        padding: 0;
+        margin: 0;
+      }
+      width: 320px;
+      .buttons-holder {
+        #dropdown-menu {
+          margin-right: 45px;
+        }
+        .logout-buttons-panel {
+          button {
+            margin-right: 9px;
+            @include button(11px);
+          }
+        }
+      }
     }
-    // @media screen and (max-width: 860px) {
-    //   ul.navigation {
-    //     display: none;
-    //   }
-    //   #fade-button {
-    //     display: inline-flex;
-    //   }
-    //   .buttons-panel {
-    //     width: 430px;
-    //     &.logged-out {
-    //       width: 300px;
-    //     }
-    //     &.login-view {
-    //       width: 100px;
-    //     }
-    //     button {
-    //       font-size: 12px;
-    //       font-weight: 1000;
-    //     }
-    //   }
-    // }
-    // @media screen and (max-width: 580px) {
-    //   .buttons-panel {
-    //     width: 400px;
-    //     &.login-view {
-    //       width: 100px;
-    //     }
-    //     button {
-    //       height: 40px;
-    //       font-size: 10px;
-    //       font-weight: 800;
-    //     }
-    //   }
-    // }
-    // @media screen and (max-width: 520px) {
-    //   .buttons-panel {
-    //     width: 350px;
-
-    //     &.logged-out {
-    //       width: 250px;
-    //     }
-    //     &.login-view {
-    //       width: 100px;
-    //     }
-    //     button {
-    //       height: 28px;
-    //       padding: 10px;
-    //       font-size: 10px;
-    //       font-weight: 800;
-    //     }
-    //   }
-    // }
-    // @media screen and (max-width: 470px) {
-    //   margin: 0px 20px 0 20px;
-    //   .logo-holder {
-    //     padding: 0px 5px 0px 0px;
-    //     &.logged-out {
-    //       padding-right: 15px;
-    //     }
-    //     img.small-logo {
-    //       // width: 45px;
-    //     }
-    //   }
-    //   .buttons-panel {
-    //     width: 290px;
-    //     // @include flexbox(column);
-    //     // flex-wrap: wrap;
-    //     &.login-view {
-    //       width: 100px;
-    //     }
-    //     button {
-    //       height: 28px;
-    //       padding: 5px;
-    //       font-size: 9px;
-    //       font-weight: 700;
-    //     }
-    //   }
-    // }
   }
 }

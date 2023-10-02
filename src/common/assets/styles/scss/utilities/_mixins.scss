@@ -1,15 +1,38 @@
 @mixin flexbox($direction: row, $justify: flex-start, $align: normal) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
-@mixin random-color($selector) {
-    #{$selector}: unquote("rgba(#{random(255)}, #{random(255)}, #{random(255)})");
-  }
 
-  @for $i from 1 to 20 {
-    .bgc-#{$i} {
-      @include random-color('background-color');
+@mixin button($fontSize: 17px, $width: auto, $font-weight: 800) {
+  height: 50px;
+  font-family: $primary-font;
+  background-color: #fff;
+  color: $primary-color;
+  font-weight: $font-weight;
+  font-size: $fontSize;
+  transition: 0.3s;
+  box-shadow: $box-shadow;
+  width: $width;
+
+  &.dark-theme {
+    &:hover {
+      background-color: #d8dbe0 !important;
+      color: #444444 !important;
     }
   }
+  &:hover {
+    background-color: #0045ad;
+    color: #fff;
+  }
+}
+@mixin random-color($selector) {
+  #{$selector}: unquote("rgba(#{random(255)}, #{random(255)}, #{random(255)})");
+}
+
+@for $i from 1 to 20 {
+  .bgc-#{$i} {
+    @include random-color("background-color");
+  }
+}

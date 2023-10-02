@@ -30,7 +30,7 @@ const Signup = (props: SignupType): JSX.Element => {
 
       <div className="signup-content">
         <h1 className={`${props.darkTheme && "dark-theme"}`}>
-          {login ? <span>Sign up</span> : <span>Log in</span>}
+          {login ? <span>Sign up</span> : <span>Sign in</span>}
         </h1>
         {login ? (
           <SignupForm setLogin={setLogin} darkTheme={props.darkTheme} />

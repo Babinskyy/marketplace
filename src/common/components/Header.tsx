@@ -34,19 +34,20 @@ const Header = (props: HeaderProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const checkIsLogged = useAuth();
   const navigate = useNavigate();
-  const handleLogout = () => {
+  const handleLogout = async () => {
     const logout = async () => {
       try {
         const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
           credentials: "include",
         });
-        console.log(response);
+        console.log(response.status);
       } catch (err) {
         console.error(err);
       }
     };
     logout();
+    await checkIsLogged();
     navigate("/auth");
   };
 
@@ -68,6 +69,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   useEffect(() => {
     const checkLogStatus = async () => {
       const result = await checkIsLogged();
+
       if (result?.success) {
         setIsUserLogged(true);
       } else {
@@ -78,7 +80,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   }, []);
 
   const ViewState = useAppSelector((state) => state.View.view);
-
+  console.log(isUserLogged);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -101,11 +103,103 @@ const Header = (props: HeaderProps): JSX.Element => {
           </Link>
         </div>
 
-        <div
-          className={`buttons-panel ${!isUserLogged ? "logged-out" : ""} ${
-            ViewState === "login" ? "login-view" : ""
-          }`}
-        >
+        <div className="buttons-holder">
+          {isUserLogged ? (
+            <>
+              <div className="login-buttons-panel">
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={() => {
+                    navigate("/offers/all");
+                  }}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  All offers
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={() => {
+                    navigate(`/offers/user`);
+                    dispatch(currentInputValueSet(""));
+                    dispatch(categoryFilterValueSet(""));
+                    dispatch(inputValueSet(""));
+                  }}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  My offers
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={handleLogout}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  Log out
+                </Button>
+                <Button
+                  variant="contained"
+                  style={{
+                    backgroundColor: props.darkTheme ? "#444444" : "",
+                    color: props.darkTheme ? "#d8dbe0" : "",
+                  }}
+                  onClick={handleModalOpen}
+                  className={`${props.darkTheme ? "dark-theme" : ""}`}
+                >
+                  Add an offer
+                </Button>
+              </div>
+              <div id="dropdown-menu">
+                <DropDownMenu
+                  isUserLogged={isUserLogged}
+                  setDarkTheme={props.setDarkTheme}
+                  darkTheme={props.darkTheme}
+                  setOpenOfferModal={props.setOpenOfferModal}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="logout-buttons-panel">
+              {" "}
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: props.darkTheme ? "#444444" : "",
+                  color: props.darkTheme ? "#d8dbe0" : "",
+                }}
+                onClick={() => {
+                  navigate("/offers/all");
+                }}
+                className={`${props.darkTheme ? "dark-theme" : ""}`}
+              >
+                All Offers
+              </Button>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: props.darkTheme ? "#444444" : "",
+                  color: props.darkTheme ? "#d8dbe0" : "",
+                }}
+                onClick={() => {
+                  console.log(navigate("/auth"));
+                }}
+                className={`${props.darkTheme ? "dark-theme" : ""}`}
+              >
+                Sign in
+              </Button>
+            </div>
+          )}
+
           <div className="toggle-switch">
             <label>
               <input
@@ -116,112 +210,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               <span className="slider-toggle"></span>
             </label>
           </div>
-
-          {ViewState === "login" ? (
-            <></>
-          ) : (
-            <>
-              {isUserLogged ? (
-                <>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: props.darkTheme ? "#444444" : "",
-                      color: props.darkTheme ? "#d8dbe0" : "",
-                    }}
-                    onClick={() => {
-                      navigate("/offers/all");
-                    }}
-                    className={`${props.darkTheme ? "dark-theme" : ""}`}
-                  >
-                    All offers
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: props.darkTheme ? "#444444" : "",
-                      color: props.darkTheme ? "#d8dbe0" : "",
-                    }}
-                    onClick={() => {
-                      navigate(`/offers/user`);
-                      dispatch(currentInputValueSet(""));
-                      dispatch(categoryFilterValueSet(""));
-                      dispatch(inputValueSet(""));
-                    }}
-                    className={`${props.darkTheme ? "dark-theme" : ""}`}
-                  >
-                    My offers
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: props.darkTheme ? "#444444" : "",
-                      color: props.darkTheme ? "#d8dbe0" : "",
-                    }}
-                    onClick={handleLogout}
-                    className={`${props.darkTheme ? "dark-theme" : ""}`}
-                  >
-                    Log out
-                  </Button>
-                  <Button
-                    variant="contained"
-                    style={{
-                      backgroundColor: props.darkTheme ? "#444444" : "",
-                      color: props.darkTheme ? "#d8dbe0" : "",
-                    }}
-                    onClick={handleModalOpen}
-                    className={`${props.darkTheme ? "dark-theme" : ""}`}
-                  >
-                    Add an offer
-                  </Button>
-                </>
-              ) : (
-                <Button
-                  variant="contained"
-                  style={{
-                    backgroundColor: props.darkTheme ? "#444444" : "",
-                    color: props.darkTheme ? "#d8dbe0" : "",
-                  }}
-                  onClick={handleLogout}
-                  className={`${props.darkTheme ? "dark-theme" : ""}`}
-                >
-                  Log in
-                </Button>
-              )}
-            </>
-          )}
         </div>
-        {ViewState === "login" ? (
-          <></>
-        ) : (
-          <>
-            {" "}
-            {isUserLogged ? (
-              <div id="dropdown-menu">
-                <DropDownMenu
-                  isUserLogged={isUserLogged}
-                  setDarkTheme={props.setDarkTheme}
-                  darkTheme={props.darkTheme}
-                  setOpenOfferModal={props.setOpenOfferModal}
-                />
-              </div>
-            ) : (
-              <Button
-                variant="contained"
-                style={{
-                  backgroundColor: props.darkTheme ? "#444444" : "",
-                  color: props.darkTheme ? "#d8dbe0" : "",
-                }}
-                onClick={handleLogout}
-                className={`login-button ${
-                  props.darkTheme ? "dark-theme" : ""
-                }`}
-              >
-                Log in
-              </Button>
-            )}
-          </>
-        )}
       </ul>
     </nav>
   );
