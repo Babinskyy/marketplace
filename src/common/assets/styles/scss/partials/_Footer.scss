@@ -67,16 +67,20 @@ ul {
   font-weight: 300;
 }
 
-@media screen and (max-height: 720px) {
+@media screen and (max-height: 720px) and (max-width: 500px) {
   .footer {
     padding: 40px 50px;
   }
   .social-icon {
-    display: none;
+    // display: none;
   }
   .footer p {
-    // display: none;
     font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .footer p {
+    font-size: 12px;
   }
 }
 
