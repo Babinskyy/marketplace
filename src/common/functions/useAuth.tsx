@@ -11,7 +11,6 @@ export function useAuth() {
       if (data.error) {
         return { message: "auth failed" };
       } else {
-        console.log("useAuthData:", data);
         return {
           success: true,
           message: "auth success",

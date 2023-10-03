@@ -32,7 +32,6 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
           body: JSON.stringify(values),
         });
         const data = await response.json();
-        console.log(data);
         if (data.message === "logged") {
           navigate("/");
         } else setResponse(data.message);

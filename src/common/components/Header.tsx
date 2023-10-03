@@ -80,7 +80,6 @@ const Header = (props: HeaderProps): JSX.Element => {
   }, []);
 
   const ViewState = useAppSelector((state) => state.View.view);
-  console.log(isUserLogged);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
