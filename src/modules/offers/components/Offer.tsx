@@ -10,6 +10,7 @@ import Loader from "../../../common/components/Loader";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
 import { BASE_URL } from "../../../common/config/env-variable";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 type OfferDetailsType = {
   darkTheme: boolean;
@@ -119,6 +120,10 @@ const OfferDetails = (props: OfferDetailsType) => {
           props.darkTheme && "dark-theme"
         }`}
       >
+        <Button onClick={() => window.history.back()} className="back-button">
+          {" "}
+          <KeyboardBackspaceIcon />
+        </Button>
         <form onSubmit={onSubmit}>
           {isAuthorLogged && (
             <div className="buttons-panel">

@@ -30,6 +30,7 @@
     background-color: #fff;
     margin: 0px 40px;
     border-radius: 15px;
+    position: relative;
     &.dark-theme {
       background-color: rgb(68, 68, 68);
       color: rgb(238, 238, 238);
@@ -42,11 +43,15 @@
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
     }
-    div.buttons-panel {
-      // border: 3px solid blue;
+    .back-button {
       position: absolute;
+    }
+    div.buttons-panel {
+      position: absolute;
+      right: 0;
+      margin-right: 30px;
       Button {
-        margin-left: 10px;
+        margin-right: 10px;
       }
     }
     h1.title1 {
@@ -225,6 +230,9 @@
       padding-top: 10px;
       width: 100%;
       margin: 0;
+      .back-button {
+        margin-left: 20px;
+      }
       h1.title1 {
         font-size: 30px;
         margin-top: 8px;
@@ -287,6 +295,7 @@
   @media screen and (max-width: 630px) {
     .sub-offer-view-container {
       div.buttons-panel {
+        margin-right: 0;
         position: static;
         @include flexbox(initial, center);
         margin-bottom: 15px;
