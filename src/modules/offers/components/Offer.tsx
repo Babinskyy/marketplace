@@ -22,6 +22,7 @@ const OfferDetails = (props: OfferDetailsType) => {
   const [showPhone, setShowPhone] = useState<boolean>(false);
   const [offer, setOffer] = useState<Offer>();
   const [editOffer, setEditOffer] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [isAuthorLogged, setIsAuthorLogged] = useState<boolean>(false);
 
@@ -45,6 +46,7 @@ const OfferDetails = (props: OfferDetailsType) => {
         const data = await response.json();
 
         setOffer(data.offer);
+        setLoading(false);
 
         const isLoggedResponse = await checkIsLogged();
         const loggedUserId = isLoggedResponse?.userId;
@@ -111,6 +113,12 @@ const OfferDetails = (props: OfferDetailsType) => {
     reset();
     props.setTrigger((prev) => !prev);
   });
+  if (loading)
+    return (
+      <div className="loader-container">
+        <Loader darkTheme={props.darkTheme} />
+      </div>
+    );
   return (
     <div
       className={`main-offer-view-container ${props.darkTheme && "dark-theme"}`}
