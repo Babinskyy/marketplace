@@ -37,11 +37,10 @@ const Header = (props: HeaderProps): JSX.Element => {
   const handleLogout = async () => {
     const logout = async () => {
       try {
-        const response = await fetch(`${BASE_URL}users/logout`, {
+        await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
           credentials: "include",
         });
-        console.log(response.status);
       } catch (err) {
         console.error(err);
       }
@@ -190,7 +189,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                   color: props.darkTheme ? "#d8dbe0" : "",
                 }}
                 onClick={() => {
-                  console.log(navigate("/auth"));
+                  navigate("/auth");
                 }}
                 className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
