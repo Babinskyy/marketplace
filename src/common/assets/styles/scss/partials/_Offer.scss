@@ -194,20 +194,22 @@
             width: 75px;
           }
         }
-        .number-button-container {
-          @include flexbox(column, center, center);
-        }
-
+     
         p {
           margin: 0;
         }
-        p.name {
+        .name {
           font-weight: 600;
         }
-        p.number {
+        .phone-data{
+          height: 50px;
+          @include flexbox(row, center, center)
+        }
+
+        .number {
           @include flexbox;
         }
-        p.show {
+        .show {
           @include flexbox;
           font-size: 18px;
           cursor: pointer;

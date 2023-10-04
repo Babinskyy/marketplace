@@ -1,25 +1,26 @@
-@import "../utilities/_variables";
-@import "../utilities/_mixins";
+@import "../utilities/variables";
+@import "../utilities/mixins";
 
-@import "../partials/_Home";
-@import "../partials/_OfferView";
-@import "../partials/_Signup";
-@import "../partials/_Login";
+@import "../partials/Home";
+@import "../partials/OfferView";
+@import "../partials/Signup";
+@import "../partials/Login";
 
-@import "../partials/_Header";
-@import "../partials/_Searchbar";
-@import "../partials/_Categories";
-@import "../partials/_Offers";
-@import "../partials/_Footer";
-@import "../partials/_AddOffer";
-@import "../partials/_Offer";
-@import "../partials/_Carousel";
-@import "../partials/_Loader";
-@import "../partials/_AllOffers";
-@import "../partials/_Greetings";
-@import "../partials/_UserOffers";
-@import "../partials/_Filters";
-@import "../partials/_CustomSelect";
+@import "../partials/Header";
+@import "../partials/Searchbar";
+@import "../partials/Categories";
+@import "../partials/Offers";
+@import "../partials/Footer";
+@import "../partials/AddOffer";
+@import "../partials/Offer";
+@import "../partials/Carousel";
+@import "../partials/Loader";
+@import "../partials/AllOffers";
+@import "../partials/Greetings";
+@import "../partials/UserOffers";
+@import "../partials/Filters";
+@import "../partials/CustomSelect";
+@import "../partials/ClearFiltersPanel";
 
 * {
   font-family: "Nunito", sans-serif;

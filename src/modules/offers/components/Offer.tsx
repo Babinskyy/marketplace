@@ -36,6 +36,11 @@ const OfferDetails = (props: OfferDetailsType) => {
   const { id } = useParams<{ id: string }>();
   const checkIsLogged = useAuth();
   const navigate = useNavigate();
+
+  function capitalizeFirstLetter(string:string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
   useEffect(() => {
     const fetchOffer = async () => {
       try {
@@ -264,7 +269,9 @@ const OfferDetails = (props: OfferDetailsType) => {
             <div className="author-data-container">
               <div className="avatar-name-container">
                 <img src={avatar} alt="avatar" />
-                <p className="name">{offer?.author}</p>
+                <p className="name">{
+                offer?.author &&
+                capitalizeFirstLetter(offer?.author)}</p>
               </div>
               <div className="phone-data">
                 {showPhone ? (
@@ -279,21 +286,12 @@ const OfferDetails = (props: OfferDetailsType) => {
                     />
                   </p>
                 ) : (
-                  <div className="number-button-container">
-                    <p className="show">
-                      <span>XXX XXX XXX</span>{" "}
-                      <PhoneIcon
-                        sx={{
-                          fontSize: "25px",
-                          marginLeft: "6px",
-                          transform: "translate(0, -2px)",
-                        }}
-                      />
-                    </p>
-                    <Button onClick={() => setShowPhone(true)}>
-                      Show contact number
-                    </Button>
-                  </div>
+                  <Button
+                    onClick={() => setShowPhone(true)}
+                    sx={{ height: "35px" }}
+                  >
+                    Show contact number
+                  </Button>
                 )}
               </div>
               <div style={{ width: "100%" }} className="map-container">
@@ -302,7 +300,7 @@ const OfferDetails = (props: OfferDetailsType) => {
                   height="300"
                   style={{
                     borderWidth: "0",
-                    margin: "25px 0",
+                    margin: "10px 0",
                     borderRadius: "10px",
                   }}
                   src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ireland+()&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"

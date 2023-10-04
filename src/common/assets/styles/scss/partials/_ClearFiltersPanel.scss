@@ -1,0 +1,74 @@
+.clear-filters-container {
+  margin: 0 auto;
+  width: 1330px;
+  @include flexbox(row, flex-end);
+  height: 20px;
+  .buttons-panel {
+    @include flexbox(row, flex-end);
+    width: 400px;
+    &.all-filters {
+      @include flexbox(row, space-between);
+    }
+    Button {
+      box-shadow: none;
+      border-radius: 5px;
+      height: 20px;
+      background-color: rgb(68, 68, 68);
+      &.clear-all-filters {
+        display: none;
+        &.visible {
+          display: flex;
+        }
+      }
+      &.clear-category {
+        display: none;
+        &.visible {
+          display: flex;
+        }
+      }
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
+  @media screen and (max-width: 1380px) {
+    width: 1000px;
+    .buttons-panel {
+        width: 1000px;
+    }
+  }
+  @media screen and (max-width: 1036px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 450px;
+    .buttons-panel {
+        Button{
+            font-size: 13px;
+        }
+     }
+  }
+
+  @media screen and (max-width: 460px) {
+    max-width: 350px;
+    // margin-bottom: 20px;
+    .buttons-panel {
+        Button{
+            font-size: 12px;
+        }
+
+     }
+ 
+  }
+  @media screen and (max-width: 400px) {
+    max-width: 300px;
+    // margin-bottom: 20px;
+    .buttons-panel {
+        Button{
+            font-size: 10px;
+        }
+
+     }
+ 
+  }
+}

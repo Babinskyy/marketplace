@@ -138,7 +138,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          {(categoryState || inputValueState) && (
+          {/* {(categoryState || inputValueState) && (
             <Button
               className={`clear-filters-button ${
                 props.darkTheme && "dark-theme"
@@ -151,7 +151,7 @@ const Offers = (props: OffersProps): JSX.Element => {
             >
               clear filters
             </Button>
-          )}
+          )} */}
 
           <h1 className={`${props.darkTheme && "dark-theme"}`}>
             <span>
@@ -165,8 +165,8 @@ const Offers = (props: OffersProps): JSX.Element => {
             >
               {filteredItems?.length
                 ? `${categorySwitch(categoryState)} ${inputValueState}`
-                : categoryState &&
-                  `${categorySwitch(categoryState)} ${inputValueState}`}
+                : categoryState ?
+                  `${categorySwitch(categoryState)} ${inputValueState}` : inputValueState}
             </span>
             {ViewState === "home" ? (
               <span>Suggested offers</span>
@@ -201,7 +201,7 @@ const Offers = (props: OffersProps): JSX.Element => {
           )}
         </div>
 
-        <div className={`offers-container`}>
+        <div className={`offers-container`} style={filteredItems?.length && filteredItems?.length < 3 ? {justifyContent: "space-around"} : {}}>
           {filteredItems?.map((e, i) => {
             return (
               <div

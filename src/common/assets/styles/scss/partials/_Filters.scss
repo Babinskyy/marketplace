@@ -1,10 +1,8 @@
 .filters-container {
-  // background-color: #fff;
-  // padding: 0px 40px 0px 40px;
-  // margin-top: 100px;
-  height: 120px;
+  margin-top: 20px;
   .filters-subcontainer {
-    margin: 0 auto;
+    margin: 0px auto 0px auto;
+    height: 90px;
     @include flexbox(row, space-between, center);
     max-width: 1330px;
     .searchbar-container {
@@ -132,11 +130,33 @@
       }
     }
   }
-  @media screen and (max-width: 500px) {
-    height: 190px;
+  @media screen and (max-width: 460px) {
     .filters-subcontainer {
+      height: 150px;
+      max-width: 90%;
+      @include flexbox(column, space-between, center);
+      .searchbar-container {
+        margin: 0;
+        .icon-holder {
+        }
+        input {
+          width: 215px;
+        }
+        .search-button {
+          border-radius: 0px 10px 10px 0px;
+          width: 80px;
+          svg {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .filters-subcontainer {
+      height: 150px;
       max-width: 300px;
-      @include flexbox(column, center, center);
+      @include flexbox(column, space-between, center);
       .searchbar-container {
         margin: 0;
         .icon-holder {

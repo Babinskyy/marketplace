@@ -227,9 +227,10 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       if (data.error) {
         console.log("Error while creating offer", data.error);
       } else {
-        console.log("data.id:", data.id);
-
+  
+        
         navigate(`/offer/${data.id}`);
+        window.scrollTo(0, 0);
         if (props.setTrigger) {
           props.setTrigger((prev) => !prev);
         }

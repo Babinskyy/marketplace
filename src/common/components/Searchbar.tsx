@@ -22,15 +22,9 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
   const currentInputState = useAppSelector(
     (state) => state.filters.currentInputValue
   );
-  const handleShowX = () => {
-    setShowClearX(true);
-  };
-  const handleHideX = () => {
-    setShowClearX(false);
-  };
   useEffect(() => {
     if (inputValue === "") {
-      handleHideX();
+      setShowClearX(false);
     }
   }, [inputValue]);
 
@@ -54,7 +48,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
           className={`searchbar-input ${props.darkTheme ? "dark-theme" : ""}`}
           value={currentInputState}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
-            handleShowX();
+            setShowClearX(true);
             dispatch(currentInputValueSet(e.currentTarget.value));
           }}
         />
@@ -62,7 +56,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         <div
           className={`x-cancel-input ${props.darkTheme ? "dark-theme" : ""}`}
           onClick={() => {
-            handleHideX();
+            setShowClearX(false);
             dispatch(inputValueSet(""));
             dispatch(currentInputValueSet(""));
           }}

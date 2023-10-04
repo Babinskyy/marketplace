@@ -1,13 +1,7 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
 import Searchbar from "../../../common/components/Searchbar";
 import CustomSelect from "../../../common/components/CustomSelect";
 import { Category } from "../../../common/types/Types";
+import ClearFiltersPanel from "./ClearFiltersPanel";
 
 type FiltersType = {
   darkTheme: boolean;
@@ -17,6 +11,7 @@ type FiltersType = {
 const Filters = (props: FiltersType): JSX.Element => {
   return (
     <div className="filters-container">
+           <ClearFiltersPanel />
       <div className="filters-subcontainer">
         <Searchbar darkTheme={props.darkTheme} />
         <CustomSelect
@@ -24,6 +19,7 @@ const Filters = (props: FiltersType): JSX.Element => {
           darkTheme={props.darkTheme}
         />
       </div>
+ 
     </div>
   );
 };

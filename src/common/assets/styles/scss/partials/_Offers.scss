@@ -87,6 +87,7 @@
           }
         }
         img {
+          border-radius: 10px;
           $width: 100%;
           width: $width;
           height: ($width * 0.5);
@@ -173,8 +174,36 @@
         }
       }
     }
-
     @media screen and (max-width: 460px) {
+      .h1-button-wrapper {
+        h1 {
+          width: 320px;
+        }
+      }
+      .offers-container {
+        margin: 0 auto;
+        max-width: 350px;
+        .offer-item {
+          width: 350px;
+          height: 400px;
+          h2.offer-title,
+          h3.offer-price {
+            font-size: 25px;
+          }
+          p.offer-phone {
+            font-size: 15px;
+          }
+          .category-date-container {
+            font-size: 14px;
+            .offer-category {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 400px) {
       .h1-button-wrapper {
         h1 {
           width: 320px;

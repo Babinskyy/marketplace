@@ -117,14 +117,6 @@ const DropDownMenu = (props: MenuProps) => {
             >
               Add an offer
             </MenuItem>
-            <MenuItem
-              onClick={() => {
-                popupState.close();
-                handleModeChange();
-              }}
-            >
-              {props.darkTheme ? "Light" : "Dark"} mode
-            </MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </React.Fragment>
