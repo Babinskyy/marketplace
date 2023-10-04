@@ -164,9 +164,9 @@ const Offers = (props: OffersProps): JSX.Element => {
               }`}
             >
               {filteredItems?.length
-                ? `${categorySwitch(categoryState)} ${inputValueState}`
+                ? `${inputValueState} ${categorySwitch(categoryState)}`
                 : categoryState ?
-                  `${categorySwitch(categoryState)} ${inputValueState}` : inputValueState}
+                  `${inputValueState} ${categorySwitch(categoryState)} ` : inputValueState}
             </span>
             {ViewState === "home" ? (
               <span>Suggested offers</span>
