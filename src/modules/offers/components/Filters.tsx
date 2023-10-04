@@ -11,7 +11,7 @@ type FiltersType = {
 const Filters = (props: FiltersType): JSX.Element => {
   return (
     <div className="filters-container">
-           <ClearFiltersPanel />
+           <ClearFiltersPanel darkTheme={props.darkTheme}/>
       <div className="filters-subcontainer">
         <Searchbar darkTheme={props.darkTheme} />
         <CustomSelect

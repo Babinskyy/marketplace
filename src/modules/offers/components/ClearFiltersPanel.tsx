@@ -6,7 +6,11 @@ import {
   inputValueSet,
 } from "../../../store/features/FiltersSlice";
 
-const ClearFiltersPanel = () => {
+type ClearFiltersPanelType = {
+  darkTheme: boolean;
+};
+
+const ClearFiltersPanel = (props: ClearFiltersPanelType) => {
   const categoryFilterValue = useAppSelector(
     (state) => state.filters.categoryFilterValue
   );
@@ -16,9 +20,9 @@ const ClearFiltersPanel = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className={`clear-filters-container`}>
+    <div className={`clear-filters-container `}>
       <div
-        className={`buttons-panel  ${inputState ? "all-filters" : ""} `}
+        className={`buttons-panel  ${inputState ? "all-filters" : ""} ${props.darkTheme ? "dark-theme" : ""} `}
       >
         {" "}
         <Button
