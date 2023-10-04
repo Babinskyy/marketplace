@@ -33,6 +33,11 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
         });
         const data = await response.json();
         if (data.message === "logged") {
+          const user = { id: data.user_id, username: data.username };
+          localStorage.setItem("user", JSON.stringify(user));
+
+          // localStorage.setItem("id", data.user_id);
+          // localStorage.setItem("username", data.username);
           navigate("/");
         } else setResponse(data.message);
       } catch (err) {

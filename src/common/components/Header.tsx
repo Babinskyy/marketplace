@@ -32,9 +32,10 @@ type HeaderProps = {
 const Header = (props: HeaderProps): JSX.Element => {
   const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
   const dispatch = useAppDispatch();
-  const checkIsLogged = useAuth();
+  const auth = useAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
+    localStorage.removeItem("user");
     const logout = async () => {
       try {
         await fetch(`${BASE_URL}users/logout`, {
@@ -46,7 +47,6 @@ const Header = (props: HeaderProps): JSX.Element => {
       }
     };
     logout();
-    await checkIsLogged();
     navigate("/auth");
   };
 
@@ -57,34 +57,24 @@ const Header = (props: HeaderProps): JSX.Element => {
   };
 
   const handleModalOpen = async () => {
-    const result = await checkIsLogged();
-    if (result?.success) {
+    if (auth.isLogged()) {
       props.setOpenOfferModal(true);
     } else {
+      localStorage.removeItem("user");
+      dispatch(categoryFilterValueSet(""));
+      dispatch(inputValueSet(""));
+      dispatch(currentInputValueSet(""));
       navigate("/auth");
     }
   };
-
-  useEffect(() => {
-    const checkLogStatus = async () => {
-      const result = await checkIsLogged();
-
-      if (result?.success) {
-        setIsUserLogged(true);
-      } else {
-        setIsUserLogged(false);
-      }
-    };
-    checkLogStatus();
-  }, []);
-
   const ViewState = useAppSelector((state) => state.View.view);
+
   return (
     <nav className="main-header">
       <ul className="main-navigation">
         <div
           className={`logo-holder ${ViewState === "login" ? "login" : ""} ${
-            !isUserLogged && "logged-out"
+            !auth.isLogged() && "logged-out"
           }`}
         >
           <Link to="/">
@@ -102,7 +92,7 @@ const Header = (props: HeaderProps): JSX.Element => {
         </div>
 
         <div className="buttons-holder">
-          {isUserLogged ? (
+          {auth.isLogged() ? (
             <>
               <div className="login-buttons-panel">
                 <Button

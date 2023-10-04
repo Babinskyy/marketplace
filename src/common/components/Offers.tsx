@@ -25,7 +25,7 @@ const Offers = (props: OffersProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const [randomizedOffers, setRandomizedOffers] = useState<Offer[]>();
   const dispatch = useAppDispatch();
-  const checkIsLogged = useAuth();
+  const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -117,10 +117,11 @@ const Offers = (props: OffersProps): JSX.Element => {
   });
 
   const handleModalOpen = async () => {
-    const result = await checkIsLogged();
-    if (result?.success) {
+    const result = await auth.isLogged();
+    if (result) {
       props.setOpenOfferModal(true);
     } else {
+      localStorage.removeItem("user");
       dispatch(categoryFilterValueSet(""));
       dispatch(inputValueSet(""));
       dispatch(currentInputValueSet(""));
@@ -165,8 +166,9 @@ const Offers = (props: OffersProps): JSX.Element => {
             >
               {filteredItems?.length
                 ? `${inputValueState} ${categorySwitch(categoryState)}`
-                : categoryState ?
-                  `${inputValueState} ${categorySwitch(categoryState)} ` : inputValueState}
+                : categoryState
+                ? `${inputValueState} ${categorySwitch(categoryState)} `
+                : inputValueState}
             </span>
             {ViewState === "home" ? (
               <span>Suggested offers</span>
@@ -201,7 +203,14 @@ const Offers = (props: OffersProps): JSX.Element => {
           )}
         </div>
 
-        <div className={`offers-container`} style={filteredItems?.length && filteredItems?.length < 3 ? {justifyContent: "space-around"} : {}}>
+        <div
+          className={`offers-container`}
+          style={
+            filteredItems?.length && filteredItems?.length < 3
+              ? { justifyContent: "space-around" }
+              : {}
+          }
+        >
           {filteredItems?.map((e, i) => {
             return (
               <div

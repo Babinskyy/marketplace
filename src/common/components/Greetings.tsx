@@ -7,18 +7,15 @@ type GreetingsProps = {
 };
 
 const Greetings = (props: GreetingsProps) => {
-  const checkIsLogged = useAuth();
   const [username, setUsername] = useState<string>("");
-
   useEffect(() => {
-    const checkLogStatus = async () => {
-      const result = await checkIsLogged();
-      if (result?.success) {
-        setUsername(result.username);
-      }
-    };
-    checkLogStatus();
-  }, [checkIsLogged]);
+    const storageUserJSON = localStorage.getItem("user");
+
+    if (storageUserJSON) {
+      const storageUser = JSON.parse(storageUserJSON);
+      setUsername(storageUser.username);
+    }
+  }, []);
 
   return (
     <div className="greetings-container">

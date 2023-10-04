@@ -34,12 +34,12 @@ const OfferDetails = (props: OfferDetailsType) => {
   } = useForm();
 
   const { id } = useParams<{ id: string }>();
-  const checkIsLogged = useAuth();
+  const auth = useAuth();
   const navigate = useNavigate();
 
-  function capitalizeFirstLetter(string:string) {
+  function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
+  }
 
   useEffect(() => {
     const fetchOffer = async () => {
@@ -53,13 +53,16 @@ const OfferDetails = (props: OfferDetailsType) => {
         setOffer(data.offer);
         setLoading(false);
 
-        const isLoggedResponse = await checkIsLogged();
-        const loggedUserId = isLoggedResponse?.userId;
-
-        if (loggedUserId === data.authorId) {
-          setIsAuthorLogged(true);
-        } else {
-          setIsAuthorLogged(false);
+        // const isLoggedResponse = await auth.isLogged();
+        const userJSON = localStorage.getItem("user");
+        // const loggedUserId = isLoggedResponse?.userId;
+        if (userJSON) {
+          const loggedUserId = JSON.parse(userJSON).id;
+          if (loggedUserId === data.authorId) {
+            setIsAuthorLogged(true);
+          } else {
+            setIsAuthorLogged(false);
+          }
         }
       } catch (err) {
         console.error(err);
@@ -77,6 +80,11 @@ const OfferDetails = (props: OfferDetailsType) => {
             method: "DELETE",
             credentials: "include",
           });
+          if (response.status === 401) {
+            localStorage.removeItem("user");
+            navigate("/auth");
+            return;
+          }
           const data = await response.json();
           if (data.error) {
             navigate("/auth");
@@ -106,8 +114,11 @@ const OfferDetails = (props: OfferDetailsType) => {
           credentials: "include",
           body: JSON.stringify(values),
         });
-        const data = await response.json();
-        console.log(data);
+        if (response.status === 401) {
+          localStorage.removeItem("user");
+          navigate("/auth");
+          return;
+        }
         props.setTrigger((prev) => !prev);
       } catch (err) {
         console.error(err);
@@ -269,9 +280,9 @@ const OfferDetails = (props: OfferDetailsType) => {
             <div className="author-data-container">
               <div className="avatar-name-container">
                 <img src={avatar} alt="avatar" />
-                <p className="name">{
-                offer?.author &&
-                capitalizeFirstLetter(offer?.author)}</p>
+                <p className="name">
+                  {offer?.author && capitalizeFirstLetter(offer?.author)}
+                </p>
               </div>
               <div className="phone-data">
                 {showPhone ? (

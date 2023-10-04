@@ -226,9 +226,9 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
       const data = await response.json();
       if (data.error) {
         console.log("Error while creating offer", data.error);
+        localStorage.removeItem("user");
+        navigate("/auth");
       } else {
-  
-        
         navigate(`/offer/${data.id}`);
         window.scrollTo(0, 0);
         if (props.setTrigger) {

@@ -23,9 +23,10 @@ type MenuProps = {
 const DropDownMenu = (props: MenuProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const checkIsLogged = useAuth();
+  const auth = useAuth();
   const handleLogout = async () => {
     const logout = async () => {
+      localStorage.removeItem("user");
       try {
         const response = await fetch(`${BASE_URL}users/logout`, {
           method: "POST",
@@ -37,7 +38,6 @@ const DropDownMenu = (props: MenuProps) => {
       }
     };
     logout();
-    await checkIsLogged();
     navigate("/auth");
   };
 
@@ -54,10 +54,13 @@ const DropDownMenu = (props: MenuProps) => {
   };
 
   const handleModalOpen = async () => {
-    const result = await checkIsLogged();
-    if (result?.success) {
+    if (auth.isLogged()) {
       props.setOpenOfferModal(true);
     } else {
+      localStorage.removeItem("user");
+      dispatch(categoryFilterValueSet(""));
+      dispatch(inputValueSet(""));
+      dispatch(currentInputValueSet(""));
       navigate("/auth");
     }
   };
