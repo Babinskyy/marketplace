@@ -55,14 +55,14 @@
       }
     }
     h1.title1 {
-      margin-top: 0;
-      margin-bottom: 55px;
-
+      margin: 0 auto 55px auto;
+      width: 800px;
+      overflow-wrap: break-word;
       &.dark-theme {
         color: rgb(238, 238, 238);
       }
     }
-    div.h1-input-container {
+    .h1-input-container {
       width: 100%;
       text-align: center;
       .title1-input {
@@ -88,7 +88,7 @@
     }
 
     .title-price {
-      div.title2-input-container {
+      .title2-input-container {
         margin-top: 12px;
         .title2-input {
           margin-bottom: 30px;
@@ -110,6 +110,9 @@
       }
       h1.title2 {
         color: #fff;
+        width: 800px;
+        overflow-wrap: break-word;
+
         &.dark-theme {
           color: rgb(238, 238, 238);
         }
@@ -194,16 +197,16 @@
             width: 75px;
           }
         }
-     
+
         p {
           margin: 0;
         }
         .name {
           font-weight: 600;
         }
-        .phone-data{
+        .phone-data {
           height: 50px;
-          @include flexbox(row, center, center)
+          @include flexbox(row, center, center);
         }
 
         .number {
@@ -220,7 +223,53 @@
       }
     }
   }
+  @media screen and (max-width: 1380px) {
+    .sub-offer-view-container {
+      h1.title1 {
+        width: 600px;
+      }
+      .title-price {
+        h1.title2 {
+          width: 600px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1130px) {
+    .sub-offer-view-container {
+      h1.title1 {
+        width: 500px;
+      }
+      .title-price {
+        h1.title2 {
+          width: 500px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1036px) {
+    .sub-offer-view-container {
+      h1.title1 {
+        width: 400px;
+      }
+      .title-price {
+        h1.title2 {
+          width: 400px;
+        }
+      }
+    }
+  }
   @media screen and (max-width: 980px) {
+    .sub-offer-view-container {
+      h1.title1 {
+        width: 300px;
+      }
+      .title-price {
+        h1.title2 {
+          width: 300px;
+        }
+      }
+    }
     .title1-input {
       width: 250px;
     }
@@ -239,6 +288,13 @@
         font-size: 30px;
         margin-top: 8px;
         margin-bottom: 0px;
+      }
+      .title-price {
+        h1.title2 {
+          margin-left: auto;
+          margin-right: auto;
+          width: auto;
+        }
       }
       .details-wrapper {
         @include flexbox(column);
@@ -294,7 +350,7 @@
       }
     }
   }
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: 680px) {
     .sub-offer-view-container {
       div.buttons-panel {
         margin-right: 0;
