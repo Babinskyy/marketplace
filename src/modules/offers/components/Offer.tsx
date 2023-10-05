@@ -90,6 +90,7 @@ const OfferDetails = (props: OfferDetailsType) => {
           }
           const data = await response.json();
           if (data.error) {
+            localStorage.removeItem("user");
             navigate("/auth");
           } else {
             navigate("/");

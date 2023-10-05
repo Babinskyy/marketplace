@@ -55,11 +55,13 @@ const Offers = (props: OffersProps): JSX.Element => {
         const data = await response.json();
 
         if (data.error) {
+          localStorage.removeItem("user");
           navigate("/auth");
+        } else {
+          setOffers(data.offers);
+          setRandomizedOffers(randomizeArray(data.offers));
+          setLoading(false);
         }
-        setOffers(data.offers);
-        setRandomizedOffers(randomizeArray(data.offers));
-        setLoading(false);
       } catch (err) {
         console.error(err);
       }
