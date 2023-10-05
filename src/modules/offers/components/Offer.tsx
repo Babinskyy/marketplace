@@ -1,6 +1,6 @@
 import "../../../common/assets/styles/scss/main/App.scss";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/joy";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -9,10 +9,12 @@ import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
-import { BASE_URL } from "../../../common/config/env-variable";
+import {
+  BASE_URL,
+  GOOGLE_MAPS_API_KEY,
+} from "../../../common/config/env-variable";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Map from "./GoogleMap";
-import { useLoadScript } from "@react-google-maps/api";
 
 type OfferDetailsType = {
   darkTheme: boolean;
@@ -131,10 +133,6 @@ const OfferDetails = (props: OfferDetailsType) => {
     props.setTrigger((prev) => !prev);
   });
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCynBI9-vhF8GVQ6Qa-XGztJ4OGU8YfvDw",
-  });
-
   if (loading)
     return (
       <div className="loader-container">
@@ -217,19 +215,6 @@ const OfferDetails = (props: OfferDetailsType) => {
           <div className="details-wrapper">
             <div className="details-container">
               <div className="title-price">
-                {/* {editOffer ? (
-                <div className={`title2-input-container`}>
-                  <input
-                  type="text"
-                  id="title2"
-                    className={`title2-input ${
-                      props.darkTheme && "dark-theme"
-                    }`}
-                    defaultValue={offer?.title}
-                    {...register("title2", { required: true })}
-                  ></input>
-                </div>
-              ) : ( */}
                 <h1 className={`title2 ${props.darkTheme && "dark-theme"}`}>
                   {offer?.title}
                 </h1>
@@ -311,24 +296,8 @@ const OfferDetails = (props: OfferDetailsType) => {
                   </Button>
                 )}
               </div>
-              {/* {isLoaded ? Map() : <div>123</div>} */}
-              {!isLoaded ? (
-                <Loader darkTheme={props.darkTheme} />
-              ) : (
-                <Map country={offer?.country} />
-              )}
-              {/* <div style={{ width: "100%" }} className="map-container">
-                <iframe
-                  width="300px"
-                  height="300"
-                  style={{
-                    borderWidth: "0",
-                    margin: "10px 0",
-                    borderRadius: "10px",
-                  }}
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ireland+()&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                ></iframe>
-              </div> */}
+
+              <Map country={offer?.country} darkTheme={props.darkTheme} />
             </div>
           </div>
         </form>

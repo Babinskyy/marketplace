@@ -1,11 +1,18 @@
 import { useMemo } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GOOGLE_MAPS_API_KEY } from "../../../common/config/env-variable";
+import Loader from "../../../common/components/Loader";
 
 type MapType = {
   country: string | undefined;
+  darkTheme: boolean;
 };
 
 const Map = (props: MapType) => {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY as string,
+  });
+
   const countrySwitch = (country: string | undefined) => {
     switch (country) {
       case "Great":
@@ -32,20 +39,26 @@ const Map = (props: MapType) => {
   };
 
   const center = useMemo(() => countrySwitch(props.country), []);
-  console.log(center);
+
   return (
-    <GoogleMap
-      zoom={5}
-      center={center}
-      mapContainerStyle={{
-        height: "300px",
-        width: "300px",
-        borderRadius: "10px",
-        margin: "10px 0",
-      }}
-    >
-      <Marker position={center} />
-    </GoogleMap>
+    <>
+      {isLoaded ? (
+        <GoogleMap
+          zoom={5}
+          center={center}
+          mapContainerStyle={{
+            height: "300px",
+            width: "300px",
+            borderRadius: "10px",
+            margin: "10px 0",
+          }}
+        >
+          <Marker position={center} />
+        </GoogleMap>
+      ) : (
+        <Loader darkTheme={props.darkTheme} />
+      )}
+    </>
   );
 };
 
