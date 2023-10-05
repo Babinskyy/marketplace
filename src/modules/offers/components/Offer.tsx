@@ -1,6 +1,6 @@
 import "../../../common/assets/styles/scss/main/App.scss";
 import avatar from "../../../common/assets/images/others/avatar-icon.png";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/joy";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
 import { BASE_URL } from "../../../common/config/env-variable";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import Map from "./GoogleMap";
+import { useLoadScript } from "@react-google-maps/api";
 
 type OfferDetailsType = {
   darkTheme: boolean;
@@ -53,9 +55,8 @@ const OfferDetails = (props: OfferDetailsType) => {
         setOffer(data.offer);
         setLoading(false);
 
-        // const isLoggedResponse = await auth.isLogged();
         const userJSON = localStorage.getItem("user");
-        // const loggedUserId = isLoggedResponse?.userId;
+
         if (userJSON) {
           const loggedUserId = JSON.parse(userJSON).id;
           if (loggedUserId === data.authorId) {
@@ -129,6 +130,11 @@ const OfferDetails = (props: OfferDetailsType) => {
     reset();
     props.setTrigger((prev) => !prev);
   });
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: "AIzaSyCynBI9-vhF8GVQ6Qa-XGztJ4OGU8YfvDw",
+  });
+
   if (loading)
     return (
       <div className="loader-container">
@@ -305,7 +311,13 @@ const OfferDetails = (props: OfferDetailsType) => {
                   </Button>
                 )}
               </div>
-              <div style={{ width: "100%" }} className="map-container">
+              {/* {isLoaded ? Map() : <div>123</div>} */}
+              {!isLoaded ? (
+                <Loader darkTheme={props.darkTheme} />
+              ) : (
+                <Map country={offer?.country} />
+              )}
+              {/* <div style={{ width: "100%" }} className="map-container">
                 <iframe
                   width="300px"
                   height="300"
@@ -316,7 +328,7 @@ const OfferDetails = (props: OfferDetailsType) => {
                   }}
                   src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ireland+()&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 ></iframe>
-              </div>
+              </div> */}
             </div>
           </div>
         </form>
