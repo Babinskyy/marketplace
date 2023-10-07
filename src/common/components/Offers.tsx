@@ -190,7 +190,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                     }`
                   : ViewState === "userOffers"
                   ? "My offers"
-                  : `${countryState ? "" : "All"} offers ${
+                  : `${countryState ? "Offers" : "All offers"}  ${
                       countryState === "Great"
                         ? "in Great Britain"
                         : countryState
