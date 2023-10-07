@@ -172,7 +172,7 @@ const Offers = (props: OffersProps): JSX.Element => {
                 {" "}
                 {categoryState
                   ? filteredItems?.length
-                    ? "offers"
+                    ? `offers ${countryState ? `in ${countryState}` : ""}`
                     : `offers ${
                         countryState === "Great"
                           ? " in Great Britain"
