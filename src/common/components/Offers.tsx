@@ -173,12 +173,28 @@ const Offers = (props: OffersProps): JSX.Element => {
                 {categoryState
                   ? filteredItems?.length
                     ? "offers"
-                    : "offers"
+                    : `offers ${
+                        countryState === "Great"
+                          ? " in Great Britain"
+                          : countryState
+                          ? `in ${countryState}`
+                          : ""
+                      }`
                   : inputValueState
-                  ? "offers"
+                  ? `offers ${
+                      countryState === "Great"
+                        ? " in Great Britain"
+                        : countryState
+                        ? `in ${countryState}`
+                        : ""
+                    }`
                   : ViewState === "userOffers"
                   ? "My offers"
-                  : "All offers"}{" "}
+                  : `offers ${
+                      countryState === "Great"
+                        ? "in Great Britain"
+                        : `in ${countryState}`
+                    }`}{" "}
               </span>
               // <span>All offers</span>
             )}

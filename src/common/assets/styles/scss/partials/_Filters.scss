@@ -124,25 +124,23 @@
   @media screen and (max-width: 1380px) {
     .filters-subcontainer {
       width: 1000px;
-
-      .searchbar-container {
-        input {
-          width: 250px;
+      .searchbar-paragraph {
+        .searchbar-container {
+          input {
+            width: 250px;
+          }
         }
       }
     }
   }
   @media screen and (max-width: 1036px) {
-    margin-top: 0;
     .filters-subcontainer {
       height: 210px;
       width: 700px;
       flex-wrap: wrap;
 
       .searchbar-paragraph {
-        height: 57px;
         .searchbar-container {
-          margin-top: 0;
           input {
             width: 429px;
           }
@@ -153,7 +151,6 @@
   @media screen and (max-width: 750px) {
     .filters-subcontainer {
       width: 450px;
-      height: 150px;
       .searchbar-paragraph {
         .searchbar-container {
           .icon-holder {
@@ -183,7 +180,7 @@
             width: 195px;
           }
           .search-button {
-            border-radius: 0px 10px 10px;
+            border-radius: 0px 10px 10px 0px;
           }
         }
       }
@@ -191,9 +188,9 @@
   }
   @media screen and (max-width: 400px) {
     .filters-subcontainer {
-      height: 200px;
+      height: 300px;
       max-width: 300px;
-      @include flexbox(column, space-between, center);
+      // @include flexbox(column, space-between, center);
       .searchbar-paragraph {
         .searchbar-container {
           input {
