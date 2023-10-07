@@ -36,7 +36,7 @@ const AllOffers = (props: AllOffersType): JSX.Element => {
         categories={props.categories}
         darkTheme={props.darkTheme}
       />
-      <div className="grow"></div>
+      {/* <div className="grow"></div> */}
       <Footer darkTheme={props.darkTheme} />
       <AddOfferModal
         openOfferModal={props.openOfferModal}

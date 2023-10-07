@@ -1,7 +1,7 @@
 .offers-wrapper {
   @include flexbox(row, center, center);
   width: 100%;
-  min-height: 469px;
+  flex-grow: 1;
   &.dark-theme {
     background-color: rgb(44, 44, 44);
   }
@@ -11,6 +11,7 @@
 
     .h1-button-wrapper {
       text-align: center;
+
       .clear-filters-button {
         margin-top: 20px;
         font-family: $primary-font;
