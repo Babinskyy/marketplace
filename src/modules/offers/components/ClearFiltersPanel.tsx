@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 import {
   categoryFilterValueSet,
+  countryFilterValueSet,
   currentInputValueSet,
   inputValueSet,
 } from "../../../store/features/FiltersSlice";
@@ -14,24 +15,27 @@ const ClearFiltersPanel = (props: ClearFiltersPanelType) => {
   const categoryFilterValue = useAppSelector(
     (state) => state.filters.categoryFilterValue
   );
-  const inputState = useAppSelector(
-    (state) => state.filters.inputValue
-  );
+  const inputState = useAppSelector((state) => state.filters.inputValue);
   const dispatch = useAppDispatch();
 
   return (
     <div className={`clear-filters-container `}>
       <div
-        className={`buttons-panel  ${inputState ? "all-filters" : ""} ${props.darkTheme ? "dark-theme" : ""} `}
+        className={`buttons-panel  ${inputState ? "all-filters" : ""} ${
+          props.darkTheme ? "dark-theme" : ""
+        } `}
       >
         {" "}
         <Button
           variant="contained"
-          className={`clear-all-filters ${inputState ? categoryFilterValue ? "visible" : "" : ""}`}
+          className={`clear-all-filters ${
+            inputState ? (categoryFilterValue ? "visible" : "") : ""
+          }`}
           onClick={() => {
             dispatch(inputValueSet(""));
             dispatch(currentInputValueSet(""));
-            dispatch(categoryFilterValueSet(""))
+            dispatch(categoryFilterValueSet(""));
+            dispatch(countryFilterValueSet(""));
           }}
         >
           Clear all filters
@@ -42,6 +46,13 @@ const ClearFiltersPanel = (props: ClearFiltersPanelType) => {
           onClick={() => dispatch(categoryFilterValueSet(""))}
         >
           Clear category
+        </Button>
+        <Button
+          variant="contained"
+          className={`clear-category ${categoryFilterValue ? "visible" : ""}`}
+          onClick={() => dispatch(countryFilterValueSet(""))}
+        >
+          Clear country
         </Button>
       </div>
     </div>

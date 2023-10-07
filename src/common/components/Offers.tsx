@@ -10,6 +10,7 @@ import { useAuth } from "../functions/useAuth";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   categoryFilterValueSet,
+  countryFilterValueSet,
   currentInputValueSet,
   inputValueSet,
 } from "../../store/features/FiltersSlice";
@@ -102,6 +103,10 @@ const Offers = (props: OffersProps): JSX.Element => {
     (state) => state.filters.categoryFilterValue
   );
 
+  const countryState = useAppSelector(
+    (state) => state.filters.countryFilterValue
+  );
+
   //conditionally randomize offers based on location
   let offersToFilter = offers;
   if (ViewState === "home") {
@@ -111,10 +116,12 @@ const Offers = (props: OffersProps): JSX.Element => {
   const filteredItems = offersToFilter?.filter((offer) => {
     const inputValue = inputValueState || "";
     const categoryValue = categoryState || "";
+    const countryValue = countryState || "";
 
     return (
       offer.title.toLowerCase().includes(inputValue.toLowerCase()) &&
-      (categoryValue === "" || offer.category?.id === categoryValue)
+      (categoryValue === "" || offer.category?.id === categoryValue) &&
+      (countryValue === "" || offer.country === countryValue)
     );
   });
 
@@ -125,6 +132,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     } else {
       localStorage.removeItem("user");
       dispatch(categoryFilterValueSet(""));
+      dispatch(countryFilterValueSet(""));
       dispatch(inputValueSet(""));
       dispatch(currentInputValueSet(""));
       navigate("/auth");
@@ -141,21 +149,6 @@ const Offers = (props: OffersProps): JSX.Element => {
     <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          {/* {(categoryState || inputValueState) && (
-            <Button
-              className={`clear-filters-button ${
-                props.darkTheme && "dark-theme"
-              }`}
-              onClick={() => {
-                dispatch(categoryFilterValueSet(""));
-                dispatch(inputValueSet(""));
-                dispatch(currentInputValueSet(""));
-              }}
-            >
-              clear filters
-            </Button>
-          )} */}
-
           <h1 className={`${props.darkTheme && "dark-theme"}`}>
             <span>
               {filteredItems?.length ? "" : "We are sorry, there are no "}

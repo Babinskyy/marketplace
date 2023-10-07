@@ -12,6 +12,7 @@ import { View } from "../../../store/features/ViewSlice";
 import { useAppDispatch } from "../../../store/store";
 import {
   categoryFilterValueSet,
+  countryFilterValueSet,
   currentInputValueSet,
   inputValueSet,
 } from "../../../store/features/FiltersSlice";
@@ -30,6 +31,7 @@ const Home = (props: HomeProps): JSX.Element => {
   useEffect(() => {
     dispatch(currentInputValueSet(""));
     dispatch(categoryFilterValueSet(""));
+    dispatch(countryFilterValueSet(""));
     dispatch(inputValueSet(""));
     dispatch(View("home"));
   }, []);

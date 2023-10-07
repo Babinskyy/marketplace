@@ -1,6 +1,9 @@
 .searchbar-paragraph {
-  @include flexbox(row, center, center);
+  @include flexbox(column, center, center);
   height: 152px;
+  .clear-all-filters-button {
+    display: none;
+  }
   @media screen and (max-width: 500px) {
     height: 120px;
   }

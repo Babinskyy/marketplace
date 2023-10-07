@@ -1,89 +1,122 @@
 .filters-container {
   margin-top: 20px;
+
   .filters-subcontainer {
     margin: 0px auto 0px auto;
-    height: 90px;
-    @include flexbox(row, space-between, center);
+    // height: 90px;
+    @include flexbox(row, space-between, flex-start);
     max-width: 1330px;
-    .searchbar-container {
-      background-color: transparent;
-      margin-right: 50px;
-      .icon-holder {
-        margin: 0;
-        background-color: $secondary-light-color;
+    .searchbar-paragraph {
+      justify-content: space-between;
+      height: 90px;
+      .clear-all-filters-button {
+        display: block;
+        width: 150px;
+        font-size: 12px;
+        padding: 0;
+        opacity: 0;
         background-color: #fff;
-        height: 57px;
-        border-top: 1px solid rgba(0, 0, 0, 0.25);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        border-left: 1px solid rgba(0, 0, 0, 0.25);
+        color: $primary-color;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        box-shadow: none;
+        pointer-events: none;
+        &.visible {
+          pointer-events: all;
+          opacity: 1;
+        }
+        &:hover {
+          color: #fff;
+        }
         &.dark-theme {
           background-color: rgb(68, 68, 68);
-          color: rgb(238, 238, 238);
-        }
-      }
-      input {
-        background-color: $secondary-light-color;
-        background-color: #fff;
-        width: 550px;
-        height: 57px;
-        font-size: 18px;
-        // font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        border-top: 1px solid rgba(0, 0, 0, 0.25);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-      }
-      .x-cancel-input {
-        background-color: $secondary-light-color;
-        background-color: #fff;
-        // color: $secondary-light-color;
-        height: 57px;
-
-        border-top: 1px solid rgba(0, 0, 0, 0.25);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-
-        svg {
-          path {
-            color: $secondary-light-color;
+          color: rgb(216, 219, 224);
+          &:hover {
+            background-color: $primary-color;
             color: #fff;
           }
-          &.visible {
-            path {
-              color: #585858;
-            }
+        }
+      }
+      .searchbar-container {
+        background-color: transparent;
+        // margin-right: 50px;
+        .icon-holder {
+          margin: 0;
+          background-color: $secondary-light-color;
+          background-color: #fff;
+          height: 57px;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          border-left: 1px solid rgba(0, 0, 0, 0.2);
+          &.dark-theme {
+            background-color: rgb(68, 68, 68);
+            color: rgb(238, 238, 238);
           }
         }
-        &.dark-theme {
-          background-color: rgb(68, 68, 68);
-          color: rgb(238, 238, 238);
+        input {
+          background-color: $secondary-light-color;
+          background-color: #fff;
+          width: 450px;
+          height: 57px;
+          font-size: 18px;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          &.dark-theme {
+            background-color: rgb(68, 68, 68);
+            color: rgb(238, 238, 238);
+          }
+        }
+        .x-cancel-input {
+          background-color: $secondary-light-color;
+          background-color: #fff;
+          height: 57px;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
           svg {
             path {
-              color: rgb(68, 68, 68);
+              color: $secondary-light-color;
+              color: #fff;
             }
             &.visible {
               path {
-                color: rgb(238, 238, 238);
+                color: #585858;
+              }
+            }
+          }
+          &.dark-theme {
+            background-color: rgb(68, 68, 68);
+            color: rgb(238, 238, 238);
+            svg {
+              path {
+                color: rgb(68, 68, 68);
+              }
+              &.visible {
+                path {
+                  color: rgb(238, 238, 238);
+                }
               }
             }
           }
         }
-      }
-      .search-button {
-        margin: 0;
-        background-color: $secondary-light-color;
-        background-color: #fff;
-        height: 57px;
-        color: #585858;
-        border-top: 1px solid rgba(0, 0, 0, 0.25);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-        border-right: 1px solid rgba(0, 0, 0, 0.25);
-        font-size: 16px;
-        font-weight: 500;
-        &.dark-theme {
-          background-color: rgb(68, 68, 68);
-          color: rgb(238, 238, 238);
-        }
-        &:hover {
-          background-color: $primary-color;
-          color: #fff;
+        .search-button {
+          margin: 0;
+          background-color: $secondary-light-color;
+          background-color: #fff;
+          height: 57px;
+          color: #585858;
+          border-top: 1px solid rgba(0, 0, 0, 0.2);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+          border-right: 1px solid rgba(0, 0, 0, 0.2);
+          font-size: 16px;
+          font-weight: 500;
+          &.dark-theme {
+            background-color: rgb(68, 68, 68);
+            color: rgb(238, 238, 238);
+          }
+          &:hover {
+            background-color: $primary-color;
+            color: #fff;
+          }
         }
       }
     }
@@ -91,19 +124,28 @@
   @media screen and (max-width: 1380px) {
     .filters-subcontainer {
       width: 1000px;
+
       .searchbar-container {
         input {
-          width: 400px;
+          width: 250px;
         }
       }
     }
   }
   @media screen and (max-width: 1036px) {
+    margin-top: 0;
     .filters-subcontainer {
+      height: 210px;
       width: 700px;
-      .searchbar-container {
-        input {
-          width: 200px;
+      flex-wrap: wrap;
+
+      .searchbar-paragraph {
+        height: 57px;
+        .searchbar-container {
+          margin-top: 0;
+          input {
+            width: 429px;
+          }
         }
       }
     }
@@ -111,42 +153,37 @@
   @media screen and (max-width: 750px) {
     .filters-subcontainer {
       width: 450px;
-      .searchbar-container {
-        margin-right: 20px;
-        .icon-holder {
-          display: none;
-        }
-        input {
-          width: 130px;
-          border-radius: 10px 0px 0px 10px;
-          padding-left: 15px;
-          border-left: 1px solid rgba(0, 0, 0, 0.25);
-        }
-        .search-button {
-          width: 100px;
-          padding: 0;
-          // display: none;
+      height: 150px;
+      .searchbar-paragraph {
+        .searchbar-container {
+          .icon-holder {
+            display: none;
+          }
+          input {
+            width: 295px;
+            border-radius: 10px 0px 0px 10px;
+            padding-left: 15px;
+            border-left: 1px solid rgba(0, 0, 0, 0.25);
+          }
+          .search-button {
+            width: 100px;
+            padding: 0;
+            // display: none;
+          }
         }
       }
     }
   }
   @media screen and (max-width: 460px) {
     .filters-subcontainer {
-      height: 150px;
-      max-width: 90%;
-      @include flexbox(column, space-between, center);
-      .searchbar-container {
-        margin: 0;
-        .icon-holder {
-        }
-        input {
-          width: 215px;
-        }
-        .search-button {
-          border-radius: 0px 10px 10px 0px;
-          width: 80px;
-          svg {
-            display: none;
+      width: 350px;
+      .searchbar-paragraph {
+        .searchbar-container {
+          input {
+            width: 195px;
+          }
+          .search-button {
+            border-radius: 0px 10px 10px;
           }
         }
       }
@@ -154,21 +191,20 @@
   }
   @media screen and (max-width: 400px) {
     .filters-subcontainer {
-      height: 150px;
+      height: 200px;
       max-width: 300px;
       @include flexbox(column, space-between, center);
-      .searchbar-container {
-        margin: 0;
-        .icon-holder {
-        }
-        input {
-          width: 165px;
-        }
-        .search-button {
-          border-radius: 0px 10px 10px 0px;
-          width: 80px;
-          svg {
-            display: none;
+      .searchbar-paragraph {
+        .searchbar-container {
+          input {
+            width: 165px;
+          }
+          .search-button {
+            border-radius: 0px 10px 10px 0px;
+            width: 80px;
+            svg {
+              display: none;
+            }
           }
         }
       }

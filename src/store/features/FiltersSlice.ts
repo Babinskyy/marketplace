@@ -4,12 +4,14 @@ type FiltersSliceState = {
   inputValue: string;
   currentInputValue: string;
   categoryFilterValue: number | "";
+  countryFilterValue: string | "";
 };
 
 const initialState: FiltersSliceState = {
   inputValue: "",
   currentInputValue: "",
   categoryFilterValue: "",
+  countryFilterValue: "",
 };
 
 export const FiltersSlice = createSlice({
@@ -25,9 +27,16 @@ export const FiltersSlice = createSlice({
     categoryFilterValueSet: (state, action: PayloadAction<number | "">) => {
       state.categoryFilterValue = action.payload;
     },
+    countryFilterValueSet: (state, action: PayloadAction<string | "">) => {
+      state.countryFilterValue = action.payload;
+    },
   },
 });
 
 export default FiltersSlice.reducer;
-export const { inputValueSet, currentInputValueSet, categoryFilterValueSet } =
-  FiltersSlice.actions;
+export const {
+  inputValueSet,
+  currentInputValueSet,
+  categoryFilterValueSet,
+  countryFilterValueSet,
+} = FiltersSlice.actions;

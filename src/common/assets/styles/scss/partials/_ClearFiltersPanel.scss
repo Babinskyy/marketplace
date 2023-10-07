@@ -5,7 +5,7 @@
   height: 25px;
   .buttons-panel {
     @include flexbox(row, flex-end);
-    width: 400px;
+    width: 1330px;
     &.all-filters {
       @include flexbox(row, space-between);
     }

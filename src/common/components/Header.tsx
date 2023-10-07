@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 
 import {
   categoryFilterValueSet,
+  countryFilterValueSet,
   currentInputValueSet,
   inputValueSet,
 } from "../../store/features/FiltersSlice";
@@ -62,6 +63,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     } else {
       localStorage.removeItem("user");
       dispatch(categoryFilterValueSet(""));
+      dispatch(countryFilterValueSet(""));
       dispatch(inputValueSet(""));
       dispatch(currentInputValueSet(""));
       navigate("/auth");
@@ -118,6 +120,7 @@ const Header = (props: HeaderProps): JSX.Element => {
                     navigate(`/offers/user`);
                     dispatch(currentInputValueSet(""));
                     dispatch(categoryFilterValueSet(""));
+                    dispatch(countryFilterValueSet(""));
                     dispatch(inputValueSet(""));
                   }}
                   className={`${props.darkTheme ? "dark-theme" : ""}`}

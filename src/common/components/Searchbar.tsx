@@ -7,7 +7,10 @@ import { useAppDispatch, useAppSelector } from "../../store/store";
 import {
   inputValueSet,
   currentInputValueSet,
+  categoryFilterValueSet,
+  countryFilterValueSet,
 } from "../../store/features/FiltersSlice";
+import { Button } from "@mui/material";
 
 type SearchbarProps = {
   inputValue?: string;
@@ -30,8 +33,34 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const categoryFilterValue = useAppSelector(
+    (state) => state.filters.categoryFilterValue
+  );
+  const countryFilterValue = useAppSelector(
+    (state) => state.filters.countryFilterValue
+  );
+  const inputState = useAppSelector((state) => state.filters.inputValue);
+
   return (
     <div className="searchbar-paragraph">
+      <Button
+        variant="contained"
+        className={`clear-all-filters-button ${
+          (inputValue && categoryFilterValue) ||
+          (inputValue && countryFilterValue) ||
+          (countryFilterValue && categoryFilterValue)
+            ? "visible"
+            : ""
+        } ${props.darkTheme ? "dark-theme" : ""}`}
+        onClick={() => {
+          dispatch(inputValueSet(""));
+          dispatch(currentInputValueSet(""));
+          dispatch(categoryFilterValueSet(""));
+          dispatch(countryFilterValueSet(""));
+        }}
+      >
+        Clear all filters
+      </Button>
       <form
         className={`searchbar-container ${props.darkTheme ? "dark-theme" : ""}`}
         onSubmit={(e) => {

@@ -8,6 +8,7 @@ import { BASE_URL } from "../config/env-variable";
 import { useAppDispatch } from "../../store/store";
 import {
   categoryFilterValueSet,
+  countryFilterValueSet,
   currentInputValueSet,
   inputValueSet,
 } from "../../store/features/FiltersSlice";
@@ -50,6 +51,7 @@ const DropDownMenu = (props: MenuProps) => {
   const clearFilters = () => {
     dispatch(currentInputValueSet(""));
     dispatch(categoryFilterValueSet(""));
+    dispatch(countryFilterValueSet(""));
     dispatch(inputValueSet(""));
   };
 
@@ -59,6 +61,7 @@ const DropDownMenu = (props: MenuProps) => {
     } else {
       localStorage.removeItem("user");
       dispatch(categoryFilterValueSet(""));
+      dispatch(countryFilterValueSet(""));
       dispatch(inputValueSet(""));
       dispatch(currentInputValueSet(""));
       navigate("/auth");

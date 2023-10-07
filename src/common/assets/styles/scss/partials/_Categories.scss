@@ -1,6 +1,6 @@
 .main-categories-container {
   background-color: #fff;
-  padding: 20px 0px 40px 0px;
+  padding: 20px 0px 60px 0px;
   margin-bottom: 10px;
   &.dark-theme {
     background-color: rgb(68, 68, 68);
@@ -9,7 +9,7 @@
 
   @include flexbox(column, center, center);
   h1 {
-    margin: 0px 0px 20px 0px;
+    margin: 20px 0px 40px 0px;
     &.dark-theme {
       color: rgb(238, 238, 238);
     }
@@ -18,12 +18,9 @@
   .sub-categories-container {
     @include flexbox(row, space-between, center);
     flex-wrap: wrap;
-    // background-color: aquamarine;
     width: 1330px;
     .category-wrapper {
       @include flexbox(column, center, center);
-      // margin: 20px 22px 20px 22px;
-
       .category {
         @include flexbox(initial, center, center);
         cursor: pointer;
