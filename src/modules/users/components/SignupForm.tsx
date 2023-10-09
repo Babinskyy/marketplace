@@ -74,7 +74,7 @@ const SignupForm = (props: SignupFormType): JSX.Element => {
             id="signup-submit"
             onClick={() => props.setLogin((prev) => !prev)}
           >
-            Go to Login
+            Go to Log in
           </button>
         </div>
       </div>
