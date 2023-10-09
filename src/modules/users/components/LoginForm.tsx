@@ -81,13 +81,13 @@ const LoginForm = (props: SignupFormType): JSX.Element => {
             Login
           </button>
 
-          {/* <button
+          <button
             type="submit"
             id="signup-submit"
             onClick={() => props.setLogin((prev) => !prev)}
           >
             Go to Signup
-          </button> */}
+          </button>
         </div>
       </div>
     </form>

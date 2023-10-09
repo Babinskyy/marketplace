@@ -76,6 +76,7 @@
           @include flexbox(row, center);
           flex-wrap: wrap;
           width: 250px;
+          height: 100px;
           #signup-submit,
           #login-submit {
             width: 250px;
@@ -91,6 +92,9 @@
             &:hover {
               background-color: #0f6fff;
             }
+          }
+          #signup-submit {
+            opacity: 0.8;
           }
         }
       }
