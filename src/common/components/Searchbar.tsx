@@ -21,33 +21,34 @@ type SearchbarProps = {
 
 const Searchbar = (props: SearchbarProps): JSX.Element => {
   const [showClearX, setShowClearX] = useState<boolean>(false);
-  const inputValue = useAppSelector((state) => state.filters.inputValue);
-  const currentInputState = useAppSelector(
-    (state) => state.filters.currentInputValue
-  );
-  useEffect(() => {
-    if (inputValue === "") {
-      setShowClearX(false);
-    }
-  }, [inputValue]);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const inputState = useAppSelector((state) => state.filters.inputValue);
+  const currentInputState = useAppSelector(
+    (state) => state.filters.currentInputValue
+  );
   const categoryFilterValue = useAppSelector(
     (state) => state.filters.categoryFilterValue
   );
   const countryFilterValue = useAppSelector(
     (state) => state.filters.countryFilterValue
   );
-  const inputState = useAppSelector((state) => state.filters.inputValue);
+  useEffect(() => {
+    if (inputState === "") {
+      setShowClearX(false);
+    } else {
+      setShowClearX(true);
+    }
+  }, [inputState]);
 
   return (
     <div className="searchbar-paragraph">
       <Button
         variant="contained"
         className={`clear-all-filters-button ${
-          (inputValue && categoryFilterValue) ||
-          (inputValue && countryFilterValue) ||
+          (inputState && categoryFilterValue) ||
+          (inputState && countryFilterValue) ||
           (countryFilterValue && categoryFilterValue)
             ? "visible"
             : ""
