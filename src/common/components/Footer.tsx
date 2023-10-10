@@ -6,7 +6,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 type FooterType = {
   darkTheme: boolean;
-}
+};
 
 const Footer = (props: FooterType): JSX.Element => {
   return (
@@ -32,7 +32,7 @@ const Footer = (props: FooterType): JSX.Element => {
           <a
             className="social-icon__link"
             target="_blank"
-            href="https://www.linkedin.com/in/jan-babi%C5%84ski-880469229/"
+            href="https://www.linkedin.com/in/jan-babinski-880469229/"
           >
             <LinkedInIcon sx={{ fontSize: "50px" }} />
           </a>
@@ -66,7 +66,9 @@ const Footer = (props: FooterType): JSX.Element => {
           </a>
         </li>
       </ul> */}
-      <p className="copyright">&copy;2023 John Babinsky | All Rights Reserved</p>
+      <p className="copyright">
+        &copy;2023 John Babinsky | All Rights Reserved
+      </p>
     </footer>
   );
 };
