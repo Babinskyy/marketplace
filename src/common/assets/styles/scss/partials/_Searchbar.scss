@@ -41,11 +41,13 @@
     .x-cancel-input {
       @include flexbox(row, center, center);
       height: 72px;
-      color: var(--secondary-text-color);
       background-color: var(--primary-bg-color);
+      color: var(--primary-bg-color);
       pointer-events: none;
       padding: 0px 10px 0px 10px;
       .visible {
+        color: var(--secondary-text-color);
+        background-color: var(--primary-bg-color);
         pointer-events: auto;
         cursor: pointer;
       }
