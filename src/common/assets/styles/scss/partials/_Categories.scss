@@ -1,18 +1,13 @@
 .main-categories-container {
-  background-color: #fff;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
   padding: 20px 0px 60px 0px;
   margin-bottom: 10px;
-  &.dark-theme {
-    background-color: rgb(68, 68, 68);
-    color: rgb(238, 238, 238);
-  }
 
   @include flexbox(column, center, center);
   h1 {
     margin: 20px 0px 40px 0px;
-    &.dark-theme {
-      color: rgb(238, 238, 238);
-    }
+    color: var(--primary-text-color);
   }
 
   .sub-categories-container {

@@ -25,15 +25,11 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const inputState = useAppSelector((state) => state.filters.inputValue);
-  const currentInputState = useAppSelector(
-    (state) => state.filters.currentInputValue
-  );
+  const currentInputState = useAppSelector((state) => state.filters.currentInputValue);
   const categoryFilterValue = useAppSelector(
     (state) => state.filters.categoryFilterValue
   );
-  const countryFilterValue = useAppSelector(
-    (state) => state.filters.countryFilterValue
-  );
+  const countryFilterValue = useAppSelector((state) => state.filters.countryFilterValue);
   useEffect(() => {
     if (inputState === "") {
       setShowClearX(false);
@@ -52,7 +48,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
           (countryFilterValue && categoryFilterValue)
             ? "visible"
             : ""
-        } ${props.darkTheme ? "dark-theme" : ""}`}
+        }`}
         onClick={() => {
           dispatch(inputValueSet(""));
           dispatch(currentInputValueSet(""));
@@ -63,19 +59,19 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         Clear all filters
       </Button>
       <form
-        className={`searchbar-container ${props.darkTheme ? "dark-theme" : ""}`}
+        className="searchbar-container"
         onSubmit={(e) => {
           e.preventDefault();
         }}
       >
-        <div className={`icon-holder ${props.darkTheme ? "dark-theme" : ""}`}>
+        <div className="icon-holder">
           <SearchIcon sx={{ fontSize: 35, opacity: 0.5 }} />
         </div>
         <input
           type="search"
           name="search"
           placeholder="Search Offers"
-          className={`searchbar-input ${props.darkTheme ? "dark-theme" : ""}`}
+          className="searchbar-input"
           value={currentInputState}
           onChange={(e: React.FormEvent<HTMLInputElement>) => {
             setShowClearX(true);
@@ -84,7 +80,7 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
         />
 
         <div
-          className={`x-cancel-input ${props.darkTheme ? "dark-theme" : ""}`}
+          className="x-cancel-input"
           onClick={() => {
             setShowClearX(false);
             dispatch(inputValueSet(""));
@@ -96,14 +92,12 @@ const Searchbar = (props: SearchbarProps): JSX.Element => {
               fontSize: 35,
               opacity: 0.7,
             }}
-            className={
-              showClearX ? `visible ${props.darkTheme ? "dark-theme" : ""}` : ""
-            }
+            className={showClearX ? "visible" : ""}
           />
         </div>
 
         <button
-          className={`search-button ${props.darkTheme ? "dark-theme" : ""}`}
+          className="search-button"
           onClick={() => {
             dispatch(inputValueSet(currentInputState));
             navigate("/offers/all");

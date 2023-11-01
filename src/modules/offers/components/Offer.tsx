@@ -9,10 +9,7 @@ import { Offer } from "../../../common/types/Types";
 import Loader from "../../../common/components/Loader";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../../common/functions/useAuth";
-import {
-  BASE_URL,
-  GOOGLE_MAPS_API_KEY,
-} from "../../../common/config/env-variable";
+import { BASE_URL, GOOGLE_MAPS_API_KEY } from "../../../common/config/env-variable";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Map from "./GoogleMap";
 
@@ -38,7 +35,6 @@ const OfferDetails = (props: OfferDetailsType) => {
   } = useForm();
 
   const { id } = useParams<{ id: string }>();
-  const auth = useAuth();
   const navigate = useNavigate();
 
   function capitalizeFirstLetter(string: string) {
@@ -141,14 +137,8 @@ const OfferDetails = (props: OfferDetailsType) => {
       </div>
     );
   return (
-    <div
-      className={`main-offer-view-container ${props.darkTheme && "dark-theme"}`}
-    >
-      <div
-        className={`sub-offer-view-container ${
-          props.darkTheme && "dark-theme"
-        }`}
-      >
+    <div className="main-offer-view-container">
+      <div className="sub-offer-view-container">
         <Button onClick={() => window.history.back()} className="back-button">
           {" "}
           <KeyboardBackspaceIcon />
@@ -195,7 +185,7 @@ const OfferDetails = (props: OfferDetailsType) => {
               <input
                 type="text"
                 id="title1"
-                className={`title1-input ${props.darkTheme && "dark-theme"}`}
+                className="title1-input"
                 defaultValue={offer?.title}
                 {...register("title1", { required: true })}
               ></input>
@@ -204,21 +194,15 @@ const OfferDetails = (props: OfferDetailsType) => {
               </div>
             </div>
           ) : (
-            <h1 className={`title1 ${props.darkTheme && "dark-theme"}`}>
-              {offer?.title}
-            </h1>
+            <h1 className="title1">{offer?.title}</h1>
           )}
 
-          {offer && (
-            <Carousel images={offer.images} darkTheme={props.darkTheme} />
-          )}
+          {offer && <Carousel images={offer.images} darkTheme={props.darkTheme} />}
 
           <div className="details-wrapper">
             <div className="details-container">
               <div className="title-price">
-                <h1 className={`title2 ${props.darkTheme && "dark-theme"}`}>
-                  {offer?.title}
-                </h1>
+                <h1 className="title2">{offer?.title}</h1>
                 {/* )} */}
 
                 {editOffer && offer?.price ? (
@@ -226,9 +210,7 @@ const OfferDetails = (props: OfferDetailsType) => {
                     <input
                       type="number"
                       id="price"
-                      className={`price-input ${
-                        props.darkTheme && "dark-theme"
-                      }`}
+                      className="price-input"
                       defaultValue={offer?.price}
                       {...register("price", { required: true })}
                     ></input>
@@ -238,13 +220,7 @@ const OfferDetails = (props: OfferDetailsType) => {
                     </div>
                   </div>
                 ) : (
-                  <p
-                    className={`price-container ${
-                      props.darkTheme && "dark-theme"
-                    }`}
-                  >
-                    {offer?.price} $
-                  </p>
+                  <p className="price-container">{offer?.price} $</p>
                 )}
               </div>
               {editOffer ? (
@@ -252,16 +228,12 @@ const OfferDetails = (props: OfferDetailsType) => {
                   <textarea
                     rows={8}
                     id="description"
-                    className={`description  ${
-                      props.darkTheme && "dark-theme"
-                    }`}
+                    className="description"
                     defaultValue={offer?.description}
                     {...register("description", { required: true })}
                   />{" "}
                   <div className="error-container">
-                    {errors.description && (
-                      <p className="error">Enter description.</p>
-                    )}
+                    {errors.description && <p className="error">Enter description.</p>}
                   </div>
                 </>
               ) : (
@@ -289,10 +261,7 @@ const OfferDetails = (props: OfferDetailsType) => {
                     />
                   </p>
                 ) : (
-                  <Button
-                    onClick={() => setShowPhone(true)}
-                    sx={{ height: "35px" }}
-                  >
+                  <Button onClick={() => setShowPhone(true)} sx={{ height: "35px" }}>
                     Show contact number
                   </Button>
                 )}

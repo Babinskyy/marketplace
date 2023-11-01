@@ -1,7 +1,6 @@
 .main-offer-view-container {
   .error-container {
     height: 30px;
-    margin-top: 0;
     margin-bottom: 25px;
     text-align: center;
     font-size: 25px;
@@ -14,27 +13,20 @@
     }
   }
 
-  background-color: #f2f4f5;
+  background-color: var(--secondary-bg-color);
   margin-top: 35px;
-  &.dark-theme {
-    background-color: rgb(44, 44, 44);
-    margin-top: 0;
-    border-top: 35px solid rgb(44, 44, 44);
-  }
+
   @include flexbox(row, center);
   .sub-offer-view-container {
     padding: 40px;
     width: 1330px;
     font-size: 25px;
     border: none;
-    background-color: #fff;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
     margin: 0px 40px;
     border-radius: 15px;
     position: relative;
-    &.dark-theme {
-      background-color: rgb(68, 68, 68);
-      color: rgb(238, 238, 238);
-    }
 
     &:hover,
     &:focus {
@@ -58,29 +50,23 @@
       margin: 0 auto 55px auto;
       width: 800px;
       overflow-wrap: break-word;
-      &.dark-theme {
-        color: rgb(238, 238, 238);
-      }
+      color: var(--primary-text-color);
     }
     .h1-input-container {
       width: 100%;
       text-align: center;
       .title1-input {
         text-align: center;
-        // margin-bottom: 15px;
         height: 47px;
         background-color: transparent;
         border: none;
         font-size: 35px;
         border-radius: 5px;
         border: 1px solid rgb(0, 0, 0);
-        // border-bottom: 3px solid rgb(218, 196, 0);
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         font-weight: 700;
         font-style: italic;
-        &.dark-theme {
-          color: rgb(238, 238, 238);
-        }
+        color: var(--primary-text-color);
         &:focus-visible {
           outline: none;
         }
@@ -100,22 +86,16 @@
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           font-weight: 700;
           font-style: italic;
-          &.dark-theme {
-            color: rgb(238, 238, 238);
-          }
+          color: var(--primary-text-color);
+
           &:focus-visible {
             outline: none;
           }
         }
       }
       h1.title2 {
-        color: #fff;
         width: 800px;
         overflow-wrap: break-word;
-
-        &.dark-theme {
-          color: rgb(238, 238, 238);
-        }
       }
       div.price-input-container {
         .price-input {
@@ -128,13 +108,11 @@
           font-weight: 700;
           font-style: italic;
           width: 200px;
+          color: var(--primary-text-color);
           &::-webkit-outer-spin-button,
           &::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
-          }
-          &.dark-theme {
-            color: #fff;
           }
         }
         span {
@@ -148,11 +126,7 @@
         font-weight: 700;
         font-size: 35px;
         margin: 0;
-        color: $secondary-color;
-        &.dark-theme {
-          color: rgb(238, 238, 238);
-        }
-        // letter-spacing: 3px;
+        color: var(--primary-text-color);
       }
     }
 
@@ -167,7 +141,7 @@
         h1 {
           text-align: left;
           font-family: "Nunito", sans-serif;
-          color: $secondary-color;
+          color: var(--secondary-text-color);
         }
         textarea.description {
           background-color: transparent;
@@ -177,9 +151,7 @@
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           padding: 14px;
           transform: translate(0px, 15px);
-          &.dark-theme {
-            color: #fff;
-          }
+          color: var(--secondary-text-color);
         }
         p.description {
           word-wrap: break-word;

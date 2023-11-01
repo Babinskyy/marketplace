@@ -21,7 +21,7 @@ const Signup = (props: SignupType): JSX.Element => {
   }, []);
 
   return (
-    <div className={`signup-container ${props.darkTheme && "dark-theme"}`}>
+    <div className="signup-container">
       <Header
         setOpenOfferModal={props.setOpenOfferModal}
         setDarkTheme={props.setDarkTheme}
@@ -29,9 +29,7 @@ const Signup = (props: SignupType): JSX.Element => {
       />
 
       <div className="signup-content">
-        <h1 className={`${props.darkTheme && "dark-theme"}`}>
-          {login ? <span>Sign up</span> : <span>Sign in</span>}
-        </h1>
+        <h1>{login ? <span>Sign up</span> : <span>Sign in</span>}</h1>
         {login ? (
           <SignupForm setLogin={setLogin} darkTheme={props.darkTheme} />
         ) : (

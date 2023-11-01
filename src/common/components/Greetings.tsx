@@ -19,10 +19,7 @@ const Greetings = (props: GreetingsProps) => {
 
   return (
     <div className="greetings-container">
-      <h1
-        className={` ${props.darkTheme && "dark-theme"}
-        ${!username && "logged-out"}`}
-      >
+      <h1 className={`${!username && "logged-out"}`}>
         {username && "Hello"} {useCapitalizeFirstChar(username)}
         {username && "!"}
       </h1>

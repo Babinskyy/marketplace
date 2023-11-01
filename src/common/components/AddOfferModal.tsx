@@ -85,9 +85,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     props.setOpenOfferModal(false);
   };
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
-    null
-  );
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
 
   const handleCategoryChange = (event: SelectChangeEvent) => {
     const selectedCategoryId = parseInt(event.target.value, 10);
@@ -173,10 +171,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
     { preview: "", data: new File([], "") },
   ]);
 
-  const handleFileChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
     if (e.target.files) {
       const img = {
         preview: URL.createObjectURL(e.target.files[0]),
@@ -277,7 +272,7 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={`modal-box ${props.darkTheme && "dark-theme"}`}>
+        <Box className="modal-box">
           <h2>Add your offer</h2>
           <form action="" className="offer-modal-form" onSubmit={handleSubmit}>
             <TextField
@@ -333,21 +328,13 @@ const AddOfferModal = (props: AddOfferProps): JSX.Element => {
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
-                      pointerEvents: imagePreviews[index].preview
-                        ? "none"
-                        : "auto",
-                      marginBottom: imagePreviews[index].preview
-                        ? "0px"
-                        : "30px",
+                      pointerEvents: imagePreviews[index].preview ? "none" : "auto",
+                      marginBottom: imagePreviews[index].preview ? "0px" : "30px",
                     }}
-                    className={`add ${props.darkTheme && "dark-theme"}`}
+                    className="add"
                   >
                     {!imagePreviews[index].preview && (
-                      <div
-                        className={`add-icon ${
-                          props.darkTheme && "dark-theme"
-                        }`}
-                      >
+                      <div className="add-icon">
                         <AddIcon />
                       </div>
                     )}

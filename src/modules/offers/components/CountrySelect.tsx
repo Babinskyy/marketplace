@@ -32,9 +32,7 @@ const countries: countriesType[] = [
 ];
 
 const CountrySelect = (props: CountrySelectType) => {
-  const countryFilterValue = useAppSelector(
-    (state) => state.filters.countryFilterValue
-  );
+  const countryFilterValue = useAppSelector((state) => state.filters.countryFilterValue);
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent<string>) => {
     dispatch(countryFilterValueSet(event.target.value));
@@ -44,16 +42,12 @@ const CountrySelect = (props: CountrySelectType) => {
     <div className="custom-select-container">
       <Button
         variant="contained"
-        className={`clear-category ${countryFilterValue ? "visible" : ""} ${
-          props.darkTheme ? "dark-theme" : ""
-        }`}
+        className={`clear-category ${countryFilterValue ? "visible" : ""}`}
         onClick={() => dispatch(countryFilterValueSet(""))}
       >
         Clear country
       </Button>
-      <FormControl
-        className={`${props.darkTheme ? "dark-theme" : ""} custom-select`}
-      >
+      <FormControl className="custom-select">
         <InputLabel id="country-label">Country</InputLabel>
         <Select
           name="country"

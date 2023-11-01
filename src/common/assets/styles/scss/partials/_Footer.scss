@@ -9,10 +9,6 @@
   align-items: center;
   flex-direction: column;
   margin-top: 150px;
-  &.dark-theme {
-    margin-top: 0;
-    border-top: 150px solid rgb(44, 44, 44);
-  }
 }
 ul {
   padding: 0;

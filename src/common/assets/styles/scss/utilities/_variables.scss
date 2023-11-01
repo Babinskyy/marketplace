@@ -1,9 +1,41 @@
 $primary-font: "Nunito", sans-serif;
-$box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-$box-shadow2: rgba(0, 0, 0, 0.24) 0px 3px 18px;
-$box-shadow-dark: rgba(255, 255, 255, 0.12) 0px 3px 18px;
 $primary-color: #3586ff;
-$secondary-color: #002f34;
-$dark-theme-font-color: #eee;
+$box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
+$box-shadow-dark: rgba(255, 255, 255, 0.12) 0px 3px 18px;
+$secondary-color: #002f34;
+
+$dark-theme-font-color: #eee;
 $secondary-light-color: #f2f4f5;
+
+$primary-bg-color-light: #ffffff;
+$secondary-bg-color-light: #f2f4f5;
+$primary-text-color-light: #002f34;
+$secondary-text-color-light: #000;
+$action-text-color-light: $primary-color;
+$secondary-action-text-color-light: #0045ad;
+
+$primary-bg-color-dark: rgb(68, 68, 68);
+$secondary-bg-color-dark: rgb(44, 44, 44);
+$primary-text-color-dark: rgb(238, 238, 238);
+$secondary-text-color-dark: #fff;
+$action-text-color-dark: rgb(216, 219, 224);
+$secondary-action-text-color-dark: #303030;
+
+body.dark-theme {
+  --primary-bg-color: #{$primary-bg-color-dark};
+  --secondary-bg-color: #{$secondary-bg-color-dark};
+  --primary-text-color: #{$primary-text-color-dark};
+  --secondary-text-color: #{$secondary-text-color-dark};
+  --action-text-color: #{$action-text-color-dark};
+  --secondary-action-text-color: #{$secondary-action-text-color-dark};
+}
+
+body:not(.dark-theme) {
+  --primary-bg-color: #{$primary-bg-color-light};
+  --secondary-bg-color: #{$secondary-bg-color-light};
+  --primary-text-color: #{$primary-text-color-light};
+  --secondary-text-color: #{$secondary-text-color-light};
+  --action-text-color: #{$action-text-color-light};
+  --secondary-action-text-color: #{$secondary-action-text-color-light};
+}

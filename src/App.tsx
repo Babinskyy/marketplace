@@ -38,7 +38,7 @@ function App() {
     fetchData();
   }, []);
   return (
-    <div className={`App ${darkTheme && "dark-theme"}`}>
+    <div className="App">
       <Routes>
         <Route
           path="/"

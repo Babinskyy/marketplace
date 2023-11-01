@@ -10,7 +10,7 @@ type FooterType = {
 
 const Footer = (props: FooterType): JSX.Element => {
   return (
-    <footer className={`footer ${props.darkTheme && "dark-theme"}`}>
+    <footer className="footer">
       <div className="waves">
         <div className="wave" id="wave1"></div>
         <div className="wave" id="wave2"></div>
@@ -66,9 +66,7 @@ const Footer = (props: FooterType): JSX.Element => {
           </a>
         </li>
       </ul> */}
-      <p className="copyright">
-        &copy;2023 John Babinsky | All Rights Reserved
-      </p>
+      <p className="copyright">&copy;2023 John Babinsky | All Rights Reserved</p>
     </footer>
   );
 };

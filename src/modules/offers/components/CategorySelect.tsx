@@ -27,16 +27,12 @@ const CategorySelect = (props: CategorySelectType) => {
     <div className="custom-select-container">
       <Button
         variant="contained"
-        className={`clear-category ${categoryFilterValue ? "visible" : ""} ${
-          props.darkTheme ? "dark-theme" : ""
-        }`}
+        className={`clear-category ${categoryFilterValue ? "visible" : ""}`}
         onClick={() => dispatch(categoryFilterValueSet(""))}
       >
         Clear category
       </Button>
-      <FormControl
-        className={`${props.darkTheme ? "dark-theme" : ""} custom-select`}
-      >
+      <FormControl className="custom-select">
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           name="category"
@@ -56,11 +52,9 @@ const CategorySelect = (props: CategorySelectType) => {
                 <img
                   src={e.url}
                   alt="category-image"
-                  style={{ width: "25px", marginRight: "10px" }}
+                  style={{ width: "23px", marginRight: "10px" }}
                 />
-                <span className="category-name" style={{}}>
-                  {e.name}
-                </span>
+                <span className="category-name">{e.name}</span>
               </MenuItem>
             );
           })}

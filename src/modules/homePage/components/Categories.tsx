@@ -17,14 +17,10 @@ const Categories = (props: CategoriesProps): JSX.Element => {
     }
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const categoryState = useAppSelector(
-    (state) => state.filters.categoryFilterValue
-  );
+  const categoryState = useAppSelector((state) => state.filters.categoryFilterValue);
   return (
-    <div
-      className={`main-categories-container ${props.darkTheme && "dark-theme"}`}
-    >
-      <h1 className={` ${props.darkTheme && "dark-theme"}`}>Categories</h1>
+    <div className="main-categories-container">
+      <h1>Categories</h1>
       <div className="sub-categories-container">
         {bgcArray.map((e, i) => {
           const category = props.categories?.[i];

@@ -15,7 +15,6 @@ import {
 import { useAuth } from "../functions/useAuth";
 
 type MenuProps = {
-  isUserLogged: boolean;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
   setOpenOfferModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,12 +39,6 @@ const DropDownMenu = (props: MenuProps) => {
     };
     logout();
     navigate("/auth");
-  };
-
-  const handleModeChange = async () => {
-    const newTheme = !props.darkTheme;
-    props.setDarkTheme(newTheme);
-    localStorage.setItem("themePreference", newTheme ? "dark" : "light");
   };
 
   const clearFilters = () => {

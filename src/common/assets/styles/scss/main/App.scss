@@ -20,7 +20,6 @@
 @import "../partials/UserOffers";
 @import "../partials/Filters";
 @import "../partials/CustomSelect";
-@import "../partials/ClearFiltersPanel";
 
 * {
   font-family: "Nunito", sans-serif;
@@ -41,7 +40,5 @@ h1 {
   text-align: center;
 }
 .App {
-  &.dark-theme {
-    background-color: rgb(44, 44, 44);
-  }
+  background-color: var(--secondary-bg-color);
 }

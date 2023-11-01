@@ -6,11 +6,12 @@ import mpSmallLogo from "../../common/assets//images/logo/small-logo-nobg-white.
 import mpDarkSmallLogo from "../../common/assets//images/logo/small-logo-nobg.png";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../functions/useAuth";
 import { BASE_URL } from "../config/env-variable";
 import DropDownMenu from "./DropDownMenu";
 import { useAppDispatch, useAppSelector } from "../../store/store";
+import DarkMode from "../../context/ThemeContext";
 
 import {
   categoryFilterValueSet,
@@ -25,13 +26,12 @@ type HeaderProps = {
   setIsNightMode?: React.Dispatch<React.SetStateAction<boolean>>;
   setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
   darkTheme: boolean;
-  setCategoryFilterValue?: React.Dispatch<
-    React.SetStateAction<number | undefined>
-  >;
+  setCategoryFilterValue?: React.Dispatch<React.SetStateAction<number | undefined>>;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const [isUserLogged, setIsUserLogged] = useState<boolean>(false);
+  const { currentTheme, changeCurrentTheme } = useContext(DarkMode);
+
   const dispatch = useAppDispatch();
   const auth = useAuth();
   const navigate = useNavigate();
@@ -54,7 +54,8 @@ const Header = (props: HeaderProps): JSX.Element => {
   const handleModeChange = async () => {
     const newTheme = !props.darkTheme;
     props.setDarkTheme(newTheme);
-    localStorage.setItem("themePreference", newTheme ? "dark" : "light");
+    // localStorage.setItem("themePreference", newTheme ? "dark" : "light");
+    changeCurrentTheme(currentTheme === "light" ? "dark" : "light");
   };
 
   const handleModalOpen = async () => {
@@ -70,7 +71,9 @@ const Header = (props: HeaderProps): JSX.Element => {
     }
   };
   const ViewState = useAppSelector((state) => state.View.view);
-
+  useEffect(() => {
+    console.log(currentTheme);
+  }, []);
   return (
     <nav className="main-header">
       <ul className="main-navigation">
@@ -106,7 +109,6 @@ const Header = (props: HeaderProps): JSX.Element => {
                   onClick={() => {
                     navigate("/offers/all");
                   }}
-                  className={`${props.darkTheme ? "dark-theme" : ""}`}
                 >
                   All offers
                 </Button>
@@ -123,7 +125,6 @@ const Header = (props: HeaderProps): JSX.Element => {
                     dispatch(countryFilterValueSet(""));
                     dispatch(inputValueSet(""));
                   }}
-                  className={`${props.darkTheme ? "dark-theme" : ""}`}
                 >
                   My offers
                 </Button>
@@ -134,7 +135,6 @@ const Header = (props: HeaderProps): JSX.Element => {
                     color: props.darkTheme ? "#d8dbe0" : "",
                   }}
                   onClick={handleLogout}
-                  className={`${props.darkTheme ? "dark-theme" : ""}`}
                 >
                   Log out
                 </Button>
@@ -145,14 +145,12 @@ const Header = (props: HeaderProps): JSX.Element => {
                     color: props.darkTheme ? "#d8dbe0" : "",
                   }}
                   onClick={handleModalOpen}
-                  className={`${props.darkTheme ? "dark-theme" : ""}`}
                 >
                   Add an offer
                 </Button>
               </div>
               <div id="dropdown-menu">
                 <DropDownMenu
-                  isUserLogged={isUserLogged}
                   setDarkTheme={props.setDarkTheme}
                   darkTheme={props.darkTheme}
                   setOpenOfferModal={props.setOpenOfferModal}
@@ -171,7 +169,6 @@ const Header = (props: HeaderProps): JSX.Element => {
                 onClick={() => {
                   navigate("/offers/all");
                 }}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
                 All Offers
               </Button>
@@ -184,7 +181,6 @@ const Header = (props: HeaderProps): JSX.Element => {
                 onClick={() => {
                   navigate("/auth");
                 }}
-                className={`${props.darkTheme ? "dark-theme" : ""}`}
               >
                 Sign in
               </Button>
@@ -196,7 +192,7 @@ const Header = (props: HeaderProps): JSX.Element => {
               <input
                 type="checkbox"
                 onChange={handleModeChange}
-                checked={!props.darkTheme}
+                checked={currentTheme === "dark" ? false : true}
               />
               <span className="slider-toggle"></span>
             </label>

@@ -5,7 +5,7 @@ type LoaderType = {
 };
 
 const Loader = (props: LoaderType): JSX.Element => {
-  return <div className={`loader ${props.darkTheme && "dark-theme"}`}></div>;
+  return <div className="loader"></div>;
 };
 
 export default Loader;

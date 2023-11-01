@@ -30,11 +30,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <section className="slider">
-      <div
-        className={`slide-container ${
-          props.images.length > 1 ? "" : "one-image"
-        }`}
-      >
+      <div className={`slide-container ${props.images.length > 1 ? "" : "one-image"}`}>
         {props.images.length > 1 && (
           <ArrowBackIosNewIcon className="left-arrow" onClick={prevSlide} />
         )}
@@ -68,9 +64,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
               <img
                 src={`${e}`}
                 alt="offer-image"
-                className={`${current === i && "selected"} ${
-                  props.darkTheme && "dark-theme"
-                }`}
+                className={`${current === i && "selected"}`}
                 key={i}
                 onClick={() => {
                   setCurrent(i);

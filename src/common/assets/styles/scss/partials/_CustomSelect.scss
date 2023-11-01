@@ -6,8 +6,8 @@
     font-size: 12px;
     padding: 0;
     opacity: 0;
-    background-color: #fff;
-    color: $primary-color;
+    background-color: var(--primary-bg-color);
+    color: var(--action-text-color);
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: none;
     pointer-events: none;
@@ -18,40 +18,25 @@
     &:hover {
       color: #fff;
     }
-    &.dark-theme {
-      background-color: rgb(68, 68, 68);
-      color: rgb(216, 219, 224);
-      &:hover {
-        background-color: $primary-color;
-        color: #fff;
-      }
-    }
   }
   .custom-select {
     border-radius: 10px;
     width: 280px;
-    background-color: $secondary-light-color;
-    background-color: #fff;
+    background-color: var(--primary-bg-color);
+
     label {
-      color: #585858;
+      color: var(--primary-text-color);
+    }
+    span {
+      color: var(--primary-text-color);
+    }
+    svg {
+      fill: var(--secondary-text-color);
     }
     #category-select,
     #country-select {
       display: flex;
       align-items: center;
-    }
-    &.dark-theme {
-      background-color: rgb(68, 68, 68);
-      label {
-        color: rgb(238, 238, 238);
-      }
-
-      span {
-        color: rgb(238, 238, 238);
-      }
-      svg {
-        fill: #fff;
-      }
     }
     @media screen and (max-width: 1380px) {
       width: 220px;

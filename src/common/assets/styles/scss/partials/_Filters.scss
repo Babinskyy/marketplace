@@ -15,8 +15,9 @@
         font-size: 12px;
         padding: 0;
         opacity: 0;
-        background-color: #fff;
+        background-color: var(--primary-bg-color);
         color: $primary-color;
+        color: var(--action-text-color);
         border: 1px solid rgba(0, 0, 0, 0.25);
         box-shadow: none;
         pointer-events: none;
@@ -25,15 +26,8 @@
           opacity: 1;
         }
         &:hover {
+          background-color: $primary-color;
           color: #fff;
-        }
-        &.dark-theme {
-          background-color: rgb(68, 68, 68);
-          color: rgb(216, 219, 224);
-          &:hover {
-            background-color: $primary-color;
-            color: #fff;
-          }
         }
       }
       .searchbar-container {
@@ -41,78 +35,47 @@
         // margin-right: 50px;
         .icon-holder {
           margin: 0;
-          background-color: $secondary-light-color;
-          background-color: #fff;
+          background-color: var(--primary-bg-color);
           height: 57px;
           border-top: 1px solid rgba(0, 0, 0, 0.2);
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           border-left: 1px solid rgba(0, 0, 0, 0.2);
-          &.dark-theme {
-            background-color: rgb(68, 68, 68);
-            color: rgb(238, 238, 238);
-          }
         }
         input {
-          background-color: $secondary-light-color;
-          background-color: #fff;
+          background-color: var(--primary-bg-color);
           width: 450px;
           height: 57px;
           font-size: 18px;
           border-top: 1px solid rgba(0, 0, 0, 0.2);
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-          &.dark-theme {
-            background-color: rgb(68, 68, 68);
-            color: rgb(238, 238, 238);
-          }
         }
         .x-cancel-input {
-          background-color: $secondary-light-color;
-          background-color: #fff;
+          background-color: var(--primary-bg-color);
           height: 57px;
           border-top: 1px solid rgba(0, 0, 0, 0.2);
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
           svg {
             path {
-              color: $secondary-light-color;
-              color: #fff;
+              color: var(--primary-bg-color);
             }
             &.visible {
               path {
-                color: #585858;
-              }
-            }
-          }
-          &.dark-theme {
-            background-color: rgb(68, 68, 68);
-            color: rgb(238, 238, 238);
-            svg {
-              path {
-                color: rgb(68, 68, 68);
-              }
-              &.visible {
-                path {
-                  color: rgb(238, 238, 238);
-                }
+                color: var(--primary-text-color);
               }
             }
           }
         }
         .search-button {
           margin: 0;
-          background-color: $secondary-light-color;
-          background-color: #fff;
+          background-color: var(--primary-bg-color);
           height: 57px;
-          color: #585858;
+          color: var(--primary-text-color);
           border-top: 1px solid rgba(0, 0, 0, 0.2);
           border-bottom: 1px solid rgba(0, 0, 0, 0.2);
           border-right: 1px solid rgba(0, 0, 0, 0.2);
           font-size: 16px;
           font-weight: 500;
-          &.dark-theme {
-            background-color: rgb(68, 68, 68);
-            color: rgb(238, 238, 238);
-          }
           &:hover {
             background-color: $primary-color;
             color: #fff;

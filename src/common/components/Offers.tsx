@@ -34,10 +34,7 @@ const Offers = (props: OffersProps): JSX.Element => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ];
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
     }
     return shuffledArray;
   };
@@ -99,13 +96,9 @@ const Offers = (props: OffersProps): JSX.Element => {
   };
   const ViewState = useAppSelector((state) => state.View.view);
   const inputValueState = useAppSelector((state) => state.filters.inputValue);
-  const categoryState = useAppSelector(
-    (state) => state.filters.categoryFilterValue
-  );
+  const categoryState = useAppSelector((state) => state.filters.categoryFilterValue);
 
-  const countryState = useAppSelector(
-    (state) => state.filters.countryFilterValue
-  );
+  const countryState = useAppSelector((state) => state.filters.countryFilterValue);
 
   //conditionally randomize offers based on location
   let offersToFilter = offers;
@@ -146,18 +139,14 @@ const Offers = (props: OffersProps): JSX.Element => {
       </div>
     );
   return (
-    <div className={`offers-wrapper ${props.darkTheme && "dark-theme"}`}>
+    <div className="offers-wrapper">
       <div className="offers-wrapper-2">
         <div className="h1-button-wrapper">
-          <h1 className={`${props.darkTheme && "dark-theme"}`}>
-            <span>
-              {filteredItems?.length ? "" : "We are sorry, there are no "}
-            </span>
+          <h1>
+            <span>{filteredItems?.length ? "" : "We are sorry, there are no "}</span>
             <span
               style={{ textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)" }}
-              className={`category-name ${
-                !filteredItems?.length && "font-weight"
-              }`}
+              className={`category-name ${!filteredItems?.length && "font-weight"}`}
             >
               {filteredItems?.length
                 ? `${inputValueState} ${categorySwitch(categoryState)}`
@@ -227,7 +216,7 @@ const Offers = (props: OffersProps): JSX.Element => {
           {filteredItems?.map((e, i) => {
             return (
               <div
-                className={`offer-item ${props.darkTheme && "dark-theme"}`}
+                className="offer-item"
                 key={i}
                 onClick={() => {
                   navigate(`/offer/${e.id}`);
